@@ -1,19 +1,116 @@
-import React from 'react'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import {Box, Text} from '@src'
+import React from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import {
+  Box,
+  Text,
+  CustomTextInput,
+  CustomButton,
+  SocialButton,
+  Images,
+} from '@src';
+import PressableText from '@src/components/shared/PressableText';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../navigation/AppNavigation';
 
+type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 const LoginScreen = () => {
+  const navigation = useNavigation<NavigationProp>();
+
   return (
-    <SafeAreaView style={{flex:1,}}>
+    <SafeAreaView style={{ flex: 1 }}>
+      <Box flex={1} padding="l" justifyContent="space-between">
+
         <Box>
-            <Text>
-                LoginScreen
-            </Text>
+        {/*Title*/}
+        <Text variant="title" marginTop="m">
+          Welcome back
+        </Text>
+
+        {/*description*/}
+        <Text variant="description" marginTop="xs">
+          Sign in to continue shopping
+        </Text>
+
+        {/*Email*/}
+        <Box marginTop="xxl">
+          <Text marginBottom="s" variant="medium" color="textSecondary">
+            Email
+          </Text>
+          <CustomTextInput placeholder="Email" leftIcon="mail-outline" />
         </Box>
 
-    </SafeAreaView>
-  )
-}
+        {/*Email*/}
+        <Box marginTop="m">
+          <Text marginBottom="s" variant="medium" color="textSecondary">
+            Password
+          </Text>
+          <CustomTextInput
+            placeholder="Password"
+            leftIcon="lock-closed-outline"
+            secureTextEntry
+          />
+        </Box>
 
-export default LoginScreen
+        {/*Forgot Password*/}
+        <Box alignItems="flex-end" marginTop="m">
+          <PressableText
+            text="Forgot Password?"
+            onPress={() => console.log('frogot Password')}
+          />
+        </Box>
+
+        {/*Sign In Button */}
+        <Box marginTop="m">
+          <CustomButton title="Sign In" onPress={() => navigation.navigate("Home")}/>
+        </Box>
+
+        {/*Or */}
+        <Box flexDirection="row" alignItems="center" marginTop="xl">
+          <Box flex={1} height={1} backgroundColor="border" />
+          <Text variant="description" marginHorizontal="s">
+            or continue with
+          </Text>
+          <Box flex={1} height={1} backgroundColor="border" />
+        </Box>
+
+        {/*Social Button */}
+        <Box marginTop="xxl" flexDirection="row" justifyContent="space-evenly">
+          <SocialButton
+            source={Images.facebook}
+            onPress={() => console.log('facebook btn')}
+          />
+          <SocialButton
+            source={Images.google}
+            onPress={() => console.log('google btn')}
+          />
+          <SocialButton
+            source={Images.apple}
+            onPress={() => console.log('apple btn')}
+          />
+        </Box>
+
+        </Box>
+
+        {/*Dont have a account */}
+
+        <Box
+          flexDirection="row"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <Text variant="medium" color='textSecondary' marginRight="xs">
+            Don't have a account?
+          </Text>
+          <PressableText
+            text="Sign Up"
+            onPress={() => navigation.navigate('SignIn')}
+          />
+        </Box>
+      </Box>
+    </SafeAreaView>
+  );
+};
+
+export default LoginScreen;

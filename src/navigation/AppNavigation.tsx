@@ -1,25 +1,27 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { HomeScreen, OnBoardingScreen, SplashScreen, LoginScreen } from '@src';
+import { HomeScreen, OnBoardingScreen, SplashScreen, LoginScreen, SignInScreen } from '@src';
 
-type RootStackParamList = {
+export type RootStackParamList = {
   Splash: undefined;
   Home: undefined;
   OnBoarding: undefined;
   Login: undefined;
+  SignIn: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const AppNavigation = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Splash"
+      initialRouteName="Login"
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name="Splash" component={SplashScreen} />
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="OnBoarding" component={OnBoardingScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="SignIn" component={SignInScreen} />
     </Stack.Navigator>
   );
 };

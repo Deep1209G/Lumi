@@ -72,11 +72,11 @@ const OnboardingScreen = ({ navigation }: any) => {
                 ))}
               </Box>
 
-              <Text fontSize={30} fontWeight="700" marginBottom="m">
+              <Text variant='title' marginBottom="m">
                 {item.title}
               </Text>
 
-              <Text fontSize={18} color="textSecondary">
+              <Text variant='description'>
                 {item.description}
               </Text>
             </Box>

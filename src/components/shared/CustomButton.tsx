@@ -17,15 +17,14 @@ const CustomButton = ({
   return (
     <TouchableOpacity activeOpacity={0.8} {...props}>
       <Box
-        height={56}
-        borderRadius="l"
+        height={50}
+        borderRadius="m"
         backgroundColor="textPrimary"
         justifyContent="center"
         alignItems="center">
         <Text
           color="mainBackground"
-          fontSize={18}
-          fontWeight="600">
+          variant='button'>
           {title}
         </Text>
       </Box>

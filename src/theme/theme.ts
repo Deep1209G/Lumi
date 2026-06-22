@@ -9,9 +9,10 @@ const palette = {
   greenPrimary: '#0ECD9D',
   greenDark: '#0A906E',
 
-  black: '#0B0B0B',
-  white: '#F0F2F3',
-  gray: '#676765',
+  black: '#000000',
+  white: '#FFFFFF',
+  gray: '#AAA7AD',
+  simpleGray:"#676765",
   red: '#de0a26',
 };
 
@@ -20,7 +21,8 @@ const theme = createTheme({
     mainBackground: palette.white,
     cardPrimaryBackground: palette.purplePrimary,
     textPrimary: palette.black,
-    textSecondary: palette.gray,
+    textSecondary: palette.simpleGray,
+    border:palette.gray,
     warning: palette.red,
   },
 
@@ -58,6 +60,12 @@ const theme = createTheme({
       color: 'textPrimary',
       fontWeight: '500',
     },
+    description:{
+      fontSize: 16,
+      fontWeight: '400',
+      color: 'textSecondary',
+    },
+
 
     body: {
       fontSize: 16,
@@ -67,7 +75,7 @@ const theme = createTheme({
     medium: {
       fontSize: 14,
       color: 'textPrimary',
-      fontWeight: '500',
+      fontWeight: '600',
     },
 
     button: {
