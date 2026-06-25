@@ -1,5 +1,8 @@
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../navigation/AppNavigation';
 import {
   Box,
   Text,
@@ -7,11 +10,9 @@ import {
   CustomButton,
   SocialButton,
   Images,
+  PressableText
 } from '@src';
-import PressableText from '@src/components/shared/PressableText';
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../navigation/AppNavigation';
+
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
@@ -29,7 +30,7 @@ const LoginScreen = () => {
         </Text>
 
         {/*description*/}
-        <Text variant="description" marginTop="xs">
+        <Text variant="medium" marginTop="xs">
           Sign in to continue shopping
         </Text>
 
@@ -41,7 +42,7 @@ const LoginScreen = () => {
           <CustomTextInput placeholder="Email" leftIcon="mail-outline" />
         </Box>
 
-        {/*Email*/}
+        {/*Password*/}
         <Box marginTop="m">
           <Text marginBottom="s" variant="medium" color="textSecondary">
             Password

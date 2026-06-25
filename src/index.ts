@@ -18,5 +18,7 @@ export {default as onboardingData} from './constants/onboardingData.ts'
 export {default as CustomButton} from './components/shared/CustomButton.tsx'
 export {default as CustomTextInput} from './components/shared/CustomTextInput.tsx'
 export {default as SocialButton} from './components/login/SocialButton.tsx'
+export {default as PressableText} from './components/shared/PressableText.tsx'
+
 
 

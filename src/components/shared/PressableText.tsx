@@ -10,7 +10,7 @@ type Props = {
 const PressableText = ({ text, onPress }: Props) => {
   return (
     <Pressable onPress={onPress}>
-      <Text variant='medium'>
+      <Text variant='medium' color='textPrimary'>
         {text}
       </Text>
     </Pressable>

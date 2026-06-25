@@ -74,7 +74,7 @@ const theme = createTheme({
     },
     medium: {
       fontSize: 14,
-      color: 'textPrimary',
+      color: 'textSecondary',
       fontWeight: '600',
     },
 
