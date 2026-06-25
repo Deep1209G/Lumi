@@ -4,15 +4,25 @@ import React, { useEffect } from 'react';
 import { Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Images, Text } from '@src';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 const SplashScreen = ({ navigation }: any) => {
   useEffect(() => {
-    const timer = setTimeout(() => {
-      navigation.replace('OnBoarding');
-    }, 3000);
+    checkLogin();
+  });
 
-    return () => clearTimeout(timer);
-  }, [navigation]);
+const checkLogin = async () => {
+  const token = await AsyncStorage.getItem('token');
+
+  setTimeout(() => {
+    if (token) {
+      navigation.replace('Home');
+    } else {
+      navigation.replace('OnBoarding');
+    }
+  }, 3000);
+};
 
   return (
     <SafeAreaView

@@ -10,6 +10,7 @@ type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 const SignInScreen = () => {
   const navigation = useNavigation<NavigationProp>();
+  
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -29,7 +30,9 @@ const SignInScreen = () => {
           <Text marginBottom="s" variant="medium" color="textSecondary">
             Full Name
           </Text>
-          <CustomTextInput placeholder="Name" leftIcon="mail-outline" />
+          <CustomTextInput 
+          placeholder="Name" 
+          leftIcon="mail-outline" />
         </Box>
 
         {/*Email*/}
@@ -65,7 +68,12 @@ const SignInScreen = () => {
           />
         </Box>
 
-        <Box flexDirection="row" alignItems="center" justifyContent="center" marginTop='m'>
+        <Box
+          flexDirection="row"
+          alignItems="center"
+          justifyContent="center"
+          marginTop="m"
+        >
           <Text variant="medium" color="textSecondary" marginRight="xs">
             Already have an account?
           </Text>

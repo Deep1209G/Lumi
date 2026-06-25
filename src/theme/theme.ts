@@ -75,7 +75,7 @@ const theme = createTheme({
     medium: {
       fontSize: 14,
       color: 'textSecondary',
-      fontWeight: '600',
+      fontWeight: '500',
     },
 
     button: {
