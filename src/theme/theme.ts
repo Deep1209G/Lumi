@@ -4,6 +4,7 @@ const palette = {
   purpleLight: '#8C6FF7',
   purplePrimary: '#5A31F4',
   purpleDark: '#3F22AB',
+  yellowAmber:'#ffbf00',
 
   greenLight: '#56DCBA',
   greenPrimary: '#0ECD9D',
@@ -24,6 +25,8 @@ const theme = createTheme({
     textSecondary: palette.simpleGray,
     border:palette.gray,
     warning: palette.red,
+    green:palette.greenDark,
+    yellow:palette.yellowAmber,
   },
 
   spacing: {

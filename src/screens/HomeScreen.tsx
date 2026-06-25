@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/AppNavigation';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { CustomButton, Box, Header, SearchBar, CategoryTab } from '@src';
+import { CustomButton, Box, Header, SearchBar, CategoryTab, Text } from '@src';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 const HomeScreen = () => {
@@ -28,12 +28,23 @@ const HomeScreen = () => {
           <SearchBar onPress={() => console.log('option button click')} />
         </Box>
 
-        {/*Search Bar */}
+        {/*Category Tab */}
         <Box marginTop="m">
           <CategoryTab />
         </Box>
 
-        
+        {/*Category Tab */}
+        <Box marginTop="m">
+          <Box
+          backgroundColor='green'
+          borderRadius='m'
+          justifyContent='center'
+          height={100}
+          paddingLeft='s'>
+            <Text variant='subtitle' color='mainBackground'>Summer Collection</Text>
+            <Text variant='medium' color='yellow'>Up to 30% off</Text>
+          </Box>
+        </Box>
 
         <Box marginTop="m">
           <CustomButton title="Logout" onPress={handleLogout} />
