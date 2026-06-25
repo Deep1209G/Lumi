@@ -18,5 +18,6 @@ export {default as PressableText} from './components/shared/PressableText.tsx'
 export {default as useLogin} from './hooks/useLogin.ts'
 export {default as Header} from './components/homescreen/Header.tsx'
 export {default as SearchBar} from './components/homescreen/SearchBar.tsx'
+export {default as CategoryTab} from './components/homescreen/CategoryTab.tsx'
 
 

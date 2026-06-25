@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/AppNavigation';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { CustomButton, Box, Header, SearchBar } from '@src';
+import { CustomButton, Box, Header, SearchBar, CategoryTab } from '@src';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 const HomeScreen = () => {
@@ -25,10 +25,15 @@ const HomeScreen = () => {
 
         {/*Search Bar */}
         <Box marginTop="m">
-          <SearchBar 
-          onPress={() => console.log("option button click")}/>
+          <SearchBar onPress={() => console.log('option button click')} />
         </Box>
 
+        {/*Search Bar */}
+        <Box marginTop="m">
+          <CategoryTab />
+        </Box>
+
+        
 
         <Box marginTop="m">
           <CustomButton title="Logout" onPress={handleLogout} />

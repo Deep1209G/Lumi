@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import { Box } from '@src';
 import React from 'react';
 import { Pressable, TextInput } from 'react-native';
