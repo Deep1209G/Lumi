@@ -5,7 +5,16 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/AppNavigation';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { CustomButton, Box, Header, SearchBar, CategoryTab, BannerCard } from '@src';
+import {
+  CustomButton,
+  Box,
+  Header,
+  SearchBar,
+  CategoryTab,
+  BannerCard,
+  Text,
+  PressableText,
+} from '@src';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 const HomeScreen = () => {
@@ -38,6 +47,20 @@ const HomeScreen = () => {
         <Box marginTop="m">
           <BannerCard />
         </Box>
+
+        {/* Popular Text*/}
+        <Box  marginTop="m" flexDirection='row' alignItems='center' >
+          <Box flex={1} >
+          <Text variant='subtitle'>Popular Now</Text>
+          </Box>
+          <PressableText 
+          text="See all"
+          onPress={() => console.log("see all item")}/>
+        </Box>
+
+        {/* Card */}
+
+
 
         <Box marginTop="m">
           <CustomButton title="Logout" onPress={handleLogout} />
