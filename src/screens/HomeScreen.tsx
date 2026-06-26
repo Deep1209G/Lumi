@@ -1,10 +1,11 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/AppNavigation';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { CustomButton, Box, Header, SearchBar, CategoryTab, Text } from '@src';
+import { CustomButton, Box, Header, SearchBar, CategoryTab, BannerCard } from '@src';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 const HomeScreen = () => {
@@ -33,17 +34,9 @@ const HomeScreen = () => {
           <CategoryTab />
         </Box>
 
-        {/*Category Tab */}
+        {/*Offer Banner*/}
         <Box marginTop="m">
-          <Box
-          backgroundColor='green'
-          borderRadius='m'
-          justifyContent='center'
-          height={100}
-          paddingLeft='s'>
-            <Text variant='subtitle' color='mainBackground'>Summer Collection</Text>
-            <Text variant='medium' color='yellow'>Up to 30% off</Text>
-          </Box>
+          <BannerCard />
         </Box>
 
         <Box marginTop="m">
