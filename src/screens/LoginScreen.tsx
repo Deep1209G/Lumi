@@ -29,7 +29,7 @@ const handleLogin = async () => {
   );
 
   if (result.success) {
-    navigation.replace('Home');
+    navigation.replace('MainTab');
   } else {
     console.log(result.message);
   }

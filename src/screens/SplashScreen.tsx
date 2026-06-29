@@ -17,7 +17,7 @@ const checkLogin = async () => {
 
   setTimeout(() => {
     if (token) {
-      navigation.replace('Home');
+      navigation.replace('MainTab');
     } else {
       navigation.replace('OnBoarding');
     }

@@ -15,7 +15,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 const AppNavigation = () => {
   return (
     <Stack.Navigator
-      initialRouteName="MainTab"
+      initialRouteName="Splash"
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name="Splash" component={SplashScreen} />

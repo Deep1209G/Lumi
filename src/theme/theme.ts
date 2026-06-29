@@ -67,6 +67,12 @@ const theme = createTheme({
       color: 'textPrimary',
       fontWeight: '600',
     },
+    heading: {
+      fontSize: 25,
+      color: 'textPrimary',
+      fontWeight: '600',
+    },
+
     description: {
       fontSize: 16,
       fontWeight: '400',

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { Image } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Box, Text } from '@src';
+import { Box, Text, Images } from '@src';
 import theme from '@src/theme/theme';
 
 const Header = () => {
@@ -33,15 +33,13 @@ const Header = () => {
         alignItems="center"
         borderWidth={2}
         borderColor="border"
-        height={45}
-        width={45}
+        height={50}
+        width={50}
         borderRadius="m"
       >
         <Image
-          source={{
-            uri: user?.image,
-          }}
-          style={{ width: 40, height: 40, borderRadius: theme.borderRadii.m }}
+          source={Images.avatar}
+          style={{ width: 40, height: 40, borderRadius: theme.borderRadii.s }}
         />
       </Box>
     </Box>

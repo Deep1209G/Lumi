@@ -1,14 +1,21 @@
 /* eslint-disable react-native/no-inline-styles */
-import { Box } from '@src';
 import React from 'react';
+import { Box } from '@src';
 import { Pressable, TextInput } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import theme from '../../theme/theme';
 
 type SearchBarProps = {
+  placeholder?: string;
   onPress?: () => void;
+  rightIcon?: keyof typeof Ionicons.glyphMap;
 };
-const SearchBar = ({ onPress }: SearchBarProps) => {
+
+const SearchBar = ({
+  placeholder = 'Search clothes, brands...',
+  onPress,
+  rightIcon,
+}: SearchBarProps) => {
   return (
     <Box
       height={50}
@@ -21,28 +28,40 @@ const SearchBar = ({ onPress }: SearchBarProps) => {
       paddingHorizontal="m"
     >
       {/* Left Icon */}
-      <Ionicons name="search-outline" size={20} color={theme.colors.border} />
-      <TextInput
-        style={{ flex: 1, paddingLeft: theme.spacing.m }}
-        placeholder="Search clothes, brands..."
+      <Ionicons
+        name="search-outline"
+        size={20}
+        color={theme.colors.border}
       />
 
-      <Box
-        backgroundColor="textPrimary"
-        height={30}
-        width={30}
-        justifyContent="center"
-        alignItems='center'
-        borderRadius='s'
-      >
+      {/* Text Input */}
+      <TextInput
+        style={{
+          flex: 1,
+          paddingLeft: theme.spacing.m,
+        }}
+        placeholder={placeholder}
+      />
+
+      {/* Right Icon (Optional) */}
+      {rightIcon && (
         <Pressable onPress={onPress}>
-          <Ionicons
-            name="options-outline"
-            size={18}
-            color={theme.colors.mainBackground}
-          />
+          <Box
+            backgroundColor="textPrimary"
+            height={30}
+            width={30}
+            justifyContent="center"
+            alignItems="center"
+            borderRadius="s"
+          >
+            <Ionicons
+              name={rightIcon}
+              size={18}
+              color={theme.colors.mainBackground}
+            />
+          </Box>
         </Pressable>
-      </Box>
+      )}
     </Box>
   );
 };

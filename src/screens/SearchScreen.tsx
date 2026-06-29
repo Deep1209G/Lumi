@@ -1,11 +1,27 @@
-import { View, Text } from 'react-native'
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import {Box, SearchBar, Text} from '@src'
 
 const SearchScreen = () => {
   return (
-    <View>
-      <Text>SearchScreen</Text>
-    </View>
+    <SafeAreaView style={{ flex: 1 }} >
+      <Box padding="l">
+
+        {/*Heading */}
+        <Text variant="heading">
+          Search
+        </Text>
+
+         {/*Search Bar */}
+         <Box marginTop='m'>
+         <SearchBar />
+         </Box>
+
+
+      </Box>
+
+    </SafeAreaView>
   )
 }
 
