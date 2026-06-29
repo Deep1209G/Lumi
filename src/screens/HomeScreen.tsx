@@ -4,6 +4,9 @@ import React, { useState, useRef } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { FlatList, ScrollView } from 'react-native';
 import { products } from '@src/data/produts';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../navigation/AppNavigation';
 import {
   Box,
   Header,
@@ -16,13 +19,16 @@ import {
 } from '@src';
 
 const HomeScreen = () => {
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const flatListRef = useRef<FlatList>(null);
   const [selectedCategory, setSelectedCategory] = useState('All Item');
+  const [visibleCount, setVisibleCount] = useState(10);
+
   const filteredProducts =
     selectedCategory === 'All Item'
       ? products
       : products.filter(item => item.category === selectedCategory);
-  const [visibleCount, setVisibleCount] = useState(10);
   const visibleProducts = filteredProducts.slice(0, visibleCount);
 
   const handleCategoryChange = (category: string) => {
@@ -35,7 +41,7 @@ const HomeScreen = () => {
       animated: false,
     });
   };
-  console.log('Visible Count:', visibleCount);
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -45,7 +51,12 @@ const HomeScreen = () => {
 
           {/*Search Bar */}
           <Box marginTop="m">
-            <SearchBar rightIcon="options-outline" onPress={() => console.log('option button click')} />
+            <SearchBar
+              editable={false}
+              onSearchPress={() => navigation.navigate('Search')}
+              rightIcon="options-outline"
+              onPress={() => console.log('option button click')}
+            />
           </Box>
 
           {/*Category Tab */}

@@ -9,12 +9,20 @@ type SearchBarProps = {
   placeholder?: string;
   onPress?: () => void;
   rightIcon?: keyof typeof Ionicons.glyphMap;
+  onSearchPress?: () => void;
+  value?: string;
+  onChangeText?: (text: string) => void;
+  editable?: boolean;
 };
 
 const SearchBar = ({
   placeholder = 'Search clothes, brands...',
   onPress,
+  onSearchPress,
   rightIcon,
+  value,
+  onChangeText,
+  editable,
 }: SearchBarProps) => {
   return (
     <Box
@@ -27,21 +35,28 @@ const SearchBar = ({
       alignItems="center"
       paddingHorizontal="m"
     >
-      {/* Left Icon */}
-      <Ionicons
-        name="search-outline"
-        size={20}
-        color={theme.colors.border}
-      />
-
-      {/* Text Input */}
-      <TextInput
+      <Pressable
+        onPress={onSearchPress}
         style={{
           flex: 1,
-          paddingLeft: theme.spacing.m,
+          flexDirection: 'row',
+          alignItems: 'center',
         }}
-        placeholder={placeholder}
-      />
+      >
+        <Ionicons name="search-outline" size={20} color={theme.colors.border} />
+
+        <TextInput
+          style={{
+            flex: 1,
+            paddingLeft: theme.spacing.m,
+          }}
+          placeholder={placeholder}
+          value={value}
+          onChangeText={onChangeText}
+          editable={editable}
+          pointerEvents="none"
+        />
+      </Pressable>
 
       {/* Right Icon (Optional) */}
       {rightIcon && (
