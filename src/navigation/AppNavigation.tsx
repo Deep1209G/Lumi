@@ -1,10 +1,11 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { HomeScreen, OnBoardingScreen, SplashScreen, LoginScreen, SignInScreen } from '@src';
+import { OnBoardingScreen, SplashScreen, LoginScreen, SignInScreen } from '@src';
+import BottomTab from './BottomTab';
 
 export type RootStackParamList = {
   Splash: undefined;
-  Home: undefined;
+  MainTab: undefined;
   OnBoarding: undefined;
   Login: undefined;
   SignIn: undefined;
@@ -14,11 +15,11 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 const AppNavigation = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Home"
+      initialRouteName="MainTab"
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name="Splash" component={SplashScreen} />
-      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="MainTab" component={BottomTab} />
       <Stack.Screen name="OnBoarding" component={OnBoardingScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="SignIn" component={SignInScreen} />

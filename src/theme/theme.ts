@@ -1,10 +1,11 @@
 import { createTheme } from '@shopify/restyle';
 
 const palette = {
+  purpleMauve: '#E0B0FF',
   purpleLight: '#8C6FF7',
   purplePrimary: '#5A31F4',
   purpleDark: '#3F22AB',
-  yellowAmber:'#ffbf00',
+  yellowAmber: '#ffbf00',
 
   greenLight: '#56DCBA',
   greenPrimary: '#0ECD9D',
@@ -13,20 +14,23 @@ const palette = {
   black: '#000000',
   white: '#FFFFFF',
   gray: '#AAA7AD',
-  simpleGray:"#676765",
+  simpleGray: '#676765',
   red: '#de0a26',
 };
 
 const theme = createTheme({
   colors: {
+    black: palette.black,
+    white: palette.white,
     mainBackground: palette.white,
     cardPrimaryBackground: palette.purplePrimary,
     textPrimary: palette.black,
     textSecondary: palette.simpleGray,
-    border:palette.gray,
+    border: palette.gray,
     warning: palette.red,
-    green:palette.greenDark,
-    yellow:palette.yellowAmber,
+    green: palette.greenDark,
+    yellow: palette.yellowAmber,
+    card: palette.purpleMauve,
   },
 
   spacing: {
@@ -63,12 +67,11 @@ const theme = createTheme({
       color: 'textPrimary',
       fontWeight: '600',
     },
-    description:{
+    description: {
       fontSize: 16,
       fontWeight: '400',
       color: 'textSecondary',
     },
-
 
     body: {
       fontSize: 16,
@@ -84,6 +87,12 @@ const theme = createTheme({
     button: {
       fontSize: 16,
       fontWeight: '600',
+      color: 'textPrimary',
+    },
+
+    rupees: {
+      fontSize: 14,
+      fontWeight: '700',
       color: 'textPrimary',
     },
   },

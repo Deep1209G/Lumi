@@ -1,12 +1,10 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../navigation/AppNavigation';
+import React, { useState } from 'react';
+
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { FlatList, ScrollView } from 'react-native';
+import { products } from '@src/data/produts';
 import {
-  CustomButton,
   Box,
   Header,
   SearchBar,
@@ -14,21 +12,27 @@ import {
   BannerCard,
   Text,
   PressableText,
+  Card,
 } from '@src';
 
-type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 const HomeScreen = () => {
-  const navigation = useNavigation<NavigationProp>();
-  const handleLogout = async () => {
-    await AsyncStorage.removeItem('token');
-    await AsyncStorage.removeItem('isLoggedIn');
-    await AsyncStorage.removeItem('user');
+  const [selectedCategory, setSelectedCategory] = useState('All Item');
+  const filteredProducts =
+    selectedCategory === 'All Item'
+      ? products
+      : products.filter(item => item.category === selectedCategory);
+  const [visibleCount, setVisibleCount] = useState(10);
+  const visibleProducts = filteredProducts.slice(0, visibleCount);
 
-    navigation.replace('Login');
+  const handleCategoryChange = (category: string) => {
+    setSelectedCategory(category);
+    setVisibleCount(10);
   };
+ 
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
+      <ScrollView showsVerticalScrollIndicator={false}>
       <Box padding="l">
         {/*Header */}
         <Header />
@@ -40,7 +44,7 @@ const HomeScreen = () => {
 
         {/*Category Tab */}
         <Box marginTop="m">
-          <CategoryTab />
+          <CategoryTab onSelectCategory={handleCategoryChange} />
         </Box>
 
         {/*Offer Banner*/}
@@ -49,23 +53,38 @@ const HomeScreen = () => {
         </Box>
 
         {/* Popular Text*/}
-        <Box  marginTop="m" flexDirection='row' alignItems='center' >
-          <Box flex={1} >
-          <Text variant='subtitle'>Popular Now</Text>
+        <Box marginTop="m" flexDirection="row" alignItems="center">
+          <Box flex={1}>
+            <Text variant="subtitle">Popular Now</Text>
           </Box>
-          <PressableText 
-          text="See all"
-          onPress={() => console.log("see all item")}/>
+          <PressableText
+            text="See all"
+            onPress={() => console.log('see all item')}
+          />
         </Box>
 
         {/* Card */}
 
-
-
         <Box marginTop="m">
-          <CustomButton title="Logout" onPress={handleLogout} />
+          <FlatList
+            data={visibleProducts}
+            numColumns={2}
+            showsVerticalScrollIndicator={false}
+            columnWrapperStyle={{
+              justifyContent: 'space-around',
+              marginBottom: 16,
+            }}
+            keyExtractor={item => item.id}
+            onEndReached={() => {
+              setVisibleCount(prev => prev + 10);
+            }}
+            renderItem={({ item }) => (
+              <Card name={item.name} price={item.price} rating={item.rating} />
+            )}
+          />
         </Box>
       </Box>
+      </ScrollView>
     </SafeAreaView>
   );
 };

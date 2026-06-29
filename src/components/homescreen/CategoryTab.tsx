@@ -1,11 +1,20 @@
 import React, { useState } from 'react';
 import { Box, Text } from '@src';
 import { FlatList, Pressable } from 'react-native';
+import { categories } from '@src/data/category';
 
-const categories = ['All Item', 'Dress', 'T-shirt', 'Jacket', 'Shoes', 'Bag'];
+type Props ={
+  onSelectCategory: (category:string) => void;
 
-const CategoryTab = () => {
+}
+const CategoryTab = ({ onSelectCategory }: Props) => {
   const [selected, setSelected] = useState('All Item');
+
+  const handlePress = (item:string) => {
+    setSelected(item);
+    onSelectCategory(item);
+  };
+  
   return (
     
       <FlatList
@@ -14,7 +23,7 @@ const CategoryTab = () => {
         horizontal
         showsHorizontalScrollIndicator={false}
         renderItem={({ item }) => (
-          <Pressable onPress={() => setSelected(item)}>
+          <Pressable onPress={() => handlePress(item)}>
             <Box
               paddingHorizontal="m"
               paddingVertical="s"
