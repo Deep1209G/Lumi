@@ -64,7 +64,7 @@ const SignInScreen = () => {
         <Box marginTop="m">
           <CustomButton
             title="Create account"
-            onPress={() => navigation.navigate('Home')}
+            onPress={() => navigation.navigate('MainTab')}
           />
         </Box>
 

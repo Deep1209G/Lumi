@@ -4,18 +4,20 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import theme from '../../theme/theme';
 
 type CardProps = {
-  name:string;
+  name: string;
   price: number;
   rating: number;
-}
+  liked?: boolean;
+  onWishlistPress?: () => void;
+};
 
-const Card = ({name, price, rating}:CardProps) => {
+const Card = ({ name, price, rating, liked, onWishlistPress }: CardProps) => {
   return (
-    <Box width={170}>
-      <Box height={170}  backgroundColor="card" borderRadius="m">
+    <Box width={160}>
+      <Box height={170} backgroundColor="card" borderRadius="m">
         {/*Heart Icon */}
         <Box flex={1} flexDirection="row" justifyContent="flex-end" padding="s">
-          <PressableIcon />
+          <PressableIcon liked={liked} onPress={onWishlistPress} />
         </Box>
       </Box>
 
@@ -25,10 +27,22 @@ const Card = ({name, price, rating}:CardProps) => {
       </Text>
 
       {/*Rupees*/}
-      <Box flexDirection='row'>
+      <Box flexDirection="row">
         <Text variant="rupees">₹{price} </Text>
-        <Text variant="medium" paddingLeft='xs' color='border' textDecorationLine='line-through'>₹1800 </Text>
-        <Box flex={1} flexDirection='row' justifyContent='flex-end' alignItems="center">
+        <Text
+          variant="medium"
+          paddingLeft="xs"
+          color="border"
+          textDecorationLine="line-through"
+        >
+          ₹1800{' '}
+        </Text>
+        <Box
+          flex={1}
+          flexDirection="row"
+          justifyContent="flex-end"
+          alignItems="center"
+        >
           <Ionicons name="star" size={14} color={theme.colors.yellow} />
           <Text variant="rupees">{rating}</Text>
         </Box>

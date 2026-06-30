@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useContext } from 'react';
 
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { FlatList, ScrollView } from 'react-native';
@@ -7,6 +7,8 @@ import { products } from '@src/data/produts';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/AppNavigation';
+import { WishlistContext } from '@src/context/WishlistContext';
+
 import {
   Box,
   Header,
@@ -19,6 +21,9 @@ import {
 } from '@src';
 
 const HomeScreen = () => {
+  
+  const { wishlist, toggleWishlist } = useContext(WishlistContext);
+
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const flatListRef = useRef<FlatList>(null);
@@ -106,6 +111,8 @@ const HomeScreen = () => {
                   name={item.name}
                   price={item.price}
                   rating={item.rating}
+                  liked={wishlist.includes(item.id)}
+                  onWishlistPress={() => toggleWishlist(item.id)}
                 />
               )}
             />
