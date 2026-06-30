@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Box, CustomButton, EmptyStateCard, ProfileHeader, Text } from '@src';
+import { Box, EmptyStateCard, ProfileHeader, Text } from '@src';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/AppNavigation';
@@ -26,21 +26,54 @@ const ProfileScreen = () => {
         <Text variant="heading">Profile</Text>
 
         {/*Header*/}
-        <Box marginTop='m'> 
+        <Box marginTop="m">
           <ProfileHeader />
         </Box>
 
-         {/*Card*/}
-        <Box marginTop='m'> 
-          <EmptyStateCard 
-          title='My Order'
-          lefticon='bag-outline'
-          color={theme.colors.black}
+        {/*Card*/}
+        <Box marginTop="xl">
+          <EmptyStateCard
+            title="My Order"
+            lefticon="cube-outline"
+            onPress={() => console.log('My order')}
           />
         </Box>
-
-        <Box marginTop='m'>
-        <CustomButton title="Logout" onPress={handleLogout} />
+        <Box marginTop="m">
+          <EmptyStateCard
+            title="Wishlist"
+            lefticon="heart-outline"
+            onPress={() => console.log('My order')}
+          />
+        </Box>
+        <Box marginTop="m">
+          <EmptyStateCard
+            title="Shipping Address"
+            lefticon="location-outline"
+            onPress={() => console.log('My order')}
+          />
+        </Box>
+        <Box marginTop="m">
+          <EmptyStateCard
+            title="Payment Methods"
+            lefticon="card-outline"
+            onPress={() => console.log('My order')}
+          />
+        </Box>
+        <Box marginTop="m">
+          <EmptyStateCard
+            title="Settings"
+            lefticon="settings-outline"
+            onPress={() => console.log('My order')}
+          />
+        </Box>
+        <Box marginTop="m">
+          <EmptyStateCard
+            title="Log Out"
+            lefticon="log-out-outline"
+            backgroundColor="lightRed"
+            color={theme.colors.warning}
+            onPress={handleLogout}
+          />
         </Box>
       </Box>
     </SafeAreaView>

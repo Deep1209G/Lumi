@@ -37,7 +37,7 @@ const CustomTextInput = ({
       backgroundColor="mainBackground"
     >
       {/* Left Icon */}
-      <Ionicons name={leftIcon} size={20} color={theme.colors.border} />
+      <Ionicons name={leftIcon} size={20} color={theme.colors.icon} />
 
       {/* Input */}
       <Box flex={1} marginLeft="s">

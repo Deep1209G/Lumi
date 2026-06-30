@@ -16,6 +16,7 @@ const palette = {
   gray: '#E8E8E8',
   simpleGray: '#676765',
   red: '#de0a26',
+  lightRed:"#efd1d1"
 };
 
 const theme = createTheme({
@@ -32,6 +33,8 @@ const theme = createTheme({
     yellow: palette.yellowAmber,
     card: palette.purpleMauve,
     gray: palette.gray,
+    lightRed:palette.lightRed,
+    icon:palette.simpleGray,
   },
 
   spacing: {

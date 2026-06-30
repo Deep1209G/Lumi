@@ -3,16 +3,19 @@ import { Box, Text } from '@src';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import theme from '../../theme/theme';
 import { Pressable } from 'react-native';
+import { Theme } from '@src/theme/theme';
+
 
 
 type Props = {
   lefticon:  keyof typeof Ionicons.glyphMap;
-  color: string;
+  color?: string;
   title: string;
   onPress?: () => void;
+  backgroundColor?: keyof Theme['colors'];
 
 };
-const EmptyStateCard = ({ lefticon, color, title,onPress }: Props) => {
+const EmptyStateCard = ({ lefticon, color=theme.colors.black, title,onPress,  backgroundColor = 'gray', }: Props) => {
   return (
     <Pressable onPress={onPress}>
     <Box
@@ -27,7 +30,7 @@ const EmptyStateCard = ({ lefticon, color, title,onPress }: Props) => {
       <Box
         height={40}
         width={40}
-        backgroundColor="gray"
+        backgroundColor={backgroundColor}
         justifyContent="center"
         alignItems="center"
         borderRadius="s"
@@ -38,7 +41,7 @@ const EmptyStateCard = ({ lefticon, color, title,onPress }: Props) => {
         <Text variant='button'>{title}</Text>
       </Box>
       <Box justifyContent='center'>
-      <Ionicons name='chevron-forward-outline' size={15} color={theme.colors.border} />
+      <Ionicons name='chevron-forward-outline' size={15} color={theme.colors.icon} />
       </Box>
     </Box>
     </Pressable>
