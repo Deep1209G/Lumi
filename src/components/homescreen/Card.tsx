@@ -13,7 +13,7 @@ type CardProps = {
 
 const Card = ({ name, price, rating, liked, onWishlistPress }: CardProps) => {
   return (
-    <Box width={160}>
+    <Box width={165}>
       <Box height={170} backgroundColor="card" borderRadius="m">
         {/*Heart Icon */}
         <Box flex={1} flexDirection="row" justifyContent="flex-end" padding="s">

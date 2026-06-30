@@ -8,14 +8,14 @@ import { Theme } from '@src/theme/theme';
 
 
 type Props = {
-  lefticon:  keyof typeof Ionicons.glyphMap;
+  leftIcon:  keyof typeof Ionicons.glyphMap;
   color?: string;
   title: string;
   onPress?: () => void;
   backgroundColor?: keyof Theme['colors'];
 
 };
-const EmptyStateCard = ({ lefticon, color=theme.colors.black, title,onPress,  backgroundColor = 'gray', }: Props) => {
+const EmptyStateCard = ({ leftIcon, color=theme.colors.black, title,onPress,  backgroundColor = 'gray', }: Props) => {
   return (
     <Pressable onPress={onPress}>
     <Box
@@ -35,7 +35,7 @@ const EmptyStateCard = ({ lefticon, color=theme.colors.black, title,onPress,  ba
         alignItems="center"
         borderRadius="s"
       >
-        <Ionicons name={lefticon} size={20} color={color} />
+        <Ionicons name={leftIcon} size={20} color={color} />
       </Box>
       <Box flex={1} justifyContent="center" marginLeft="m">
         <Text variant='button'>{title}</Text>

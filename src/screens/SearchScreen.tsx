@@ -76,7 +76,7 @@ const SearchScreen = () => {
               scrollEnabled={false}
               keyExtractor={item => item.id}
               columnWrapperStyle={{
-                justifyContent: 'space-around',
+                justifyContent: 'space-between',
                 marginBottom: 16,
               }}
               renderItem={({ item }) => (

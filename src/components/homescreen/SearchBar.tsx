@@ -43,7 +43,7 @@ const SearchBar = ({
           alignItems: 'center',
         }}
       >
-        <Ionicons name="search-outline" size={20} color={theme.colors.border} />
+        <Ionicons name="search-outline" size={20} color={theme.colors.icon} />
 
         <TextInput
           style={{

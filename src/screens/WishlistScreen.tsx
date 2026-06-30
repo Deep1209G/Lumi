@@ -49,11 +49,12 @@ const WishlistScreen = () => {
         ) : (
           <Box marginTop='m'>
           <FlatList
+          showsVerticalScrollIndicator={false}
             data={wishlistProducts}
             numColumns={2}
             keyExtractor={item => item.id}
             columnWrapperStyle={{
-              justifyContent: 'space-around',
+              justifyContent: 'space-between',
               marginBottom: 16,
             }}
             renderItem={({ item }) => (

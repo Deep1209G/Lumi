@@ -1,31 +1,46 @@
-import theme from '../theme/theme';
+import theme from '@src/theme/theme';
+import { Theme } from '@src/theme/theme';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const profileMenu = [
+
+type ProfileMenuItem = {
+  id: string;
+  title: string;
+  leftIcon: keyof typeof Ionicons.glyphMap;
+  backgroundColor?: keyof Theme['colors'];
+  color?: string;
+};
+export const profileMenu: ProfileMenuItem[] = [
   {
+    id: 'orders',
     title: 'My Order',
-    lefticon: 'cube-outline',
+    leftIcon: 'cube-outline',
   },
   {
+    id: 'wishlist',
     title: 'Wishlist',
-    lefticon: 'heart-outline',
+    leftIcon: 'heart-outline',
   },
   {
+    id: 'address',
     title: 'Shipping Address',
-    lefticon: 'location-outline',
+    leftIcon: 'location-outline',
   },
   {
+    id: 'payment',
     title: 'Payment Methods',
-    lefticon: 'card-outline',
+    leftIcon: 'card-outline',
   },
   {
+    id: 'settings',
     title: 'Settings',
-    lefticon: 'settings-outline',
+    leftIcon: 'settings-outline',
   },
   {
+    id: 'logout',
     title: 'Log Out',
-    lefticon: 'log-out-outline',
+    leftIcon: 'log-out-outline',
+    backgroundColor: 'lightRed',
     color: theme.colors.warning,
   },
 ];
-
-export default profileMenu;

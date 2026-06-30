@@ -51,10 +51,10 @@ const getTabIcon = (routeName: string, focused: boolean) => {
       alignItems="center"
       style={{
         borderRadius: 10,
-        backgroundColor: focused ? 'black' : 'white',
+        backgroundColor: focused ? 'white' : 'black',
       }}
     >
-      <Ionicons name={iconName} size={22} color={focused ? 'white' : 'black'} />
+      <Ionicons name={iconName} size={22} color={focused ? 'black' : 'white'} />
     </Box>
   );
 };
@@ -79,10 +79,13 @@ export default function BottomTab() {
         ),
 
         tabBarStyle: {
+          marginHorizontal:20,
+          borderRadius:20,
+          marginBottom:10,
           position: 'absolute',
           alignItems: 'center',
-          height: 80,
-          backgroundColor: 'white',
+          height: 60,
+          backgroundColor: 'black',
           borderTopWidth: 0,
           elevation: 12,
           shadowColor: 'black',
@@ -94,7 +97,7 @@ export default function BottomTab() {
           shadowRadius: 10,
           paddingTop: 10,
           paddingBottom: 10,
-          paddingHorizontal: 30,
+          
         },
 
         tabBarItemStyle: {
@@ -105,13 +108,9 @@ export default function BottomTab() {
       })}
     >
       <Tab.Screen name="Home" component={HomeScreen} />
-
       <Tab.Screen name="Search" component={SearchScreen} />
-
       <Tab.Screen name="Wishlist" component={WishlistScreen} />
-
       <Tab.Screen name="Cart" component={MyCartScreen} />
-
       <Tab.Screen name="Profile" component={ProfileScreen} />
     </Tab.Navigator>
   );

@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/AppNavigation';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import theme from '../theme/theme';
+import { profileMenu } from '@src/data/profileMenu';
 
 const ProfileScreen = () => {
   type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
@@ -17,6 +17,37 @@ const ProfileScreen = () => {
     await AsyncStorage.removeItem('user');
 
     navigation.replace('Login');
+  };
+
+  const handleMenuPress = (id: string) => {
+    switch (id) {
+      case 'orders':
+        console.log('Orders');
+        break;
+
+      case 'wishlist':
+        navigation.navigate('WishList');
+        break;
+
+      case 'address':
+        console.log('Shipping Address');
+        break;
+
+      case 'payment':
+        console.log('Payment Methods');
+        break;
+
+      case 'settings':
+        console.log('Settings');
+        break;
+
+      case 'logout':
+        handleLogout();
+        break;
+
+      default:
+        break;
+    }
   };
 
   return (
@@ -32,48 +63,17 @@ const ProfileScreen = () => {
 
         {/*Card*/}
         <Box marginTop="xl">
-          <EmptyStateCard
-            title="My Order"
-            lefticon="cube-outline"
-            onPress={() => console.log('My order')}
-          />
-        </Box>
-        <Box marginTop="m">
-          <EmptyStateCard
-            title="Wishlist"
-            lefticon="heart-outline"
-            onPress={() => console.log('My order')}
-          />
-        </Box>
-        <Box marginTop="m">
-          <EmptyStateCard
-            title="Shipping Address"
-            lefticon="location-outline"
-            onPress={() => console.log('My order')}
-          />
-        </Box>
-        <Box marginTop="m">
-          <EmptyStateCard
-            title="Payment Methods"
-            lefticon="card-outline"
-            onPress={() => console.log('My order')}
-          />
-        </Box>
-        <Box marginTop="m">
-          <EmptyStateCard
-            title="Settings"
-            lefticon="settings-outline"
-            onPress={() => console.log('My order')}
-          />
-        </Box>
-        <Box marginTop="m">
-          <EmptyStateCard
-            title="Log Out"
-            lefticon="log-out-outline"
-            backgroundColor="lightRed"
-            color={theme.colors.warning}
-            onPress={handleLogout}
-          />
+          {profileMenu.map((item) => (
+            <Box key={item.id} marginTop='m'>
+              <EmptyStateCard
+                title={item.title}
+                leftIcon={item.leftIcon}
+                backgroundColor={item.backgroundColor}
+                color={item.color}
+                onPress={() => handleMenuPress(item.id)}
+              />
+            </Box>
+          ))}
         </Box>
       </Box>
     </SafeAreaView>
