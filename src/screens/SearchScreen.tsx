@@ -58,10 +58,7 @@ const SearchScreen = () => {
             </Box>
           )}
 
-          {/* Trending */}
-          <Text variant="medium" marginTop="l">
-            Trending Searches
-          </Text>
+        
 
           {/* Recommended */}
           <Text variant="medium" marginTop="m">

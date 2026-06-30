@@ -16,11 +16,7 @@ export const profileMenu: ProfileMenuItem[] = [
     title: 'My Order',
     leftIcon: 'cube-outline',
   },
-  {
-    id: 'wishlist',
-    title: 'Wishlist',
-    leftIcon: 'heart-outline',
-  },
+ 
   {
     id: 'address',
     title: 'Shipping Address',
