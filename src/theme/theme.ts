@@ -13,7 +13,7 @@ const palette = {
 
   black: '#000000',
   white: '#FFFFFF',
-  gray: '#AAA7AD',
+  gray: '#E8E8E8',
   simpleGray: '#676765',
   red: '#de0a26',
 };
@@ -31,6 +31,7 @@ const theme = createTheme({
     green: palette.greenDark,
     yellow: palette.yellowAmber,
     card: palette.purpleMauve,
+    gray: palette.gray,
   },
 
   spacing: {

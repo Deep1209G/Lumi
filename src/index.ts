@@ -28,6 +28,8 @@ export {default as CategoryTab} from './components/homescreen/CategoryTab.tsx'
 export {default as BannerCard} from './components/homescreen/BannerCard.tsx'
 export {default as Card} from './components/homescreen/Card.tsx'
 export {default as PressableIcon} from './components/homescreen/PressableIcon.tsx'
+export {default as ProfileHeader} from './components/profile/ProfileHeader.tsx'
+export {default as EmptyStateCard} from './components/profile/EmptyStateCard.tsx'
 
 
 
