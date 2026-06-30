@@ -18,7 +18,7 @@ const WishlistScreen = () => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Box padding="l">
-        <Text marginTop="m" variant="heading">
+        <Text variant="heading">
           My WishList
         </Text>
         {wishlistProducts.length === 0 ? (

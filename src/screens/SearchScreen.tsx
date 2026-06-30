@@ -1,46 +1,26 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import {
-  FlatList,
-  ScrollView,
-  Pressable,
-} from 'react-native';
-import {
-  Box,
-  SearchBar,
-  Text,
-  Card,
-} from '@src';
-import { products } from '@src/data/produts';
+import { FlatList, ScrollView, Pressable } from 'react-native';
+import { Box, SearchBar, Text, Card, useSearch } from '@src';
 import { WishlistContext } from '@src/context/WishlistContext';
 
 const SearchScreen = () => {
   const { wishlist, toggleWishlist } = useContext(WishlistContext);
 
-  // Search Text
-  const [searchText, setSearchText] = useState('');
-
-  // Controls whether suggestions are visible
-  const [showSuggestions, setShowSuggestions] = useState(false);
-
-  // Filter products according to search text
-  const filteredProducts = products.filter(item =>
-    item.name.toLowerCase().includes(searchText.toLowerCase()),
-  );
-
-  // Suggestions (Only first 5)
-  const suggestions = products
-    .filter(item =>
-      item.name.toLowerCase().includes(searchText.toLowerCase()),
-    )
-    .slice(0, 5);
+  const {
+    searchText,
+    showSuggestions,
+    filteredProducts,
+    suggestions,
+    handleSearch,
+    handleSuggestionPress,
+  } = useSearch();
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Box padding="l">
-
           {/* Heading */}
           <Text variant="heading">Search</Text>
 
@@ -49,10 +29,7 @@ const SearchScreen = () => {
             <SearchBar
               editable
               value={searchText}
-              onChangeText={text => {
-                setSearchText(text);
-                setShowSuggestions(true);
-              }}
+              onChangeText={handleSearch}
             />
           </Box>
 
@@ -70,15 +47,9 @@ const SearchScreen = () => {
                 scrollEnabled={false}
                 renderItem={({ item }) => (
                   <Pressable
-                    onPress={() => {
-                      setSearchText(item.name);
-                      setShowSuggestions(false);
-                    }}
+                    onPress={() => handleSuggestionPress(item.name)}
                   >
-                    <Box
-                      paddingVertical="s"
-                      paddingHorizontal="m"
-                    >
+                    <Box paddingVertical="s" paddingHorizontal="m">
                       <Text>{item.name}</Text>
                     </Box>
                   </Pressable>
@@ -114,9 +85,7 @@ const SearchScreen = () => {
                   price={item.price}
                   rating={item.rating}
                   liked={wishlist.includes(item.id)}
-                  onWishlistPress={() =>
-                    toggleWishlist(item.id)
-                  }
+                  onWishlistPress={() => toggleWishlist(item.id)}
                 />
               )}
             />
