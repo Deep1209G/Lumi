@@ -1,22 +1,38 @@
+/* eslint-disable react-native/no-inline-styles */
+import React from 'react';
+import { ImageBackground } from 'react-native';
 import { Box, Text } from '@src';
 
+type Props = {
+  image: any;
+  title?: string;
+  subtitle?: string;
+  width: number;
+};
 
-const BannerCard = () => {
+const BannerCard = ({ image, title, subtitle, width }: Props) => {
   return (
-    <Box
-      backgroundColor="green"
-      borderRadius="m"
-      justifyContent="center"
-      height={130}
-      paddingLeft="s"
+    <ImageBackground
+      source={image}
+      style={{
+        width,
+        height: 130,
+        justifyContent: 'center',
+      }}
+      imageStyle={{
+        borderRadius: 12,
+      }}
     >
-      <Text variant="subtitle" color="mainBackground">
-        Summer Collection
-      </Text>
-      <Text variant="medium" color="yellow">
-        Up to 30% off
-      </Text>
-    </Box>
+      <Box paddingLeft="s">
+        <Text variant="subtitle" color="white">
+          {title}
+        </Text>
+
+        <Text variant="medium" color="green">
+          {subtitle}
+        </Text>
+      </Box>
+    </ImageBackground>
   );
 };
 

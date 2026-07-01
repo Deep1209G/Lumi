@@ -38,7 +38,7 @@ const checkLogin = async () => {
           height: 100,
         }}
       />
-
+    
       <Text marginTop="m" variant="title">
         LUMI
       </Text>
@@ -46,6 +46,7 @@ const checkLogin = async () => {
       <Text variant="medium" color="textSecondary">
         Wear what feels like you
       </Text>
+      
     </SafeAreaView>
   );
 };

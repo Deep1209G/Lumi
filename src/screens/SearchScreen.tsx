@@ -4,10 +4,14 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { FlatList, ScrollView, Pressable } from 'react-native';
 import { Box, SearchBar, Text, Card, useSearch } from '@src';
 import { WishlistContext } from '@src/context/WishlistContext';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../navigation/AppNavigation';
 
 const SearchScreen = () => {
   const { wishlist, toggleWishlist } = useContext(WishlistContext);
-
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const {
     searchText,
     showSuggestions,
@@ -83,6 +87,7 @@ const SearchScreen = () => {
                   rating={item.rating}
                   liked={wishlist.includes(item.id)}
                   onWishlistPress={() => toggleWishlist(item.id)}
+                  onCardPress={() => navigation.navigate('Detail')}
                 />
               )}
             />

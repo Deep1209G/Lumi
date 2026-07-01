@@ -26,8 +26,8 @@ export const WishlistProvider = ({ children }: WishlistProviderProps) => {
         toggleWishlist,
       }}
     >
-      {' '}
-      {children}{' '}
+      
+      {children}
     </WishlistContext.Provider>
   );
 };

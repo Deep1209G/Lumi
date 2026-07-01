@@ -6,7 +6,11 @@ const Images = {
   facebook: require('./facebook (1).png'),
   google: require('./google.png'),
   apple: require('./apple-logo.png'),
-  avatar: require('./avatat.jpg')
+  avatar: require('./avatat.jpg'),
+  banner1: require('./banner1.jpg'),
+  banner2: require('./banner2.jpg'),
+  banner3: require('./banner3.jpg'),
+  banner4: require('./banner4.jpg'),
 };
 
 export default Images;

@@ -7,6 +7,7 @@ import {
   SignInScreen,
   SearchScreen,
   WishlistScreen,
+  DetailScreen
 } from '@src';
 import BottomTab from './BottomTab';
 
@@ -18,6 +19,7 @@ export type RootStackParamList = {
   SignIn: undefined;
   Search: undefined;
   WishList: undefined;
+  Detail: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -34,6 +36,7 @@ const AppNavigation = () => {
       <Stack.Screen name="SignIn" component={SignInScreen} />
       <Stack.Screen name="Search" component={SearchScreen} />
       <Stack.Screen name="WishList" component={WishlistScreen} />
+      <Stack.Screen name="Detail" component={DetailScreen} />
     </Stack.Navigator>
   );
 };

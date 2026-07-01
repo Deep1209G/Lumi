@@ -14,7 +14,7 @@ import {
   Header,
   SearchBar,
   CategoryTab,
-  BannerCard,
+  BannerSlider ,
   Text,
   PressableText,
   Card,
@@ -80,7 +80,7 @@ const HomeScreen = () => {
 
               {/* Offer Banner */}
               <Box marginTop="m">
-                <BannerCard />
+                <BannerSlider />
               </Box>
 
               {/* Popular Text */}
@@ -110,6 +110,7 @@ const HomeScreen = () => {
             rating={item.rating}
             liked={wishlist.includes(item.id)}
             onWishlistPress={() => toggleWishlist(item.id)}
+            onCardPress={() => navigation.navigate('Detail')}
           />
         )}
       />
