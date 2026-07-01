@@ -81,7 +81,7 @@ export default function BottomTab() {
         tabBarStyle: {
           marginHorizontal:20,
           borderRadius:20,
-          marginBottom:10,
+          marginBottom:20,
           position: 'absolute',
           alignItems: 'center',
           height: 60,

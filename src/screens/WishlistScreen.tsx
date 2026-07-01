@@ -8,12 +8,17 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import theme from '../theme/theme';
 import { products } from '@src/data/produts';
 import { FlatList } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../navigation/AppNavigation';
 
 const WishlistScreen = () => {
   const { wishlist } = useContext(WishlistContext);
   const wishlistProducts = products.filter(product =>
     wishlist.includes(product.id),
   );
+    const navigation =
+      useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -59,11 +64,13 @@ const WishlistScreen = () => {
             }}
             renderItem={({ item }) => (
               <Card
+                image={item.image}
                 name={item.name}
                 price={item.price}
                 rating={item.rating}
                 liked={true}
                 onWishlistPress={() => {}}
+                onCardPress={() => navigation.navigate('Detail')}
               />
             )}
           />

@@ -50,9 +50,7 @@ const SearchScreen = () => {
                 keyExtractor={item => item.id}
                 scrollEnabled={false}
                 renderItem={({ item }) => (
-                  <Pressable
-                    onPress={() => handleSuggestionPress(item.name)}
-                  >
+                  <Pressable onPress={() => handleSuggestionPress(item.name)}>
                     <Box paddingVertical="s" paddingHorizontal="m">
                       <Text>{item.name}</Text>
                     </Box>
@@ -61,8 +59,6 @@ const SearchScreen = () => {
               />
             </Box>
           )}
-
-        
 
           {/* Recommended */}
           <Text variant="medium" marginTop="m">
@@ -82,6 +78,7 @@ const SearchScreen = () => {
               }}
               renderItem={({ item }) => (
                 <Card
+                  image={item.image}
                   name={item.name}
                   price={item.price}
                   rating={item.rating}
