@@ -38,7 +38,7 @@ const Header = () => {
         borderRadius="m"
       >
         <Image
-          source={Images.avatar}
+          source={Images.avatar1}
           style={{ width: 40, height: 40, borderRadius: theme.borderRadii.s }}
         />
       </Box>

@@ -1,45 +1,31 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, { useState, useRef, useContext } from 'react';
-
+import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { FlatList } from 'react-native';
-import { products } from '@src/data/produts';
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../navigation/AppNavigation';
-import { WishlistContext } from '@src/context/WishlistContext';
+import useHome from '../hooks/useHome';
 
 import {
   Box,
   Header,
   SearchBar,
   CategoryTab,
-  BannerSlider ,
+  BannerSlider,
   Text,
   PressableText,
   Card,
 } from '@src';
 
 const HomeScreen = () => {
-  const { wishlist, toggleWishlist } = useContext(WishlistContext);
-
-  const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
-  const flatListRef = useRef<FlatList>(null);
-  const [selectedCategory, setSelectedCategory] = useState('All Item');
-  const [visibleCount, setVisibleCount] = useState(10);
-
-  const filteredProducts =
-    selectedCategory === 'All Item'
-      ? products
-      : products.filter(item => item.category === selectedCategory);
-  const visibleProducts = filteredProducts.slice(0, visibleCount);
-
-  const handleCategoryChange = (category: string) => {
-    console.log(category);
-    setSelectedCategory(category);
-    setVisibleCount(10);
-  };
+  const {
+    navigation,
+    flatListRef,
+    wishlist,
+    toggleWishlist,
+    selectedCategory,
+    visibleProducts,
+    handleCategoryChange,
+    handleLoadMore,
+  } = useHome();
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -97,11 +83,7 @@ const HomeScreen = () => {
             </Box>
           </>
         }
-        onEndReached={() => {
-          if (visibleCount < filteredProducts.length) {
-            setVisibleCount(prev => prev + 10);
-          }
-        }}
+        onEndReached={handleLoadMore}
         onEndReachedThreshold={0.5}
         renderItem={({ item }) => (
           <Card
