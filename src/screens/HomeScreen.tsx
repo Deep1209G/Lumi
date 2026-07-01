@@ -87,6 +87,7 @@ const HomeScreen = () => {
         onEndReachedThreshold={0.5}
         renderItem={({ item }) => (
           <Card
+            image={item.image}
             name={item.name}
             price={item.price}
             rating={item.rating}

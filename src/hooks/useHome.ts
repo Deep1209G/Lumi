@@ -19,25 +19,31 @@ const useHome = () => {
   const flatListRef = useRef<FlatList>(null);
 
   // Selected Category
-  const [selectedCategory, setSelectedCategory] =
-    useState('All Item');
+  const [selectedCategory, setSelectedCategory] = useState('All Item');
 
   // Number of products to display
   const [visibleCount, setVisibleCount] = useState(10);
 
+  //Shuffle products to display in random order
+  const [shuffledProducts] = useState(() => {
+    const items = [...products];
+
+    for (let i = items.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [items[i], items[j]] = [items[j], items[i]];
+    }
+
+    return items;
+  });
+
   // Filter products based on selected category
   const filteredProducts =
     selectedCategory === 'All Item'
-      ? products
-      : products.filter(
-          item => item.category === selectedCategory,
-        );
+      ? shuffledProducts
+      : shuffledProducts.filter(item => item.category === selectedCategory);
 
   // Display only the visible products
-  const visibleProducts = filteredProducts.slice(
-    0,
-    visibleCount,
-  );
+  const visibleProducts = filteredProducts.slice(0, visibleCount);
 
   // Handle category selection
   const handleCategoryChange = (category: string) => {

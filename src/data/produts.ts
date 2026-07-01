@@ -1,3 +1,5 @@
+import Products from '@src/assets/images/products';
+
 export const products = [
   // =================== DRESSES ===================
   {
@@ -6,25 +8,27 @@ export const products = [
     name: 'Floral Summer Dress',
     price: 1499,
     rating: 4.6,
-    image: 'https://picsum.photos/300?random=1',
+    image: Products.dress1,
     description: 'Lightweight floral dress perfect for summer outings.',
   },
+
   {
     id: 'd2',
     category: 'Dress',
     name: 'Elegant Maxi Dress',
     price: 2299,
     rating: 4.8,
-    image: 'https://picsum.photos/300?random=2',
+    image: Products.dress2,
     description: 'Elegant maxi dress for evening parties and occasions.',
   },
+
   {
     id: 'd3',
     category: 'Dress',
     name: 'Casual Cotton Dress',
     price: 1199,
     rating: 4.3,
-    image: 'https://picsum.photos/300?random=3',
+    image: Products.dress3,
     description: 'Soft cotton dress for everyday comfort.',
   },
   {
@@ -33,7 +37,7 @@ export const products = [
     name: 'Bodycon Party Dress',
     price: 1999,
     rating: 4.7,
-    image: 'https://picsum.photos/300?random=4',
+    image: Products.dress4,
     description: 'Stylish bodycon dress for parties and celebrations.',
   },
   {
@@ -42,7 +46,7 @@ export const products = [
     name: 'Bohemian Midi Dress',
     price: 1799,
     rating: 4.4,
-    image: 'https://picsum.photos/300?random=5',
+    image: Products.dress5,
     description: 'Boho-inspired midi dress with beautiful prints.',
   },
   {
@@ -51,7 +55,7 @@ export const products = [
     name: 'Sleeveless Beach Dress',
     price: 1399,
     rating: 4.2,
-    image: 'https://picsum.photos/300?random=6',
+    image: Products.dress6,
     description: 'Comfortable sleeveless dress for beach vacations.',
   },
   {
@@ -60,7 +64,7 @@ export const products = [
     name: 'Printed Wrap Dress',
     price: 1899,
     rating: 4.5,
-    image: 'https://picsum.photos/300?random=7',
+    image: Products.dress7,
     description: 'Wrap dress with attractive floral print.',
   },
   {
@@ -69,7 +73,7 @@ export const products = [
     name: 'Classic Black Dress',
     price: 2499,
     rating: 4.9,
-    image: 'https://picsum.photos/300?random=8',
+    image: Products.dress8,
     description: 'Timeless black dress suitable for every occasion.',
   },
   {
@@ -78,7 +82,7 @@ export const products = [
     name: 'Pleated Office Dress',
     price: 2199,
     rating: 4.6,
-    image: 'https://picsum.photos/300?random=9',
+    image: Products.dress9,
     description: 'Professional pleated dress for office wear.',
   },
   {
@@ -87,20 +91,18 @@ export const products = [
     name: 'Linen Shirt Dress',
     price: 1699,
     rating: 4.4,
-    image: 'https://picsum.photos/300?random=10',
+    image: Products.dress10,
     description: 'Breathable linen shirt dress for casual styling.',
   },
 
   // =================== TSHIRTS ===================
- 
-
   {
     id: 't1',
     category: 'T-Shirt',
     name: 'Classic White T-Shirt',
     price: 699,
     rating: 4.5,
-    image: 'https://picsum.photos/300?random=11',
+    image: Products.tshirt1,
     description: 'Soft cotton white t-shirt for everyday wear.',
   },
   {
@@ -109,7 +111,7 @@ export const products = [
     name: 'Oversized Graphic Tee',
     price: 899,
     rating: 4.7,
-    image: 'https://picsum.photos/300?random=12',
+    image: Products.tshirt2,
     description: 'Trendy oversized graphic printed t-shirt.',
   },
   {
@@ -118,7 +120,7 @@ export const products = [
     name: 'Black Round Neck Tee',
     price: 799,
     rating: 4.4,
-    image: 'https://picsum.photos/300?random=13',
+    image: Products.tshirt3,
     description: 'Premium black round neck cotton t-shirt.',
   },
   {
@@ -127,7 +129,7 @@ export const products = [
     name: 'Striped Casual Tee',
     price: 999,
     rating: 4.6,
-    image: 'https://picsum.photos/300?random=14',
+    image: Products.tshirt4,
     description: 'Comfortable striped t-shirt with modern fit.',
   },
   {
@@ -136,7 +138,7 @@ export const products = [
     name: 'Polo T-Shirt',
     price: 1199,
     rating: 4.8,
-    image: 'https://picsum.photos/300?random=15',
+    image: Products.tshirt5,
     description: 'Smart polo t-shirt suitable for casual outings.',
   },
   {
@@ -145,7 +147,7 @@ export const products = [
     name: 'Printed Cotton Tee',
     price: 849,
     rating: 4.3,
-    image: 'https://picsum.photos/300?random=16',
+    image: Products.tshirt6,
     description: 'Comfortable printed cotton t-shirt.',
   },
   {
@@ -154,7 +156,7 @@ export const products = [
     name: 'Slim Fit T-Shirt',
     price: 949,
     rating: 4.6,
-    image: 'https://picsum.photos/300?random=17',
+    image: Products.tshirt7,
     description: 'Slim fit t-shirt with premium fabric.',
   },
   {
@@ -163,7 +165,7 @@ export const products = [
     name: 'Sports Performance Tee',
     price: 1299,
     rating: 4.9,
-    image: 'https://picsum.photos/300?random=18',
+    image: Products.tshirt8,
     description: 'Moisture-wicking sports performance t-shirt.',
   },
   {
@@ -172,7 +174,7 @@ export const products = [
     name: 'Henley Neck T-Shirt',
     price: 1099,
     rating: 4.5,
-    image: 'https://picsum.photos/300?random=19',
+    image: Products.tshirt9,
     description: 'Stylish Henley neck t-shirt with soft fabric.',
   },
   {
@@ -181,12 +183,11 @@ export const products = [
     name: 'Vintage Washed Tee',
     price: 999,
     rating: 4.7,
-    image: 'https://picsum.photos/300?random=20',
+    image: Products.tshirt10,
     description: 'Vintage washed t-shirt with a relaxed fit.',
-  }, 
+  },
 
   // =================== SHOES ===================
-    
 
   {
     id: 's1',
@@ -194,16 +195,17 @@ export const products = [
     name: 'Air Runner Sneakers',
     price: 2999,
     rating: 4.8,
-    image: 'https://picsum.photos/300?random=21',
+    image: Products.shoes1,
     description: 'Lightweight running shoes with breathable mesh.',
   },
+
   {
     id: 's2',
     category: 'Shoes',
     name: 'Classic White Sneakers',
     price: 2599,
     rating: 4.6,
-    image: 'https://picsum.photos/300?random=22',
+    image: Products.shoes2,
     description: 'Comfortable everyday sneakers with classic styling.',
   },
   {
@@ -212,7 +214,7 @@ export const products = [
     name: 'Leather Formal Shoes',
     price: 3499,
     rating: 4.9,
-    image: 'https://picsum.photos/300?random=23',
+    image: Products.shoes3,
     description: 'Premium leather shoes for formal occasions.',
   },
   {
@@ -221,7 +223,7 @@ export const products = [
     name: 'High Top Sneakers',
     price: 3199,
     rating: 4.5,
-    image: 'https://picsum.photos/300?random=24',
+    image: Products.shoes4,
     description: 'Stylish high-top sneakers with durable sole.',
   },
   {
@@ -230,7 +232,7 @@ export const products = [
     name: 'Training Shoes',
     price: 2799,
     rating: 4.4,
-    image: 'https://picsum.photos/300?random=25',
+    image: Products.shoes5,
     description: 'Flexible training shoes for gym workouts.',
   },
   {
@@ -239,7 +241,7 @@ export const products = [
     name: 'Canvas Casual Shoes',
     price: 1899,
     rating: 4.3,
-    image: 'https://picsum.photos/300?random=26',
+    image: Products.shoes6,
     description: 'Comfortable canvas shoes for casual outings.',
   },
   {
@@ -248,7 +250,7 @@ export const products = [
     name: 'Trail Hiking Shoes',
     price: 4299,
     rating: 4.9,
-    image: 'https://picsum.photos/300?random=27',
+    image: Products.shoes7,
     description: 'Durable hiking shoes with excellent grip.',
   },
   {
@@ -257,7 +259,7 @@ export const products = [
     name: 'Slip-On Loafers',
     price: 2399,
     rating: 4.4,
-    image: 'https://picsum.photos/300?random=28',
+    image: Products.shoes8,
     description: 'Easy slip-on loafers with cushioned comfort.',
   },
   {
@@ -266,7 +268,7 @@ export const products = [
     name: 'Basketball Shoes',
     price: 3999,
     rating: 4.7,
-    image: 'https://picsum.photos/300?random=29',
+    image: Products.shoes9,
     description: 'High-performance basketball shoes with ankle support.',
   },
   {
@@ -275,19 +277,18 @@ export const products = [
     name: 'Walking Shoes',
     price: 2199,
     rating: 4.5,
-    image: 'https://picsum.photos/300?random=30',
+    image: Products.shoes10,
     description: 'Soft and lightweight shoes designed for daily walking.',
   },
 
   // ===================== JACKETS =====================
-
   {
     id: 'j1',
     category: 'Jacket',
     name: 'Classic Denim Jacket',
     price: 2999,
     rating: 4.7,
-    image: 'https://picsum.photos/300?random=31',
+    image: Products.jacket1,
     description: 'Stylish denim jacket for casual everyday wear.',
   },
   {
@@ -296,16 +297,17 @@ export const products = [
     name: 'Black Leather Jacket',
     price: 5999,
     rating: 4.9,
-    image: 'https://picsum.photos/300?random=32',
+    image: Products.jacket2,
     description: 'Premium leather jacket with a modern fit.',
   },
+
   {
     id: 'j3',
     category: 'Jacket',
     name: 'Winter Puffer Jacket',
     price: 4499,
     rating: 4.8,
-    image: 'https://picsum.photos/300?random=33',
+    image: Products.jacket3,
     description: 'Warm insulated puffer jacket for winter.',
   },
   {
@@ -314,7 +316,7 @@ export const products = [
     name: 'Bomber Jacket',
     price: 3499,
     rating: 4.6,
-    image: 'https://picsum.photos/300?random=34',
+    image: Products.jacket4,
     description: 'Trendy bomber jacket with ribbed cuffs.',
   },
   {
@@ -323,7 +325,7 @@ export const products = [
     name: 'Hooded Windbreaker',
     price: 2699,
     rating: 4.5,
-    image: 'https://picsum.photos/300?random=35',
+    image: Products.jacket5,
     description: 'Lightweight windbreaker for outdoor activities.',
   },
   {
@@ -332,7 +334,7 @@ export const products = [
     name: 'Suede Casual Jacket',
     price: 4199,
     rating: 4.7,
-    image: 'https://picsum.photos/300?random=36',
+    image: Products.jacket6,
     description: 'Soft suede jacket with premium finish.',
   },
   {
@@ -341,7 +343,7 @@ export const products = [
     name: 'Varsity Jacket',
     price: 3299,
     rating: 4.4,
-    image: 'https://picsum.photos/300?random=37',
+    image: Products.jacket7,
     description: 'College-style varsity jacket with sporty design.',
   },
   {
@@ -350,7 +352,7 @@ export const products = [
     name: 'Quilted Jacket',
     price: 3899,
     rating: 4.6,
-    image: 'https://picsum.photos/300?random=38',
+    image: Products.jacket8,
     description: 'Comfortable quilted jacket for cool weather.',
   },
   {
@@ -359,7 +361,7 @@ export const products = [
     name: 'Rain Jacket',
     price: 2499,
     rating: 4.3,
-    image: 'https://picsum.photos/300?random=39',
+    image: Products.jacket9,
     description: 'Water-resistant rain jacket with hood.',
   },
   {
@@ -368,11 +370,11 @@ export const products = [
     name: 'Fleece Zip Jacket',
     price: 2799,
     rating: 4.5,
-    image: 'https://picsum.photos/300?random=40',
+    image: Products.jacket10,
     description: 'Soft fleece jacket for everyday comfort.',
   },
 
-   // ===================== BAGS =====================
+  // ===================== BAGS =====================
 
   {
     id: 'b1',
@@ -380,7 +382,7 @@ export const products = [
     name: 'Classic Leather Backpack',
     price: 2499,
     rating: 4.7,
-    image: 'https://picsum.photos/300?random=41',
+    image: Products.bag1,
     description: 'Premium leather backpack for daily office and travel.',
   },
   {
@@ -389,7 +391,7 @@ export const products = [
     name: 'Travel Duffel Bag',
     price: 2999,
     rating: 4.8,
-    image: 'https://picsum.photos/300?random=42',
+    image: Products.bag2,
     description: 'Spacious duffel bag for weekend trips and travel.',
   },
   {
@@ -398,7 +400,7 @@ export const products = [
     name: 'Canvas Tote Bag',
     price: 1199,
     rating: 4.5,
-    image: 'https://picsum.photos/300?random=43',
+    image: Products.bag3,
     description: 'Eco-friendly canvas tote bag for shopping and daily use.',
   },
   {
@@ -407,7 +409,7 @@ export const products = [
     name: 'Laptop Messenger Bag',
     price: 2699,
     rating: 4.6,
-    image: 'https://picsum.photos/300?random=44',
+    image: Products.bag4,
     description: 'Stylish messenger bag with dedicated laptop compartment.',
   },
   {
@@ -416,7 +418,7 @@ export const products = [
     name: 'Mini Crossbody Bag',
     price: 1599,
     rating: 4.4,
-    image: 'https://picsum.photos/300?random=45',
+    image: Products.bag5,
     description: 'Compact crossbody bag for everyday essentials.',
   },
   {
@@ -425,7 +427,7 @@ export const products = [
     name: 'Luxury Handbag',
     price: 3999,
     rating: 4.9,
-    image: 'https://picsum.photos/300?random=46',
+    image: Products.bag6,
     description: 'Elegant handbag crafted with premium materials.',
   },
   {
@@ -434,7 +436,7 @@ export const products = [
     name: 'Gym Sports Bag',
     price: 1899,
     rating: 4.5,
-    image: 'https://picsum.photos/300?random=47',
+    image: Products.bag7,
     description: 'Durable sports bag with separate shoe compartment.',
   },
   {
@@ -443,7 +445,7 @@ export const products = [
     name: 'School Backpack',
     price: 1799,
     rating: 4.6,
-    image: 'https://picsum.photos/300?random=48',
+    image: Products.bag8,
     description: 'Comfortable backpack with multiple storage pockets.',
   },
   {
@@ -452,7 +454,7 @@ export const products = [
     name: 'Weekend Travel Backpack',
     price: 3299,
     rating: 4.8,
-    image: 'https://picsum.photos/300?random=49',
+    image: Products.bag9,
     description: 'Large-capacity backpack ideal for weekend adventures.',
   },
   {
@@ -461,7 +463,7 @@ export const products = [
     name: 'Waterproof Hiking Backpack',
     price: 3599,
     rating: 4.9,
-    image: 'https://picsum.photos/300?random=50',
+    image: Products.bag10,
     description: 'Waterproof hiking backpack with ergonomic support.',
   },
 ];

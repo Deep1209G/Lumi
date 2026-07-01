@@ -1,3 +1,4 @@
+
 const Images = {
   logo1: require('./shopping-bags.png'),
   onboardingone: require('./onboardingone.jpg'),
@@ -12,6 +13,7 @@ const Images = {
   banner2: require('./banner2.jpg'),
   banner3: require('./banner3.jpg'),
   banner4: require('./banner4.jpg'),
+  
 };
 
 export default Images;

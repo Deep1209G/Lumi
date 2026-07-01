@@ -31,7 +31,7 @@ const ProfileHeader = () => {
         borderRadius="m"
       >
         <Image
-          source={Images.avatar}
+          source={Images.avatar1}
           style={{ width: 60, height: 60, borderRadius: theme.borderRadii.m }}
         />
       </Box>

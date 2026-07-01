@@ -1,49 +1,75 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import { Box, Text, PressableIcon } from '@src';
-import { Pressable } from 'react-native';
+import { Image, ImageSourcePropType, Pressable } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import theme from '../../theme/theme';
 
-type CardProps = {
+import { Box, Text, PressableIcon } from '@src';
+import theme from '@src/theme/theme';
+
+type Props = {
+  image?: ImageSourcePropType;
   name: string;
   price: number;
   rating: number;
-  liked?: boolean;
-  onWishlistPress?: () => void;
-  onCardPress?: () => void;
+  liked: boolean;
+  onWishlistPress: () => void;
+  onCardPress: () => void;
 };
 
 const Card = ({
+  image,
   name,
   price,
   rating,
   liked,
   onWishlistPress,
   onCardPress,
-}: CardProps) => {
+}: Props) => {
   return (
     <Pressable onPress={onCardPress}>
       <Box width={165}>
-        <Box height={170} backgroundColor="card" borderRadius="m">
-          {/*Heart Icon */}
+        {/* Product Image */}
+        <Box height={170} borderRadius="m" overflow="hidden">
+          <Image
+            source={image}
+            style={{
+              width: '100%',
+              height: '100%',
+            }}
+            resizeMode="cover"
+          />
+
+          {/* Heart Icon */}
           <Box
-            flex={1}
-            flexDirection="row"
-            justifyContent="flex-end"
-            padding="s"
+            position="absolute"
+            top={8}
+            right={8}
           >
-            <PressableIcon liked={liked} onPress={onWishlistPress} />
+            <PressableIcon
+              liked={liked}
+              onPress={onWishlistPress}
+            />
           </Box>
         </Box>
 
-        {/*Description */}
-        <Text marginTop="s" variant="medium" color="black">
+        {/* Product Name */}
+        <Text
+          marginTop="s"
+          variant="medium"
+          color="black"
+          numberOfLines={1}
+        >
           {name}
         </Text>
 
-        {/*Rupees*/}
-        <Box flexDirection="row">
-          <Text variant="rupees">₹{price} </Text>
+        {/* Price & Rating */}
+        <Box
+          flexDirection="row"
+          alignItems="center"
+          marginTop="xs"
+        >
+          <Text variant="rupees">₹{price}</Text>
+
           <Text
             variant="medium"
             paddingLeft="xs"
@@ -52,14 +78,22 @@ const Card = ({
           >
             ₹1800
           </Text>
+
           <Box
             flex={1}
             flexDirection="row"
             justifyContent="flex-end"
             alignItems="center"
           >
-            <Ionicons name="star" size={14} color={theme.colors.yellow} />
-            <Text variant="rupees">{rating}</Text>
+            <Ionicons
+              name="star"
+              size={14}
+              color={theme.colors.yellow}
+            />
+
+            <Text variant="rupees" marginLeft="xs">
+              {rating}
+            </Text>
           </Box>
         </Box>
       </Box>
