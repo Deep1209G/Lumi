@@ -19,35 +19,42 @@ const DetailScreen = () => {
     handleAddToCart,
   } = useDetail();
   return (
-   <Box flex={1} backgroundColor="white">
+    <Box flex={1} backgroundColor="white">
       {/* Image Container */}
 
-      <Box height={400}  justifyContent="center" alignItems="center" >
-        <Box position="absolute" top={40} left={50} zIndex={1}>
+      <Box height={450} alignItems="center" backgroundColor="white">
+        <Box position="absolute" top={30} left={20} zIndex={1}>
           <PressIcon icon="chevron-back-outline" onPressIcon={handleGoBack} />
         </Box>
-        <Box position="absolute" top={40} right={50} zIndex={1}>
+        <Box position="absolute" top={30} right={20} zIndex={1}>
           <PressableIcon
             liked={isWishlisted}
             onPress={handleWishlist}
             height={42}
             width={42}
             iconSize={22}
-           
           />
         </Box>
-
-        <Image
-          source={product.image}
-          style={{ width: 350, height: 350, borderRadius: 20 }}
-          
-          resizeMode="cover"
-        />
+        <Box
+          marginTop="xxl"
+          height={350}
+          width={350}
+          backgroundColor="white"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <Image
+            source={product.image}
+            style={{ width: 270, height: 350, borderRadius: 20 }}
+            resizeMode="cover"
+          />
+        </Box>
       </Box>
 
       {/* Product Details */}
       <Box
         flex={1}
+        marginTop='n'
         padding="l"
         backgroundColor="gray"
         borderTopLeftRadius="xl"

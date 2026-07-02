@@ -42,7 +42,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 const AppNavigation = () => {
   return (
     <Stack.Navigator
-      initialRouteName="AddToCartSuccess"
+      initialRouteName="MainTab"
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name="Splash" component={SplashScreen} />
