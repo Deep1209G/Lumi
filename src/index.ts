@@ -2,7 +2,8 @@ export { default as Theme}  from './theme/theme';
 export { default as Images} from './assets/images/index';
 export { default as Box } from './components/shared/Box';
 export { default as Text } from './components/shared/Text';
-
+export { default as PressIcon } from './components/shared/PressIcon.tsx';
+export { default as AddToCartButton } from './components/detailscreen/AddToCartButton';
 //Screen
 export { default as HomeScreen } from './screens/HomeScreen';
 export { default as SplashScreen } from './screens/SplashScreen';

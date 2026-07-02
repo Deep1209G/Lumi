@@ -13,6 +13,8 @@ import {
   Box,
 } from '@src';
 
+
+
 const Tab = createBottomTabNavigator();
 
 const getTabIcon = (routeName: string, focused: boolean) => {

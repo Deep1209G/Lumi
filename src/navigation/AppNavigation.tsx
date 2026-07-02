@@ -10,6 +10,7 @@ import {
   DetailScreen
 } from '@src';
 import BottomTab from './BottomTab';
+import { Product } from '@src/data/produts';
 
 export type RootStackParamList = {
   Splash: undefined;
@@ -19,7 +20,9 @@ export type RootStackParamList = {
   SignIn: undefined;
   Search: undefined;
   WishList: undefined;
-  Detail: undefined;
+  Detail:{
+    product:Product;
+  };
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();

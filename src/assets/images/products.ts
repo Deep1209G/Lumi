@@ -1,3 +1,4 @@
+
 const Products = {
   dress1: require('./products/dress1.jpg'),
   dress2: require('./products/dress2.jpg'),

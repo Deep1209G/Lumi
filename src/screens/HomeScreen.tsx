@@ -3,7 +3,6 @@ import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { FlatList } from 'react-native';
 import useHome from '../hooks/useHome';
-
 import {
   Box,
   Header,
@@ -93,7 +92,7 @@ const HomeScreen = () => {
             rating={item.rating}
             liked={wishlist.includes(item.id)}
             onWishlistPress={() => toggleWishlist(item.id)}
-            onCardPress={() => navigation.navigate('Detail')}
+            onCardPress={() => navigation.navigate('Detail',{product:item})}
           />
         )}
       />

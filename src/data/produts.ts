@@ -1,7 +1,17 @@
+import { ImageSourcePropType } from 'react-native';
 import Products from '@src/assets/images/products';
 
-export const products = [
-  // =================== DRESSES ===================
+export type Product = {
+  id: string;
+  category: string;
+  name: string;
+  price: number;
+  rating: number;
+  image: ImageSourcePropType;
+  description: string;
+};
+
+export const products: Product[] = [
   {
     id: 'd1',
     category: 'Dress',

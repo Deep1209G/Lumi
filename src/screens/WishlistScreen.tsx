@@ -70,7 +70,7 @@ const WishlistScreen = () => {
                 rating={item.rating}
                 liked={true}
                 onWishlistPress={() => {}}
-                onCardPress={() => navigation.navigate('Detail')}
+                 onCardPress={() => navigation.navigate('Detail',{product:item})}
               />
             )}
           />
