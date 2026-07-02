@@ -4,6 +4,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 import { WishlistContext } from '@src/context/WishlistContext';
 import { RootStackParamList } from '../navigation/AppNavigation';
+import { CartContext } from '@src/context/CardContext';
 
 type DetailRouteProp = RouteProp<RootStackParamList, 'Detail'>;
 
@@ -13,8 +14,7 @@ const useDetail = () => {
 
   const route = useRoute<DetailRouteProp>();
 
-  const { wishlist, toggleWishlist } =
-    useContext(WishlistContext);
+  const { wishlist, toggleWishlist } = useContext(WishlistContext);
 
   const { product } = route.params;
 
@@ -23,6 +23,7 @@ const useDetail = () => {
   // Derived values
   const totalPrice = product.price * quantity;
   const isWishlisted = wishlist.includes(product.id);
+  const { addToCart } = useContext(CartContext);
 
   // Handlers
   const handleIncrease = () => {
@@ -44,7 +45,8 @@ const useDetail = () => {
   };
 
   const handleAddToCart = () => {
-    console.log('Add to Cart pressed');
+    addToCart(product, quantity);
+    navigation.navigate('AddToCartSuccess');
   };
 
   return {

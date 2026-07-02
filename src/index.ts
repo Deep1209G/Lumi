@@ -15,6 +15,7 @@ export {default as WishlistScreen} from './screens/WishlistScreen.tsx'
 export {default as MyCartScreen} from './screens/MyCartScreen.tsx'
 export {default as ProfileScreen} from './screens/ProfileScreen.tsx'
 export {default as DetailScreen} from './screens/DetailScreen.tsx'
+export {default as AddToCartSuccess} from './screens/AddToCartSuccess.tsx'
 
 export {default as OnBoardingItem} from './components/onboarding/OnBoardingItem.tsx'
 export {default as onboardingData} from './constants/onboardingData.ts'
@@ -34,7 +35,6 @@ export {default as Card} from './components/homescreen/Card.tsx'
 export {default as PressableIcon} from './components/homescreen/PressableIcon.tsx'
 export {default as ProfileHeader} from './components/profile/ProfileHeader.tsx'
 export {default as EmptyStateCard} from './components/profile/EmptyStateCard.tsx'
-
 
 
 

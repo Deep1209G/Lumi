@@ -93,7 +93,7 @@ const DetailScreen = () => {
         justifyContent="space-between"
         padding="l"
         backgroundColor="gray"
-        marginBottom="m"
+        marginBottom="s"
       >
         {/* Quantity Selector */}
         <Box
