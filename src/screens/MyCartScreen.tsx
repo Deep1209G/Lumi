@@ -3,13 +3,17 @@ import React, { useContext } from 'react';
 import { FlatList } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
-import { Box, Text } from '@src';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../navigation/AppNavigation';
+import { Box, CustomButton, Text } from '@src';
 import theme from '@src/theme/theme';
 import { CartContext } from '@src/context/CardContext';
 import CartCard from '@src/components/mycartscreen/CartCard';
 
 const MyCartScreen = () => {
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { cart } = useContext(CartContext);
   const { increaseQuantity, decreaseQuantity, removeFromCart } =
     useContext(CartContext);
@@ -46,10 +50,21 @@ const MyCartScreen = () => {
             <Text marginTop="s" variant="medium" textAlign="center">
               Add your favorite products to start shopping.
             </Text>
+
+            <Box width={180} marginTop="m">
+              <CustomButton
+                title="Start Shopping"
+                onPress={() =>
+                  navigation.navigate('MainTab', {
+                    screen: 'Home',
+                  })
+                }
+              />
+            </Box>
           </Box>
         ) : (
           /* Cart Items */
-          <Box marginTop='l'>
+          <Box marginTop="l">
             <FlatList
               data={cart}
               keyExtractor={item => item.product.id}

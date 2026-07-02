@@ -33,18 +33,18 @@ const Card = ({
         padding="s"
         borderRadius="m"
         shadowColor="black"
-        shadowOffset={{ width: 0, height: 1 }}
+        shadowOffset={{ width: 0, height: 4 }}
         shadowOpacity={0.15}
-        shadowRadius={4}
-        elevation={5}
+        shadowRadius={20}
+        elevation={2}
       >
         {/* Product Image */}
         <Box alignItems="center">
           <Box
             height={165}
             width={130}
-            backgroundColor="black"
             borderRadius="m"
+            marginTop='s'
           >
             <Image
               source={image}
