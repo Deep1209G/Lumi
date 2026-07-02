@@ -27,35 +27,44 @@ const Card = ({
 }: Props) => {
   return (
     <Pressable onPress={onCardPress}>
-      <Box width={165}>
+      <Box
+        width={165}
+        backgroundColor="white"
+        padding="s"
+        borderRadius="m"
+        shadowColor="black"
+        shadowOffset={{ width: 0, height: 1 }}
+        shadowOpacity={0.15}
+        shadowRadius={4}
+        elevation={5}
+      >
         {/* Product Image */}
-        <Box
-          height={170}
-          borderRadius="m"
-          overflow="hidden"
-          shadowColor="black"
-          shadowOffset={{ width: 0, height: 1 }}
-          shadowOpacity={0.15}
-          shadowRadius={4}
-          elevation={5}
-        >
-          <Image
-            source={image}
-            style={{
-              width: '100%',
-              height: '100%',
-            }}
-    
-          />
+        <Box alignItems="center">
+          <Box
+            height={165}
+            width={130}
+            backgroundColor="black"
+            borderRadius="m"
+          >
+            <Image
+              source={image}
+              style={{
+                width: 130,
+                height: 165,
+                borderRadius: 16,
+              }}
+              resizeMode="cover"
+            />
 
-          {/* Heart Icon */}
-          <Box position="absolute" top={8} right={8}>
-            <PressableIcon liked={liked} onPress={onWishlistPress} />
+            {/* Heart Icon */}
+            <Box position="absolute" top={8} right={8}>
+              <PressableIcon liked={liked} onPress={onWishlistPress} />
+            </Box>
           </Box>
         </Box>
 
         {/* Product Name */}
-        <Text marginTop="s" variant="medium" color="black" numberOfLines={1}>
+        <Text marginTop="m" variant="medium" color="black" numberOfLines={1}>
           {name}
         </Text>
 
@@ -65,7 +74,7 @@ const Card = ({
 
           <Text
             variant="medium"
-            paddingLeft="xs"
+            marginLeft="xs"
             color="icon"
             textDecorationLine="line-through"
           >

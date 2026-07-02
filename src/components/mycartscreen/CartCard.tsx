@@ -42,32 +42,18 @@ const CartCard = ({
 
       {/* Product Details */}
       <Box flex={1} marginLeft="m">
-        <Text variant="button">
-          {product.name}
-        </Text>
+        <Text variant="button">{product.name}</Text>
 
-        <Text
-          variant="description"
-          color="textSecondary"
-          marginTop="xs"
-        >
+        <Text variant="description" color="textSecondary" marginTop="xs">
           {product.category}
         </Text>
 
-        <Text
-          variant="subtitle"
-          color="green"
-          marginTop="xs"
-        >
+        <Text variant="subtitle" color="green" marginTop="xs">
           ₹{product.price * quantity}
         </Text>
 
         {/* Quantity Selector */}
-        <Box
-          flexDirection="row"
-          alignItems="center"
-          marginTop="m"
-        >
+        <Box flexDirection="row" alignItems="center" marginTop="m">
           <Ionicons
             name="remove-circle-outline"
             size={24}
@@ -75,10 +61,7 @@ const CartCard = ({
             onPress={onDecrease}
           />
 
-          <Text
-            variant="button"
-            marginHorizontal="m"
-          >
+          <Text variant="button" marginHorizontal="m">
             {quantity}
           </Text>
 

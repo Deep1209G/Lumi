@@ -21,7 +21,7 @@ const MyCartScreen = () => {
 
         {cart.length === 0 ? (
           /* Empty Cart */
-          <Box flex={1} justifyContent="center" alignItems="center">
+          <Box marginTop="xxxl" justifyContent="center" alignItems="center">
             <Box
               height={60}
               width={60}
@@ -49,19 +49,21 @@ const MyCartScreen = () => {
           </Box>
         ) : (
           /* Cart Items */
-          <FlatList
-            data={cart}
-            keyExtractor={item => item.product.id}
-            renderItem={({ item }) => (
-              <CartCard
-                product={item.product}
-                quantity={item.quantity}
-                onIncrease={() => increaseQuantity(item.product.id)}
-                onDecrease={() => decreaseQuantity(item.product.id)}
-                onRemove={() => removeFromCart(item.product.id)}
-              />
-            )}
-          />
+          <Box marginTop='l'>
+            <FlatList
+              data={cart}
+              keyExtractor={item => item.product.id}
+              renderItem={({ item }) => (
+                <CartCard
+                  product={item.product}
+                  quantity={item.quantity}
+                  onIncrease={() => increaseQuantity(item.product.id)}
+                  onDecrease={() => decreaseQuantity(item.product.id)}
+                  onRemove={() => removeFromCart(item.product.id)}
+                />
+              )}
+            />
+          </Box>
         )}
       </Box>
     </SafeAreaView>
