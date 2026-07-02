@@ -1,7 +1,11 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, { useEffect, useState } from 'react';
-import { Image } from 'react-native';
+import React, { useEffect, useState, useRef } from 'react';
+import {
+  Animated,
+  Pressable,
+} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import { Box, Text, Images } from '@src';
 import theme from '@src/theme/theme';
 
@@ -20,28 +24,60 @@ const Header = () => {
     getUser();
   }, []);
 
+  const flipAnim = useRef(new Animated.Value(0)).current;
+
+  const handleFlip = () => {
+    flipAnim.setValue(0);
+
+    Animated.timing(flipAnim, {
+      toValue: 1,
+      duration: 700,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const rotateY = flipAnim.interpolate({
+    inputRange: [0, 1],
+    outputRange: ['0deg', '180deg'],
+  });
+
   return (
-    <Box flexDirection='row' justifyContent='space-between'>
+    <Box flexDirection="row" justifyContent="space-between">
+      {/* User Name */}
       <Box>
         <Text variant="medium">Hello, Welcome</Text>
+
         <Text variant="subtitle">
           {user?.firstName} {user?.lastName}
         </Text>
       </Box>
-      <Box
-        justifyContent="center"
-        alignItems="center"
-        borderWidth={2}
-        borderColor="border"
-        height={50}
-        width={50}
-        borderRadius="m"
-      >
-        <Image
-          source={Images.avatar1}
-          style={{ width: 40, height: 40, borderRadius: theme.borderRadii.s }}
-        />
-      </Box>
+
+      {/* Avatar */}
+      <Pressable onPress={handleFlip}>
+        <Box
+          justifyContent="center"
+          alignItems="center"
+          borderWidth={2}
+          borderColor="icon"
+          height={50}
+          width={50}
+          borderRadius="m"
+        >
+          <Animated.Image
+            source={Images.avatar1}
+            style={{
+              width: 40,
+              height: 40,
+              borderRadius: theme.borderRadii.s,
+              transform: [
+                { perspective: 1000 },
+                { rotateY },
+              ],
+            }}
+            resizeMode="cover"
+          />
+        </Box>
+      </Pressable>
     </Box>
   );
 };

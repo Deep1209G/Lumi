@@ -56,7 +56,7 @@ const MyCartScreen = () => {
                 title="Start Shopping"
                 onPress={() =>
                   navigation.navigate('MainTab', {
-                    screen: 'Home',
+                    screen:'Home'
                   })
                 }
               />

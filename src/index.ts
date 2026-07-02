@@ -16,6 +16,11 @@ export {default as MyCartScreen} from './screens/MyCartScreen.tsx'
 export {default as ProfileScreen} from './screens/ProfileScreen.tsx'
 export {default as DetailScreen} from './screens/DetailScreen.tsx'
 export {default as AddToCartSuccess} from './screens/AddToCartSuccess.tsx'
+export {default as AddressScreen} from './screens/Profile/AddressScreen.tsx'
+export {default as MyOrderScreen} from './screens/Profile/MyOrderScreen.tsx'
+export {default as PaymentScreen} from './screens/Profile/PaymentScreen.tsx'
+export {default as SettingsScreen} from './screens/Profile/SettingsScreen.tsx'
+
 
 export {default as OnBoardingItem} from './components/onboarding/OnBoardingItem.tsx'
 export {default as onboardingData} from './constants/onboardingData.ts'

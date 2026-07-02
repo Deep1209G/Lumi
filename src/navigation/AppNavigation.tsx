@@ -40,6 +40,7 @@ export type RootStackParamList = {
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const AppNavigation = () => {
+ 
   return (
     <Stack.Navigator
       initialRouteName="Splash"
