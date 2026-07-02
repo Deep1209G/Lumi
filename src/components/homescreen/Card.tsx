@@ -29,45 +29,38 @@ const Card = ({
     <Pressable onPress={onCardPress}>
       <Box width={165}>
         {/* Product Image */}
-        <Box height={170} borderRadius="m" overflow="hidden">
+        <Box
+          height={170}
+          borderRadius="m"
+          overflow="hidden"
+          shadowColor="black"
+          shadowOffset={{ width: 0, height: 1 }}
+          shadowOpacity={0.15}
+          shadowRadius={4}
+          elevation={5}
+        >
           <Image
             source={image}
             style={{
               width: '100%',
               height: '100%',
             }}
-            resizeMode="cover"
+    
           />
 
           {/* Heart Icon */}
-          <Box
-            position="absolute"
-            top={8}
-            right={8}
-          >
-            <PressableIcon
-              liked={liked}
-              onPress={onWishlistPress}
-            />
+          <Box position="absolute" top={8} right={8}>
+            <PressableIcon liked={liked} onPress={onWishlistPress} />
           </Box>
         </Box>
 
         {/* Product Name */}
-        <Text
-          marginTop="s"
-          variant="medium"
-          color="black"
-          numberOfLines={1}
-        >
+        <Text marginTop="s" variant="medium" color="black" numberOfLines={1}>
           {name}
         </Text>
 
         {/* Price & Rating */}
-        <Box
-          flexDirection="row"
-          alignItems="center"
-          marginTop="xs"
-        >
+        <Box flexDirection="row" alignItems="center" marginTop="xs">
           <Text variant="rupees">₹{price}</Text>
 
           <Text
@@ -85,11 +78,7 @@ const Card = ({
             justifyContent="flex-end"
             alignItems="center"
           >
-            <Ionicons
-              name="star"
-              size={14}
-              color={theme.colors.yellow}
-            />
+            <Ionicons name="star" size={14} color={theme.colors.yellow} />
 
             <Text variant="rupees" marginLeft="xs">
               {rating}
