@@ -30,7 +30,7 @@ export {default as SearchBar} from './components/homescreen/SearchBar.tsx'
 export {default as CategoryTab} from './components/homescreen/CategoryTab.tsx'
 export {default as BannerCard} from './components/homescreen/BannerCard.tsx'
 export {default as BannerSlider} from './components/homescreen/BannerSlider.tsx'
-
+export {default as QuantitySelector} from './components/shared/QuantitySelector.tsx'
 export {default as Card} from './components/homescreen/Card.tsx'
 export {default as PressableIcon} from './components/homescreen/PressableIcon.tsx'
 export {default as ProfileHeader} from './components/profile/ProfileHeader.tsx'

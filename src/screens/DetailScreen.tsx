@@ -3,7 +3,7 @@ import React from 'react';
 import { Image } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import theme from '@src/theme/theme';
-import { AddToCartButton, Box, PressableIcon, PressIcon, Text } from '@src';
+import { AddToCartButton, Box, PressableIcon, PressIcon, QuantitySelector, Text } from '@src';
 import useDetail from '../hooks/useDetail.ts';
 
 const DetailScreen = () => {
@@ -103,22 +103,11 @@ const DetailScreen = () => {
         marginBottom="s"
       >
         {/* Quantity Selector */}
-        <Box
-          flexDirection="row"
-          alignItems="center"
-          backgroundColor="white"
-          borderRadius="xl"
-          paddingHorizontal="xs"
-          paddingVertical="s"
-        >
-          <Ionicons name="remove" size={20} onPress={handleDecrease} />
-
-          <Text variant="medium" color="black" marginHorizontal="l">
-            {quantity}
-          </Text>
-
-          <Ionicons name="add" size={20} onPress={handleIncrease} />
-        </Box>
+         <QuantitySelector 
+         quantity={quantity}
+         onIncrease={handleIncrease}
+         onDecrease={handleDecrease}/>
+       
 
         {/* Add to Cart Button */}
         <Box flex={1} marginLeft="m">

@@ -3,7 +3,7 @@ import React from 'react';
 import { Image } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import { Box, Text } from '@src';
+import { Box, QuantitySelector, Text } from '@src';
 import theme from '@src/theme/theme';
 
 type CartCardProps = {
@@ -29,58 +29,59 @@ const CartCard = ({
       padding="m"
       marginBottom="m"
       alignItems="center"
+      borderWidth={1}
+      borderColor="card"
+      height={110}
     >
       {/* Product Image */}
       <Image
         source={product.image}
         style={{
-          width: 90,
-          height: 90,
+          width: 75,
+          height: 80,
+          borderRadius: theme.borderRadii.m,
         }}
-        resizeMode="contain"
+        resizeMode="cover"
       />
 
       {/* Product Details */}
-      <Box flex={1} marginLeft="m">
-        <Text variant="button">{product.name}</Text>
-
-        <Text variant="description" color="textSecondary" marginTop="xs">
-          {product.category}
-        </Text>
-
-        <Text variant="subtitle" color="green" marginTop="xs">
-          ₹{product.price * quantity}
-        </Text>
-
-        {/* Quantity Selector */}
-        <Box flexDirection="row" alignItems="center" marginTop="m">
-          <Ionicons
-            name="remove-circle-outline"
-            size={24}
-            color={theme.colors.black}
-            onPress={onDecrease}
-          />
-
-          <Text variant="button" marginHorizontal="m">
-            {quantity}
+      <Box flex={1} marginLeft="m" height="100%" justifyContent="space-between">
+        {/* Top Row */}
+        <Box
+          flexDirection="row"
+          justifyContent="space-between"
+          alignItems="flex-start"
+        >
+          <Text variant="medium" color="black" flex={1} numberOfLines={1}>
+            {product.name}
           </Text>
 
           <Ionicons
-            name="add-circle-outline"
-            size={24}
-            color={theme.colors.black}
-            onPress={onIncrease}
+            name="close-outline"
+            size={22}
+            color={theme.colors.icon}
+            onPress={onRemove}
+          />
+        </Box>
+
+        {/* Bottom Row */}
+        <Box
+          flexDirection="row"
+          justifyContent="space-between"
+          alignItems="center"
+        >
+          <Text variant="medium" color="black">
+            ₹{product.price * quantity}
+          </Text>
+
+          <QuantitySelector
+            quantity={quantity}
+            onIncrease={onIncrease}
+            onDecrease={onDecrease}
+            backgroundColor="gray"
           />
         </Box>
       </Box>
-
-      {/* Remove */}
-      <Ionicons
-        name="trash-outline"
-        size={22}
-        color={theme.colors.warning}
-        onPress={onRemove}
-      />
     </Box>
   );
 };
