@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import { Box, PressIcon, Text } from '@src';
+import { Box, MyOrderCard, PressIcon, Text } from '@src';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -26,6 +26,9 @@ const MyOrderScreen = () => {
       </Box>
 
       {/*Card Section */}
+      <Box marginTop='l'>
+      <MyOrderCard />
+      </Box>
 
 
     </SafeAreaView>

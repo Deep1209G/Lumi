@@ -16,7 +16,7 @@ const palette = {
   gray: '#E8E8E8',
   simpleGray: '#676765',
   red: '#de0a26',
-  lightRed:"#efd1d1"
+  lightRed: '#efd1d1',
 };
 
 const theme = createTheme({
@@ -33,13 +33,13 @@ const theme = createTheme({
     yellow: palette.yellowAmber,
     card: palette.purpleMauve,
     gray: palette.gray,
-    lightRed:palette.lightRed,
-    icon:palette.simpleGray,
-    sucess:palette.greenLight,
+    lightRed: palette.lightRed,
+    icon: palette.simpleGray,
+    sucess: palette.greenLight,
   },
 
   spacing: {
-    n:-30,
+    n: -30,
     xs: 4,
     s: 8,
     m: 16,
@@ -106,6 +106,11 @@ const theme = createTheme({
     rupees: {
       fontSize: 14,
       fontWeight: '700',
+      color: 'textPrimary',
+    },
+    small: {
+      fontSize: 12,
+      fontWeight: '350',
       color: 'textPrimary',
     },
   },
