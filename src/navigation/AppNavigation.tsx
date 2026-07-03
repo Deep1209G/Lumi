@@ -10,12 +10,15 @@ import {
   SearchScreen,
   WishlistScreen,
   DetailScreen,
-  AddToCartSuccess
+  AddToCartSuccess,
+  AddressScreen,
+  MyOrderScreen,
+  PaymentScreen,
+  SettingsScreen,
 } from '@src';
 
 import BottomTab from './BottomTab';
 import { Product } from '@src/data/produts';
-
 
 type BottomTabParamList = {
   Home: undefined;
@@ -32,15 +35,18 @@ export type RootStackParamList = {
   SignIn: undefined;
   Search: undefined;
   WishList: undefined;
-  Detail:{
-    product:Product;
+  Detail: {
+    product: Product;
   };
   AddToCartSuccess: undefined;
+  Address: undefined;
+  MyOrder: undefined;
+  Payment: undefined;
+  Setting: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const AppNavigation = () => {
- 
   return (
     <Stack.Navigator
       initialRouteName="Splash"
@@ -55,6 +61,10 @@ const AppNavigation = () => {
       <Stack.Screen name="WishList" component={WishlistScreen} />
       <Stack.Screen name="Detail" component={DetailScreen} />
       <Stack.Screen name="AddToCartSuccess" component={AddToCartSuccess} />
+      <Stack.Screen name="Address" component={AddressScreen} />
+      <Stack.Screen name="MyOrder" component={MyOrderScreen} />
+      <Stack.Screen name="Payment" component={PaymentScreen} />
+      <Stack.Screen name="Setting" component={SettingsScreen} />
     </Stack.Navigator>
   );
 };

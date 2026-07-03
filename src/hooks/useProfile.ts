@@ -21,19 +21,19 @@ const handleLogout = async () => {
 const handleMenuPress = (id: string) => {
   switch (id) {
     case 'orders':
-      console.log('Orders');
+             navigation.navigate('MyOrder');
       break;
 
     case 'address':
-      console.log('Shipping Address');
+              navigation.navigate('Address');
       break;
 
     case 'payment':
-      console.log('Payment Methods');
+              navigation.navigate('Payment');
       break;
 
     case 'settings':
-      console.log('Settings');
+             navigation.navigate('Setting');
       break;
 
     case 'logout':
