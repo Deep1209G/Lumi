@@ -22,18 +22,20 @@ const LoginScreen = () => {
   const [password, setPassword] = useState('');
   const { login, loading } = useLogin();
 
-const handleLogin = async () => {
-  const result = await login(
-    name,
-    password,
-  );
+  const handleLogin = async () => {
+    const result = await login(name, password);
 
-  if (result.success) {
-    navigation.replace('MainTab');
-  } else {
-    console.log(result.message);
-  }
-};
+    if (result.success) {
+      navigation.replaceParams({
+        name: 'MainTab',
+        params: {
+          screen: 'Home', // your initial tab
+        },
+      });
+    } else {
+      console.log(result.message);
+    }
+  };
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
