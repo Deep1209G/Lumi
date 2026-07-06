@@ -26,11 +26,8 @@ const LoginScreen = () => {
     const result = await login(name, password);
 
     if (result.success) {
-      navigation.replaceParams({
-        name: 'MainTab',
-        params: {
-          screen: 'Home', // your initial tab
-        },
+      navigation.replace('MainTab', {
+        screen: 'Home',
       });
     } else {
       console.log(result.message);

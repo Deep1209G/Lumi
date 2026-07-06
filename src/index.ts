@@ -5,23 +5,28 @@ export { default as Text } from './components/shared/Text';
 export { default as PressIcon } from './components/shared/PressIcon.tsx';
 export { default as AddToCartButton } from './components/detailscreen/AddToCartButton';
 //Screen
-export { default as HomeScreen } from './screens/HomeScreen';
+export { default as HomeScreen } from './screens/BottomTab/HomeScreen';
 export { default as SplashScreen } from './screens/SplashScreen';
 export {default as OnBoardingScreen} from './screens/OnBoardingScreen'
 export {default as LoginScreen} from './screens/LoginScreen.tsx'
 export {default as SignInScreen} from './screens/SignInScreen.tsx'
-export {default as SearchScreen} from './screens/SearchScreen.tsx'
-export {default as WishlistScreen} from './screens/WishlistScreen.tsx'
-export {default as MyCartScreen} from './screens/MyCartScreen.tsx'
-export {default as ProfileScreen} from './screens/ProfileScreen.tsx'
+export {default as SearchScreen} from './screens/BottomTab/SearchScreen.tsx'
+export {default as WishlistScreen} from './screens/BottomTab/WishlistScreen.tsx'
+export {default as MyCartScreen} from './screens/BottomTab/MyCartScreen.tsx'
+export {default as ProfileScreen} from './screens/BottomTab/ProfileScreen.tsx'
 export {default as DetailScreen} from './screens/DetailScreen.tsx'
 export {default as AddToCartSuccess} from './screens/AddToCartSuccess.tsx'
 export {default as AddressScreen} from './screens/Profile/AddressScreen.tsx'
 export {default as MyOrderScreen} from './screens/Profile/MyOrderScreen.tsx'
 export {default as PaymentScreen} from './screens/Profile/PaymentScreen.tsx'
 export {default as SettingsScreen} from './screens/Profile/SettingsScreen.tsx'
-
-
+export {default as AboutScreen} from './screens/Settings/AboutScreen.tsx'
+export {default as HelpCenterScreen} from './screens/Settings/HelpCenterScreen.tsx'
+export {default as DarkModeScreen} from './screens/Settings/DarkModeScreen.tsx'
+export {default as LanguageScreen} from './screens/Settings/LanguageScreen.tsx'
+export {default as NotificationScreen} from './screens/Settings/NotificationScreen.tsx'
+export {default as PrivacySecurityScreen} from './screens/Settings/PrivacySecurityScreen.tsx'
+export {default as CheckoutScreen} from './screens/CheckoutScreen.tsx'
 export {default as OnBoardingItem} from './components/onboarding/OnBoardingItem.tsx'
 export {default as onboardingData} from './constants/onboardingData.ts'
 export {default as CustomButton} from './components/shared/CustomButton.tsx'

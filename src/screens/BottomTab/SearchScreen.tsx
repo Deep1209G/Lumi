@@ -6,7 +6,7 @@ import { Box, SearchBar, Text, Card, useSearch } from '@src';
 import { WishlistContext } from '@src/context/WishlistContext';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../navigation/AppNavigation';
+import { RootStackParamList } from '../../navigation/AppNavigation';
 
 const SearchScreen = () => {
   const { wishlist, toggleWishlist } = useContext(WishlistContext);

@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import { Box, EmptyStateCard, ProfileHeader, Text } from '@src';
-import  useProfile  from '../hooks/useProfile';
+import  useProfile  from '../../hooks/useProfile';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { profileMenu } from '@src/data/profileMenu';
 

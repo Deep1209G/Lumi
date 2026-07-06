@@ -2,7 +2,8 @@
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { FlatList } from 'react-native';
-import useHome from '../hooks/useHome';
+import useHome from '../../hooks/useHome';
+
 import {
   Box,
   Header,

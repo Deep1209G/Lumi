@@ -3,23 +3,18 @@ import { Box, Text } from '@src';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import theme from '../../theme/theme';
 import { Pressable } from 'react-native';
-import { Theme } from '@src/theme/theme';
 
 
 
 type Props = {
-  leftIcon?:  keyof typeof Ionicons.glyphMap;
-  color?: string;
   title: string;
   onPress?: () => void;
-  backgroundColor?: keyof Theme['colors'];
-
 };
-const EmptyStateCard = ({ leftIcon, color=theme.colors.black, title,onPress,  backgroundColor = 'gray', }: Props) => {
+const SettingCard = ({  title, onPress, }: Props) => {
   return (
     <Pressable onPress={onPress}>
     <Box
-      height={70}
+      height={60}
       backgroundColor="white"
       borderRadius="m"
       borderWidth={1}
@@ -27,17 +22,8 @@ const EmptyStateCard = ({ leftIcon, color=theme.colors.black, title,onPress,  ba
       padding="m"
       flexDirection="row"
     >
-      <Box
-        height={40}
-        width={40}
-        backgroundColor={backgroundColor}
-        justifyContent="center"
-        alignItems="center"
-        borderRadius="s"
-      >
-        <Ionicons name={leftIcon} size={20} color={color} />
-      </Box>
-      <Box flex={1} justifyContent="center" marginLeft="m">
+      
+      <Box flex={1} justifyContent="center" marginLeft="s">
         <Text variant='button'>{title}</Text>
       </Box>
       <Box justifyContent='center'>
@@ -48,4 +34,4 @@ const EmptyStateCard = ({ leftIcon, color=theme.colors.black, title,onPress,  ba
   );
 };
 
-export default EmptyStateCard;
+export default SettingCard;

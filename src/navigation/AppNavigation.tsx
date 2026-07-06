@@ -15,6 +15,13 @@ import {
   MyOrderScreen,
   PaymentScreen,
   SettingsScreen,
+  NotificationScreen,
+  PrivacySecurityScreen,
+  AboutScreen,
+  DarkModeScreen,
+  HelpCenterScreen,
+  LanguageScreen,
+  CheckoutScreen,
 } from '@src';
 
 import BottomTab from './BottomTab';
@@ -43,6 +50,14 @@ export type RootStackParamList = {
   MyOrder: undefined;
   Payment: undefined;
   Setting: undefined;
+
+  About: undefined;
+  Mode: undefined;
+  Help: undefined;
+  Language: undefined;
+  Notification: undefined;
+  Privacy: undefined;
+  Checkout: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -65,6 +80,13 @@ const AppNavigation = () => {
       <Stack.Screen name="MyOrder" component={MyOrderScreen} />
       <Stack.Screen name="Payment" component={PaymentScreen} />
       <Stack.Screen name="Setting" component={SettingsScreen} />
+      <Stack.Screen name="About" component={AboutScreen} />
+      <Stack.Screen name="Mode" component={DarkModeScreen} />
+      <Stack.Screen name="Help" component={HelpCenterScreen} />
+      <Stack.Screen name="Language" component={LanguageScreen} />
+      <Stack.Screen name="Notification" component={NotificationScreen} />
+      <Stack.Screen name="Privacy" component={PrivacySecurityScreen} />
+      <Stack.Screen name="Checkout" component={CheckoutScreen} />
     </Stack.Navigator>
   );
 };

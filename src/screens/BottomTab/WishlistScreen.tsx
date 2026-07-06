@@ -5,12 +5,12 @@ import { WishlistContext } from '@src/context/WishlistContext';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Box, Text, Card } from '@src';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import theme from '../theme/theme';
+import theme from '../../theme/theme';
 import { products } from '@src/data/produts';
 import { FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../navigation/AppNavigation';
+import { RootStackParamList } from '../../navigation/AppNavigation';
 
 const WishlistScreen = () => {
   const { wishlist } = useContext(WishlistContext);

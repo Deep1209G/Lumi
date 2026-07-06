@@ -1,6 +1,6 @@
 import React, { createContext, useState } from 'react';
 
-type CartItem = {
+export type CartItem = {
   product: any;
   quantity: number;
 };
