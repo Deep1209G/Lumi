@@ -119,7 +119,7 @@ const MyCartScreen = () => {
         {cart.length === 0 ? (
           <Box
             flex={1}
-            justifyContent="center"
+            marginTop="xxxl"
             alignItems="center"
           >
             <Box

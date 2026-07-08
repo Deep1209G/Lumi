@@ -1,18 +1,27 @@
 /* eslint-disable react-native/no-inline-styles */
 import { Box, PressIcon, Text, CustomTextInput, CustomButton } from '@src';
-import React from 'react';
+import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import theme from '../../theme/theme';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../navigation/AppNavigation';
-
+import { saveAddress } from '@src/utils/addressStorage';
 const AddressScreen = () => {
   type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
   const navigation = useNavigation<NavigationProp>();
+  const [fullName, setFullName] = useState('');
+  const [address, setAddress] = useState('');
+  const handleSave = async () => {
+    await saveAddress({
+        fullName,
+        address,
+    });
+
+    navigation.goBack();
+};
   return (
     <SafeAreaView style={{ flex: 1, padding: theme.spacing.l }}>
-
       {/*Heading Section */}
       <Box
         flexDirection="row"
@@ -32,7 +41,12 @@ const AddressScreen = () => {
         <Text marginBottom="s" variant="medium" color="textSecondary">
           Full Name
         </Text>
-        <CustomTextInput placeholder="Name" leftIcon="person-outline" />
+        <CustomTextInput
+          placeholder="Name"
+          leftIcon="person-outline"
+          value={fullName}
+          onChangeText={setFullName}
+        />
       </Box>
 
       {/*Address Section */}
@@ -40,16 +54,21 @@ const AddressScreen = () => {
         <Text marginBottom="s" variant="medium" color="textSecondary">
           Address
         </Text>
-        <CustomTextInput placeholder="Address" leftIcon="location-outline" />
+        <CustomTextInput
+          placeholder="Address"
+          leftIcon="location-outline"
+          value={address}
+          onChangeText={setAddress}
+        />
       </Box>
 
       {/*Button Section */}
       <Box marginTop="l">
-      <CustomButton 
-      title='Save Address'
-      onPress={() => console.log('Address Saved')}/>
+        <CustomButton
+          title="Save Address"
+          onPress={handleSave}
+        />
       </Box>
-
     </SafeAreaView>
   );
 };

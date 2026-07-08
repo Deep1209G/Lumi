@@ -4,9 +4,15 @@ import { Box, Text } from '@src';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 type AddressSelectorProps = {
-    onPress: () => void;
-}
-const AddressSelector = ({onPress}:AddressSelectorProps) => {
+  fullName: string;
+  address: string;
+  onPress: () => void;
+};
+const AddressSelector = ({
+  onPress,
+  fullName,
+  address,
+}: AddressSelectorProps) => {
   return (
     <Box
       backgroundColor="white"
@@ -33,14 +39,12 @@ const AddressSelector = ({onPress}:AddressSelectorProps) => {
         </Box>
 
         <Box marginLeft="m" flex={1}>
-          <Text variant="medium" color='textPrimary'>Albert</Text>
+          <Text variant="medium" color="textPrimary">
+             {fullName}
+          </Text>
 
-          <Text
-            variant="small"
-            color="textSecondary"
-            numberOfLines={2}
-          >
-            {'221B Baker Street,\nLondon, NW1 6XE'}
+          <Text variant="small" color="textSecondary" numberOfLines={2}>
+            {address}
           </Text>
         </Box>
       </Box>
@@ -55,7 +59,9 @@ const AddressSelector = ({onPress}:AddressSelectorProps) => {
           alignItems="center"
           justifyContent="center"
         >
-          <Text variant="medium" color='textPrimary'>Edit</Text>
+          <Text variant="medium" color="textPrimary">
+            Edit
+          </Text>
         </Box>
       </Pressable>
     </Box>
