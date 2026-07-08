@@ -23,6 +23,7 @@ export {default as ProfileHeader} from './components/profile/ProfileHeader.tsx'
 export {default as EmptyStateCard} from './components/profile/EmptyStateCard.tsx'
 export {default as MyOrderCard} from './components/MyOrderScreen/MyOrderCard.tsx'
 export {default as OrderSummary} from './components/checkoutscreen/OrderSummary.tsx'
+export {default as AddressSelector} from './components/checkoutscreen/AddressSelector.tsx'
 
 //Screen
 export { default as HomeScreen } from './screens/BottomTab/HomeScreen';

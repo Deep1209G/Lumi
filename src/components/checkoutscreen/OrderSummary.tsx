@@ -23,7 +23,7 @@ const OrderSummary = ({
       marginBottom="m"
       alignItems="center"
       borderWidth={1}
-      borderColor="card"
+      borderColor="border"
       height={80}
     >
       {/* Product Image */}

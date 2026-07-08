@@ -5,7 +5,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/AppNavigation';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import theme from '../theme/theme';
-import { Box, Text, PressIcon, ProgressStepper, OrderSummary } from '@src';
+import { Box, Text, PressIcon, ProgressStepper, OrderSummary, AddressSelector } from '@src';
 import { FlatList } from 'react-native';
 import { CartContext } from '@src/context/CardContext';
 
@@ -40,20 +40,27 @@ const CheckoutScreen = () => {
 
       {/*Order Summary*/}
       <Box marginTop="l">
-        <Text variant="body" marginBottom="m">
+        <Text variant="body" marginBottom="s">
           Order Summary
         </Text>
         <FlatList
           data={cart}
           keyExtractor={item => item.product.id}
           renderItem={({ item }) => (
-            <OrderSummary 
-            product={item.product} 
-            quantity={item.quantity} />
+            <OrderSummary product={item.product} quantity={item.quantity} />
           )}
         />
       </Box>
-      
+
+      {/*Order Summary*/}
+      <Box marginTop="s">
+        <Text variant="body" marginBottom="s">
+          Shipping Address
+        </Text>
+        <AddressSelector
+        onPress={() => navigation.navigate('Address')} />
+      </Box>
+
     </SafeAreaView>
   );
 };
