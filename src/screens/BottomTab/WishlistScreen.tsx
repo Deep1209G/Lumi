@@ -13,19 +13,17 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../navigation/AppNavigation';
 
 const WishlistScreen = () => {
-  const { wishlist } = useContext(WishlistContext);
+  const { wishlist, toggleWishlist } = useContext(WishlistContext);
   const wishlistProducts = products.filter(product =>
     wishlist.includes(product.id),
   );
-    const navigation =
-      useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Box padding="l">
-        <Text variant="heading">
-          My WishList
-        </Text>
+        <Text variant="heading">My WishList</Text>
         {wishlistProducts.length === 0 ? (
           <Box marginTop="xxxl" alignItems="center">
             <Box
@@ -52,28 +50,32 @@ const WishlistScreen = () => {
             </Text>
           </Box>
         ) : (
-          <Box marginTop='m'>
-          <FlatList
-          showsVerticalScrollIndicator={false}
-            data={wishlistProducts}
-            numColumns={2}
-            keyExtractor={item => item.id}
-            columnWrapperStyle={{
-              justifyContent: 'space-between',
-              marginBottom: 16,
-            }}
-            renderItem={({ item }) => (
-              <Card
-                image={item.image}
-                name={item.name}
-                price={item.price}
-                rating={item.rating}
-                liked={true}
-                onWishlistPress={() => {}}
-                 onCardPress={() => navigation.navigate('Detail',{product:item})}
-              />
-            )}
-          />
+          <Box marginTop="m">
+            <FlatList
+              showsVerticalScrollIndicator={false}
+              data={wishlistProducts}
+              numColumns={2}
+              keyExtractor={item => item.id}
+              columnWrapperStyle={{
+                justifyContent: 'space-between',
+                marginBottom: 16,
+              }}
+              renderItem={({ item }) => (
+                <Card
+                  image={item.image}
+                  name={item.name}
+                  price={item.price}
+                  rating={item.rating}
+                  liked={wishlist.includes(item.id)}
+                  onWishlistPress={() => toggleWishlist(item.id)}
+                  onCardPress={() =>
+                    navigation.navigate('Detail', {
+                      product: item,
+                    })
+                  }
+                />
+              )}
+            />
           </Box>
         )}
       </Box>

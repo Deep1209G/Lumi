@@ -1,13 +1,13 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { FlatList } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useNavigation, useFocusEffect } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { CartContext } from '@src/context/CardContext';
 import { RootStackParamList } from '../navigation/AppNavigation';
 import useCartSummary from '../hooks/useCartSummary';
-import { Address, getAddress } from '@src/utils/addressStorage';
+import useAddress from '@src/hooks/useAddress';
 import {
   Box,
   Text,
@@ -19,26 +19,14 @@ import {
 } from '@src';
 
 const CheckoutScreen = () => {
-  useFocusEffect(
-    React.useCallback(() => {
-      const loadAddress = async () => {
-        const data = await getAddress();
-
-        if (data) {
-          setAddress(data);
-        }
-      };
-
-      loadAddress();
-    }, []),
-  );
+ 
   type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
   const navigation = useNavigation<NavigationProp>();
   const { cart } = useContext(CartContext);
-
+  const { address } = useAddress();
   const { totalItems, subtotal, gst, shipping, total } = useCartSummary(cart);
-  const [address, setAddress] = useState<Address | null>(null);
+  
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Box flex={1} padding="l">

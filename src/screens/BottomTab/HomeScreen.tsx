@@ -93,7 +93,11 @@ const HomeScreen = () => {
             rating={item.rating}
             liked={wishlist.includes(item.id)}
             onWishlistPress={() => toggleWishlist(item.id)}
-            onCardPress={() => navigation.navigate('Detail',{product:item})}
+            onCardPress={() =>
+              navigation.navigate('Detail', {
+                product: item,
+              })
+            }
           />
         )}
       />

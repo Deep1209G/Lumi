@@ -40,12 +40,7 @@ const Card = ({
       >
         {/* Product Image */}
         <Box alignItems="center">
-          <Box
-            height={165}
-            width={130}
-            borderRadius="m"
-            marginTop='s'
-          >
+          <Box height={165} width={130} borderRadius="m" marginTop="s">
             <Image
               source={image}
               style={{
