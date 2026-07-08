@@ -3,15 +3,20 @@ import {
   TouchableOpacity,
   TouchableOpacityProps,
 } from 'react-native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
 import Box from './Box';
 import Text from './Text';
+import theme from '@src/theme/theme';
 
 interface CustomButtonProps extends TouchableOpacityProps {
   title: string;
+  rightIcon?: React.ComponentProps<typeof Ionicons>['name'];
 }
 
 const CustomButton = ({
   title,
+  rightIcon,
   ...props
 }: CustomButtonProps) => {
   return (
@@ -21,12 +26,25 @@ const CustomButton = ({
         borderRadius="m"
         backgroundColor="textPrimary"
         justifyContent="center"
-        alignItems="center">
+        alignItems="center"
+        flexDirection="row"
+      >
         <Text
           color="mainBackground"
-          variant='button'>
+          variant="button"
+        >
           {title}
         </Text>
+
+        {rightIcon && (
+          <Box marginLeft="s">
+            <Ionicons
+              name={rightIcon}
+              size={18}
+              color={theme.colors.mainBackground}
+            />
+          </Box>
+        )}
       </Box>
     </TouchableOpacity>
   );

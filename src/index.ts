@@ -34,6 +34,8 @@ export {default as SignInScreen} from './screens/SignInScreen.tsx'
 export {default as DetailScreen} from './screens/DetailScreen.tsx'
 export {default as AddToCartSuccess} from './screens/AddToCartSuccess.tsx'
 export {default as CheckoutScreen} from './screens/CheckoutScreen.tsx'
+export {default as PaymentScreen} from './screens/PaymentScreen.tsx'
+
 
 // Bottom Tab
 export {default as SearchScreen} from './screens/BottomTab/SearchScreen.tsx'
