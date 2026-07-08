@@ -13,7 +13,7 @@ import {
   AddToCartSuccess,
   AddressScreen,
   MyOrderScreen,
-  PaymentScreen,
+  PaymentMethodScreen,
   SettingsScreen,
   NotificationScreen,
   PrivacySecurityScreen,
@@ -48,7 +48,7 @@ export type RootStackParamList = {
   AddToCartSuccess: undefined;
   Address: undefined;
   MyOrder: undefined;
-  Payment: undefined;
+  PaymentMethod: undefined;
   Setting: undefined;
 
   About: undefined;
@@ -78,7 +78,7 @@ const AppNavigation = () => {
       <Stack.Screen name="AddToCartSuccess" component={AddToCartSuccess} />
       <Stack.Screen name="Address" component={AddressScreen} />
       <Stack.Screen name="MyOrder" component={MyOrderScreen} />
-      <Stack.Screen name="Payment" component={PaymentScreen} />
+      <Stack.Screen name="PaymentMethod" component={PaymentMethodScreen} />
       <Stack.Screen name="Setting" component={SettingsScreen} />
       <Stack.Screen name="About" component={AboutScreen} />
       <Stack.Screen name="Mode" component={DarkModeScreen} />
@@ -87,6 +87,7 @@ const AppNavigation = () => {
       <Stack.Screen name="Notification" component={NotificationScreen} />
       <Stack.Screen name="Privacy" component={PrivacySecurityScreen} />
       <Stack.Screen name="Checkout" component={CheckoutScreen} />
+      {/* <Stack.Screen name="Payment" component={PaymentScreen} /> */}
     </Stack.Navigator>
   );
 };

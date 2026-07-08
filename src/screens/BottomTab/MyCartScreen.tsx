@@ -46,7 +46,7 @@ const MyCartScreen = () => {
         borderRadius="m"
         backgroundColor="white"
       >
-        <Text variant="heading">
+        <Text variant="subtitle">
           Order Summary
         </Text>
 
@@ -55,8 +55,8 @@ const MyCartScreen = () => {
           flexDirection="row"
           justifyContent="space-between"
         >
-          <Text>Items ({totalItems})</Text>
-          <Text>₹ {subtotal.toFixed(2)}</Text>
+          <Text variant="body" >Items ({totalItems})</Text>
+          <Text variant="description">₹ {subtotal.toFixed(2)}</Text>
         </Box>
 
         <Box
@@ -64,8 +64,8 @@ const MyCartScreen = () => {
           flexDirection="row"
           justifyContent="space-between"
         >
-          <Text>GST (18%)</Text>
-          <Text>₹ {gst.toFixed(2)}</Text>
+          <Text variant="body">GST (18%)</Text>
+          <Text variant="description">₹ {gst.toFixed(2)}</Text>
         </Box>
 
         <Box
@@ -73,8 +73,8 @@ const MyCartScreen = () => {
           flexDirection="row"
           justifyContent="space-between"
         >
-          <Text>Shipping</Text>
-          <Text>
+          <Text variant="body">Shipping</Text>
+          <Text variant="description">
             {shipping === 0 ? 'Free' : `₹ ${shipping.toFixed(2)}`}
           </Text>
         </Box>
@@ -90,11 +90,11 @@ const MyCartScreen = () => {
           flexDirection="row"
           justifyContent="space-between"
         >
-          <Text variant="heading">
+          <Text variant="subtitle">
             Total
           </Text>
 
-          <Text variant="heading">
+          <Text variant="subtitle">
             ₹ {total.toFixed(2)}
           </Text>
         </Box>

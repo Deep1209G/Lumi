@@ -26,8 +26,8 @@ const ProgressStepper = ({
             {/* Step */}
             <Box alignItems="center">
               <Box
-                width={30}
-                height={30}
+                width={25}
+                height={25}
                 borderRadius="xl"
                 justifyContent="center"
                 alignItems="center"
@@ -46,7 +46,7 @@ const ProgressStepper = ({
                     color="white"
                   />
                 ) : (
-                  <Text
+                  <Text variant='medium'
                     color={
                       active ? 'white' : 'textSecondary'
                     }

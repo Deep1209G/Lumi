@@ -1,19 +1,15 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, { useContext } from 'react';
+import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/AppNavigation';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import theme from '../theme/theme';
-import { Box, Text, PressIcon, ProgressStepper, OrderSummary } from '@src';
-import { FlatList } from 'react-native';
-import { CartContext } from '@src/context/CardContext';
+import { Box, Text, PressIcon, ProgressStepper } from '@src';
 
-const CheckoutScreen = () => {
+const PaymentScreen = () => {
   type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
   const navigation = useNavigation<NavigationProp>();
-  const { cart } = useContext(CartContext);
-  console.log('Cart:', cart);
   return (
     <SafeAreaView style={{ flex: 1, padding: theme.spacing.l }}>
       {/*Header */}
@@ -31,31 +27,14 @@ const CheckoutScreen = () => {
       </Box>
 
       {/*Progress Stepper */}
-      <Box marginTop="l">
+      <Box marginTop="m">
         <ProgressStepper
-          currentStep={1}
+          currentStep={2}
           steps={['Cart', 'Checkout', 'Payment']}
         />
       </Box>
-
-      {/*Order Summary*/}
-      <Box marginTop="l">
-        <Text variant="body" marginBottom="m">
-          Order Summary
-        </Text>
-        <FlatList
-          data={cart}
-          keyExtractor={item => item.product.id}
-          renderItem={({ item }) => (
-            <OrderSummary 
-            product={item.product} 
-            quantity={item.quantity} />
-          )}
-        />
-      </Box>
-      
     </SafeAreaView>
   );
 };
 
-export default CheckoutScreen;
+export default PaymentScreen;

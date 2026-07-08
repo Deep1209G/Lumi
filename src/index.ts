@@ -22,6 +22,7 @@ export {default as PressableIcon} from './components/homescreen/PressableIcon.ts
 export {default as ProfileHeader} from './components/profile/ProfileHeader.tsx'
 export {default as EmptyStateCard} from './components/profile/EmptyStateCard.tsx'
 export {default as MyOrderCard} from './components/MyOrderScreen/MyOrderCard.tsx'
+export {default as OrderSummary} from './components/checkoutscreen/OrderSummary.tsx'
 
 //Screen
 export { default as HomeScreen } from './screens/BottomTab/HomeScreen';
@@ -42,7 +43,7 @@ export {default as ProfileScreen} from './screens/BottomTab/ProfileScreen.tsx'
 // Profile Screen
 export {default as AddressScreen} from './screens/Profile/AddressScreen.tsx'
 export {default as MyOrderScreen} from './screens/Profile/MyOrderScreen.tsx'
-export {default as PaymentScreen} from './screens/Profile/PaymentScreen.tsx'
+export {default as PaymentMethodScreen} from './screens/Profile/PaymentMethodScreen.tsx'
 export {default as SettingsScreen} from './screens/Profile/SettingsScreen.tsx'
 
 // Setting Screen

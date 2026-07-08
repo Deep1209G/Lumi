@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const PaymentScreen = () => {
+const PaymentMethodScreen = () => {
   return (
     <View>
       <Text>PaymentScreen</Text>
@@ -9,4 +9,4 @@ const PaymentScreen = () => {
   )
 }
 
-export default PaymentScreen
+export default PaymentMethodScreen
