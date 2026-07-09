@@ -1,36 +1,214 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+
+import React, { useState, useContext } from 'react';
+import { Alert, FlatList } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+
+import {
+  Box,
+  Text,
+  PressIcon,
+  ProgressStepper,
+  PaymentAccordion,
+  PaymentOption,
+  CustomTextInput,
+  CustomButton,
+} from '@src';
+
 import { RootStackParamList } from '../navigation/AppNavigation';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import theme from '../theme/theme';
-import { Box, Text, PressIcon, ProgressStepper } from '@src';
+import { paymentMethods } from '@src/data/paymentMethods';
+import { wallets } from '@src/data/wallets';
+import { CartContext } from '@src/context/CardContext';
+import useCartSummary from '@src/hooks/useCartSummary';
 
 const PaymentScreen = () => {
   type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
+
   const navigation = useNavigation<NavigationProp>();
+
+  const { cart } = useContext(CartContext);
+  const { total } = useCartSummary(cart);
+
+  const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [selectedPayment, setSelectedPayment] = useState('');
+
+  const [cardNumber, setCardNumber] = useState('');
+  const [cardHolder, setCardHolder] = useState('');
+  const [expiry, setExpiry] = useState('');
+  const [cvv, setCvv] = useState('');
+
+  const handleAccordion = (id: string) => {
+    if (expandedId === id) {
+      setExpandedId(null);
+    } else {
+      setExpandedId(id);
+    }
+  };
+  const handlePayment = () => {
+    console.log('Button Pressed');
+    console.log('Selected Payment:', selectedPayment);
+
+    if (!selectedPayment) {
+      Alert.alert('Please select a payment method');
+      return;
+    }
+
+    console.log('Before Navigation');
+
+   navigation.navigate('OrderSuccess');
+    console.log('After Navigation');
+  };
+
   return (
-    <SafeAreaView style={{ flex: 1, padding: theme.spacing.l }}>
-      {/*Header */}
-      <Box
-        flexDirection="row"
-        alignItems="center"
-        justifyContent="space-between"
-      >
-        <PressIcon
-          icon="chevron-back-outline"
-          onPressIcon={() => navigation.goBack()}
-        />
-        <Text variant="heading">Checkout</Text>
-        <Box />
+    <SafeAreaView style={{ flex: 1 }}>
+      {/* Scrollable Content */}
+      <Box flex={1} padding="l">
+        {/* Header */}
+        <Box
+          flexDirection="row"
+          alignItems="center"
+          justifyContent="space-between"
+        >
+          <PressIcon
+            icon="chevron-back-outline"
+            onPressIcon={() => navigation.goBack()}
+          />
+
+          <Text variant="heading">Payment</Text>
+
+          <Box width={24} />
+        </Box>
+
+        {/* Progress Stepper */}
+        <Box marginTop="m">
+          <ProgressStepper
+            currentStep={2}
+            steps={['Cart', 'Checkout', 'Payment']}
+          />
+        </Box>
+
+        {/* Payment Methods */}
+        <Box flex={1} marginTop="l">
+          <FlatList
+            data={paymentMethods}
+            keyExtractor={item => item.id}
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={{
+              paddingBottom: 20,
+            }}
+            renderItem={({ item }) => (
+              <PaymentAccordion
+                title={item.title}
+                leftIcon={item.icon}
+                expanded={expandedId === item.id}
+                onPress={() => handleAccordion(item.id)}
+              >
+                {/* UPI */}
+                {item.id === 'upi' && (
+                  <>
+                    <PaymentOption
+                      title="Google Pay"
+                      selected={selectedPayment === 'Google Pay'}
+                      onPress={() => setSelectedPayment('Google Pay')}
+                    />
+
+                    <PaymentOption
+                      title="PhonePe"
+                      selected={selectedPayment === 'PhonePe'}
+                      onPress={() => setSelectedPayment('PhonePe')}
+                    />
+
+                    <PaymentOption
+                      title="Paytm"
+                      selected={selectedPayment === 'Paytm'}
+                      onPress={() => setSelectedPayment('Paytm')}
+                    />
+                  </>
+                )}
+
+                {/* Card */}
+                {item.id === 'card' && (
+                  <>
+                    <CustomTextInput
+                      placeholder="Card Number"
+                      value={cardNumber}
+                      onChangeText={setCardNumber}
+                      leftIcon="card-outline"
+                    />
+
+                    <Box marginTop="m">
+                      <CustomTextInput
+                        placeholder="Card Holder Name"
+                        value={cardHolder}
+                        onChangeText={setCardHolder}
+                        leftIcon="person-outline"
+                      />
+                    </Box>
+
+                    <Box
+                      flexDirection="row"
+                      justifyContent="space-between"
+                      marginTop="m"
+                    >
+                      <Box flex={1} marginRight="s">
+                        <CustomTextInput
+                          placeholder="MM/YY"
+                          value={expiry}
+                          onChangeText={setExpiry}
+                        />
+                      </Box>
+
+                      <Box flex={1} marginLeft="s">
+                        <CustomTextInput
+                          placeholder="CVV"
+                          value={cvv}
+                          onChangeText={setCvv}
+                          secureTextEntry
+                        />
+                      </Box>
+                    </Box>
+                  </>
+                )}
+
+                {/* Wallet */}
+                {item.id === 'wallet' &&
+                  wallets.map(wallet => (
+                    <PaymentOption
+                      key={wallet.id}
+                      title={wallet.title}
+                      selected={selectedPayment === wallet.id}
+                      onPress={() => setSelectedPayment(wallet.id)}
+                    />
+                  ))}
+
+                {/* Cash on Delivery */}
+                {item.id === 'cod' && (
+                  <PaymentOption
+                    title="Cash on Delivery"
+                    selected={selectedPayment === 'cod'}
+                    onPress={() => setSelectedPayment('cod')}
+                  />
+                )}
+              </PaymentAccordion>
+            )}
+          />
+        </Box>
       </Box>
 
-      {/*Progress Stepper */}
-      <Box marginTop="m">
-        <ProgressStepper
-          currentStep={2}
-          steps={['Cart', 'Checkout', 'Payment']}
+      {/* Fixed Bottom Button */}
+      <Box
+        backgroundColor="white"
+        paddingHorizontal="l"
+        paddingVertical="m"
+        borderTopWidth={1}
+        borderColor="border"
+      >
+        <CustomButton
+          title={`Pay ₹${total.toFixed(2)}`}
+          rightIcon="lock-closed-outline"
+          onPress={handlePayment}
         />
       </Box>
     </SafeAreaView>

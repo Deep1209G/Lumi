@@ -29,7 +29,7 @@ const handleMenuPress = (id: string) => {
       break;
 
     case 'payment':
-              navigation.navigate('Payment');
+              navigation.navigate('PaymentMethod');
       break;
 
     case 'settings':

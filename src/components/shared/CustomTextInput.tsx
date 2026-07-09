@@ -1,13 +1,13 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, { useState } from 'react';
 import { TextInput, TouchableOpacity, TextInputProps } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useTheme } from '@shopify/restyle';
-
 import { Box } from '@src';
 import { Theme } from '../../theme/theme';
 
 type Props = TextInputProps & {
-  leftIcon: string;
+  leftIcon?: string;
   rightIcon?: string;
   onPressRightIcon?: () => void;
 };

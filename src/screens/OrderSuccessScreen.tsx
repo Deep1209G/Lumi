@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/AppNavigation';
 
-const AddToCartSuccess = () => {
+const OrderSuccessScreen = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   return (
@@ -30,30 +30,28 @@ const AddToCartSuccess = () => {
 
       {/* Add to Cart Message */}
       <Text marginTop="m" variant="heading">
-        Added to Cart
+       Order placed
       </Text>
 
       {/* Description */}
       <Text marginTop="m" variant="description" textAlign="center">
-        This item is now in your cart, ready for checkout.
+        your order has been confirmed and will be shipped soon. Track it anytime from your orders.
       </Text>
 
       {/* Button */}
       <Box marginTop="xl" width="100%">
         <CustomButton
-          title="View Cart"
+          title="Track Order"
           onPress={() =>
-            navigation.navigate('MainTab', {
-              screen: 'Cart',
-            })
+            navigation.navigate('MyOrder')
           }
         />
       </Box>
-1
+
       {/* Button */}
       <Box marginTop="l">
         <PressableText
-          text="Continue Shopping"
+          text="Back To Home"
           onPress={() =>
             navigation.navigate('MainTab', {
               screen: 'Home',
@@ -65,4 +63,4 @@ const AddToCartSuccess = () => {
   );
 };
 
-export default AddToCartSuccess;
+export default OrderSuccessScreen;
