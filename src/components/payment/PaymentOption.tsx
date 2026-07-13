@@ -35,7 +35,7 @@ const PaymentOption = ({
           color={
             selected
               ? theme.colors.textPrimary
-              : theme.colors.border
+              : theme.colors.icon
                 }
         />
       </Box>

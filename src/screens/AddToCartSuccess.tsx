@@ -49,7 +49,6 @@ const AddToCartSuccess = () => {
           }
         />
       </Box>
-1
       {/* Button */}
       <Box marginTop="l">
         <PressableText

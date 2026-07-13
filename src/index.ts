@@ -26,6 +26,7 @@ export {default as OrderSummary} from './components/checkoutscreen/OrderSummary.
 export {default as AddressSelector} from './components/checkoutscreen/AddressSelector.tsx'
 export {default as PaymentAccordion} from './components/payment/PaymentAccordion.tsx'
 export {default as PaymentOption} from './components/payment/PaymentOption.tsx'
+export {default as HeaderBack} from './components/shared/HeaderBack.tsx'
 
 
 //Screen

@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import { Box, PressIcon, Text, CustomTextInput, CustomButton } from '@src';
+import { Box, Text, CustomTextInput, CustomButton, HeaderBack } from '@src';
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import theme from '../../theme/theme';
@@ -23,17 +23,8 @@ const AddressScreen = () => {
   return (
     <SafeAreaView style={{ flex: 1, padding: theme.spacing.l }}>
       {/*Heading Section */}
-      <Box
-        flexDirection="row"
-        alignItems="center"
-        justifyContent="space-between"
-      >
-        <PressIcon
-          icon="chevron-back-outline"
-          onPressIcon={() => navigation.goBack()}
-        />
-        <Text variant="heading">Shipping Address</Text>
-        <Box />
+      <Box>
+        <HeaderBack title='Shipping Address'/>
       </Box>
 
       {/*Email Section */}
