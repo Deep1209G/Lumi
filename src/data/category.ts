@@ -1,7 +1,8 @@
 export const categories = [
   'all',
-  'hoodie',
-  'shirt',
-  'pants',
-  'shoes',
+  'Dress',
+  'Jacket',
+  'Shirt',
+  'Bag',
+  'Shoes',
 ];

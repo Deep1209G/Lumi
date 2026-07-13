@@ -108,7 +108,7 @@ export const products: Product[] = [
   // =================== TSHIRTS ===================
   {
     id: 't1',
-    category: 'T-Shirt',
+    category: 'Shirt',
     name: 'Classic White T-Shirt',
     price: 699,
     rating: 4.5,
@@ -117,7 +117,7 @@ export const products: Product[] = [
   },
   {
     id: 't2',
-    category: 'T-Shirt',
+    category: 'Shirt',
     name: 'Oversized Graphic Tee',
     price: 899,
     rating: 4.7,
@@ -126,7 +126,7 @@ export const products: Product[] = [
   },
   {
     id: 't3',
-    category: 'T-Shirt',
+    category: 'Shirt',
     name: 'Black Round Neck Tee',
     price: 799,
     rating: 4.4,
@@ -135,7 +135,7 @@ export const products: Product[] = [
   },
   {
     id: 't4',
-    category: 'T-Shirt',
+    category: 'Shirt',
     name: 'Striped Casual Tee',
     price: 999,
     rating: 4.6,
@@ -144,7 +144,7 @@ export const products: Product[] = [
   },
   {
     id: 't5',
-    category: 'T-Shirt',
+    category: 'Shirt',
     name: 'Polo T-Shirt',
     price: 1199,
     rating: 4.8,
@@ -153,7 +153,7 @@ export const products: Product[] = [
   },
   {
     id: 't6',
-    category: 'T-Shirt',
+    category: 'Shirt',
     name: 'Printed Cotton Tee',
     price: 849,
     rating: 4.3,
@@ -162,7 +162,7 @@ export const products: Product[] = [
   },
   {
     id: 't7',
-    category: 'T-Shirt',
+    category: 'Shirt',
     name: 'Slim Fit T-Shirt',
     price: 949,
     rating: 4.6,
@@ -171,7 +171,7 @@ export const products: Product[] = [
   },
   {
     id: 't8',
-    category: 'T-Shirt',
+    category: 'Shirt',
     name: 'Sports Performance Tee',
     price: 1299,
     rating: 4.9,
@@ -180,7 +180,7 @@ export const products: Product[] = [
   },
   {
     id: 't9',
-    category: 'T-Shirt',
+    category: 'Shirt',
     name: 'Henley Neck T-Shirt',
     price: 1099,
     rating: 4.5,
@@ -189,7 +189,7 @@ export const products: Product[] = [
   },
   {
     id: 't10',
-    category: 'T-Shirt',
+    category: 'Shirt',
     name: 'Vintage Washed Tee',
     price: 999,
     rating: 4.7,

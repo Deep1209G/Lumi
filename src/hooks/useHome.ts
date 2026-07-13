@@ -19,7 +19,7 @@ const useHome = () => {
   const flatListRef = useRef<FlatList>(null);
 
   // Selected Category
-  const [selectedCategory, setSelectedCategory] = useState('All Item');
+  const [selectedCategory, setSelectedCategory] = useState('all');
 
   // Number of products to display
   const [visibleCount, setVisibleCount] = useState(10);
@@ -38,7 +38,7 @@ const useHome = () => {
 
   // Filter products based on selected category
   const filteredProducts =
-    selectedCategory === 'All Item'
+    selectedCategory === 'all'
       ? shuffledProducts
       : shuffledProducts.filter(item => item.category === selectedCategory);
 
