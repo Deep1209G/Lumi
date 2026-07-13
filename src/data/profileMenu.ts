@@ -13,28 +13,27 @@ type ProfileMenuItem = {
 export const profileMenu: ProfileMenuItem[] = [
   {
     id: 'orders',
-    title: 'My Order',
+    title: 'myOrders',
     leftIcon: 'cube-outline',
   },
- 
   {
     id: 'address',
-    title: 'Shipping Address',
+    title: 'shippingAddress',
     leftIcon: 'location-outline',
   },
   {
     id: 'payment',
-    title: 'Payment Methods',
+    title: 'paymentMethods',
     leftIcon: 'card-outline',
   },
   {
     id: 'settings',
-    title: 'Settings',
+    title: 'settings',
     leftIcon: 'settings-outline',
   },
   {
     id: 'logout',
-    title: 'Log Out',
+    title: 'logout',
     leftIcon: 'log-out-outline',
     backgroundColor: 'lightRed',
     color: theme.colors.warning,

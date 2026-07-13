@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import React from 'react';
 import { Box, Text } from '@src';
 import { FlatList, Pressable } from 'react-native';
@@ -13,6 +14,7 @@ const CategoryTab = ({ onSelectCategory, selectedCategory }: Props) => {
     
     onSelectCategory(item);
   };
+  const { t } = useTranslation();
 
   return (
     <FlatList
@@ -35,7 +37,7 @@ const CategoryTab = ({ onSelectCategory, selectedCategory }: Props) => {
               variant="medium"
               color={selectedCategory === item ? 'mainBackground' : 'textPrimary'}
             >
-              {item}
+              {t(item)}
             </Text>
           </Box>
         </Pressable>

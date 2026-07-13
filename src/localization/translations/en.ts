@@ -1,0 +1,28 @@
+const en = {
+  home: 'Home',
+  profile: 'Profile',
+  cart: 'My Cart',
+  payment: 'Payment',
+  notification: 'Notification',
+  language: 'Language',
+  popularNow: 'Popular Now',
+  seeAll: 'See all',
+  helloWelcome: 'Hello, Welcome',
+  searchPlaceholder: 'Search clothes, brands...',
+  all: 'All',
+  hoodie: 'Hoodie',
+  shirt: 'Shirt',
+  pants: 'Pants',
+  shoes: 'Shoes',
+  myOrders: 'My Orders',
+  shippingAddress: 'Shipping Address',
+  paymentMethods: 'Payment Methods',
+  settings: 'Settings',
+  logout: 'Log Out',
+  darkMode: 'Dark Mode',
+  privacySecurity: 'Privacy & Security',
+  helpCenter: 'Help Center',
+  aboutLumi: 'About Lumi',
+};
+
+export default en;

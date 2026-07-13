@@ -1,0 +1,52 @@
+import React from 'react';
+import { Pressable } from 'react-native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
+import { Box, Text } from '@src';
+import theme from '@src/theme/theme';
+
+type Props = {
+  title: string;
+  selected: boolean;
+  onPress: () => void;
+};
+
+const LanguageCard = ({
+  title,
+  selected,
+  onPress,
+}: Props) => {
+  
+  return (
+    <Pressable onPress={onPress}>
+      <Box
+        backgroundColor={selected ? 'gray' : 'white'}
+        borderWidth={2}
+        borderColor={selected ? 'black' : 'border'}
+        borderRadius="m"
+        padding="m"
+        marginBottom="m"
+        flexDirection="row"
+        justifyContent="space-between"
+        alignItems="center"
+      >
+        <Text
+          variant="medium"
+          color='black'
+        >
+          {title}
+        </Text>
+
+        {selected && (
+          <Ionicons
+            name="checkmark-outline"
+            size={20}
+            color={theme.colors.black}
+          />
+        )}
+      </Box>
+    </Pressable>
+  );
+};
+
+export default LanguageCard;

@@ -1,4 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
+import { useTranslation } from 'react-i18next';
 import React, { useEffect, useState, useRef } from 'react';
 import {
   Animated,
@@ -10,6 +11,7 @@ import { Box, Text, Images } from '@src';
 import theme from '@src/theme/theme';
 
 const Header = () => {
+  const { t } = useTranslation();
   const [user, setUser] = useState<any>(null);
 
   useEffect(() => {
@@ -45,7 +47,7 @@ const Header = () => {
     <Box flexDirection="row" justifyContent="space-between">
       {/* User Name */}
       <Box>
-        <Text variant="medium">Hello, Welcome</Text>
+        <Text variant="medium"> {t('helloWelcome')}</Text>
 
         <Text variant="subtitle">
           {user?.firstName} {user?.lastName}

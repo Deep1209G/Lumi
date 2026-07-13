@@ -1,1 +1,7 @@
-export const categories = ['All Item', 'Dress', 'T-Shirt', 'Jacket', 'Shoes', 'Bag'];
+export const categories = [
+  'all',
+  'hoodie',
+  'shirt',
+  'pants',
+  'shoes',
+];

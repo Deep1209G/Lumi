@@ -4,32 +4,34 @@ type ProfileMenuItem = {
   title: string;
 };
 export const settingMenu: ProfileMenuItem[] = [
-  {
+   {
     id: 'notification',
-    title: 'Notification',
+    title: 'notification',
   },
- 
+
   {
     id: 'language',
-    title: 'Language',
+    title: 'language',
   },
+
   {
     id: 'mode',
-    title: 'Dark Mode',
+    title: 'darkMode',
   },
+
   {
     id: 'privacy',
-    title: 'Privacy & Security',
+    title: 'privacySecurity',
   },
+
   {
     id: 'help',
-    title: 'Help Center',
+    title: 'helpCenter',
   },
- 
+
   {
     id: 'about',
-    title: 'About Lumi',
+    title: 'aboutLumi',
   },
- 
  
 ];

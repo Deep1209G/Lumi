@@ -1,18 +1,55 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import { useTranslation } from 'react-i18next';
+import i18n from '@src/localization/i18n';
+import React, { useEffect, useState } from 'react';
+import { saveLanguage, getLanguage } from '@src/utils/languageStorage';
+import { FlatList } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Box, HeaderBack } from '@src';
-import theme from '../../theme/theme';
+import theme from '@src/theme/theme';
+import { Box, HeaderBack, LanguageCard } from '@src';
+import { languages } from '@src/data/languages';
 
 const LanguageScreen = () => {
+  const [selectedLanguage, setSelectedLanguage] = useState('en');
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    const loadLanguage = async () => {
+      const language = await getLanguage();
+      setSelectedLanguage(language);
+    };
+
+    loadLanguage();
+  }, []);
+
   return (
-   <SafeAreaView style={{ flex: 1, padding: theme.spacing.l }}>
-      {/*Heading Section */}
-      <Box>
-        <HeaderBack title="Language" />
+    <SafeAreaView style={{ flex: 1, padding: theme.spacing.l }}>
+      <HeaderBack title={t('language')} />
+
+      <Box marginTop="l">
+        <FlatList
+          data={languages}
+          keyExtractor={item => item.id}
+          showsVerticalScrollIndicator={false}
+          renderItem={({ item }) => (
+            <LanguageCard
+              title={item.name}
+              selected={selectedLanguage === item.id}
+              onPress={async () => {
+                setSelectedLanguage(item.id);
+
+                // Change app language
+                await i18n.changeLanguage(item.id);
+
+                // Save selected language
+                await saveLanguage(item.id);
+              }}
+            />
+          )}
+        />
       </Box>
     </SafeAreaView>
-  )
-}
+  );
+};
 
-export default LanguageScreen
+export default LanguageScreen;

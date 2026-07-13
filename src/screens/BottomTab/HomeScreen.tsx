@@ -1,4 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
+import { useTranslation } from 'react-i18next';
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { FlatList } from 'react-native';
@@ -16,6 +17,7 @@ import {
 } from '@src';
 
 const HomeScreen = () => {
+  const { t } = useTranslation();
   const {
     navigation,
     flatListRef,
@@ -72,11 +74,11 @@ const HomeScreen = () => {
               {/* Popular Text */}
               <Box marginTop="m" flexDirection="row" alignItems="center">
                 <Box flex={1}>
-                  <Text variant="subtitle">Popular Now</Text>
+                  <Text variant="subtitle"> {t('popularNow')}</Text>
                 </Box>
 
                 <PressableText
-                  text="See all"
+                  text={t('seeAll')}
                   onPress={() => console.log('see all item')}
                 />
               </Box>

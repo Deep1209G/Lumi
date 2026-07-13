@@ -1,4 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
+import { useTranslation } from 'react-i18next';
 import React from 'react';
 import { Box } from '@src';
 import { Pressable, TextInput } from 'react-native';
@@ -16,7 +17,7 @@ type SearchBarProps = {
 };
 
 const SearchBar = ({
-  placeholder = 'Search clothes, brands...',
+  placeholder ,
   onPress,
   onSearchPress,
   rightIcon,
@@ -24,6 +25,7 @@ const SearchBar = ({
   onChangeText,
   editable,
 }: SearchBarProps) => {
+  const { t } = useTranslation();
   return (
     <Box
       height={50}
@@ -50,7 +52,7 @@ const SearchBar = ({
             flex: 1,
             paddingLeft: theme.spacing.m,
           }}
-          placeholder={placeholder}
+        placeholder={placeholder || t('searchPlaceholder')}
           value={value}
           onChangeText={onChangeText}
           editable={editable}
