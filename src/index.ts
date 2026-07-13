@@ -27,7 +27,7 @@ export {default as AddressSelector} from './components/checkoutscreen/AddressSel
 export {default as PaymentAccordion} from './components/payment/PaymentAccordion.tsx'
 export {default as PaymentOption} from './components/payment/PaymentOption.tsx'
 export {default as HeaderBack} from './components/shared/HeaderBack.tsx'
-
+export {default as Toggle} from './components/shared/Toggle.tsx'
 
 //Screen
 export { default as HomeScreen } from './screens/BottomTab/HomeScreen';

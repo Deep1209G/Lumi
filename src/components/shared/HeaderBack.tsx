@@ -17,7 +17,8 @@ const HeaderBack = ({title}:HeaderProps) => {
         onPressIcon={() => navigation.goBack()}
       />
       <Text variant="heading">{title}</Text>
-      <Box />
+      <Box width={50}/>
+     
     </Box>
   );
 };

@@ -7,6 +7,7 @@ import theme from '../../theme/theme';
 const AboutScreen = () => {
   return (
       <SafeAreaView style={{ flex: 1, padding: theme.spacing.l }}>
+      
       {/*Heading Section */}
       <Box>
         <HeaderBack title='About Lumi'/>
