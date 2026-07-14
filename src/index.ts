@@ -65,6 +65,12 @@ export {default as LanguageScreen} from './screens/Settings/LanguageScreen.tsx'
 export {default as NotificationScreen} from './screens/Settings/NotificationScreen.tsx'
 export {default as PrivacySecurityScreen} from './screens/Settings/PrivacySecurityScreen.tsx'
 
+//About sub screen
+export {default as LicensesScreen} from './screens/About/LicensesScreen.tsx'
+export {default as PrivacyScreen} from './screens/About/PrivacyScreen.tsx'
+export {default as RateScreen} from './screens/About/RateScreen.tsx'
+export {default as TermScreen} from './screens/About/TermScreen.tsx'
+
 //Hooks
 export {default as useLogin} from './hooks/useLogin.ts'
 export {default as useSearch} from './hooks/useSearch.ts'

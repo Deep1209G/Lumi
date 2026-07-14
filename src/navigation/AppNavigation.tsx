@@ -24,6 +24,10 @@ import {
   CheckoutScreen,
   PaymentScreen,
   OrderSuccessScreen,
+  LicensesScreen,
+  PrivacyScreen,
+  RateScreen,
+  TermScreen,
 } from '@src';
 
 import BottomTab from './BottomTab';
@@ -52,23 +56,27 @@ export type RootStackParamList = {
   MyOrder: undefined;
   PaymentMethod: undefined;
   Setting: undefined;
-
   About: undefined;
   Mode: undefined;
   Help: undefined;
   Language: undefined;
   Notification: undefined;
-  Privacy: undefined;
+  PrivacySecurity: undefined;
   Checkout: undefined;
   Payment: undefined;
   OrderSuccess: undefined;
+  Licenses: undefined;
+  Privacy: undefined;
+  Rate: undefined;
+  Term: undefined;
+
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const AppNavigation = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Help"
+      initialRouteName="Splash"
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name="Splash" component={SplashScreen} />
@@ -89,10 +97,14 @@ const AppNavigation = () => {
       <Stack.Screen name="Help" component={HelpCenterScreen} />
       <Stack.Screen name="Language" component={LanguageScreen} />
       <Stack.Screen name="Notification" component={NotificationScreen} />
-      <Stack.Screen name="Privacy" component={PrivacySecurityScreen} />
+      <Stack.Screen name="PrivacySecurity" component={PrivacySecurityScreen} />
       <Stack.Screen name="Checkout" component={CheckoutScreen} />
       <Stack.Screen name="Payment" component={PaymentScreen} />
       <Stack.Screen name="OrderSuccess" component={OrderSuccessScreen} />
+      <Stack.Screen name="Licenses" component={LicensesScreen} />
+      <Stack.Screen name="Privacy" component={PrivacyScreen} />
+      <Stack.Screen name="Rate" component={RateScreen} />
+      <Stack.Screen name="Term" component={TermScreen} />
     </Stack.Navigator>
   );
 };

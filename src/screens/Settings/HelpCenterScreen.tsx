@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Box, FAQAccordion, HeaderBack, Text } from '@src';
-import { Pressable, FlatList } from 'react-native';
+import { Pressable } from 'react-native';
 import theme from '../../theme/theme';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { faqs } from '@src/data/faqs';
@@ -30,7 +30,7 @@ const HelpCenterScreen = () => {
         <Pressable onPress={() => console.log('Pressed chat with support')}>
           <Box
             height={60}
-            backgroundColor="white"
+            backgroundColor="black"
             borderRadius="m"
             borderWidth={1}
             borderColor="border"
@@ -38,13 +38,15 @@ const HelpCenterScreen = () => {
             flexDirection="row"
           >
             <Box flex={1} justifyContent="center">
-              <Text variant="button">Chat with Support</Text>
+              <Text variant="button" color="white">
+                Chat with Support
+              </Text>
             </Box>
             <Box justifyContent="center">
               <Ionicons
                 name="chevron-forward-outline"
                 size={15}
-                color={theme.colors.icon}
+                color={theme.colors.white}
               />
             </Box>
           </Box>
@@ -55,19 +57,17 @@ const HelpCenterScreen = () => {
       <Text marginTop="m" variant="medium">
         Frequently Asked Question
       </Text>
-      <Box marginTop='m'>
-        <FlatList
-          data={faqs}
-          keyExtractor={item => item.id}
-          renderItem={({ item }) => (
+      <Box marginTop="m">
+        {faqs.map(item => (
+          <Box key={item.id} >
             <FAQAccordion
               question={item.question}
               answer={item.answer}
               expanded={expandedId === item.id}
               onPress={() => handleAccordion(item.id)}
             />
-          )}
-        />
+          </Box>
+        ))}
       </Box>
     </SafeAreaView>
   );
