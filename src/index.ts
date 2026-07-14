@@ -30,6 +30,7 @@ export {default as HeaderBack} from './components/shared/HeaderBack.tsx'
 export {default as Toggle} from './components/shared/Toggle.tsx'
 export {default as LanguageCard} from './components/languagescreen/LanguageCard.tsx'
 export {default as ThemeCard} from './components/darkModeScreen/ThemeCard.tsx'
+export {default as FAQAccordion} from './components/helpCenterScreen/FAQAccordion.tsx'
 
 
 //Screen

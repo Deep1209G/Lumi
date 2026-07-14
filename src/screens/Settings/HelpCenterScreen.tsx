@@ -1,12 +1,23 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Box, HeaderBack, Text } from '@src';
-import { Pressable } from 'react-native';
+import { Box, FAQAccordion, HeaderBack, Text } from '@src';
+import { Pressable, FlatList } from 'react-native';
 import theme from '../../theme/theme';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { faqs } from '@src/data/faqs';
 
 const HelpCenterScreen = () => {
+  const [expandedId, setExpandedId] = useState<string | null>(null);
+
+  const handleAccordion = (id: string) => {
+    if (expandedId === id) {
+      setExpandedId(null);
+    } else {
+      setExpandedId(id);
+    }
+  };
+
   return (
     <SafeAreaView style={{ flex: 1, padding: theme.spacing.l }}>
       {/*Heading Section */}
@@ -15,10 +26,10 @@ const HelpCenterScreen = () => {
       </Box>
 
       {/* Support Card */}
-      <Box marginTop='m'>
+      <Box marginTop="m">
         <Pressable onPress={() => console.log('Pressed chat with support')}>
           <Box
-            height={70}
+            height={60}
             backgroundColor="white"
             borderRadius="m"
             borderWidth={1}
@@ -26,21 +37,7 @@ const HelpCenterScreen = () => {
             padding="m"
             flexDirection="row"
           >
-            <Box
-              height={40}
-              width={40}
-              backgroundColor="white"
-              justifyContent="center"
-              alignItems="center"
-              borderRadius="s"
-            >
-              <Ionicons
-                name="chevron-forward-outline"
-                size={20}
-                color={theme.colors.black}
-              />
-            </Box>
-            <Box flex={1} justifyContent="center" marginLeft="m">
+            <Box flex={1} justifyContent="center">
               <Text variant="button">Chat with Support</Text>
             </Box>
             <Box justifyContent="center">
@@ -52,6 +49,25 @@ const HelpCenterScreen = () => {
             </Box>
           </Box>
         </Pressable>
+      </Box>
+
+      {/* FAQ */}
+      <Text marginTop="m" variant="medium">
+        Frequently Asked Question
+      </Text>
+      <Box marginTop='m'>
+        <FlatList
+          data={faqs}
+          keyExtractor={item => item.id}
+          renderItem={({ item }) => (
+            <FAQAccordion
+              question={item.question}
+              answer={item.answer}
+              expanded={expandedId === item.id}
+              onPress={() => handleAccordion(item.id)}
+            />
+          )}
+        />
       </Box>
     </SafeAreaView>
   );
