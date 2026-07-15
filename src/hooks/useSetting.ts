@@ -20,7 +20,7 @@ const useSetting = () => {
         break;
 
       case 'privacy':
-        navigation.navigate('Privacy');
+        navigation.navigate('PrivacySecurity');
         break;
 
       case 'help':

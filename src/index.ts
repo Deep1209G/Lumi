@@ -32,6 +32,8 @@ export {default as LanguageCard} from './components/languagescreen/LanguageCard.
 export {default as ThemeCard} from './components/darkModeScreen/ThemeCard.tsx'
 export {default as FAQAccordion} from './components/helpCenterScreen/FAQAccordion.tsx'
 export {default as TermCard} from './components/termsScreen/TermCard.tsx'
+export {default as ReviewInput} from './components/rateScreen/ReviewInput.tsx'
+export {default as ReviewTags} from './components/rateScreen/ReviewTags.tsx'
 
 
 //Screen
@@ -75,5 +77,5 @@ export {default as TermScreen} from './screens/About/TermScreen.tsx'
 //Hooks
 export {default as useLogin} from './hooks/useLogin.ts'
 export {default as useSearch} from './hooks/useSearch.ts'
-
+export {default as useRateScreen} from './hooks/useRateScreen.ts'
 

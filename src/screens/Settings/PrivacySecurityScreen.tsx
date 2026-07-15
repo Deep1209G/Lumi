@@ -2,14 +2,13 @@
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Box, HeaderBack } from '@src';
-import theme from '../../theme/theme';
 
 const PrivacySecurityScreen = () => {
   return (
-    <SafeAreaView style={{ flex: 1, padding: theme.spacing.l }}>
+    <SafeAreaView style={{ flex: 1 }}>
      
       {/*Heading Section */}
-      <Box>
+      <Box paddingLeft='m' paddingRight='m'>
         <HeaderBack title="Privacy & Security" />
       </Box>
     </SafeAreaView>

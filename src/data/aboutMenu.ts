@@ -12,12 +12,7 @@ export const aboutMenu: AboutMenuItem[] = [
     id: 'Privacy',
     title: 'Privacy Policy',
   },
-
-  {
-    id: 'licenses',
-    title: 'Licenses',
-  },
-
+  
   {
     id: 'Rate',
     title: 'Rate the app',
