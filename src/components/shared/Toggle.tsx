@@ -1,7 +1,6 @@
-import React from 'react';
-import { Switch } from 'react-native';
+import React, { useEffect, useRef } from 'react';
+import { Animated, Pressable } from 'react-native';
 import { Box, Text } from '@src';
-import theme from '../../theme/theme';
 
 type ToggleProps = {
   title: string;
@@ -10,7 +9,25 @@ type ToggleProps = {
   onValueChange: (value: boolean) => void;
 };
 
-const Toggle = ({ title, description, value, onValueChange }: ToggleProps) => {
+const Toggle = ({
+  title,
+  description,
+  value,
+  onValueChange,
+}: ToggleProps) => {
+  const translateX = useRef(
+    new Animated.Value(value ? 22 : 0),
+  ).current;
+
+  useEffect(() => {
+    Animated.spring(translateX, {
+      toValue: value ? 22 : 0,
+      friction: 8,
+      tension: 50,
+      useNativeDriver: true,
+    }).start();
+  }, [value, translateX]);
+
   return (
     <Box
       backgroundColor="white"
@@ -21,27 +38,53 @@ const Toggle = ({ title, description, value, onValueChange }: ToggleProps) => {
       marginBottom="m"
     >
       <Box
-        width="100%"
         flexDirection="row"
         justifyContent="space-between"
         alignItems="center"
       >
-        <Text variant="medium" color='textPrimary'>{title}</Text>
+        <Box flex={1} marginRight="m">
+          <Text variant="medium" color="textPrimary">
+            {title}
+          </Text>
 
-        <Switch
-          trackColor={{
-            false: theme.colors.gray,
-            true: theme.colors.black,
-          }}
-          thumbColor={theme.colors.white}
-          value={value}
-          onValueChange={onValueChange}
-        />
+          <Text
+            marginTop="xs"
+            variant="small"
+            color="textSecondary"
+          >
+            {description}
+          </Text>
+        </Box>
+
+        <Pressable
+          onPress={() => onValueChange(!value)}
+          hitSlop={10}
+        >
+          <Box
+            width={52}
+            height={30}
+            borderRadius="xl"
+            backgroundColor={value ? 'black' : 'gray'}
+            justifyContent="center"
+            paddingHorizontal="xs"
+          >
+            <Animated.View
+              style={{
+                transform: [{ translateX }],
+              }}
+            >
+              <Box
+                width={22}
+                height={22}
+                borderRadius="xl"
+                backgroundColor="white"
+                borderWidth={1}
+                borderColor="border"
+              />
+            </Animated.View>
+          </Box>
+        </Pressable>
       </Box>
-
-      <Text marginTop="xs" variant="small" color="textSecondary">
-        {description}
-      </Text>
     </Box>
   );
 };

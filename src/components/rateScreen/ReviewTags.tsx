@@ -41,7 +41,7 @@ const ReviewTags = ({
                 paddingHorizontal="m"
                 paddingVertical="s"
                 borderRadius="xl"
-                borderWidth={1}
+                borderWidth={1.5}
                 borderColor={selected ? 'white' : 'gray'}
                 backgroundColor={selected ? 'black' : 'white'}
               >

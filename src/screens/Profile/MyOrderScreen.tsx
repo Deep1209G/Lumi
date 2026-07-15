@@ -19,7 +19,7 @@ const MyOrderScreen = () => {
         {/* Orders */}
         <Box marginTop="l" flex={1}>
           {orders.length === 0 ? (
-            <Box flex={1} justifyContent="center" alignItems="center">
+            <Box flex={1} marginTop='xxxl' alignItems="center">
               <Text variant="subtitle">No Orders Yet</Text>
 
               <Text variant="medium" marginTop="s" color="textSecondary">

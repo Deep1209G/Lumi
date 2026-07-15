@@ -1,13 +1,17 @@
 /* eslint-disable react-native/no-inline-styles */
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import React from 'react';
-import { Box } from '@src';
 import { Pressable, TextInput } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+
+import { Box } from '@src';
 import theme from '../../theme/theme';
 
 type SearchBarProps = {
   placeholder?: string;
+  animatedPlaceholders?: string[];
+  typingSpeed?: number;
+  pauseDuration?: number;
   onPress?: () => void;
   rightIcon?: keyof typeof Ionicons.glyphMap;
   onSearchPress?: () => void;
@@ -17,15 +21,79 @@ type SearchBarProps = {
 };
 
 const SearchBar = ({
-  placeholder ,
+  placeholder,
+  animatedPlaceholders,
+  typingSpeed = 75,
+  pauseDuration = 1800,
   onPress,
   onSearchPress,
   rightIcon,
   value,
   onChangeText,
-  editable,
+  editable = true,
 }: SearchBarProps) => {
   const { t } = useTranslation();
+
+  const [animatedPlaceholder, setAnimatedPlaceholder] = useState('');
+
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const placeholders = useMemo(
+    () =>
+      animatedPlaceholders && animatedPlaceholders.length > 0
+        ? animatedPlaceholders
+        : [placeholder || t('searchPlaceholder')],
+    [animatedPlaceholders, placeholder, t]
+  );
+
+  useEffect(() => {
+    if (!placeholders.length) return;
+
+    let wordIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+
+    const animate = () => {
+      const currentWord = placeholders[wordIndex];
+
+      if (!deleting) {
+        charIndex++;
+        setAnimatedPlaceholder(currentWord.slice(0, charIndex));
+
+        if (charIndex === currentWord.length) {
+          deleting = true;
+
+          timeoutRef.current = setTimeout(animate, pauseDuration);
+        } else {
+          timeoutRef.current = setTimeout(animate, typingSpeed);
+        }
+      } else {
+        charIndex--;
+        setAnimatedPlaceholder(currentWord.slice(0, charIndex));
+
+        if (charIndex === 0) {
+          deleting = false;
+          wordIndex = (wordIndex + 1) % placeholders.length;
+
+          timeoutRef.current = setTimeout(animate, 300);
+        } else {
+          timeoutRef.current = setTimeout(
+            animate,
+            Math.max(typingSpeed / 2, 30)
+          );
+        }
+      }
+    };
+
+    animate();
+
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, [placeholders, typingSpeed, pauseDuration]);
+
   return (
     <Box
       height={50}
@@ -45,22 +113,25 @@ const SearchBar = ({
           alignItems: 'center',
         }}
       >
-        <Ionicons name="search-outline" size={20} color={theme.colors.icon} />
+        <Ionicons
+          name="search-outline"
+          size={20}
+          color={theme.colors.icon}
+        />
 
         <TextInput
           style={{
             flex: 1,
             paddingLeft: theme.spacing.m,
           }}
-        placeholder={placeholder || t('searchPlaceholder')}
+          placeholder={animatedPlaceholder}
+          placeholderTextColor={theme.colors.textSecondary}
           value={value}
           onChangeText={onChangeText}
           editable={editable}
-          pointerEvents="none"
         />
       </Pressable>
 
-      {/* Right Icon (Optional) */}
       {rightIcon && (
         <Pressable onPress={onPress}>
           <Box

@@ -1,8 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
-
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { FlatList } from 'react-native';
 import { Box, Toggle, HeaderBack, Text } from '@src';
 import { notificationSettings } from '@src/data/notificationSettings';
 
@@ -18,7 +16,6 @@ const NotificationScreen = () => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Box paddingLeft="l" paddingRight="l">
-        
         {/* Header */}
         <Box>
           <HeaderBack title="Notification" />
@@ -29,23 +26,20 @@ const NotificationScreen = () => {
         </Text>
         {/* Toggles */}
         <Box marginTop="m">
-          <FlatList
-            data={notificationSettings}
-            keyExtractor={item => item.id}
-            renderItem={({ item }) => (
-              <Toggle
-                title={item.title}
-                description={item.description}
-                value={settings[item.id]}
-                onValueChange={value =>
-                  setSettings(prev => ({
-                    ...prev,
-                    [item.id]: value,
-                  }))
-                }
-              />
-            )}
-          />
+          {notificationSettings.map(item => (
+            <Toggle
+              key={item.id}
+              title={item.title}
+              description={item.description}
+              value={settings[item.id]}
+              onValueChange={value =>
+                setSettings(prev => ({
+                  ...prev,
+                  [item.id]: value,
+                }))
+              }
+            />
+          ))}
         </Box>
       </Box>
     </SafeAreaView>
