@@ -27,6 +27,10 @@ const TermScreen = () => {
           />
         ))}
         </Box>
+
+        <Box  alignItems='center'>
+          <Text marginTop='m' variant='medium' >© 2026 LUMI Inc. All rights reserved.</Text>
+        </Box>
       </Box>
       </ScrollView>
     </SafeAreaView>
