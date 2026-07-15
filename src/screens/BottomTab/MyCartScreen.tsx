@@ -111,7 +111,7 @@ const MyCartScreen = () => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <Box flex={1} padding="l">
+      <Box flex={1} paddingLeft="l" paddingRight="l">
         <Text variant="heading">
           My Cart ({cart.length})
         </Text>

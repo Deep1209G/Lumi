@@ -11,7 +11,7 @@ const ProfileScreen = () => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <Box padding="l">
+      <Box paddingLeft="l" paddingRight="l">
         {/*Heading */}
         <Text variant="heading">{t('profile')}</Text>
         {/*Header*/}

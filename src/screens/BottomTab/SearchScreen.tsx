@@ -24,7 +24,7 @@ const SearchScreen = () => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Box padding="l">
+        <Box paddingLeft="l" paddingRight="l">
           {/* Heading */}
           <Text variant="heading">Search</Text>
 

@@ -1,11 +1,16 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import React from 'react';
+import { Box, HeaderBack } from '@src';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const RateScreen = () => {
   return (
-    <View>
-      <Text>RateScreen</Text>
-    </View>
+         <SafeAreaView>
+      <Box paddingLeft='m' paddingRight='m'>
+
+        {/*Header */}
+        <HeaderBack title="Rate The App" />
+      </Box>
+    </SafeAreaView>
   )
 }
 

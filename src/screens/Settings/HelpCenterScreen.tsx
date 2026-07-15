@@ -3,9 +3,10 @@ import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Box, FAQAccordion, HeaderBack, Text } from '@src';
 import { Pressable } from 'react-native';
-import theme from '../../theme/theme';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { faqs } from '@src/data/faqs';
+import theme from '@src/theme/theme';
+
 
 const HelpCenterScreen = () => {
   const [expandedId, setExpandedId] = useState<string | null>(null);
@@ -19,7 +20,8 @@ const HelpCenterScreen = () => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, padding: theme.spacing.l }}>
+    <SafeAreaView style={{ flex: 1 }}>
+      <Box paddingLeft="l" paddingRight="l">
       {/*Heading Section */}
       <Box>
         <HeaderBack title="Help Center" />
@@ -68,6 +70,7 @@ const HelpCenterScreen = () => {
             />
           </Box>
         ))}
+      </Box>
       </Box>
     </SafeAreaView>
   );

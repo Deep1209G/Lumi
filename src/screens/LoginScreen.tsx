@@ -36,10 +36,15 @@ const LoginScreen = () => {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <Box flex={1} padding="l" justifyContent="space-between">
+      <Box
+        flex={1}
+        paddingLeft="l"
+        paddingRight="l"
+        justifyContent="space-between"
+      >
         <Box>
           {/*Title*/}
-          <Text variant="title" marginTop="m">
+          <Text variant="title">
             Welcome back
           </Text>
 
@@ -49,7 +54,7 @@ const LoginScreen = () => {
           </Text>
 
           {/*Email*/}
-          <Box marginTop="xxl">
+          <Box marginTop="xl">
             <Text marginBottom="s" variant="medium" color="textSecondary">
               Username
             </Text>

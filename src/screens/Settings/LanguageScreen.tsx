@@ -5,7 +5,6 @@ import React, { useEffect, useState } from 'react';
 import { saveLanguage, getLanguage } from '@src/utils/languageStorage';
 import { FlatList } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import theme from '@src/theme/theme';
 import { Box, HeaderBack, LanguageCard } from '@src';
 import { languages } from '@src/data/languages';
 
@@ -23,7 +22,8 @@ const LanguageScreen = () => {
   }, []);
 
   return (
-    <SafeAreaView style={{ flex: 1, padding: theme.spacing.l }}>
+    <SafeAreaView style={{ flex: 1}}>
+      <Box paddingLeft="l" paddingRight="l">
       <HeaderBack title={t('language')} />
 
       <Box marginTop="l">
@@ -47,6 +47,7 @@ const LanguageScreen = () => {
             />
           )}
         />
+      </Box>
       </Box>
     </SafeAreaView>
   );

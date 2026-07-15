@@ -45,7 +45,7 @@ const HomeScreen = () => {
         ListHeaderComponent={
           <>
             {/* Header */}
-            <Box padding="l">
+            <Box paddingLeft="l" paddingRight="l">
               <Header />
 
               {/* Search Bar */}
@@ -72,7 +72,7 @@ const HomeScreen = () => {
               </Box>
 
               {/* Popular Text */}
-              <Box marginTop="m" flexDirection="row" alignItems="center">
+              <Box marginTop="m" flexDirection="row" alignItems="center" marginBottom='m'>
                 <Box flex={1}>
                   <Text variant="subtitle"> {t('popularNow')}</Text>
                 </Box>

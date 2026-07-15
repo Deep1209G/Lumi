@@ -29,7 +29,7 @@ const CheckoutScreen = () => {
   
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <Box flex={1} padding="l">
+      <Box flex={1} paddingLeft="l" paddingRight="l">
         {/* Header */}
         <Box
           flexDirection="row"

@@ -2,13 +2,11 @@
 
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import theme from '../../theme/theme';
 import { FlatList } from 'react-native';
 import { Box, Toggle, HeaderBack, Text } from '@src';
 import { notificationSettings } from '@src/data/notificationSettings';
 
 const NotificationScreen = () => {
-
   const [settings, setSettings] = useState<Record<string, boolean>>({
     '1': false,
     '2': false,
@@ -18,19 +16,17 @@ const NotificationScreen = () => {
   });
 
   return (
-    <SafeAreaView style={{ flex: 1, padding: theme.spacing.l }}>
-      <Box>
+    <SafeAreaView style={{ flex: 1 }}>
+      <Box paddingLeft="l" paddingRight="l">
+        
         {/* Header */}
         <Box>
           <HeaderBack title="Notification" />
         </Box>
-
         {/* Push subtitle */}
-
         <Text variant="medium" marginTop="m">
           PUSH NOTIFICATION
         </Text>
-
         {/* Toggles */}
         <Box marginTop="m">
           <FlatList

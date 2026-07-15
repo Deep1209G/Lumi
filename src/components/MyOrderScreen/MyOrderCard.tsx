@@ -1,50 +1,113 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import { Box, Text } from '@src';
-import { Image } from 'react-native';
-import Images from '../../assets/images/index';
-import Ionicons from 'react-native-vector-icons/Ionicons'
-import theme from '../../theme/theme'
+import { Image, ImageSourcePropType } from 'react-native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import theme from '../../theme/theme';
 
-const MyOrderCard = () => {
+type Props = {
+  orderId: string;
+  status: string;
+  image: ImageSourcePropType;
+  title: string;
+  quantity: number;
+  date: string;
+  total: number;
+};
+
+const MyOrderCard = ({
+  orderId,
+  status,
+  image,
+  title,
+  quantity,
+  date,
+  total,
+}: Props) => {
   return (
+    
+  <Box
+    padding="m"
+    backgroundColor="white"
+    borderRadius="m"
+    borderColor="border"
+    borderWidth={1}
+    marginBottom="m"
+  >
+    {/* Top */}
     <Box
-      padding="m"
-      height={140}
-      backgroundColor="white"
-      borderRadius="m"
-      borderColor="border"
-      borderWidth={1}
+      flexDirection="row"
+      justifyContent="space-between"
+      alignItems="center"
     >
-      <Box flexDirection="row" justifyContent="space-between">
-        <Text variant="button">ORD_ID</Text>
-        <Text variant="medium" color="green">
-          Status
+      <Text variant="medium" color='black'>{orderId}</Text>
+
+      <Text variant="medium" color="green">
+        {status}
+      </Text>
+    </Box>
+
+    {/* Product */}
+    <Box
+      flexDirection="row"
+      marginTop="m"
+      alignItems="center"
+    >
+      <Image
+        source={image}
+        style={{
+          height: 50,
+          width: 50,
+          borderRadius: 12,
+        }}
+      />
+
+      <Box flex={1} marginLeft="m">
+        <Text variant="body">
+          {title}
         </Text>
-      </Box>
 
-      <Box marginTop="s">
-        <Image
-          source={Images.avatar1}
-          style={{ height: 50, width: 50, borderRadius: 14 }}
-        />
-      </Box>
-       
-    <Box flexDirection='row' justifyContent='space-between' alignItems='center'  marginTop='m'>
-
-      <Box flexDirection='row' alignItems='center' >
-        <Ionicons name='time-outline' color={theme.colors.icon} size={14}/>
-        <Text variant='small' marginLeft='xs'>Jun 12 2026</Text>
-      </Box>
-
-      <Box>
-        <Text variant="rupees" >
-            ₹ 899
+        <Text
+          variant="medium"
+          color="textSecondary"
+          marginTop="xs"
+        >
+          Qty : {quantity}
         </Text>
-      </Box>
-
       </Box>
     </Box>
+
+    {/* Bottom */}
+    <Box
+      flexDirection="row"
+      justifyContent="space-between"
+      alignItems="center"
+      marginTop="m"
+    >
+      <Box
+        flexDirection="row"
+        alignItems="center"
+      >
+        <Ionicons
+          name="time-outline"
+          size={15}
+          color={theme.colors.icon}
+        />
+
+        <Text
+          variant="small"
+          marginLeft="xs"
+        >
+          {date}
+        </Text>
+      </Box>
+
+      <Text variant="rupees">
+        ₹ {total}
+      </Text>
+    </Box>
+  </Box>
+
   );
 };
 

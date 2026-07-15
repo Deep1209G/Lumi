@@ -5,7 +5,7 @@ import { Alert, FlatList } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-
+import { OrderContext } from '@src/context/OrderContext';
 import {
   Box,
   Text,
@@ -28,7 +28,8 @@ const PaymentScreen = () => {
 
   const navigation = useNavigation<NavigationProp>();
 
-  const { cart } = useContext(CartContext);
+  const { cart, clearCart } = useContext(CartContext);
+  const { addOrder } = useContext(OrderContext);
   const { total } = useCartSummary(cart);
 
   const [expandedId, setExpandedId] = useState<string | null>(null);
@@ -46,25 +47,33 @@ const PaymentScreen = () => {
       setExpandedId(id);
     }
   };
-  const handlePayment = () => {
+  const handlePayment = async () => {
     console.log('Button Pressed');
-    console.log('Selected Payment:', selectedPayment);
 
     if (!selectedPayment) {
       Alert.alert('Please select a payment method');
       return;
     }
 
-    console.log('Before Navigation');
+    try {
+      // Save order
+      await addOrder(cart);
 
-   navigation.navigate('OrderSuccess');
-    console.log('After Navigation');
+      // Clear cart
+      await clearCart();
+
+      // Navigate
+      navigation.navigate('OrderSuccess');
+    } catch (error) {
+      console.log(error);
+      Alert.alert('Something went wrong');
+    }
   };
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
       {/* Scrollable Content */}
-      <Box flex={1} padding="l">
+      <Box flex={1} paddingLeft="l" paddingRight="l">
         {/* Header */}
         <Box
           flexDirection="row"

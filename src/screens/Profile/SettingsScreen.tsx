@@ -2,7 +2,6 @@
 import { useTranslation } from 'react-i18next';
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import theme from '../../theme/theme';
 import { Box, HeaderBack } from '@src';
 import { settingMenu } from '@src/data/settingMenu';
 import useSetting from '../../hooks/useSetting';
@@ -13,22 +12,24 @@ const SettingsScreen = () => {
   const { handleMenuPress } = useSetting();
 
   return (
-    <SafeAreaView style={{ flex: 1, padding: theme.spacing.l }}>
-      {/*Heading Section */}
-      <Box>
-        <HeaderBack title={t('settings')} />
-      </Box>
+    <SafeAreaView style={{ flex: 1 }}>
+      <Box paddingLeft="l" paddingRight="l">
+        {/*Heading Section */}
+        <Box>
+          <HeaderBack title={t('settings')} />
+        </Box>
 
-      {/*Card*/}
-      <Box marginTop="m">
-        {settingMenu.map(item => (
-          <Box key={item.id} marginTop="m">
-            <SettingCard
-              title={t(item.title)}
-              onPress={() => handleMenuPress(item.id)}
-            />
-          </Box>
-        ))}
+        {/*Card*/}
+        <Box marginTop="m">
+          {settingMenu.map(item => (
+            <Box key={item.id} marginTop="m">
+              <SettingCard
+                title={t(item.title)}
+                onPress={() => handleMenuPress(item.id)}
+              />
+            </Box>
+          ))}
+        </Box>
       </Box>
     </SafeAreaView>
   );
