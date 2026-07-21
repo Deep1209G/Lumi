@@ -1,9 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import {
-  saveCart,
-  getCart,
-  clearCartStorage,
-} from '@src/utils/cartStorage';
+import { saveCart, getCart, clearCartStorage } from '@src/utils/cartStorage';
 
 export type CartItem = {
   product: any;
@@ -46,9 +42,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   // Add to Cart
   const addToCart = (product: any, quantity: number) => {
     setCart(prev => {
-      const existingItem = prev.find(
-        item => item.product.id === product.id,
-      );
+      const existingItem = prev.find(item => item.product.id === product.id);
 
       if (existingItem) {
         return prev.map(item =>
@@ -67,9 +61,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
 
   // Remove Item
   const removeFromCart = (id: string) => {
-    setCart(prev =>
-      prev.filter(item => item.product.id !== id),
-    );
+    setCart(prev => prev.filter(item => item.product.id !== id));
   };
 
   // Increase Quantity

@@ -19,7 +19,7 @@ const MyOrderScreen = () => {
         {/* Orders */}
         <Box marginTop="l" flex={1}>
           {orders.length === 0 ? (
-            <Box flex={1} marginTop='xxxl' alignItems="center">
+            <Box flex={1} marginTop="xxxl" alignItems="center">
               <Text variant="subtitle">No Orders Yet</Text>
 
               <Text variant="medium" marginTop="s" color="textSecondary">
@@ -31,17 +31,19 @@ const MyOrderScreen = () => {
               data={orders}
               keyExtractor={item => item.id}
               showsVerticalScrollIndicator={false}
-              renderItem={({ item }) => (
-                <MyOrderCard
-                  orderId={item.id}
-                  status={item.status}
-                  image={item.item.product.image}
-                  title={item.item.product.title}
-                  quantity={item.item.quantity}
-                  date={item.date}
-                  total={item.total}
-                />
-              )}
+              renderItem={({ item }) => {
+                return (
+                  <MyOrderCard
+                    orderId={item.id}
+                    status={item.status}
+                    image={item.item.product.image}
+                    title={item.item.product.name}
+                    quantity={item.item.quantity}
+                    date={item.date}
+                    total={item.total}
+                  />
+                );
+              }}
             />
           )}
         </Box>

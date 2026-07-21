@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
@@ -11,7 +12,7 @@ import {
   SocialButton,
   Images,
   PressableText,
-  useLogin,
+  useLogin,        
 } from '@src';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
