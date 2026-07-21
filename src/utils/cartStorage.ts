@@ -1,42 +1,82 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { CartItem } from '@src/context/CardContext';
 
-const CART_KEY = 'cart';
+const getCartKey = (userId: string) => {
+  return `cart_${userId}`;
+};
 
-export const saveCart = async (cart: CartItem[]) => {
+
+// Save cart
+export const saveCart = async (
+  userId: string,
+  cart: CartItem[],
+) => {
   try {
-    console.log('Saving Cart:', cart);
+    const CART_KEY = getCartKey(userId);
+
+    console.log('Saving Cart:', CART_KEY, cart);
 
     await AsyncStorage.setItem(
       CART_KEY,
       JSON.stringify(cart),
     );
+
   } catch (error) {
     console.log('Save Cart Error', error);
   }
 };
 
-export const getCart = async (): Promise<CartItem[]> => {
-  try {
-    const data = await AsyncStorage.getItem(CART_KEY);
 
-    console.log('Loaded Cart:', data);
+// Get cart
+export const getCart = async (
+  userId: string,
+): Promise<CartItem[]> => {
+
+  try {
+
+    const CART_KEY = getCartKey(userId);
+
+    const data = await AsyncStorage.getItem(
+      CART_KEY,
+    );
+
+
+    console.log('Loaded Cart:', CART_KEY, data);
+
 
     if (data) {
       return JSON.parse(data);
     }
 
+
     return [];
+
   } catch (error) {
+
     console.log('Get Cart Error', error);
+
     return [];
+
   }
 };
 
-export const clearCartStorage = async () => {
+
+// Clear cart
+export const clearCartStorage = async (
+  userId: string,
+) => {
+
   try {
-    await AsyncStorage.removeItem(CART_KEY);
+
+    const CART_KEY = getCartKey(userId);
+
+    await AsyncStorage.removeItem(
+      CART_KEY,
+    );
+
   } catch (error) {
+
     console.log('Clear Cart Error', error);
+
   }
 };

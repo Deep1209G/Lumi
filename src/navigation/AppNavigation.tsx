@@ -1,7 +1,7 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigatorScreenParams } from '@react-navigation/native';
-
+import { Address } from '@src/utils/addressStorage';
 import {
   OnBoardingScreen,
   SplashScreen,
@@ -28,6 +28,7 @@ import {
   PrivacyScreen,
   RateScreen,
   TermScreen,
+  AddressListScreen,
 } from '@src';
 
 import BottomTab from './BottomTab';
@@ -52,7 +53,6 @@ export type RootStackParamList = {
     product: Product;
   };
   AddToCartSuccess: undefined;
-  Address: undefined;
   MyOrder: undefined;
   PaymentMethod: undefined;
   Setting: undefined;
@@ -69,8 +69,12 @@ export type RootStackParamList = {
   Privacy: undefined;
   Rate: undefined;
   Term: undefined;
-
+  Address: {
+  address?: Address;
+} | undefined;
+  AddressList: undefined;
 };
+
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const AppNavigation = () => {
@@ -105,6 +109,7 @@ const AppNavigation = () => {
       <Stack.Screen name="Privacy" component={PrivacyScreen} />
       <Stack.Screen name="Rate" component={RateScreen} />
       <Stack.Screen name="Term" component={TermScreen} />
+      <Stack.Screen name="AddressList" component={AddressListScreen} />
     </Stack.Navigator>
   );
 };
