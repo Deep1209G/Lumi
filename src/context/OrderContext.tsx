@@ -12,7 +12,7 @@ export type Order = {
 
 type OrderContextType = {
   orders: Order[];
- addOrder: (cart: CartItem[]) => Promise<void>;
+  addOrder: (cart: CartItem[]) => Promise<void>;
 };
 
 export const OrderContext = createContext({} as OrderContextType);
@@ -40,7 +40,8 @@ export const OrderProvider = ({ children }: Props) => {
     }
   };
 
-const addOrder = async (cart: CartItem[]) => {
+  const addOrder = async (cart: CartItem[]) => {
+
     const newOrders: Order[] = cart.map(item => ({
       id: `ORD${Date.now()}-${item.product.id}`,
       date: new Date().toLocaleDateString(),

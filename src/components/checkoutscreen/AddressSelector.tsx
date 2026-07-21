@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import { Pressable } from 'react-native';
 import { Box, Text } from '@src';
@@ -6,27 +7,29 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 type AddressSelectorProps = {
   fullName: string;
   address: string;
+  type?: string;
+
   onPress: () => void;
 };
 const AddressSelector = ({
   onPress,
   fullName,
   address,
+  type,
 }: AddressSelectorProps) => {
   return (
     <Box
       backgroundColor="white"
-      height={100}
+      minHeight={120}
       borderRadius="m"
       borderWidth={1}
       borderColor="border"
       flexDirection="row"
       alignItems="center"
-      justifyContent="space-between"
       padding="m"
     >
       {/* Left Section */}
-      <Box flexDirection="row" flex={1} alignItems="center">
+      <Box flexDirection="row" flex={1} alignItems="center" marginRight="s">
         <Box
           backgroundColor="gray"
           height={40}
@@ -40,17 +43,23 @@ const AddressSelector = ({
 
         <Box marginLeft="m" flex={1}>
           <Text variant="medium" color="textPrimary">
-             {fullName}
+            {fullName}
           </Text>
 
-          <Text variant="small" color="textSecondary" numberOfLines={2}>
+          <Text variant="small" color="textSecondary" numberOfLines={3} ellipsizeMode="tail">
             {address}
           </Text>
+
+          {type && (
+            <Text variant="small" color="textPrimary" marginTop="xs">
+              {type}
+            </Text>
+          )}
         </Box>
       </Box>
 
       {/* Right Section */}
-      <Pressable onPress={onPress}>
+      <Pressable onPress={onPress} style={{ width: 60 }}>
         <Box
           backgroundColor="gray"
           paddingHorizontal="m"

@@ -11,17 +11,42 @@ const useLogin = () => {
 
       const data = await loginUser(username, password);
 
-      await AsyncStorage.setItem('token', data.accessToken);
+      await AsyncStorage.setItem(
+        'token',
+        data.accessToken,
+      );
 
-      await AsyncStorage.setItem('isLoggedIn', 'true');
+      await AsyncStorage.setItem(
+        'isLoggedIn',
+        'true',
+      );
 
-      await AsyncStorage.setItem('user', JSON.stringify(data));
+      const user = {
+       
+        id: data.id.toString(),
+        name: `${data.firstName ?? ''} ${data.lastName ?? ''}`.trim(),
+        email: data.email,
 
-      return { success: true, data };
+      };
+
+      await AsyncStorage.setItem(
+        'currentUser',
+        JSON.stringify(user),
+      );
+
+      console.log('SAVED USER:', user);
+
+      return {
+        success: true,
+        data,
+      };
+
     } catch (error: any) {
       return {
         success: false,
-        message: error.response?.data?.message || error.message,
+        message:
+          error.response?.data?.message ||
+          error.message,
       };
     } finally {
       setLoading(false);

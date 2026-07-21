@@ -4,10 +4,12 @@ import { FlatList } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+
 import { CartContext } from '@src/context/CardContext';
 import { RootStackParamList } from '../navigation/AppNavigation';
 import useCartSummary from '../hooks/useCartSummary';
 import useAddress from '@src/hooks/useAddress';
+
 import {
   Box,
   Text,
@@ -19,17 +21,22 @@ import {
 } from '@src';
 
 const CheckoutScreen = () => {
- 
   type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
   const navigation = useNavigation<NavigationProp>();
+
   const { cart } = useContext(CartContext);
-  const { address } = useAddress();
-  const { totalItems, subtotal, gst, shipping, total } = useCartSummary(cart);
-  
+
+  // Updated
+  const { selectedAddress } = useAddress();
+
+  const { totalItems, subtotal, gst, shipping, total } =
+    useCartSummary(cart);
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Box flex={1} paddingLeft="l" paddingRight="l">
+
         {/* Header */}
         <Box
           flexDirection="row"
@@ -41,10 +48,13 @@ const CheckoutScreen = () => {
             onPressIcon={() => navigation.goBack()}
           />
 
-          <Text variant="heading">Checkout</Text>
+          <Text variant="heading">
+            Checkout
+          </Text>
 
           <Box width={24} />
         </Box>
+
 
         {/* Progress Stepper */}
         <Box marginTop="l" marginBottom="l">
@@ -54,7 +64,7 @@ const CheckoutScreen = () => {
           />
         </Box>
 
-        {/* Scrollable Content */}
+
         <FlatList
           style={{ flex: 1 }}
           data={cart}
@@ -63,30 +73,51 @@ const CheckoutScreen = () => {
           contentContainerStyle={{
             paddingBottom: 20,
           }}
+
           renderItem={({ item }) => (
-            <OrderSummary product={item.product} quantity={item.quantity} />
+            <OrderSummary
+              product={item.product}
+              quantity={item.quantity}
+            />
           )}
+
           ListHeaderComponent={
             <Text variant="body" marginBottom="s">
               Order Summary
             </Text>
           }
+
+
           ListFooterComponent={
             <>
               {/* Shipping Address */}
               <Box marginTop="m">
+
                 <Text variant="body" marginBottom="s">
                   Shipping Address
                 </Text>
 
+
                 <AddressSelector
-                  fullName={address?.fullName ?? 'No Address'}
-                  address={
-                    address?.address ?? 'Please add your shipping address'
+                  fullName={
+                    selectedAddress?.fullName ?? 'No Address'
                   }
-                  onPress={() => navigation.navigate('Address')}
+
+                  address={
+                    selectedAddress
+                      ? `${selectedAddress.house}, ${selectedAddress.area}, ${selectedAddress.city}, ${selectedAddress.state} - ${selectedAddress.pincode}`
+                      : 'Please add your shipping address'
+                  }
+
+                  type={selectedAddress?.type}
+
+                  onPress={() =>
+                    navigation.navigate('AddressList')
+                  }
                 />
+
               </Box>
+
 
               {/* Bill */}
               <Box
@@ -95,56 +126,94 @@ const CheckoutScreen = () => {
                 borderRadius="m"
                 backgroundColor="white"
               >
-                <Text variant="subtitle">Bill</Text>
+
+                <Text variant="subtitle">
+                  Bill
+                </Text>
+
 
                 <Box
                   marginTop="m"
                   flexDirection="row"
                   justifyContent="space-between"
                 >
-                  <Text variant="body">Items ({totalItems})</Text>
-
-                  <Text variant="description">₹ {subtotal.toFixed(2)}</Text>
-                </Box>
-
-                <Box
-                  marginTop="s"
-                  flexDirection="row"
-                  justifyContent="space-between"
-                >
-                  <Text variant="body">GST (18%)</Text>
-
-                  <Text variant="description">₹ {gst.toFixed(2)}</Text>
-                </Box>
-
-                <Box
-                  marginTop="s"
-                  flexDirection="row"
-                  justifyContent="space-between"
-                >
-                  <Text variant="body">Shipping</Text>
+                  <Text variant="body">
+                    Items ({totalItems})
+                  </Text>
 
                   <Text variant="description">
-                    {shipping === 0 ? 'Free' : `₹ ${shipping.toFixed(2)}`}
+                    ₹ {subtotal.toFixed(2)}
                   </Text>
+
                 </Box>
 
-                <Box marginTop="m" borderTopWidth={1} borderColor="border" />
+
+                <Box
+                  marginTop="s"
+                  flexDirection="row"
+                  justifyContent="space-between"
+                >
+
+                  <Text variant="body">
+                    GST (18%)
+                  </Text>
+
+                  <Text variant="description">
+                    ₹ {gst.toFixed(2)}
+                  </Text>
+
+                </Box>
+
+
+                <Box
+                  marginTop="s"
+                  flexDirection="row"
+                  justifyContent="space-between"
+                >
+
+                  <Text variant="body">
+                    Shipping
+                  </Text>
+
+                  <Text variant="description">
+                    {shipping === 0
+                      ? 'Free'
+                      : `₹ ${shipping.toFixed(2)}`}
+                  </Text>
+
+                </Box>
+
+
+                <Box
+                  marginTop="m"
+                  borderTopWidth={1}
+                  borderColor="border"
+                />
+
 
                 <Box
                   marginTop="m"
                   flexDirection="row"
                   justifyContent="space-between"
                 >
-                  <Text variant="subtitle">Total</Text>
 
-                  <Text variant="subtitle">₹ {total.toFixed(2)}</Text>
+                  <Text variant="subtitle">
+                    Total
+                  </Text>
+
+                  <Text variant="subtitle">
+                    ₹ {total.toFixed(2)}
+                  </Text>
+
                 </Box>
+
               </Box>
             </>
           }
         />
+
       </Box>
+
 
       {/* Bottom Button */}
       <Box
@@ -154,12 +223,17 @@ const CheckoutScreen = () => {
         borderTopWidth={1}
         borderColor="border"
       >
+
         <CustomButton
           title={`Continue to Payment ₹${total.toFixed(2)}`}
           rightIcon="arrow-forward-outline"
-          onPress={() => navigation.navigate('Payment')}
+          onPress={() =>
+            navigation.navigate('Payment')
+          }
         />
+
       </Box>
+
     </SafeAreaView>
   );
 };

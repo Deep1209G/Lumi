@@ -5,12 +5,20 @@ import { Image } from 'react-native';
 import theme from '@src/theme/theme';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+type User = {
+  id: string;
+  name: string;
+  email: string;
+};
+
 const ProfileHeader = () => {
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     const getUser = async () => {
-      const userData = await AsyncStorage.getItem('user');
+      const userData = await AsyncStorage.getItem('currentUser');
+
+      console.log('PROFILE USER:', userData);
 
       if (userData) {
         setUser(JSON.parse(userData));
@@ -19,8 +27,9 @@ const ProfileHeader = () => {
 
     getUser();
   }, []);
+
   return (
-    <Box flexDirection='row' >
+    <Box flexDirection="row">
       <Box
         justifyContent="center"
         alignItems="center"
@@ -32,14 +41,21 @@ const ProfileHeader = () => {
       >
         <Image
           source={Images.avatar1}
-          style={{ width: 60, height: 60, borderRadius: theme.borderRadii.m }}
+          style={{
+            width: 60,
+            height: 60,
+            borderRadius: theme.borderRadii.m,
+          }}
         />
       </Box>
 
-      <Box justifyContent='center' marginLeft='m'>
-        <Text variant="button">{user?.firstName} {user?.lastName}</Text>
+      <Box justifyContent="center" marginLeft="m">
+        <Text variant="button">
+          {user?.name}
+        </Text>
+
         <Text variant="medium">
-           {user?.email}
+          {user?.email}
         </Text>
       </Box>
     </Box>

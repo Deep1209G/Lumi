@@ -6,10 +6,12 @@ import theme from './src/theme/theme';
 import { WishlistProvider } from './src/context/WishlistContext';
 import { CartProvider } from './src/context/CardContext';
 import { OrderProvider } from './src/context/OrderContext';
+import { AuthProvider } from '@src/context/AuthContext';
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
+      <AuthProvider>
       <OrderProvider>
         <CartProvider>
           <WishlistProvider>
@@ -19,6 +21,7 @@ function App() {
           </WishlistProvider>
         </CartProvider>
       </OrderProvider>
+      </AuthProvider>
     </ThemeProvider>
   );
 }

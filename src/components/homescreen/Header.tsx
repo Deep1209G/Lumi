@@ -1,60 +1,63 @@
 /* eslint-disable react-native/no-inline-styles */
-import { useTranslation } from 'react-i18next';
-import React, { useEffect, useState, useRef } from 'react';
-import {
-  Animated,
-  Pressable,
-} from 'react-native';
+import {useTranslation} from 'react-i18next';
+import React,{useEffect,useRef,useState} from 'react';
+import {Animated,Pressable} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
-import { Box, Text, Images } from '@src';
+import {Box,Text,Images} from '@src';
 import theme from '@src/theme/theme';
 
-const Header = () => {
-  const { t } = useTranslation();
-  const [user, setUser] = useState<any>(null);
+type User={
+  id:string;
+  name:string;
+  email:string;
+};
 
-  useEffect(() => {
-    const getUser = async () => {
-      const userData = await AsyncStorage.getItem('user');
+const Header=()=>{
+  const {t}=useTranslation();
+  const [user,setUser]=useState<User|null>(null);
 
-      if (userData) {
+  useEffect(()=>{
+    const getUser=async()=>{
+      const userData=await AsyncStorage.getItem('currentUser');
+      console.log('HEADER USER:',userData);
+
+      if(userData){
         setUser(JSON.parse(userData));
       }
     };
 
     getUser();
-  }, []);
+  },[]);
 
-  const flipAnim = useRef(new Animated.Value(0)).current;
+  const flipAnim=useRef(new Animated.Value(0)).current;
 
-  const handleFlip = () => {
+  const handleFlip=()=>{
     flipAnim.setValue(0);
 
-    Animated.timing(flipAnim, {
-      toValue: 1,
-      duration: 700,
-      useNativeDriver: true,
+    Animated.timing(flipAnim,{
+      toValue:1,
+      duration:700,
+      useNativeDriver:true,
     }).start();
   };
 
-  const rotateY = flipAnim.interpolate({
-    inputRange: [0, 1],
-    outputRange: ['0deg', '180deg'],
+  const rotateY=flipAnim.interpolate({
+    inputRange:[0,1],
+    outputRange:['0deg','180deg'],
   });
 
-  return (
+  return(
     <Box flexDirection="row" justifyContent="space-between">
-      {/* User Name */}
       <Box>
-        <Text variant="medium"> {t('helloWelcome')}</Text>
+        <Text variant="medium">
+          {t('helloWelcome')}
+        </Text>
 
         <Text variant="subtitle">
-          {user?.firstName} {user?.lastName}
+          {user?.name}
         </Text>
       </Box>
 
-      {/* Avatar */}
       <Pressable onPress={handleFlip}>
         <Box
           justifyContent="center"
@@ -68,12 +71,12 @@ const Header = () => {
           <Animated.Image
             source={Images.avatar1}
             style={{
-              width: 40,
-              height: 40,
-              borderRadius: theme.borderRadii.s,
-              transform: [
-                { perspective: 1000 },
-                { rotateY },
+              width:40,
+              height:40,
+              borderRadius:theme.borderRadii.s,
+              transform:[
+                {perspective:1000},
+                {rotateY},
               ],
             }}
             resizeMode="cover"

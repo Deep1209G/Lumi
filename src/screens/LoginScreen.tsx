@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../navigation/AppNavigation';
+/* eslint-disable react-native/no-inline-styles */
+import React, {useState, useContext} from 'react';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RootStackParamList} from '../navigation/AppNavigation';
+import {AuthContext} from '@src/context/AuthContext';
 import {
   Box,
   Text,
@@ -18,46 +20,44 @@ type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 const LoginScreen = () => {
   const navigation = useNavigation<NavigationProp>();
-  const [name, setName] = useState('');
-  const [password, setPassword] = useState('');
-  const { login, loading } = useLogin();
+  const [name,setName] = useState('');
+  const [password,setPassword] = useState('');
+  const {login:loginUserHook,loading} = useLogin();
+  const {login} = useContext(AuthContext);
 
   const handleLogin = async () => {
-    const result = await login(name, password);
+    const result = await loginUserHook(name,password);
 
-    if (result.success) {
-      navigation.replace('MainTab', {
-        screen: 'Home',
+    if(result.success){
+      await login({
+        id: result.data.id.toString(),
+        name: `${result.data.firstName ?? ''} ${result.data.lastName ?? ''}`.trim(),
+        email: result.data.email,
       });
-    } else {
+
+      navigation.replace('MainTab',{
+        screen:'Home',
+      });
+    }else{
       console.log(result.message);
     }
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <Box
-        flex={1}
-        paddingLeft="l"
-        paddingRight="l"
-        justifyContent="space-between"
-      >
+    <SafeAreaView style={{flex:1}}>
+      <Box flex={1} paddingLeft="l" paddingRight="l" justifyContent="space-between">
         <Box>
-          {/*Title*/}
-          <Text variant="title">
-            Welcome back
-          </Text>
+          <Text variant="title">Welcome back</Text>
 
-          {/*description*/}
           <Text variant="medium" marginTop="xs">
             Sign in to continue shopping
           </Text>
 
-          {/*Email*/}
           <Box marginTop="xl">
             <Text marginBottom="s" variant="medium" color="textSecondary">
               Username
             </Text>
+
             <CustomTextInput
               placeholder="Username"
               leftIcon="mail-outline"
@@ -66,11 +66,11 @@ const LoginScreen = () => {
             />
           </Box>
 
-          {/*Password*/}
           <Box marginTop="m">
             <Text marginBottom="s" variant="medium" color="textSecondary">
               Password
             </Text>
+
             <CustomTextInput
               placeholder="Password"
               leftIcon="lock-closed-outline"
@@ -80,15 +80,6 @@ const LoginScreen = () => {
             />
           </Box>
 
-          {/*Forgot Password*/}
-          <Box alignItems="flex-end" marginTop="m">
-            <PressableText
-              text="Forgot Password?"
-              onPress={() => console.log('frogot Password')}
-            />
-          </Box>
-
-          {/*Sign In Button */}
           <Box marginTop="m">
             <CustomButton
               title={loading ? 'Signing In...' : 'Sign In'}
@@ -96,42 +87,18 @@ const LoginScreen = () => {
             />
           </Box>
 
-          {/*Or */}
-          <Box flexDirection="row" alignItems="center" marginTop="xl">
-            <Box flex={1} height={1} backgroundColor="border" />
-            <Text variant="description" marginHorizontal="s">
-              or continue with
-            </Text>
-            <Box flex={1} height={1} backgroundColor="border" />
-          </Box>
-
-          {/*Social Button */}
-          <Box
-            marginTop="xxl"
-            flexDirection="row"
-            justifyContent="space-evenly"
-          >
-            <SocialButton
-              source={Images.facebook}
-              onPress={() => console.log('facebook btn')}
-            />
-            <SocialButton
-              source={Images.google}
-              onPress={() => console.log('google btn')}
-            />
-            <SocialButton
-              source={Images.apple}
-              onPress={() => console.log('apple btn')}
-            />
+          <Box marginTop="xxl" flexDirection="row" justifyContent="space-evenly">
+            <SocialButton source={Images.facebook} onPress={() => {}} />
+            <SocialButton source={Images.google} onPress={() => {}} />
+            <SocialButton source={Images.apple} onPress={() => {}} />
           </Box>
         </Box>
 
-        {/*Dont have a account */}
-
-        <Box flexDirection="row" alignItems="center" justifyContent="center">
-          <Text variant="medium" color="textSecondary" marginRight="xs">
+        <Box flexDirection="row" justifyContent="center">
+          <Text variant="medium" color="textSecondary">
             Don't have a account?
           </Text>
+
           <PressableText
             text="Sign Up"
             onPress={() => navigation.navigate('SignIn')}
