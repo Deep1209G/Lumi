@@ -20,7 +20,6 @@ import {
   useLogin,
 } from '@src';
 
-
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 const LoginScreen = () => {
@@ -30,7 +29,6 @@ const LoginScreen = () => {
   const [password, setPassword] = useState('');
 
   const { login: loginUserHook, loading } = useLogin();
-
 
   const handleLogin = async () => {
     const result = await loginUserHook(name, password);
@@ -43,7 +41,6 @@ const LoginScreen = () => {
       console.log(result.message);
     }
   };
-
 
   const handleGoogleLogin = async () => {
     try {
@@ -59,12 +56,10 @@ const LoginScreen = () => {
       navigation.replace('MainTab', {
         screen: 'Home',
       });
-
     } catch (error) {
       console.log('Login failed:', error);
     }
   };
-
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -74,23 +69,15 @@ const LoginScreen = () => {
         paddingRight="l"
         justifyContent="space-between"
       >
-
         <Box>
-          <Text variant="title">
-            Welcome back
-          </Text>
+          <Text variant="title">Welcome back</Text>
 
           <Text variant="medium" marginTop="xs">
             Sign in to continue shopping
           </Text>
 
-
           <Box marginTop="xl">
-            <Text
-              marginBottom="s"
-              variant="medium"
-              color="textSecondary"
-            >
+            <Text marginBottom="s" variant="medium" color="textSecondary">
               Username
             </Text>
 
@@ -102,13 +89,8 @@ const LoginScreen = () => {
             />
           </Box>
 
-
           <Box marginTop="m">
-            <Text
-              marginBottom="s"
-              variant="medium"
-              color="textSecondary"
-            >
+            <Text marginBottom="s" variant="medium" color="textSecondary">
               Password
             </Text>
 
@@ -121,18 +103,13 @@ const LoginScreen = () => {
             />
           </Box>
 
-
           <Box marginTop="m">
             {loading ? (
               <ActivityIndicator size="large" color="#000" />
             ) : (
-              <CustomButton
-                title="Sign In"
-                onPress={handleLogin}
-              />
+              <CustomButton title="Sign In" onPress={handleLogin} />
             )}
           </Box>
-
 
           <Box
             marginTop="xxl"
@@ -144,10 +121,7 @@ const LoginScreen = () => {
               onPress={() => console.log('facebook')}
             />
 
-            <SocialButton
-              source={Images.google}
-              onPress={handleGoogleLogin}
-            />
+            <SocialButton source={Images.google} onPress={handleGoogleLogin} />
 
             <SocialButton
               source={Images.apple}
@@ -155,7 +129,6 @@ const LoginScreen = () => {
             />
           </Box>
         </Box>
-
 
         <Box flexDirection="row" justifyContent="center">
           <Text variant="medium" color="textSecondary">
@@ -167,7 +140,6 @@ const LoginScreen = () => {
             onPress={() => navigation.navigate('SignIn')}
           />
         </Box>
-
       </Box>
     </SafeAreaView>
   );

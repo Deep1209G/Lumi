@@ -1,9 +1,6 @@
-import React, {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {
   getAuth,
@@ -13,121 +10,96 @@ import {
 
 import { AppUser } from '@src/types/user';
 
-
 type AuthContextType = {
   user: AppUser | null;
   loading: boolean;
   logout: () => Promise<void>;
 };
 
-
-export const AuthContext =
-  createContext<AuthContextType>(
-    {} as AuthContextType
-  );
-
+export const AuthContext = createContext<AuthContextType>(
+  {} as AuthContextType,
+);
 
 type Props = {
   children: React.ReactNode;
 };
 
+export const AuthProvider = ({ children }: Props) => {
+  const [user, setUser] = useState<AppUser | null>(null);
 
-export const AuthProvider = ({
-  children,
-}: Props) => {
-
-
-  const [user, setUser] =
-    useState<AppUser | null>(null);
-
-
-  const [loading, setLoading] =
-    useState(true);
-
-
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-
     const auth = getAuth();
 
+    const unsubscribe = onAuthStateChanged(auth, async firebaseUser => {
+      console.log('AUTH CHECK:', firebaseUser?.email);
 
-    const unsubscribe =
-      onAuthStateChanged(
-        auth,
-        firebaseUser => {
+      if (firebaseUser) {
+        // Google user
+        const appUser: AppUser = {
+          uid: firebaseUser.uid,
+          name: firebaseUser.displayName || 'User',
+          email: firebaseUser.email || '',
+          photo: firebaseUser.photoURL,
+        };
 
+        setUser(appUser);
+      } else {
+        // Dummy JSON user
+        const savedUser = await AsyncStorage.getItem('currentUser');
 
-          if (firebaseUser) {
+        if (savedUser) {
+          const localUser = JSON.parse(savedUser);
 
+          const appUser: AppUser = {
+            uid: localUser.id,
+            name: localUser.name,
+            email: localUser.email,
+            photo: null,
+          };
 
-            const appUser: AppUser = {
-
-              uid: firebaseUser.uid,
-
-              name:
-                firebaseUser.displayName
-                || 'User',
-
-              email:
-                firebaseUser.email
-                || '',
-
-              photo:
-                firebaseUser.photoURL,
-
-            };
-
-
-            setUser(appUser);
-
-
-          } else {
-
-            setUser(null);
-
-          }
-
-
-          setLoading(false);
-
+          setUser(appUser);
+        } else {
+          setUser(null);
         }
-      );
+      }
 
+      setLoading(false);
+    });
 
     return unsubscribe;
-
-
   }, []);
 
-
-
   const logout = async () => {
-
     const auth = getAuth();
 
-    await signOut(auth);
+    if (auth.currentUser) {
+      await signOut(auth);
+    }
+
+    await AsyncStorage.removeItem('token');
+
+    await AsyncStorage.removeItem('isLoggedIn');
+
+    await AsyncStorage.removeItem('currentUser');
 
     setUser(null);
-
   };
-
-
 
   return (
     <AuthContext.Provider
       value={{
         user,
+
         loading,
+
         logout,
       }}
     >
       {children}
     </AuthContext.Provider>
   );
-
 };
 
-
-
-export const useAuth = () =>
-  useContext(AuthContext);
+export const useAuth = () => useContext(AuthContext);

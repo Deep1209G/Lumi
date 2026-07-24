@@ -14,8 +14,6 @@ export const saveCart = async (
   try {
     const CART_KEY = getCartKey(userId);
 
-    console.log('Saving Cart:', CART_KEY, cart);
-
     await AsyncStorage.setItem(
       CART_KEY,
       JSON.stringify(cart),
@@ -40,21 +38,12 @@ export const getCart = async (
       CART_KEY,
     );
 
-
-    console.log('Loaded Cart:', CART_KEY, data);
-
-
     if (data) {
       return JSON.parse(data);
     }
-
-
     return [];
-
   } catch (error) {
-
     console.log('Get Cart Error', error);
-
     return [];
 
   }

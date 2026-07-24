@@ -15,8 +15,10 @@ import {
   PressableText,
   Card,
 } from '@src';
+import theme from '@src/theme/theme';
 
 const HomeScreen = () => {
+ 
   const { t } = useTranslation();
   const {
     navigation,
@@ -29,8 +31,9 @@ const HomeScreen = () => {
     handleLoadMore,
   } = useHome();
 
+
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: theme.colors.mainBackground }}>
       <FlatList
         key={selectedCategory}
         ref={flatListRef}
