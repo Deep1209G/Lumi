@@ -7,6 +7,7 @@ import { WishlistContext } from '@src/context/WishlistContext';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../navigation/AppNavigation';
+import theme from '@src/theme/theme';
 
 const SearchScreen = () => {
   const { wishlist, toggleWishlist } = useContext(WishlistContext);
@@ -22,7 +23,7 @@ const SearchScreen = () => {
   } = useSearch();
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1 , backgroundColor: theme.colors.mainBackground }}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Box paddingLeft="l" paddingRight="l">
           {/* Heading */}

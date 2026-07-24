@@ -4,13 +4,14 @@ import { Box, EmptyStateCard, ProfileHeader, Text } from '@src';
 import useProfile from '../../hooks/useProfile';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { profileMenu } from '@src/data/profileMenu';
+import theme from '@src/theme/theme';
 
 const ProfileScreen = () => {
   const { handleMenuPress } = useProfile();
   const { t } = useTranslation();
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor:theme.colors.mainBackground }}>
       <Box paddingLeft="l" paddingRight="l">
         {/*Heading */}
         <Text variant="heading">{t('profile')}</Text>

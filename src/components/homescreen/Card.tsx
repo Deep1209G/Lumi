@@ -30,13 +30,15 @@ const Card = ({
       <Box
         width={165}
         backgroundColor="white"
+        borderWidth={1}
+        borderColor="border"
         padding="s"
         borderRadius="m"
         shadowColor="black"
         shadowOffset={{ width: 0, height: 4 }}
         shadowOpacity={0.15}
         shadowRadius={20}
-        elevation={2}
+        elevation={3}
       >
         {/* Product Image */}
         <Box alignItems="center">
@@ -65,7 +67,7 @@ const Card = ({
 
         {/* Price & Rating */}
         <Box flexDirection="row" alignItems="center" marginTop="xs">
-          <Text variant="rupees">₹{price}</Text>
+          <Text variant="rupees" color='primary'>₹{price}</Text>
 
           <Text
             variant="medium"

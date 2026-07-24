@@ -8,6 +8,7 @@ import { RootStackParamList } from '../../navigation/AppNavigation';
 import { saveAddress, saveSelectedAddress } from '@src/utils/addressStorage';
 import { AuthContext } from '@src/context/AuthContext';
 import { ScrollView, Pressable } from 'react-native';
+import theme from '@src/theme/theme';
 
 const addressTypes = ['Home', 'Work', 'Other'] as const;
 const AddressScreen = () => {
@@ -65,7 +66,7 @@ const AddressScreen = () => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor:theme.colors.mainBackground }}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Box paddingLeft="l" paddingRight="l">
           <Box>
@@ -73,7 +74,7 @@ const AddressScreen = () => {
           </Box>
 
           <Box marginTop="xxl">
-            <Text marginBottom="s" variant="medium" color="textSecondary">
+            <Text marginBottom="s" variant="medium" color="textPrimary">
               Full Name
             </Text>
 
@@ -86,7 +87,7 @@ const AddressScreen = () => {
           </Box>
 
           <Box marginTop="m">
-            <Text marginBottom="s" variant="medium" color="textSecondary">
+            <Text marginBottom="s" variant="medium" color="textPrimary">
               Mobile Number
             </Text>
 
@@ -99,7 +100,7 @@ const AddressScreen = () => {
           </Box>
 
           <Box marginTop="m">
-            <Text marginBottom="s" variant="medium" color="textSecondary">
+            <Text marginBottom="s" variant="medium" color="textPrimary">
               Pincode
             </Text>
 
@@ -112,7 +113,7 @@ const AddressScreen = () => {
           </Box>
 
           <Box marginTop="m">
-            <Text marginBottom="s" variant="medium" color="textSecondary">
+            <Text marginBottom="s" variant="medium" color="textPrimary">
               House / Flat / Building
             </Text>
 
@@ -125,7 +126,7 @@ const AddressScreen = () => {
           </Box>
 
           <Box marginTop="m">
-            <Text marginBottom="s" variant="medium" color="textSecondary">
+            <Text marginBottom="s" variant="medium" color="textPrimary">
               Area / Street
             </Text>
 
@@ -138,7 +139,7 @@ const AddressScreen = () => {
           </Box>
 
           <Box marginTop="m">
-            <Text marginBottom="s" variant="medium" color="textSecondary">
+            <Text marginBottom="s" variant="medium" color="textPrimary">
               City
             </Text>
 
@@ -151,7 +152,7 @@ const AddressScreen = () => {
           </Box>
 
           <Box marginTop="m">
-            <Text marginBottom="s" variant="medium" color="textSecondary">
+            <Text marginBottom="s" variant="medium" color="textPrimary">
               State
             </Text>
 
@@ -164,7 +165,7 @@ const AddressScreen = () => {
           </Box>
 
           <Box marginTop="m">
-            <Text marginBottom="s" variant="medium" color="textSecondary">
+            <Text marginBottom="s" variant="medium" color="textPrimary">
               Save address as
             </Text>
 
@@ -175,9 +176,9 @@ const AddressScreen = () => {
                     padding="s"
                     marginRight="s"
                     borderRadius="s"
-                    borderWidth={1}
+                    borderWidth={1.5}
                     backgroundColor="mainBackground"
-                    borderColor={type === item ? 'black' : 'border'}
+                    borderColor={type === item ? 'primary' : 'border'}
                   >
                     <Text>{item}</Text>
                   </Box>

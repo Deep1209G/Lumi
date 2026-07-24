@@ -71,7 +71,7 @@ const BannerSlider = () => {
             borderRadius="s"
             marginHorizontal="xs"
             backgroundColor={
-              currentIndex === index ? 'black' : 'gray'
+              currentIndex === index ? 'primary' : 'tabgray'
             }
           />
         ))}

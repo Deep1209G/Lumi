@@ -21,7 +21,7 @@ const ProfileHeader = () => {
         justifyContent="center"
         alignItems="center"
         borderWidth={2}
-        borderColor="border"
+        borderColor="primary"
         height={70}
         width={70}
         borderRadius="m"

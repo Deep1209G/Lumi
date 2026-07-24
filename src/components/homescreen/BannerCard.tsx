@@ -16,7 +16,7 @@ const BannerCard = ({ image, title, subtitle, width }: Props) => {
       source={image}
       style={{
         width,
-        height: 130,
+        height: 150,
         justifyContent: 'center',
       }}
       imageStyle={{

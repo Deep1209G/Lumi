@@ -110,7 +110,7 @@ const MyCartScreen = () => {
   );
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor:theme.colors.mainBackground }}>
       <Box flex={1} paddingLeft="l" paddingRight="l">
         <Text variant="heading">
           My Cart ({cart.length})
@@ -133,9 +133,9 @@ const MyCartScreen = () => {
               alignItems="center"
             >
               <Ionicons
-                name="bag-outline"
+                name="bag"
                 size={30}
-                color={theme.colors.border}
+                color={theme.colors.primary}
               />
             </Box>
 

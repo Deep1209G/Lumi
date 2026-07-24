@@ -135,7 +135,7 @@ const SearchBar = ({
       {rightIcon && (
         <Pressable onPress={onPress}>
           <Box
-            backgroundColor="textPrimary"
+            backgroundColor="primary"
             height={30}
             width={30}
             justifyContent="center"

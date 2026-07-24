@@ -30,12 +30,12 @@ const CategoryTab = ({ onSelectCategory, selectedCategory }: Props) => {
             marginRight="m"
             borderRadius="m"
             backgroundColor={
-              selectedCategory === item ? 'textPrimary' : 'mainBackground'
+              selectedCategory === item ? 'primary' : 'tabgray'
             }
           >
             <Text
               variant="medium"
-              color={selectedCategory === item ? 'mainBackground' : 'textPrimary'}
+              color={selectedCategory === item ? 'textTernary' : 'textPrimary'}
             >
               {t(item)}
             </Text>

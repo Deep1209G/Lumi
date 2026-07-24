@@ -73,8 +73,8 @@ const Header = () => {
         <Box
           justifyContent="center"
           alignItems="center"
-          borderWidth={2}
-          borderColor="icon"
+          borderWidth={1.5}
+          borderColor="primary"
           height={50}
           width={50}
           borderRadius="m"

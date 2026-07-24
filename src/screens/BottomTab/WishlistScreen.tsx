@@ -21,7 +21,7 @@ const WishlistScreen = () => {
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor:theme.colors.mainBackground }}>
       <Box paddingLeft="l" paddingRight="l">
         <Text variant="heading">My WishList</Text>
         {wishlistProducts.length === 0 ? (
