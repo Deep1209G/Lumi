@@ -1,22 +1,30 @@
-import React, { createContext, useEffect, useState } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 
+import {
+  getAuth,
+  onAuthStateChanged,
+  signOut,
+} from '@react-native-firebase/auth';
 
-export type User = {
-  id: string;
-  name: string;
-  email: string;
-};
+import { AppUser } from '@src/types/user';
 
 
 type AuthContextType = {
-  user: User | null;
-  login: (user: User) => Promise<void>;
+  user: AppUser | null;
+  loading: boolean;
   logout: () => Promise<void>;
 };
 
 
-export const AuthContext = createContext({} as AuthContextType);
+export const AuthContext =
+  createContext<AuthContextType>(
+    {} as AuthContextType
+  );
 
 
 type Props = {
@@ -24,56 +32,92 @@ type Props = {
 };
 
 
-const USER_KEY = 'currentUser';
+export const AuthProvider = ({
+  children,
+}: Props) => {
 
 
-export const AuthProvider = ({ children }: Props) => {
+  const [user, setUser] =
+    useState<AppUser | null>(null);
 
-  const [user, setUser] = useState<User | null>(null);
+
+  const [loading, setLoading] =
+    useState(true);
+
 
 
   useEffect(() => {
-    loadUser();
+
+    const auth = getAuth();
+
+
+    const unsubscribe =
+      onAuthStateChanged(
+        auth,
+        firebaseUser => {
+
+
+          if (firebaseUser) {
+
+
+            const appUser: AppUser = {
+
+              uid: firebaseUser.uid,
+
+              name:
+                firebaseUser.displayName
+                || 'User',
+
+              email:
+                firebaseUser.email
+                || '',
+
+              photo:
+                firebaseUser.photoURL,
+
+            };
+
+
+            setUser(appUser);
+
+
+          } else {
+
+            setUser(null);
+
+          }
+
+
+          setLoading(false);
+
+        }
+      );
+
+
+    return unsubscribe;
+
+
   }, []);
 
-
-  const loadUser = async () => {
-
-    const data = await AsyncStorage.getItem(USER_KEY);
-
-    if(data){
-      setUser(JSON.parse(data));
-    }
-
-  };
-
-
-  const login = async (userData: User) => {
-
-    await AsyncStorage.setItem(
-      USER_KEY,
-      JSON.stringify(userData)
-    );
-
-    setUser(userData);
-
-  };
 
 
   const logout = async () => {
 
-    await AsyncStorage.removeItem(USER_KEY);
+    const auth = getAuth();
+
+    await signOut(auth);
 
     setUser(null);
 
   };
 
 
+
   return (
     <AuthContext.Provider
       value={{
         user,
-        login,
+        loading,
         logout,
       }}
     >
@@ -82,3 +126,8 @@ export const AuthProvider = ({ children }: Props) => {
   );
 
 };
+
+
+
+export const useAuth = () =>
+  useContext(AuthContext);
