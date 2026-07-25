@@ -19,6 +19,7 @@ import {
   PressableText,
   useLogin,
 } from '@src';
+import theme from '@src/theme/theme';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
@@ -62,7 +63,7 @@ const LoginScreen = () => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor:theme.colors.mainBackground }}>
       <Box
         flex={1}
         paddingLeft="l"
@@ -105,7 +106,7 @@ const LoginScreen = () => {
 
           <Box marginTop="m">
             {loading ? (
-              <ActivityIndicator size="large" color="#000" />
+              <ActivityIndicator size="large" color={theme.colors.black} />
             ) : (
               <CustomButton title="Sign In" onPress={handleLogin} />
             )}

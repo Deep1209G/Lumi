@@ -13,6 +13,7 @@ import {
   PaymentOption,
   CustomTextInput,
 } from '@src';
+import theme from '@src/theme/theme';
 
 const PaymentMethodScreen = () => {
   const [expandedId, setExpandedId] = useState<string | null>(null);
@@ -28,7 +29,7 @@ const PaymentMethodScreen = () => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor:theme.colors.mainBackground }}>
       <Box flex={1} paddingHorizontal="l">
         <HeaderBack title="Payment Methods" />
 

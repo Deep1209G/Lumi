@@ -2,23 +2,21 @@ import { createTheme } from '@shopify/restyle';
 
 const palette = {
   coral: '#FF6B4A',
-  peach: '#ffd5c4',
+  peach: '#fcdbcf',
   yellowAmber: '#FFA726',
-  background:'#FFF7F4',
+  background: '#FFF7F4',
   white: '#FFFFFF',
   black: '#000000',
   gray100: '#A3A3A3',
   gray200: '#8E8E93',
   gray300: '#757575',
-  border:'#d0d0d0',
-  divider:'#E7E7E7',
+  border: '#d0d0d0',
+  divider: '#E7E7E7',
   greenLight: '#def5e8',
   red: '#de0a26',
   lightRed: '#efd1d1',
   greenDark: '#0A906E',
 
-
-  
   purpleMauve: '#E0B0FF',
   purpleLight: '#8C6FF7',
   purplePrimary: '#5A31F4',
@@ -26,7 +24,6 @@ const palette = {
   greenPrimary: '#0ECD9D',
   gray: '#E8E8E8',
   simpleGray: '#676765',
-
 };
 
 const theme = createTheme({
@@ -38,20 +35,21 @@ const theme = createTheme({
     primary: palette.coral,
     border: palette.border,
 
-    tabgray:palette.peach,
+    tabgray: palette.peach,
     icon: palette.gray200,
 
     black: palette.black,
     white: palette.white,
     mainBackground: palette.white,
-    cardPrimaryBackground: palette.purplePrimary,
+
+    lightRed: palette.lightRed,
     warning: palette.red,
+
     green: palette.greenDark,
     yellow: palette.yellowAmber,
     card: palette.purpleMauve,
     gray: palette.gray,
-    lightRed: palette.lightRed,
-   
+
     sucess: palette.greenLight,
   },
 

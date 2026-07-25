@@ -22,8 +22,8 @@ const FAQAccordion = ({
     <Box
       backgroundColor="white"
       borderRadius="l"
-      borderWidth={1}
-      borderColor="border"
+      borderWidth={1.5}
+      borderColor="tabgray"
       marginBottom="m"
     >
       <Pressable onPress={onPress}>
@@ -45,15 +45,15 @@ const FAQAccordion = ({
                 : 'chevron-down-outline'
             }
             size={22}
-            color={theme.colors.icon}
+            color={theme.colors.black}
           />
         </Box>
       </Pressable>
 
       {expanded && (
         <Box
-          borderTopWidth={1}
-          borderColor="border"
+          borderTopWidth={1.5}
+          borderColor="tabgray"
           padding="m"
         >
           <Text color="textSecondary" variant='medium'>

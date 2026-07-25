@@ -13,6 +13,7 @@ import {
   accountSecurity,
   dataPrivacy,
 } from '@src/data/privacySecurity';
+import theme from '@src/theme/theme';
 
 const PrivacySecurityScreen = () => {
   const [settings, setSettings] = useState({
@@ -23,7 +24,7 @@ const PrivacySecurityScreen = () => {
   });
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor:theme.colors.mainBackground }}>
       <Box flex={1} paddingHorizontal="m">
 
         <HeaderBack title="Privacy & Security" />
@@ -84,13 +85,12 @@ const PrivacySecurityScreen = () => {
 
         <Box
           marginTop="m"
-          backgroundColor="white"
+          backgroundColor="warning"
           padding="m"
           borderRadius="m"
-          borderWidth={2}
-          borderColor="gray"
+         
         >
-          <Text color="warning" variant="medium">
+          <Text color="textTernary" variant="medium" alignSelf='center'>
             Delete account
           </Text>
         </Box>

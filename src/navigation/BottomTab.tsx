@@ -103,11 +103,11 @@ export default function BottomTab() {
           backgroundColor: theme.colors.white,
           // Border
           borderWidth: 1.5,
-          borderColor:theme.colors.border,
+          borderColor:theme.colors.tabgray,
           // Android shadow
-          elevation: 10,
+          elevation: 5,
           // iOS shadow
-          shadowColor: theme.colors.black,
+          shadowColor: theme.colors.primary,
           shadowOffset: {
             width: 0,
             height: 8,

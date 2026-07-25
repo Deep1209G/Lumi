@@ -126,14 +126,14 @@ const MyCartScreen = () => {
               height={60}
               width={60}
               backgroundColor="white"
-              borderColor="border"
+              borderColor="tabgray"
               borderWidth={2}
               borderRadius="m"
               justifyContent="center"
               alignItems="center"
             >
               <Ionicons
-                name="bag"
+                name="bag-outline"
                 size={30}
                 color={theme.colors.primary}
               />

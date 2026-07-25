@@ -20,8 +20,6 @@ const Header = () => {
   const flipAnim =
     useRef(new Animated.Value(0)).current;
 
-
-
   const handleFlip = () => {
 
     flipAnim.setValue(0);
@@ -37,49 +35,34 @@ const Header = () => {
 
   };
 
-
-
   const rotateY =
     flipAnim.interpolate({
       inputRange: [0, 1],
       outputRange: ['0deg', '180deg'],
     });
 
-
-
   return (
 
     <Box flexDirection="row" justifyContent="space-between">
-
-
       <Box>
-
         <Text variant="medium">
           {t('helloWelcome')}
         </Text>
-
-
         <Text variant="subtitle">
           {user?.name}
         </Text>
-
-
       </Box>
-
-
-
       <Pressable onPress={handleFlip}>
 
         <Box
           justifyContent="center"
           alignItems="center"
           borderWidth={1.5}
-          borderColor="primary"
+          borderColor="tabgray"
           height={50}
           width={50}
           borderRadius="m"
         >
-
           <Animated.Image
 
             source={
@@ -101,12 +84,8 @@ const Header = () => {
             resizeMode="cover"
 
           />
-
         </Box>
-
       </Pressable>
-
-
     </Box>
 
   );

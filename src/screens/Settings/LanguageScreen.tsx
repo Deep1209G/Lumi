@@ -6,6 +6,7 @@ import { saveLanguage, getLanguage } from '@src/utils/languageStorage';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Box, HeaderBack, LanguageCard } from '@src';
 import { languages } from '@src/data/languages';
+import theme from '@src/theme/theme';
 
 const LanguageScreen = () => {
   const [selectedLanguage, setSelectedLanguage] = useState('en');
@@ -21,7 +22,7 @@ const LanguageScreen = () => {
   }, []);
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor:theme.colors.mainBackground }}>
       <Box paddingLeft="l" paddingRight="l">
         <HeaderBack title={t('language')} />
 

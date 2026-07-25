@@ -4,10 +4,11 @@ import { Box, HeaderBack, Text, TermCard } from '@src';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { privacyData } from '@src/data/privacyData';
 import {ScrollView} from 'react-native'
+import theme from '@src/theme/theme';
 
 const PrivacyScreen = () => {
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor:theme.colors.mainBackground }}>
        <ScrollView showsVerticalScrollIndicator={false}>
       <Box paddingLeft="m" paddingRight="m">
         {/* Header */}

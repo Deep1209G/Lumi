@@ -22,6 +22,7 @@ import { paymentMethods } from '@src/data/paymentMethods';
 import { wallets } from '@src/data/wallets';
 import { CartContext } from '@src/context/CardContext';
 import useCartSummary from '@src/hooks/useCartSummary';
+import theme from '@src/theme/theme';
 
 const PaymentScreen = () => {
   type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
@@ -71,9 +72,9 @@ const PaymentScreen = () => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor:theme.colors.mainBackground }}>
       {/* Scrollable Content */}
-      <Box flex={1} paddingLeft="l" paddingRight="l">
+      <Box flex={1} paddingLeft="l" paddingRight="l" >
         {/* Header */}
         <Box
           flexDirection="row"

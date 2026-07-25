@@ -16,7 +16,7 @@ const ReviewInput = ({
 }: ReviewInputProps) => {
   return (
     <>
-      <Text marginTop="xl" variant="medium" color="black" fontWeight="700">
+      <Text marginTop="xl" variant="medium" color="textPrimary" fontWeight="700">
         WRITE A REVIEW (OPTIONAL)
       </Text>
 
@@ -24,7 +24,7 @@ const ReviewInput = ({
         backgroundColor="white"
         marginTop="m"
         borderWidth={1.5}
-        borderColor="border"
+        borderColor="tabgray"
         borderRadius="m"
         padding="m"
         height={170}

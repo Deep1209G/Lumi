@@ -2,11 +2,12 @@
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Box, HeaderBack, ThemeCard } from '@src';
+import theme from '@src/theme/theme';
 
 const DarkModeScreen = () => {
   const [selectedTheme, setSelectedTheme] = useState<'light' | 'dark'>('light');
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor:theme.colors.mainBackground }}>
       <Box paddingLeft="l" paddingRight="l">
         {/*Heading Section */}
         <Box>

@@ -6,11 +6,12 @@ import { Image } from 'react-native';
 import { aboutMenu } from '@src/data/aboutMenu';
 import SettingCard from '@src/components/settingScreen/SettingCard';
 import useAbout from '../../hooks/useAbout';
+import theme from '@src/theme/theme';
 
 const AboutScreen = () => {
   const { handleMenuPress } = useAbout();
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor:theme.colors.mainBackground }}>
       <Box paddingLeft="l" paddingRight="l">
         {/*Heading Section */}
         <Box>
@@ -25,7 +26,7 @@ const AboutScreen = () => {
           borderRadius="m"
           height={250}
           borderWidth={1.5}
-          borderColor='gray'
+          borderColor='tabgray'
         >
           <Box
             marginTop="xxl"
@@ -51,13 +52,13 @@ const AboutScreen = () => {
             Wear what feels like you
           </Text>
           <Box
-            backgroundColor="gray"
+            backgroundColor="tabgray"
             padding="xs"
             borderRadius="s"
             alignItems="center"
             justifyContent="center"
           >
-            <Text variant="small" color="textSecondary">
+            <Text variant="small" color="textPrimary">
               Version 1.0.0
             </Text>
           </Box>

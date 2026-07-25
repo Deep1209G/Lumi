@@ -19,11 +19,11 @@ const EmptyStateCard = ({ leftIcon, color=theme.colors.black, title,onPress,  ba
   return (
     <Pressable onPress={onPress}>
     <Box
-      height={70}
-      backgroundColor="white"
+      height={75}
+      backgroundColor="mainBackground"
       borderRadius="m"
-      borderWidth={1}
-      borderColor="border"
+      borderWidth={1.5}
+      borderColor="tabgray"
       padding="m"
       flexDirection="row"
     >
@@ -41,7 +41,7 @@ const EmptyStateCard = ({ leftIcon, color=theme.colors.black, title,onPress,  ba
         <Text variant='button'>{title}</Text>
       </Box>
       <Box justifyContent='center'>
-      <Ionicons name='chevron-forward-outline' size={15} color={theme.colors.icon} />
+      <Ionicons name='chevron-forward-outline' size={15} color={theme.colors.black} />
       </Box>
     </Box>
     </Pressable>

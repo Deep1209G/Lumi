@@ -23,8 +23,8 @@ const PaymentAccordion = ({
     <Box
       backgroundColor="white"
       borderRadius="m"
-      borderWidth={1}
-      borderColor="border"
+      borderWidth={1.5}
+      borderColor="tabgray"
       marginBottom="m"
     >
       <Pressable onPress={onPress}>
@@ -38,7 +38,7 @@ const PaymentAccordion = ({
           <Box flexDirection="row" alignItems="center">
             {/*Left Icon */}
             <Ionicons name={leftIcon} size={20} />
-            <Text marginLeft="m">{title}</Text>
+            <Text marginLeft="m" color='textPrimary'>{title}</Text>
           </Box>
 
           {/*Right Icon */}
@@ -50,7 +50,7 @@ const PaymentAccordion = ({
         </Box>
       </Pressable>
       {expanded && (
-        <Box borderTopWidth={1} borderColor="border" padding="m">
+        <Box borderTopWidth={1.5} borderColor="tabgray" padding="m">
           {children}
         </Box>
       )}

@@ -24,7 +24,7 @@ const PaymentOption = ({
         alignItems="center"
         paddingVertical="m"
       >
-        <Text variant="medium">{title}</Text>
+        <Text variant="medium" color='textPrimary'>{title}</Text>
         <Ionicons
           name={
             selected
@@ -34,8 +34,8 @@ const PaymentOption = ({
           size={22}
           color={
             selected
-              ? theme.colors.textPrimary
-              : theme.colors.icon
+              ? theme.colors.primary
+              : theme.colors.tabgray
                 }
         />
       </Box>

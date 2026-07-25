@@ -20,7 +20,7 @@ const HelpCenterScreen = () => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor:theme.colors.mainBackground }}>
       <Box paddingLeft="l" paddingRight="l">
       {/*Heading Section */}
       <Box>
@@ -32,10 +32,8 @@ const HelpCenterScreen = () => {
         <Pressable onPress={() => console.log('Pressed chat with support')}>
           <Box
             height={60}
-            backgroundColor="black"
+            backgroundColor="primary"
             borderRadius="m"
-            borderWidth={1}
-            borderColor="border"
             padding="m"
             flexDirection="row"
           >

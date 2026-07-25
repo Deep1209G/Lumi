@@ -30,15 +30,15 @@ const Card = ({
       <Box
         width={165}
         backgroundColor="white"
-        borderWidth={1}
-        borderColor="border"
+        borderWidth={1.5}
+        borderColor="tabgray"
         padding="s"
         borderRadius="m"
-        shadowColor="black"
+        shadowColor="primary"
         shadowOffset={{ width: 0, height: 4 }}
         shadowOpacity={0.15}
         shadowRadius={20}
-        elevation={3}
+        elevation={5}
       >
         {/* Product Image */}
         <Box alignItems="center">
