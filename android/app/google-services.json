@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "357761911422",
-    "project_id": "lumi-566c3",
-    "storage_bucket": "lumi-566c3.firebasestorage.app"
+    "project_number": "602260931767",
+    "project_id": "lumi-5ca0c",
+    "storage_bucket": "lumi-5ca0c.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:357761911422:android:ca9b24488c3eb7c699262f",
+        "mobilesdk_app_id": "1:602260931767:android:937768fc4756ac284cb932",
         "android_client_info": {
           "package_name": "com.lumi"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDwtr937dEFnmecNZZR4vQzfkMb814ePhU"
+          "current_key": "AIzaSyAGJkHkSI7j2x2Xl6ntbwQ3Hl40rOd3Odk"
         }
       ],
       "services": {

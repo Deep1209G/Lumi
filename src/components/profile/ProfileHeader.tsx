@@ -1,65 +1,69 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, { useEffect, useState } from 'react';
+
+import React from 'react';
 import { Box, Images, Text } from '@src';
 import { Image } from 'react-native';
-import theme from '@src/theme/theme';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
-type User = {
-  id: string;
-  name: string;
-  email: string;
-};
+import theme from '@src/theme/theme';
+import { useAuth } from '@src/context/AuthContext';
+
 
 const ProfileHeader = () => {
-  const [user, setUser] = useState<User | null>(null);
 
-  useEffect(() => {
-    const getUser = async () => {
-      const userData = await AsyncStorage.getItem('currentUser');
+  const { user } = useAuth();
 
-      console.log('PROFILE USER:', userData);
-
-      if (userData) {
-        setUser(JSON.parse(userData));
-      }
-    };
-
-    getUser();
-  }, []);
 
   return (
+
     <Box flexDirection="row">
+
       <Box
         justifyContent="center"
         alignItems="center"
         borderWidth={2}
-        borderColor="border"
+        borderColor="tabgray"
         height={70}
         width={70}
         borderRadius="m"
       >
+
         <Image
-          source={Images.avatar1}
+          source={
+            user?.photo
+              ? { uri: user.photo }
+              : Images.avatar1
+          }
           style={{
             width: 60,
             height: 60,
             borderRadius: theme.borderRadii.m,
           }}
         />
+
       </Box>
 
-      <Box justifyContent="center" marginLeft="m">
+
+      <Box
+        justifyContent="center"
+        marginLeft="m"
+      >
+
         <Text variant="button">
           {user?.name}
         </Text>
 
+
         <Text variant="medium">
           {user?.email}
         </Text>
+
       </Box>
+
+
     </Box>
+
   );
 };
+
 
 export default ProfileHeader;

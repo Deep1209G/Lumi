@@ -6,13 +6,14 @@ import { Box, HeaderBack } from '@src';
 import { settingMenu } from '@src/data/settingMenu';
 import useSetting from '../../hooks/useSetting';
 import SettingCard from '../../components/settingScreen/SettingCard';
+import theme from '@src/theme/theme';
 
 const SettingsScreen = () => {
   const { t } = useTranslation();
   const { handleMenuPress } = useSetting();
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor:theme.colors.mainBackground }}>
       <Box paddingLeft="l" paddingRight="l">
         {/*Heading Section */}
         <Box>

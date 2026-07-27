@@ -3,14 +3,15 @@ import React from 'react';
 import { Pressable } from 'react-native';
 import { Box, Text } from '@src';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import theme from '@src/theme/theme';
 
 type AddressSelectorProps = {
   fullName: string;
   address: string;
   type?: string;
-
   onPress: () => void;
 };
+
 const AddressSelector = ({
   onPress,
   fullName,
@@ -20,55 +21,77 @@ const AddressSelector = ({
   return (
     <Box
       backgroundColor="white"
-      minHeight={120}
-      borderRadius="m"
+      minHeight={130}
+      borderRadius="l"
       borderWidth={1}
-      borderColor="border"
+      borderColor="tabgray"
       flexDirection="row"
       alignItems="center"
-      padding="m"
+      justifyContent="space-between"
+      padding="l"
+      shadowColor="primary"
+      shadowOffset={{ width: 0, height: 2 }}
+      shadowOpacity={0.08}
+      shadowRadius={8}
+      elevation={3}
     >
-      {/* Left Section */}
-      <Box flexDirection="row" flex={1} alignItems="center" marginRight="s">
+      <Box
+        flexDirection="row"
+        flex={1}
+        alignItems="center"
+        marginRight="m"
+      >
         <Box
-          backgroundColor="gray"
-          height={40}
-          width={40}
-          alignItems="center"
+          backgroundColor="tabgray"
+          height={48}
+          width={48}
+          borderRadius="m"
           justifyContent="center"
-          borderRadius="s"
+          alignItems="center"
         >
-          <Ionicons name="location-outline" size={22} color="black" />
+          <Ionicons
+            name="location-outline"
+            size={24}
+            color={theme.colors.primary}
+          />
         </Box>
 
-        <Box marginLeft="m" flex={1}>
+        <Box flex={1} marginLeft="m">
           <Text variant="medium" color="textPrimary">
             {fullName}
           </Text>
 
-          <Text variant="small" color="textSecondary" numberOfLines={3} ellipsizeMode="tail">
+          <Text
+            marginTop="xs"
+            variant="small"
+            color="textSecondary"
+            numberOfLines={3}
+          >
             {address}
           </Text>
 
           {type && (
-            <Text variant="small" color="textPrimary" marginTop="xs">
-              {type}
-            </Text>
+            <Box
+              marginTop="s"
+            >
+              <Text variant="small" color="primary">
+                {type}
+              </Text>
+            </Box>
           )}
         </Box>
       </Box>
 
-      {/* Right Section */}
-      <Pressable onPress={onPress} style={{ width: 60 }}>
+      <Pressable onPress={onPress}>
         <Box
-          backgroundColor="gray"
+          backgroundColor="tabgray"
           paddingHorizontal="m"
-          paddingVertical="xs"
-          borderRadius="s"
-          alignItems="center"
+          paddingVertical="s"
+          borderRadius="m"
           justifyContent="center"
+          alignItems="center"
         >
-          <Text variant="medium" color="textPrimary">
+          <Text variant="medium" color="primary">
             Edit
           </Text>
         </Box>

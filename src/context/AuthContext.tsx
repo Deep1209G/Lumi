@@ -1,84 +1,141 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
+
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+import {
+  getAuth,
+  onAuthStateChanged,
+  signOut,
+} from '@react-native-firebase/auth';
 
-export type User = {
-  id: string;
-  name: string;
-  email: string;
-};
-
+import { AppUser } from '@src/types/user';
 
 type AuthContextType = {
-  user: User | null;
-  login: (user: User) => Promise<void>;
+  user: AppUser | null;
+  loading: boolean;
   logout: () => Promise<void>;
+  refreshUser: () => Promise<void>;
 };
 
-
-export const AuthContext = createContext({} as AuthContextType);
-
+export const AuthContext = createContext<AuthContextType>(
+  {} as AuthContextType,
+);
 
 type Props = {
   children: React.ReactNode;
 };
 
-
-const USER_KEY = 'currentUser';
-
-
 export const AuthProvider = ({ children }: Props) => {
+  const [user, setUser] = useState<AppUser | null>(null);
 
-  const [user, setUser] = useState<User | null>(null);
-
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    loadUser();
-  }, []);
+  const auth = getAuth();
 
+  const unsubscribe = onAuthStateChanged(
+    auth,
+    async firebaseUser => {
 
-  const loadUser = async () => {
+      console.log(
+        'AUTH CHECK:',
+        firebaseUser?.email,
+      );
 
-    const data = await AsyncStorage.getItem(USER_KEY);
+      if (firebaseUser) {
+        // Google user
+        const appUser: AppUser = {
+          uid: firebaseUser.uid,
+          name:
+            firebaseUser.displayName ||
+            'User',
+          email:
+            firebaseUser.email || '',
+          photo:
+            firebaseUser.photoURL,
+        };
 
-    if(data){
-      setUser(JSON.parse(data));
-    }
+        setUser(appUser);
+      } else {
 
-  };
+        // Dummy JSON user
+        const savedUser =
+          await AsyncStorage.getItem(
+            'currentUser',
+          );
+        if (savedUser) {
 
+          const localUser =
+            JSON.parse(savedUser);
+          const appUser: AppUser = {
+            uid: localUser.id,
+            name: localUser.name,
+            email: localUser.email,
+            photo: null,
 
-  const login = async (userData: User) => {
+          };
 
-    await AsyncStorage.setItem(
-      USER_KEY,
-      JSON.stringify(userData)
-    );
+          setUser(appUser);
+        } else {
 
-    setUser(userData);
+          setUser(null);
+        }
+      }
 
-  };
+      setLoading(false);
+    },
+  );
+  return unsubscribe;
+
+}, []);
 
 
   const logout = async () => {
+    const auth = getAuth();
 
-    await AsyncStorage.removeItem(USER_KEY);
+    if (auth.currentUser) {
+      await signOut(auth);
+    }
+
+    await AsyncStorage.removeItem('token');
+
+    await AsyncStorage.removeItem('isLoggedIn');
+
+    await AsyncStorage.removeItem('currentUser');
 
     setUser(null);
-
   };
+
+  const refreshUser = async () => {
+  const savedUser =
+    await AsyncStorage.getItem(
+      'currentUser',
+    );
+  if (savedUser) {
+    const localUser =
+      JSON.parse(savedUser);
+    setUser({
+      uid: localUser.id,
+      name: localUser.name,
+      email: localUser.email,
+      photo: null,
+    });
+  }
+};
 
 
   return (
     <AuthContext.Provider
       value={{
         user,
-        login,
+        loading,
         logout,
+        refreshUser,
       }}
     >
       {children}
     </AuthContext.Provider>
   );
-
 };
+
+export const useAuth = () => useContext(AuthContext);

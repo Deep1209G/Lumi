@@ -17,27 +17,30 @@ const OrderSummary = ({
   return (
     <Box
       flexDirection="row"
+      alignItems="center"
       backgroundColor="white"
-      borderRadius="m"
+      borderRadius="l"
       padding="m"
       marginBottom="m"
-      alignItems="center"
       borderWidth={1}
-      borderColor="border"
-      height={80}
+      borderColor="tabgray"
+      shadowColor="primary"
+      shadowOffset={{ width: 0, height: 2 }}
+      shadowOpacity={0.06}
+      shadowRadius={8}
+      elevation={3}
+      minHeight={92}
     >
-      {/* Product Image */}
       <Image
         source={product.image}
         style={{
-          width: 60,
-          height: 60,
+          width: 68,
+          height: 68,
           borderRadius: theme.borderRadii.m,
         }}
         resizeMode="cover"
       />
 
-      {/* Product Details */}
       <Box
         flex={1}
         flexDirection="row"
@@ -45,17 +48,25 @@ const OrderSummary = ({
         alignItems="center"
         marginLeft="m"
       >
-        <Box>
-          <Text variant="medium" color="textPrimary">
+        <Box flex={1} marginRight="m">
+          <Text
+            variant="medium"
+            color="textPrimary"
+            numberOfLines={1}
+          >
             {product.name}
           </Text>
 
-          <Text variant="small" color="textSecondary">
+          <Text
+            marginTop="xs"
+            variant="small"
+            color="textSecondary"
+          >
             Qty: {quantity}
           </Text>
         </Box>
 
-        <Text variant="rupees">
+        <Text variant="rupees" color="primary">
           ₹ {product.price * quantity}
         </Text>
       </Box>

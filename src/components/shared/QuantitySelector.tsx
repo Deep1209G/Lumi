@@ -29,13 +29,14 @@ const QuantitySelector = ({
       <Ionicons
         name="remove-outline"
         size={22}
-        color={theme.colors.black}
+        color={theme.colors.primary}
         onPress={onDecrease}
       />
 
       <Text
         variant="button"
         marginHorizontal="m"
+        color='primary'
       >
         {quantity}
       </Text>
@@ -43,7 +44,7 @@ const QuantitySelector = ({
       <Ionicons
         name="add-outline"
         size={22}
-        color={theme.colors.black}
+        color={theme.colors.primary}
         onPress={onIncrease}
       />
     </Box>

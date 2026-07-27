@@ -42,11 +42,11 @@ const useAddress = () => {
 
 
           const savedAddresses =
-            await getAddresses(user.id);
+            await getAddresses(user.uid);
 
 
           const selectedId =
-            await getSelectedAddress(user.id);
+            await getSelectedAddress(user.uid);
 
 
 

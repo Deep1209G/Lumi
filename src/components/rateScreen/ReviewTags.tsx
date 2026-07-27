@@ -15,8 +15,9 @@ const ReviewTags = ({
   return (
     <>
       <Text
-        marginTop="xl"
+        marginTop="l"
         variant="medium"
+        color='textPrimary'
         fontWeight="700"
       >
         WHAT DID YOU LIKE?
@@ -42,7 +43,7 @@ const ReviewTags = ({
                 paddingVertical="s"
                 borderRadius="xl"
                 borderWidth={1.5}
-                borderColor={selected ? 'white' : 'gray'}
+                borderColor={selected ? 'white' : 'tabgray'}
                 backgroundColor={selected ? 'black' : 'white'}
               >
                 <Text

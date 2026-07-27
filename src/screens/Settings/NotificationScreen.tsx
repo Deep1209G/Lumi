@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Box, Toggle, HeaderBack, Text } from '@src';
 import { notificationSettings } from '@src/data/notificationSettings';
+import theme from '@src/theme/theme';
 
 const NotificationScreen = () => {
   const [settings, setSettings] = useState<Record<string, boolean>>({
@@ -14,7 +15,7 @@ const NotificationScreen = () => {
   });
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor:theme.colors.mainBackground }}>
       <Box paddingLeft="l" paddingRight="l">
         {/* Header */}
         <Box>

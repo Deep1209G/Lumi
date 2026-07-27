@@ -33,10 +33,10 @@ const ProgressStepper = ({
                 alignItems="center"
                 borderWidth={1.5}
                 borderColor={
-                  completed || active ? 'textPrimary' : 'border'
+                  completed || active ? 'primary' : 'tabgray'
                 }
                 backgroundColor={
-                  completed || active ? 'textPrimary' : 'white'
+                  completed || active ? 'primary' : 'white'
                 }
               >
                 {completed ? (
@@ -48,7 +48,7 @@ const ProgressStepper = ({
                 ) : (
                   <Text variant='medium'
                     color={
-                      active ? 'white' : 'textSecondary'
+                      active ? 'white' : 'primary'
                     }
                   >
                     {index + 1}
@@ -73,7 +73,7 @@ const ProgressStepper = ({
                 marginTop="m"
                 marginHorizontal="s"
                 backgroundColor={
-                  completed ? 'textPrimary' : 'border'
+                  completed ? 'primary' : 'tabgray'
                 }
               />
             )}

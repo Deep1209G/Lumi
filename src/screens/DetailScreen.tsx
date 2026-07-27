@@ -67,7 +67,7 @@ const DetailScreen = () => {
           flex={1}
           marginTop="n"
           padding="l"
-          backgroundColor="gray"
+          backgroundColor="tabgray"
           borderTopLeftRadius="xl"
           borderTopRightRadius="xl"
         >
@@ -88,15 +88,15 @@ const DetailScreen = () => {
             </Box>
           </Box>
 
-          <Text variant="description" marginTop="s">
+          <Text variant="description" color='textPrimary' marginTop="s">
             {product.category}
           </Text>
 
           <Text
             variant="description"
-            color="textSecondary"
             marginTop="m"
             textAlign="justify"
+            color='textPrimary' 
           >
             {product.description} Lorem ipsum dolor sit amet, consectetur
             adipiscing elit, sed do eiusmod tempor incididunt ut labore et
@@ -112,7 +112,7 @@ const DetailScreen = () => {
           alignItems="center"
           justifyContent="space-between"
           padding="l"
-          backgroundColor="gray"
+          backgroundColor="tabgray"
           marginBottom="s"
         >
           <QuantitySelector

@@ -17,8 +17,9 @@ const SocialButton = ({ source, onPress }: Props) => {
       <Box
         height={50}
         width={100}
-        borderColor="border"
-        backgroundColor="mainBackground"
+        borderWidth={1.5}
+        borderColor="tabgray"
+        backgroundColor="tabgray"
         borderRadius="m"
         justifyContent="center"
         alignItems="center"

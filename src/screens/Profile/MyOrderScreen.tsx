@@ -6,12 +6,13 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Box, HeaderBack, MyOrderCard, Text } from '@src';
 
 import { OrderContext } from '@src/context/OrderContext';
+import theme from '@src/theme/theme';
 
 const MyOrderScreen = () => {
   const { orders } = useContext(OrderContext);
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor:theme.colors.mainBackground }}>
       <Box flex={1} paddingLeft="l" paddingRight="l">
         {/* Header */}
         <HeaderBack title="Order" />

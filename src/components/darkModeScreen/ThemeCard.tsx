@@ -26,10 +26,10 @@ const ThemeCard = ({
         justifyContent="space-between"
         padding="m"
         marginBottom="m"
-          backgroundColor={selected ? 'gray' : 'white'}
+        backgroundColor={selected ? 'tabgray' : 'white'}
         borderRadius="m"
         borderWidth={2}
-        borderColor={selected ? 'textPrimary' : 'border'}
+        borderColor={selected ? 'primary' : 'tabgray'}
       >
         {/* Left */}
         <Box flexDirection="row" alignItems="center">
@@ -49,7 +49,7 @@ const ThemeCard = ({
           <Ionicons
             name="checkmark-outline"
             size={24}
-            color={theme.colors.textPrimary}
+            color={theme.colors.primary}
           />
         )}
       </Box>

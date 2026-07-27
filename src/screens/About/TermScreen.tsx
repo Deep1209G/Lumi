@@ -1,11 +1,13 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import {termsData} from '../../data/termsData'
 import { Box, HeaderBack, TermCard, Text} from '@src';
 import { ScrollView } from 'react-native';
+import theme from '@src/theme/theme';
 const TermScreen = () => {
   return (
-    <SafeAreaView>
+    <SafeAreaView  style={{ flex: 1, backgroundColor: theme.colors.mainBackground }}>
       <ScrollView showsVerticalScrollIndicator={false}>
       <Box paddingLeft="l" paddingRight="l" >
 
@@ -13,7 +15,7 @@ const TermScreen = () => {
         <HeaderBack title="Terms of Service" />
         
         <Box>
-        <Text marginTop='m' variant='medium' > Last updated: 15 July 2026</Text>
+        <Text marginTop='m' variant='medium' color='textSecondary' > Last updated: 15 July 2026</Text>
         </Box>
 
         {/*Card of Term Screen */}

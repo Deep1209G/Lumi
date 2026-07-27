@@ -19,7 +19,7 @@ const PressableIcon = ({
   height = 30,
   width = 30,
   iconSize = 18,
-  borderColor = 'white',
+  borderColor = 'tabgray',
 }: PressableIconProps) => {
   return (
     <Pressable onPress={onPress}>
@@ -32,16 +32,16 @@ const PressableIcon = ({
         borderRadius="m"
         alignItems="center"
         justifyContent="center"
-        shadowColor="black"
+        shadowColor="primary"
         shadowOffset={{ width: 0, height: 2 }}
         shadowOpacity={0.15}
-        shadowRadius={4}
+        shadowRadius={theme.borderRadii.m}
         elevation={5}
       >
         <Ionicons
           name={liked ? 'heart' : 'heart-outline'}
           size={iconSize}
-          color={liked ? theme.colors.warning : theme.colors.black}
+          color={liked ? theme.colors.primary : theme.colors.primary}
         />
       </Box>
     </Pressable>

@@ -15,10 +15,10 @@ const SettingCard = ({  title, onPress, }: Props) => {
     <Pressable onPress={onPress}>
     <Box
       height={60}
-      backgroundColor="white"
+      backgroundColor="mainBackground"
       borderRadius="m"
-      borderWidth={1}
-      borderColor="border"
+      borderWidth={1.5}
+      borderColor="tabgray"
       padding="m"
       flexDirection="row"
     >
@@ -27,7 +27,7 @@ const SettingCard = ({  title, onPress, }: Props) => {
         <Text variant='button'>{title}</Text>
       </Box>
       <Box justifyContent='center'>
-      <Ionicons name='chevron-forward-outline' size={15} color={theme.colors.icon} />
+      <Ionicons name='chevron-forward-outline' size={15} color={theme.colors.black} />
       </Box>
     </Box>
     </Pressable>

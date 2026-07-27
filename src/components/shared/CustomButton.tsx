@@ -24,7 +24,7 @@ const CustomButton = ({
       <Box
         height={50}
         borderRadius="m"
-        backgroundColor="textPrimary"
+        backgroundColor="primary"
         justifyContent="center"
         alignItems="center"
         flexDirection="row"

@@ -11,122 +11,148 @@ import CartCard from '@src/components/mycartscreen/CartCard';
 import { CartContext } from '@src/context/CardContext';
 import useCartSummary from '../../hooks/useCartSummary';
 import { RootStackParamList } from '../../navigation/AppNavigation';
-import {
-  Box,
-  CustomButton,
-  Text,
-} from '@src';
+import { Box, CustomButton, Text } from '@src';
 
 const MyCartScreen = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
-  const {
-    cart,
-    increaseQuantity,
-    decreaseQuantity,
-    removeFromCart,
-  } = useContext(CartContext);
+  const { cart, increaseQuantity, decreaseQuantity, removeFromCart } =
+    useContext(CartContext);
 
-  const {
-    totalItems,
-    subtotal,
-    gst,
-    shipping,
-    total,
-  } = useCartSummary(cart);
+  const { totalItems, subtotal, gst, shipping, total } = useCartSummary(cart);
 
   const tabBarHeight = useBottomTabBarHeight();
 
   const renderFooter = () => (
-    <>
+  <>
+    <Box marginTop="m">
+      <Text variant="subtitle">Order Summary</Text>
+
       <Box
-        marginTop="l"
-        padding="m"
-        borderRadius="m"
+        marginTop="m"
         backgroundColor="white"
+        borderRadius="xl"
+        padding="l"
+        borderWidth={1}
+        borderColor="tabgray"
+        shadowColor="primary"
+        shadowOffset={{ width: 0, height: 2 }}
+        shadowOpacity={0.08}
+        shadowRadius={10}
+        elevation={4}
       >
-        <Text variant="subtitle">
-          Order Summary
-        </Text>
-
         <Box
-          marginTop="m"
           flexDirection="row"
           justifyContent="space-between"
+          marginBottom="m"
         >
-          <Text variant="body" >Items ({totalItems})</Text>
-          <Text variant="description">₹ {subtotal.toFixed(2)}</Text>
+          <Text variant="body">
+            Items ({totalItems})
+          </Text>
+
+          <Text variant="description" color="primary">
+            ₹ {subtotal.toFixed(2)}
+          </Text>
         </Box>
 
         <Box
-          marginTop="s"
           flexDirection="row"
           justifyContent="space-between"
+          marginBottom="m"
         >
-          <Text variant="body">GST (18%)</Text>
-          <Text variant="description">₹ {gst.toFixed(2)}</Text>
+          <Text variant="body">
+            GST (18%)
+          </Text>
+
+          <Text variant="description" color="primary">
+            ₹ {gst.toFixed(2)}
+          </Text>
         </Box>
 
         <Box
-          marginTop="s"
           flexDirection="row"
           justifyContent="space-between"
+          marginBottom="m"
         >
-          <Text variant="body">Shipping</Text>
-          <Text variant="description">
+          <Text variant="body">
+            Shipping
+          </Text>
+
+          <Text
+            variant="description"
+            color={shipping === 0 ? 'green' : 'primary'}
+          >
             {shipping === 0 ? 'Free' : `₹ ${shipping.toFixed(2)}`}
           </Text>
         </Box>
 
         <Box
-          marginTop="m"
           borderTopWidth={1}
           borderColor="border"
+          marginVertical="m"
         />
 
         <Box
-          marginTop="m"
           flexDirection="row"
           justifyContent="space-between"
+          alignItems="center"
         >
           <Text variant="subtitle">
             Total
           </Text>
 
-          <Text variant="subtitle">
+          <Text variant="subtitle" color="primary">
             ₹ {total.toFixed(2)}
           </Text>
         </Box>
       </Box>
 
-      <Box marginTop="m">
+      <Box marginTop="xl">
         <CustomButton
           title="Proceed to Checkout"
           onPress={() => navigation.navigate('Checkout')}
         />
       </Box>
-    </>
-  );
+
+      <Box
+        marginTop="m"
+        flexDirection="row"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <Ionicons
+          name="shield-checkmark-outline"
+          size={18}
+          color={theme.colors.primary}
+        />
+
+        <Text
+          marginLeft="xs"
+          variant="small"
+          color="textSecondary"
+        >
+          Secure payments • Easy Returns • 100% Authentic
+        </Text>
+      </Box>
+    </Box>
+  </>
+);
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView
+      style={{ flex: 1, backgroundColor: theme.colors.mainBackground }}
+    >
       <Box flex={1} paddingLeft="l" paddingRight="l">
-        <Text variant="heading">
-          My Cart ({cart.length})
-        </Text>
+        <Text variant="heading">My Cart ({cart.length})</Text>
 
         {cart.length === 0 ? (
-          <Box
-            flex={1}
-            marginTop="xxxl"
-            alignItems="center"
-          >
+          <Box flex={1} marginTop="xxxl" alignItems="center">
             <Box
               height={60}
               width={60}
               backgroundColor="white"
-              borderColor="border"
+              borderColor="tabgray"
               borderWidth={2}
               borderRadius="m"
               justifyContent="center"
@@ -135,7 +161,7 @@ const MyCartScreen = () => {
               <Ionicons
                 name="bag-outline"
                 size={30}
-                color={theme.colors.border}
+                color={theme.colors.primary}
               />
             </Box>
 
@@ -143,11 +169,7 @@ const MyCartScreen = () => {
               Your Cart is Empty
             </Text>
 
-            <Text
-              marginTop="s"
-              variant="medium"
-              textAlign="center"
-            >
+            <Text marginTop="s" variant="medium" textAlign="center">
               Add your favorite products to start shopping.
             </Text>
 
@@ -171,15 +193,9 @@ const MyCartScreen = () => {
                 <CartCard
                   product={item.product}
                   quantity={item.quantity}
-                  onIncrease={() =>
-                    increaseQuantity(item.product.id)
-                  }
-                  onDecrease={() =>
-                    decreaseQuantity(item.product.id)
-                  }
-                  onRemove={() =>
-                    removeFromCart(item.product.id)
-                  }
+                  onIncrease={() => increaseQuantity(item.product.id)}
+                  onDecrease={() => decreaseQuantity(item.product.id)}
+                  onRemove={() => removeFromCart(item.product.id)}
                 />
               )}
               ListFooterComponent={renderFooter}

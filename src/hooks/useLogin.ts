@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { loginUser } from '../api/auth';
+import { useAuth } from '@src/context/AuthContext';
 
 const useLogin = () => {
   const [loading, setLoading] = useState(false);
+  const { refreshUser } = useAuth();
 
   const login = async (username: string, password: string) => {
     try {
@@ -11,28 +13,18 @@ const useLogin = () => {
 
       const data = await loginUser(username, password);
 
-      await AsyncStorage.setItem(
-        'token',
-        data.accessToken,
-      );
+      await AsyncStorage.setItem('token', data.accessToken);
 
-      await AsyncStorage.setItem(
-        'isLoggedIn',
-        'true',
-      );
+      await AsyncStorage.setItem('isLoggedIn', 'true');
 
       const user = {
-       
         id: data.id.toString(),
         name: `${data.firstName ?? ''} ${data.lastName ?? ''}`.trim(),
         email: data.email,
-
       };
 
-      await AsyncStorage.setItem(
-        'currentUser',
-        JSON.stringify(user),
-      );
+      await AsyncStorage.setItem('currentUser', JSON.stringify(user));
+      await refreshUser();
 
       console.log('SAVED USER:', user);
 
@@ -40,13 +32,10 @@ const useLogin = () => {
         success: true,
         data,
       };
-
     } catch (error: any) {
       return {
         success: false,
-        message:
-          error.response?.data?.message ||
-          error.message,
+        message: error.response?.data?.message || error.message,
       };
     } finally {
       setLoading(false);

@@ -33,7 +33,7 @@ const Toggle = ({
       backgroundColor="white"
       padding="m"
       borderWidth={2}
-      borderColor="gray"
+      borderColor="tabgray"
       borderRadius="m"
       marginBottom="m"
     >
@@ -64,7 +64,7 @@ const Toggle = ({
             width={52}
             height={30}
             borderRadius="xl"
-            backgroundColor={value ? 'black' : 'gray'}
+            backgroundColor={value ? 'primary' : 'tabgray'}
             justifyContent="center"
             paddingHorizontal="xs"
           >
@@ -78,8 +78,7 @@ const Toggle = ({
                 height={22}
                 borderRadius="xl"
                 backgroundColor="white"
-                borderWidth={1}
-                borderColor="border"
+             
               />
             </Animated.View>
           </Box>

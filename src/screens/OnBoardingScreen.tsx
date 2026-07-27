@@ -3,6 +3,8 @@ import React, { useRef, useState } from 'react';
 import { FlatList, Image, View, Dimensions } from 'react-native';
 
 import { Box, Text, CustomButton, onboardingData } from '@src';
+import theme from '@src/theme/theme';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const { width } = Dimensions.get('window');
 
@@ -29,7 +31,8 @@ const OnboardingScreen = ({ navigation }: any) => {
   };
 
   return (
-    <Box flex={1}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: theme.colors.mainBackground }}>
+    <Box flex={1} >
       <FlatList
         ref={flatListRef}
         data={onboardingData}
@@ -66,7 +69,7 @@ const OnboardingScreen = ({ navigation }: any) => {
                       marginHorizontal: 4,
 
                       backgroundColor:
-                        currentIndex === index ? '#111827' : '#E5E7EB',
+                        currentIndex === index ? theme.colors.primary : theme.colors.tabgray,
                     }}
                   />
                 ))}
@@ -84,7 +87,7 @@ const OnboardingScreen = ({ navigation }: any) => {
         )}
       />
 
-      <Box position="absolute" bottom={40} left={20} right={20}>
+      <Box position="absolute" bottom={1} left={20} right={20}>
         <CustomButton
           title={
             currentIndex === onboardingData.length - 1
@@ -101,6 +104,7 @@ const OnboardingScreen = ({ navigation }: any) => {
         )}
       </Box>
     </Box>
+    </SafeAreaView>
   );
 };
 

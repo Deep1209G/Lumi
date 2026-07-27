@@ -4,10 +4,10 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../navigation/AppNavigation';
 
-type HeaderProps ={
-    title: string;
-}
-const HeaderBack = ({title}:HeaderProps) => {
+type HeaderProps = {
+  title: string;
+};
+const HeaderBack = ({ title }: HeaderProps) => {
   type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
   const navigation = useNavigation<NavigationProp>();
   return (
@@ -17,8 +17,7 @@ const HeaderBack = ({title}:HeaderProps) => {
         onPressIcon={() => navigation.goBack()}
       />
       <Text variant="heading">{title}</Text>
-      <Box width={50}/>
-     
+      <Box width={50} />
     </Box>
   );
 };

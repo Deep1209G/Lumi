@@ -21,16 +21,19 @@ const WishlistScreen = () => {
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView
+      style={{ flex: 1, backgroundColor: theme.colors.mainBackground }}
+    >
       <Box paddingLeft="l" paddingRight="l">
         <Text variant="heading">My WishList</Text>
+       
         {wishlistProducts.length === 0 ? (
           <Box marginTop="xxxl" alignItems="center">
             <Box
               height={60}
               width={60}
               backgroundColor="white"
-              borderColor="border"
+              borderColor="tabgray"
               borderWidth={2}
               borderRadius="m"
               justifyContent="center"
@@ -39,7 +42,7 @@ const WishlistScreen = () => {
               <Ionicons
                 name="heart-outline"
                 size={30}
-                color={theme.colors.border}
+                color={theme.colors.primary}
               />
             </Box>
             <Text marginTop="m" variant="button">

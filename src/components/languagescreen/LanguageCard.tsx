@@ -20,9 +20,9 @@ const LanguageCard = ({
   return (
     <Pressable onPress={onPress}>
       <Box
-        backgroundColor={selected ? 'gray' : 'white'}
+        backgroundColor={selected ? 'tabgray' : 'white'}
         borderWidth={2}
-        borderColor={selected ? 'black' : 'border'}
+        borderColor={selected ? 'primary' : 'tabgray'}
         borderRadius="m"
         padding="m"
         marginBottom="m"
@@ -32,7 +32,7 @@ const LanguageCard = ({
       >
         <Text
           variant="medium"
-          color='black'
+          color="textPrimary"
         >
           {title}
         </Text>
@@ -41,7 +41,7 @@ const LanguageCard = ({
           <Ionicons
             name="checkmark-outline"
             size={20}
-            color={theme.colors.black}
+            color={theme.colors.primary}
           />
         )}
       </Box>

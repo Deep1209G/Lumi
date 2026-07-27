@@ -16,13 +16,13 @@ const TermCard = ({ title, description, number }: TermCardProps) => {
       justifyContent='center'
       padding='m'
       borderWidth={1.5}
-      borderColor='gray'
+      borderColor='tabgray'
     >
       <Box flexDirection="row">
         <Text variant="button">{number}.</Text>
-        <Text variant="button" paddingLeft='s'>{title}</Text>
+        <Text variant="button" color='textPrimary' paddingLeft='s'>{title}</Text>
       </Box>
-      <Text marginTop='s' variant='description' textAlign="justify">{description}</Text>
+      <Text marginTop='s' variant='description' color='textSecondary'  textAlign="justify">{description}</Text>
     </Box>
   );
 };
