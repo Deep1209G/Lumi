@@ -48,7 +48,7 @@ const AddressScreen = () => {
 
     const addressId = editingAddress?.id ?? Date.now().toString();
 
-    await saveAddress(user.id, {
+    await saveAddress(user.uid, {
       id: addressId,
       fullName,
       phone,
@@ -60,7 +60,7 @@ const AddressScreen = () => {
       type,
     });
 
-    await saveSelectedAddress(user.id, addressId);
+    await saveSelectedAddress(user.uid, addressId);
 
     navigation.goBack();
   };

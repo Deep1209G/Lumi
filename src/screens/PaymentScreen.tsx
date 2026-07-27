@@ -213,7 +213,7 @@ const PaymentScreen = () => {
         paddingHorizontal="l"
         paddingVertical="m"
         borderTopWidth={1}
-        borderColor="border"
+        borderColor="tabgray"
       >
         <CustomButton
           title={`Pay ₹${total.toFixed(2)}`}

@@ -19,6 +19,7 @@ import {
   AddressSelector,
   CustomButton,
 } from '@src';
+import theme from '@src/theme/theme';
 
 const CheckoutScreen = () => {
   type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
@@ -30,13 +31,13 @@ const CheckoutScreen = () => {
   // Updated
   const { selectedAddress } = useAddress();
 
-  const { totalItems, subtotal, gst, shipping, total } =
-    useCartSummary(cart);
+  const { totalItems, subtotal, gst, shipping, total } = useCartSummary(cart);
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView
+      style={{ flex: 1, backgroundColor: theme.colors.mainBackground }}
+    >
       <Box flex={1} paddingLeft="l" paddingRight="l">
-
         {/* Header */}
         <Box
           flexDirection="row"
@@ -48,13 +49,10 @@ const CheckoutScreen = () => {
             onPressIcon={() => navigation.goBack()}
           />
 
-          <Text variant="heading">
-            Checkout
-          </Text>
+          <Text variant="heading">Checkout</Text>
 
           <Box width={24} />
         </Box>
-
 
         {/* Progress Stepper */}
         <Box marginTop="l" marginBottom="l">
@@ -64,7 +62,6 @@ const CheckoutScreen = () => {
           />
         </Box>
 
-
         <FlatList
           style={{ flex: 1 }}
           data={cart}
@@ -73,167 +70,120 @@ const CheckoutScreen = () => {
           contentContainerStyle={{
             paddingBottom: 20,
           }}
-
           renderItem={({ item }) => (
-            <OrderSummary
-              product={item.product}
-              quantity={item.quantity}
-            />
+            <OrderSummary product={item.product} quantity={item.quantity} />
           )}
-
           ListHeaderComponent={
             <Text variant="body" marginBottom="s">
               Order Summary
             </Text>
           }
-
-
           ListFooterComponent={
             <>
               {/* Shipping Address */}
               <Box marginTop="m">
-
                 <Text variant="body" marginBottom="s">
                   Shipping Address
                 </Text>
 
-
                 <AddressSelector
-                  fullName={
-                    selectedAddress?.fullName ?? 'No Address'
-                  }
-
+                  fullName={selectedAddress?.fullName ?? 'No Address'}
                   address={
                     selectedAddress
                       ? `${selectedAddress.house}, ${selectedAddress.area}, ${selectedAddress.city}, ${selectedAddress.state} - ${selectedAddress.pincode}`
                       : 'Please add your shipping address'
                   }
-
                   type={selectedAddress?.type}
-
-                  onPress={() =>
-                    navigation.navigate('AddressList')
-                  }
+                  onPress={() => navigation.navigate('AddressList')}
                 />
-
               </Box>
 
-
               {/* Bill */}
-              <Box
-                marginTop="l"
-                padding="m"
-                borderRadius="m"
-                backgroundColor="white"
-              >
-
-                <Text variant="subtitle">
-                  Bill
-                </Text>
-
-
+              <Text variant="subtitle" marginTop='m'>Bill</Text>
+              <Box marginTop="s">
                 <Box
-                  marginTop="m"
-                  flexDirection="row"
-                  justifyContent="space-between"
+                  backgroundColor="white"
+                  borderRadius="l"
+                  padding="l"
+                  borderWidth={1}
+                  borderColor="tabgray"
+                  shadowColor="primary"
+                  shadowOffset={{ width: 0, height: 2 }}
+                  shadowOpacity={0.08}
+                  shadowRadius={8}
+                  elevation={4}
                 >
-                  <Text variant="body">
-                    Items ({totalItems})
-                  </Text>
+                  <Box
+                    marginTop="m"
+                    flexDirection="row"
+                    justifyContent="space-between"
+                  >
+                    <Text variant="body">Items ({totalItems})</Text>
 
-                  <Text variant="description">
-                    ₹ {subtotal.toFixed(2)}
-                  </Text>
+                    <Text variant="description" color="primary">
+                      ₹ {subtotal.toFixed(2)}
+                    </Text>
+                  </Box>
 
+                  <Box
+                    marginTop="s"
+                    flexDirection="row"
+                    justifyContent="space-between"
+                  >
+                    <Text variant="body">GST (18%)</Text>
+
+                    <Text variant="description" color="primary">
+                      ₹ {gst.toFixed(2)}
+                    </Text>
+                  </Box>
+
+                  <Box
+                    marginTop="s"
+                    flexDirection="row"
+                    justifyContent="space-between"
+                  >
+                    <Text variant="body">Shipping</Text>
+
+                    <Text variant="description" color="green">
+                      {shipping === 0 ? 'Free' : `₹ ${shipping.toFixed(2)}`}
+                    </Text>
+                  </Box>
+
+                  <Box marginTop="m" borderTopWidth={1} borderColor="border" />
+
+                  <Box
+                    marginTop="m"
+                    flexDirection="row"
+                    justifyContent="space-between"
+                    alignItems="center"
+                  >
+                    <Text variant="subtitle">Total</Text>
+
+                    <Text variant="subtitle" color="primary">
+                      ₹ {total.toFixed(2)}
+                    </Text>
+                  </Box>
                 </Box>
-
-
-                <Box
-                  marginTop="s"
-                  flexDirection="row"
-                  justifyContent="space-between"
-                >
-
-                  <Text variant="body">
-                    GST (18%)
-                  </Text>
-
-                  <Text variant="description">
-                    ₹ {gst.toFixed(2)}
-                  </Text>
-
-                </Box>
-
-
-                <Box
-                  marginTop="s"
-                  flexDirection="row"
-                  justifyContent="space-between"
-                >
-
-                  <Text variant="body">
-                    Shipping
-                  </Text>
-
-                  <Text variant="description">
-                    {shipping === 0
-                      ? 'Free'
-                      : `₹ ${shipping.toFixed(2)}`}
-                  </Text>
-
-                </Box>
-
-
-                <Box
-                  marginTop="m"
-                  borderTopWidth={1}
-                  borderColor="border"
-                />
-
-
-                <Box
-                  marginTop="m"
-                  flexDirection="row"
-                  justifyContent="space-between"
-                >
-
-                  <Text variant="subtitle">
-                    Total
-                  </Text>
-
-                  <Text variant="subtitle">
-                    ₹ {total.toFixed(2)}
-                  </Text>
-
-                </Box>
-
               </Box>
             </>
           }
         />
-
       </Box>
-
 
       {/* Bottom Button */}
       <Box
         backgroundColor="white"
         paddingHorizontal="l"
         paddingVertical="m"
-        borderTopWidth={1}
-        borderColor="border"
+        borderTopWidth={1.5}
+        borderColor="tabgray"
       >
-
         <CustomButton
           title={`Continue to Payment ₹${total.toFixed(2)}`}
           rightIcon="arrow-forward-outline"
-          onPress={() =>
-            navigation.navigate('Payment')
-          }
+          onPress={() => navigation.navigate('Payment')}
         />
-
       </Box>
-
     </SafeAreaView>
   );
 };

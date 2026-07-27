@@ -15,7 +15,7 @@ const AddToCartButton = ({price, onPress}: AddToCartButtonProps & { onPress: () 
     flexDirection="row"
     justifyContent="center"
     alignItems="center"
-    backgroundColor="black"
+    backgroundColor="primary"
     borderRadius="m"
     paddingVertical="m"
   >

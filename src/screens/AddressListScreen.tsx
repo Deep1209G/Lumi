@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, { useContext } from 'react';
 import { FlatList, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -9,11 +10,11 @@ import useAddress from '@src/hooks/useAddress';
 import { saveSelectedAddress } from '@src/utils/addressStorage';
 import { AuthContext } from '@src/context/AuthContext';
 import { RootStackParamList } from '../navigation/AppNavigation';
+import theme from '@src/theme/theme';
 
 const AddressListScreen = () => {
-
   const navigation =
-  useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { user } = useContext(AuthContext);
   const { addresses } = useAddress();
 
@@ -22,14 +23,15 @@ const AddressListScreen = () => {
       return;
     }
 
-    await saveSelectedAddress(user.id, id);
+    await saveSelectedAddress(user.uid, id);
     navigation.goBack();
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView
+      style={{ flex: 1, backgroundColor: theme.colors.mainBackground }}
+    >
       <Box flex={1} paddingLeft="l" paddingRight="l">
-
         <HeaderBack title="My Addresses" />
 
         <FlatList
@@ -43,53 +45,47 @@ const AddressListScreen = () => {
           renderItem={({ item }) => (
             <Box
               backgroundColor="white"
-              padding="m"
-              borderRadius="m"
+              padding="l"
+              borderRadius="l"
               borderWidth={1}
-              borderColor="border"
+              borderColor="tabgray"
               marginBottom="m"
+              shadowColor="primary"
+              shadowOffset={{ width: 0, height: 2 }}
+              shadowOpacity={0.06}
+              shadowRadius={8}
+              elevation={3}
             >
-
-              <Pressable
-                onPress={() => handleSelectAddress(item.id)}
-              >
-                <Text variant="medium">
+              <Pressable onPress={() => handleSelectAddress(item.id)}>
+                <Text variant="medium" color="primary">
                   {item.type}
                 </Text>
 
-                <Text marginTop="s">
-                  {item.fullName}
-                </Text>
+                <Text marginTop="s">{item.fullName}</Text>
 
-                <Text color="textSecondary">
-                  {item.phone}
-                </Text>
+                <Text color="textSecondary">{item.phone}</Text>
 
                 <Text color="textSecondary" marginTop="xs">
-                  {item.house}, {item.area}, {item.city}, {item.state} - {item.pincode}
+                  {item.house}, {item.area}, {item.city}, {item.state} -{' '}
+                  {item.pincode}
                 </Text>
               </Pressable>
-
-              <Pressable
-                onPress={() =>
-                  navigation.navigate('Address', {
-                    address: item,
-                  })
-                }
+              <Box
+                marginTop="m"
+                backgroundColor="primary"
+                borderRadius="m"
+                alignItems="center"
               >
-                <Box
-                  marginTop="m"
-                  backgroundColor="gray"
-                  padding="s"
-                  borderRadius="s"
-                  alignItems="center"
-                >
-                  <Text>
-                    Edit
-                  </Text>
-                </Box>
-              </Pressable>
-
+                <CustomButton
+                  title="Edit"
+                  onPress={() =>
+                    navigation.navigate('Address', {
+                      address: item,
+                    })
+                  }
+                />
+              </Box>
+              
             </Box>
           )}
         />
@@ -98,7 +94,6 @@ const AddressListScreen = () => {
           title="Add New Address"
           onPress={() => navigation.navigate('Address')}
         />
-
       </Box>
     </SafeAreaView>
   );

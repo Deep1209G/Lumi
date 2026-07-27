@@ -30,7 +30,12 @@ const CartCard = ({
       marginBottom="m"
       alignItems="center"
       borderWidth={1}
-      borderColor="card"
+      borderColor="tabgray"
+      shadowColor="primary"
+      shadowOffset={{ width: 0, height: 2 }}
+      shadowOpacity={0.06}
+      shadowRadius={8}
+      elevation={3}
       height={110}
     >
       {/* Product Image */}
@@ -59,7 +64,7 @@ const CartCard = ({
           <Ionicons
             name="close-outline"
             size={22}
-            color={theme.colors.icon}
+            color={theme.colors.warning}
             onPress={onRemove}
           />
         </Box>
@@ -70,7 +75,7 @@ const CartCard = ({
           justifyContent="space-between"
           alignItems="center"
         >
-          <Text variant="medium" color="black">
+          <Text variant="medium" color="primary">
             ₹{product.price * quantity}
           </Text>
 
@@ -78,7 +83,7 @@ const CartCard = ({
             quantity={quantity}
             onIncrease={onIncrease}
             onDecrease={onDecrease}
-            backgroundColor="gray"
+            backgroundColor="tabgray"
           />
         </Box>
       </Box>

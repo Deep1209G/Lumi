@@ -25,89 +25,72 @@ const MyOrderCard = ({
   total,
 }: Props) => {
   return (
-    
-  <Box
-    padding="m"
-    backgroundColor="white"
-    borderRadius="m"
-    borderColor="border"
-    borderWidth={1}
-    marginBottom="m"
-  >
-    {/* Top */}
     <Box
-      flexDirection="row"
-      justifyContent="space-between"
-      alignItems="center"
+      padding="l"
+      backgroundColor="white"
+      borderRadius="xl"
+      borderWidth={1}
+      borderColor="tabgray"
+      marginBottom="m"
+      shadowColor="primary"
+      shadowOffset={{ width: 0, height: 3 }}
+      shadowOpacity={0.08}
+      shadowRadius={10}
+      elevation={4}
     >
-      <Text variant="medium" color='black'>{orderId}</Text>
-
-      <Text variant="medium" color="green">
-        {status}
-      </Text>
-    </Box>
-
-    {/* Product */}
-    <Box
-      flexDirection="row"
-      marginTop="m"
-      alignItems="center"
-    >
-      <Image
-        source={image}
-        style={{
-          height: 50,
-          width: 50,
-          borderRadius: 12,
-        }}
-      />
-
-      <Box flex={1} marginLeft="m">
-        <Text variant="body">
-          {title}
-        </Text>
-
-        <Text
-          variant="medium"
-          color="textSecondary"
-          marginTop="xs"
-        >
-          Qty : {quantity}
-        </Text>
-      </Box>
-    </Box>
-
-    {/* Bottom */}
-    <Box
-      flexDirection="row"
-      justifyContent="space-between"
-      alignItems="center"
-      marginTop="m"
-    >
+      {/* Top */}
       <Box
         flexDirection="row"
+        justifyContent="space-between"
         alignItems="center"
       >
-        <Ionicons
-          name="time-outline"
-          size={15}
-          color={theme.colors.icon}
-        />
+        <Text variant="medium" color="black">
+          {orderId}
+        </Text>
 
-        <Text
-          variant="small"
-          marginLeft="xs"
-        >
-          {date}
+        <Text variant="medium" color="green">
+          {status}
         </Text>
       </Box>
 
-      <Text variant="rupees">
-        ₹ {total}
-      </Text>
-    </Box>
-  </Box>
+      {/* Product */}
+      <Box flexDirection="row" marginTop="m" alignItems="center">
+        <Image
+          source={image}
+          style={{
+            height: 50,
+            width: 50,
+            borderRadius: 12,
+          }}
+        />
 
+        <Box flex={1} marginLeft="m">
+          <Text variant="body">{title}</Text>
+
+          <Text variant="medium" color="textSecondary" marginTop="xs">
+            Qty : {quantity}
+          </Text>
+        </Box>
+      </Box>
+
+      {/* Bottom */}
+      <Box
+        flexDirection="row"
+        justifyContent="space-between"
+        alignItems="center"
+        marginTop="m"
+      >
+        <Box flexDirection="row" alignItems="center">
+          <Ionicons name="time-outline" size={15} color={theme.colors.icon} />
+
+          <Text variant="small" marginLeft="xs">
+            {date}
+          </Text>
+        </Box>
+
+        <Text variant="rupees">₹ {total}</Text>
+      </Box>
+    </Box>
   );
 };
 
