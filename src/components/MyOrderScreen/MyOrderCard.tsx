@@ -8,7 +8,7 @@ import theme from '../../theme/theme';
 type Props = {
   orderId: string;
   status: string;
-  image: ImageSourcePropType;
+  image?: ImageSourcePropType;
   title: string;
   quantity: number;
   date: string;
@@ -55,14 +55,17 @@ const MyOrderCard = ({
 
       {/* Product */}
       <Box flexDirection="row" marginTop="m" alignItems="center">
-        <Image
-          source={image}
-          style={{
-            height: 50,
-            width: 50,
-            borderRadius: 12,
-          }}
-        />
+        {image && (
+          <Image
+            source={image}
+            style={{
+              width: 80,
+              height: 80,
+              borderRadius: 10,
+            }}
+            resizeMode="cover"
+          />
+        )}
 
         <Box flex={1} marginLeft="m">
           <Text variant="body">{title}</Text>

@@ -15,6 +15,11 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 
+const paymentRoutes = require("./routes/payment.routes");
+const orderRoutes = require("./routes/order.routes");
+app.use("/api/payment", paymentRoutes);
+app.use("/api/orders", orderRoutes);
+
 // Test API
 app.get("/", (req, res) => {
   res.send("Backend is running");

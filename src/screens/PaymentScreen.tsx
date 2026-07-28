@@ -16,14 +16,18 @@ import {
   CustomTextInput,
   CustomButton,
 } from '@src';
-
+import { createOrder } from '@src/services/order.service';
 import { RootStackParamList } from '../navigation/AppNavigation';
 import { paymentMethods } from '@src/data/paymentMethods';
 import { wallets } from '@src/data/wallets';
 import { CartContext } from '@src/context/CardContext';
 import useCartSummary from '@src/hooks/useCartSummary';
 import theme from '@src/theme/theme';
-
+import RazorpayCheckout from 'react-native-razorpay';
+import {
+  createPaymentOrder,
+  verifyPayment,
+} from '@src/services/payment.service';
 const PaymentScreen = () => {
   type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
@@ -49,32 +53,109 @@ const PaymentScreen = () => {
     }
   };
   const handlePayment = async () => {
-    console.log('Button Pressed');
-
     if (!selectedPayment) {
       Alert.alert('Please select a payment method');
       return;
     }
 
+    // For now, only COD uses the existing flow.
+    if (selectedPayment === 'cod') {
+      try {
+        await addOrder(cart);
+        await clearCart();
+        navigation.navigate('OrderSuccess');
+      } catch (error) {
+        console.log(error);
+        Alert.alert('Something went wrong');
+      }
+
+      return;
+    }
+
     try {
-      // Save order
-      await addOrder(cart);
+      const response = await createPaymentOrder(Math.round(total));
 
-      // Clear cart
-      await clearCart();
+      const options = {
+        description: 'Lumi Order Payment',
+        currency: response.order.currency,
+        key: 'rzp_test_TIV1WTanlr02VW', // Your Razorpay Test Key ID
+        amount: response.order.amount,
+        name: 'Lumi',
+        order_id: response.order.id,
 
-      // Navigate
-      navigation.navigate('OrderSuccess');
-    } catch (error) {
-      console.log(error);
-      Alert.alert('Something went wrong');
+        prefill: {
+          name: 'Customer',
+          email: 'customer@example.com',
+          contact: '9999999999',
+        },
+
+        theme: {
+          color: '#6C63FF',
+        },
+      };
+      console.log('Razorpay options:', options);
+
+      const payment = await RazorpayCheckout.open(options);
+
+      console.log('Payment Success:', payment);
+
+      const verification = await verifyPayment({
+        razorpay_order_id: payment.razorpay_order_id,
+        razorpay_payment_id: payment.razorpay_payment_id,
+        razorpay_signature: payment.razorpay_signature,
+      });
+
+      console.log('Verification Response:', verification);
+      if (verification.success) {
+        const orderData = {
+          items: cart.map(item => ({
+            productId: item.product.id.toString(),
+            name: item.product.name,
+            price: item.product.price,
+            quantity: item.quantity,
+          })),
+
+          total: total,
+
+          payment: {
+            paymentMethod: 'razorpay',
+            razorpayPaymentId: payment.razorpay_payment_id,
+            razorpayOrderId: payment.razorpay_order_id,
+            razorpaySignature: payment.razorpay_signature,
+            paymentStatus: 'success',
+          },
+        };
+
+        const orderResponse = await createOrder(orderData);
+        console.log('ORDER DATA:', JSON.stringify(orderData, null, 2));
+        console.log('MongoDB Order:', orderResponse);
+
+        if (orderResponse.success) {
+          await clearCart();
+
+          navigation.navigate('OrderSuccess');
+        } else {
+          Alert.alert('Order creation failed');
+        }
+      } else {
+        Alert.alert(
+          'Payment Verification Failed',
+          verification.message || 'Please try again',
+        );
+      }
+    } catch (error: any) {
+      console.log('RAZORPAY ERROR:', error);
+
+      Alert.alert('Payment Failed', error?.description || 'Unknown error');
     }
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor:theme.colors.mainBackground }}>
+    <SafeAreaView
+      style={{ flex: 1, backgroundColor: theme.colors.mainBackground }}
+    >
       {/* Scrollable Content */}
-      <Box flex={1} paddingLeft="l" paddingRight="l" >
+      <Box flex={1} paddingLeft="l" paddingRight="l">
         {/* Header */}
         <Box
           flexDirection="row"
