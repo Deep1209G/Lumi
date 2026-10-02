@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Animated, Pressable } from 'react-native';
 import { Box, Text } from '@src';
+import { DeviceHelper } from '@src/utils';
 
 type ToggleProps = {
   title: string;
@@ -16,12 +17,12 @@ const Toggle = ({
   onValueChange,
 }: ToggleProps) => {
   const translateX = useRef(
-    new Animated.Value(value ? 22 : 0),
+    new Animated.Value(value ? DeviceHelper.calWidth(22) : 0),
   ).current;
 
   useEffect(() => {
     Animated.spring(translateX, {
-      toValue: value ? 22 : 0,
+      toValue: value ? DeviceHelper.calWidth(22) : 0,
       friction: 8,
       tension: 50,
       useNativeDriver: true,
@@ -61,8 +62,8 @@ const Toggle = ({
           hitSlop={10}
         >
           <Box
-            width={52}
-            height={30}
+            width={DeviceHelper.calWidth(52)}
+            height={DeviceHelper.calHeight(30)}
             borderRadius="xl"
             backgroundColor={value ? 'primary' : 'tabgray'}
             justifyContent="center"
@@ -74,8 +75,8 @@ const Toggle = ({
               }}
             >
               <Box
-                width={22}
-                height={22}
+                width={DeviceHelper.calWidth(22)}
+                height={DeviceHelper.calHeight(22)}
                 borderRadius="xl"
                 backgroundColor="white"
              

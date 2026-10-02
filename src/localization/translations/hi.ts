@@ -22,8 +22,16 @@ const hi = {
   settings: 'सेटिंग्स',
   logout: 'लॉग आउट',
   darkMode: 'डार्क मोड',
+  textSize: 'टेक्स्ट आकार',
+  small: 'छोटा',
+  medium: 'मध्यम',
+  large: 'बड़ा',
   privacySecurity: 'गोपनीयता और सुरक्षा',
   helpCenter: 'सहायता केंद्र',
+  contactUs: 'संपर्क करें',
+  emailUs: 'ईमेल करें',
+  callUs: 'कॉल करें',
+  visitWebsite: 'वेबसाइट देखें',
   aboutLumi: 'लूमी के बारे में',
 };
 

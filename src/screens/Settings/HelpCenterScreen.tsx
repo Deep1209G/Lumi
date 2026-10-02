@@ -6,6 +6,7 @@ import { Pressable } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { faqs } from '@src/data/faqs';
 import theme from '@src/theme/theme';
+import { DeviceHelper } from '@src/utils';
 
 
 const HelpCenterScreen = () => {
@@ -31,7 +32,7 @@ const HelpCenterScreen = () => {
       <Box marginTop="m">
         <Pressable onPress={() => console.log('Pressed chat with support')}>
           <Box
-            height={60}
+            height={DeviceHelper.calHeight(60)}
             backgroundColor="primary"
             borderRadius="m"
             padding="m"
@@ -45,7 +46,7 @@ const HelpCenterScreen = () => {
             <Box justifyContent="center">
               <Ionicons
                 name="chevron-forward-outline"
-                size={15}
+                size={DeviceHelper.calWidth(15)}
                 color={theme.colors.white}
               />
             </Box>

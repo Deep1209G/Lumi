@@ -2,10 +2,11 @@ import React, { useRef, useState, useEffect } from 'react';
 import { FlatList, useWindowDimensions } from 'react-native';
 import { banners } from '@src/data/banners';
 import { Box, BannerCard } from '@src';
+import { DeviceHelper } from '@src/utils';
 
 const BannerSlider = () => {
   const { width } = useWindowDimensions();
-  const bannerWidth = width - 48;
+  const bannerWidth = width - DeviceHelper.calWidth(48);
 
   const flatListRef = useRef<FlatList>(null);
 
@@ -66,8 +67,8 @@ const BannerSlider = () => {
         {banners.map((_, index) => (
           <Box
             key={index}
-            width={8}
-            height={8}
+            width={DeviceHelper.calWidth(8)}
+            height={DeviceHelper.calWidth(8)}
             borderRadius="s"
             marginHorizontal="xs"
             backgroundColor={

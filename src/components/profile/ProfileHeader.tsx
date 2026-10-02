@@ -6,6 +6,7 @@ import { Image } from 'react-native';
 
 import theme from '@src/theme/theme';
 import { useAuth } from '@src/context/AuthContext';
+import { DeviceHelper } from '@src/utils';
 
 
 const ProfileHeader = () => {
@@ -22,8 +23,8 @@ const ProfileHeader = () => {
         alignItems="center"
         borderWidth={2}
         borderColor="tabgray"
-        height={70}
-        width={70}
+        height={DeviceHelper.calHeight(70)}
+        width={DeviceHelper.calWidth(70)}
         borderRadius="m"
       >
 
@@ -34,8 +35,8 @@ const ProfileHeader = () => {
               : Images.avatar1
           }
           style={{
-            width: 60,
-            height: 60,
+            width: DeviceHelper.calWidth(60),
+            height: DeviceHelper.calHeight(60),
             borderRadius: theme.borderRadii.m,
           }}
         />

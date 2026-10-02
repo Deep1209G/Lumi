@@ -3,6 +3,7 @@ import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../navigation/AppNavigation';
+import { DeviceHelper } from '@src/utils';
 
 type HeaderProps = {
   title: string;
@@ -17,7 +18,7 @@ const HeaderBack = ({ title }: HeaderProps) => {
         onPressIcon={() => navigation.goBack()}
       />
       <Text variant="heading">{title}</Text>
-      <Box width={50} />
+      <Box width={DeviceHelper.calWidth(50)} />
     </Box>
   );
 };

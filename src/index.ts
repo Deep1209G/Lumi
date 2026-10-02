@@ -35,7 +35,6 @@ export {default as TermCard} from './components/termsScreen/TermCard.tsx'
 export {default as ReviewInput} from './components/rateScreen/ReviewInput.tsx'
 export {default as ReviewTags} from './components/rateScreen/ReviewTags.tsx'
 
-
 //Screen
 export { default as HomeScreen } from './screens/BottomTab/HomeScreen';
 export { default as SplashScreen } from './screens/SplashScreen';
@@ -65,6 +64,8 @@ export {default as SettingsScreen} from './screens/Profile/SettingsScreen.tsx'
 export {default as AboutScreen} from './screens/Settings/AboutScreen.tsx'
 export {default as HelpCenterScreen} from './screens/Settings/HelpCenterScreen.tsx'
 export {default as DarkModeScreen} from './screens/Settings/DarkModeScreen.tsx'
+export {default as TextSizeScreen} from './screens/Settings/TextSizeScreen.tsx'
+export {default as ContactUsScreen} from './screens/Settings/ContactUsScreen.tsx'
 export {default as LanguageScreen} from './screens/Settings/LanguageScreen.tsx'
 export {default as NotificationScreen} from './screens/Settings/NotificationScreen.tsx'
 export {default as PrivacySecurityScreen} from './screens/Settings/PrivacySecurityScreen.tsx'

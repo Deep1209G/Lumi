@@ -1,6 +1,7 @@
 import React from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Box, Text } from '@src';
+import { DeviceHelper } from '@src/utils';
 
 type ProgressStepperProps = {
   steps: string[];
@@ -26,8 +27,8 @@ const ProgressStepper = ({
             {/* Step */}
             <Box alignItems="center">
               <Box
-                width={25}
-                height={25}
+                width={DeviceHelper.calWidth(25)}
+                height={DeviceHelper.calHeight(25)}
                 borderRadius="xl"
                 justifyContent="center"
                 alignItems="center"
@@ -42,7 +43,7 @@ const ProgressStepper = ({
                 {completed ? (
                   <Ionicons
                     name="checkmark"
-                    size={20}
+                    size={DeviceHelper.calWidth(20)}
                     color="white"
                   />
                 ) : (

@@ -20,6 +20,11 @@ export const settingMenu: ProfileMenuItem[] = [
   },
 
   {
+    id: 'textSize',
+    title: 'textSize',
+  },
+
+  {
     id: 'privacy',
     title: 'privacySecurity',
   },
@@ -27,6 +32,11 @@ export const settingMenu: ProfileMenuItem[] = [
   {
     id: 'help',
     title: 'helpCenter',
+  },
+
+  {
+    id: 'contact',
+    title: 'contactUs',
   },
 
   {

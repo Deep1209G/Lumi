@@ -16,6 +16,7 @@ import {
 } from '@src';
 
 import theme from '@src/theme/theme';
+import { DeviceHelper } from '@src/utils';
 
 const Tab = createBottomTabNavigator();
 
@@ -48,10 +49,10 @@ const getTabIcon = (routeName: string, focused: boolean) => {
   }
 
   return (
-    <Box height={45} width={45} justifyContent="center" alignItems="center">
+    <Box height={DeviceHelper.calHeight(45)} width={DeviceHelper.calWidth(45)} justifyContent="center" alignItems="center">
       <Ionicons
         name={iconName}
-        size={24}
+        size={DeviceHelper.calWidth(24)}
         color={focused ? theme.colors.primary : theme.colors.icon}
       />
 
@@ -60,9 +61,9 @@ const getTabIcon = (routeName: string, focused: boolean) => {
           style={{
             position: 'absolute',
             bottom: -1,
-            width: 28,
+            width: DeviceHelper.calWidth(28),
             height: 3,
-            borderRadius: 20,
+            borderRadius: DeviceHelper.calWidth(20),
             backgroundColor: theme.colors.primary,
           }}
         />
@@ -96,9 +97,9 @@ export default function BottomTab() {
 
         tabBarStyle: {
           position: 'absolute',
-          marginHorizontal: 20,
-          marginBottom: 25,
-          height: 65,
+          marginHorizontal: DeviceHelper.calWidth(20),
+          marginBottom: DeviceHelper.calHeight(25),
+          height: DeviceHelper.calHeight(65),
           borderRadius: theme.borderRadii.l,
           backgroundColor: theme.colors.white,
           // Border
@@ -118,8 +119,8 @@ export default function BottomTab() {
           // Keep rounded corners
           overflow: 'hidden',
 
-          paddingTop: 10,
-          paddingBottom: 10,
+          paddingTop: DeviceHelper.calHeight(10),
+          paddingBottom: DeviceHelper.calHeight(10),
         },
 
         tabBarItemStyle: {

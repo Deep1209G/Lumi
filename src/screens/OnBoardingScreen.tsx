@@ -4,6 +4,7 @@ import { FlatList, Image, View, Dimensions } from 'react-native';
 
 import { Box, Text, CustomButton, onboardingData } from '@src';
 import theme from '@src/theme/theme';
+import { DeviceHelper } from '@src/utils';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const { width } = Dimensions.get('window');
@@ -64,9 +65,9 @@ const OnboardingScreen = ({ navigation }: any) => {
                     key={index}
                     style={{
                       height: 4,
-                      width: 90,
+                      width: DeviceHelper.calWidth(90),
                       borderRadius: 2,
-                      marginHorizontal: 4,
+                      marginHorizontal: DeviceHelper.calWidth(4),
 
                       backgroundColor:
                         currentIndex === index ? theme.colors.primary : theme.colors.tabgray,
@@ -87,7 +88,7 @@ const OnboardingScreen = ({ navigation }: any) => {
         )}
       />
 
-      <Box position="absolute" bottom={1} left={20} right={20}>
+      <Box position="absolute" bottom={1} left={DeviceHelper.calWidth(20)} right={DeviceHelper.calWidth(20)}>
         <CustomButton
           title={
             currentIndex === onboardingData.length - 1

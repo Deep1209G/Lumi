@@ -11,6 +11,7 @@ import { saveSelectedAddress } from '@src/utils/addressStorage';
 import { AuthContext } from '@src/context/AuthContext';
 import { RootStackParamList } from '../navigation/AppNavigation';
 import theme from '@src/theme/theme';
+import { DeviceHelper } from '@src/utils';
 
 const AddressListScreen = () => {
   const navigation =
@@ -39,8 +40,8 @@ const AddressListScreen = () => {
           keyExtractor={item => item.id}
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{
-            paddingTop: 20,
-            paddingBottom: 20,
+            paddingTop: DeviceHelper.calHeight(20),
+            paddingBottom: DeviceHelper.calHeight(20),
           }}
           renderItem={({ item }) => (
             <Box

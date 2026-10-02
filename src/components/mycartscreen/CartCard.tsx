@@ -5,6 +5,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import { Box, QuantitySelector, Text } from '@src';
 import theme from '@src/theme/theme';
+import { DeviceHelper } from '@src/utils';
 
 type CartCardProps = {
   product: any;
@@ -36,14 +37,14 @@ const CartCard = ({
       shadowOpacity={0.06}
       shadowRadius={8}
       elevation={3}
-      height={110}
+      height={DeviceHelper.calHeight(110)}
     >
       {/* Product Image */}
       <Image
         source={product.image}
         style={{
-          width: 75,
-          height: 80,
+          width: DeviceHelper.calWidth(75),
+          height: DeviceHelper.calHeight(80),
           borderRadius: theme.borderRadii.m,
         }}
         resizeMode="cover"
@@ -63,7 +64,7 @@ const CartCard = ({
 
           <Ionicons
             name="close-outline"
-            size={22}
+            size={DeviceHelper.calWidth(22)}
             color={theme.colors.warning}
             onPress={onRemove}
           />

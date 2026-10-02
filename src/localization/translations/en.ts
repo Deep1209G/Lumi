@@ -21,8 +21,16 @@ const en = {
   settings: 'Settings',
   logout: 'Log Out',
   darkMode: 'Dark Mode',
+  textSize: 'Text Size',
+  small: 'Small',
+  medium: 'Medium',
+  large: 'Large',
   privacySecurity: 'Privacy & Security',
   helpCenter: 'Help Center',
+  contactUs: 'Contact Us',
+  emailUs: 'Email Us',
+  callUs: 'Call Us',
+  visitWebsite: 'Visit Website',
   aboutLumi: 'About Lumi',
 };
 

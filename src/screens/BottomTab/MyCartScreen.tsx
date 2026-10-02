@@ -9,6 +9,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import theme from '@src/theme/theme';
 import CartCard from '@src/components/mycartscreen/CartCard';
 import { CartContext } from '@src/context/CardContext';
+import { DeviceHelper } from '@src/utils';
 import useCartSummary from '../../hooks/useCartSummary';
 import { RootStackParamList } from '../../navigation/AppNavigation';
 import { Box, CustomButton, Text } from '@src';
@@ -149,8 +150,8 @@ const MyCartScreen = () => {
         {cart.length === 0 ? (
           <Box flex={1} marginTop="xxxl" alignItems="center">
             <Box
-              height={60}
-              width={60}
+              height={DeviceHelper.calHeight(60)}
+              width={DeviceHelper.calWidth(60)}
               backgroundColor="white"
               borderColor="tabgray"
               borderWidth={2}
@@ -160,7 +161,7 @@ const MyCartScreen = () => {
             >
               <Ionicons
                 name="bag-outline"
-                size={30}
+                size={DeviceHelper.calWidth(30)}
                 color={theme.colors.primary}
               />
             </Box>
@@ -173,7 +174,7 @@ const MyCartScreen = () => {
               Add your favorite products to start shopping.
             </Text>
 
-            <Box width={180} marginTop="m">
+            <Box width={DeviceHelper.calWidth(180)} marginTop="m">
               <CustomButton
                 title="Start Shopping"
                 onPress={() =>
@@ -200,7 +201,7 @@ const MyCartScreen = () => {
               )}
               ListFooterComponent={renderFooter}
               contentContainerStyle={{
-                paddingBottom: tabBarHeight + 20,
+                paddingBottom: tabBarHeight + DeviceHelper.calHeight(20),
               }}
               showsVerticalScrollIndicator={false}
             />

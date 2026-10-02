@@ -2,6 +2,7 @@
 import React from 'react';
 import { TextInput } from 'react-native';
 import { Box, Text } from '@src';
+import { DeviceHelper } from '@src/utils';
 
 type ReviewInputProps = {
   value: string;
@@ -27,7 +28,7 @@ const ReviewInput = ({
         borderColor="tabgray"
         borderRadius="m"
         padding="m"
-        height={170}
+        height={DeviceHelper.calHeight(170)}
       >
         <TextInput
           multiline
@@ -38,7 +39,7 @@ const ReviewInput = ({
           textAlignVertical="top"
           style={{
             flex: 1,
-            fontSize: 16,
+            fontSize: DeviceHelper.calWidth(16),
           }}
         />
 

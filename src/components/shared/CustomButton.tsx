@@ -8,6 +8,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Box from './Box';
 import Text from './Text';
 import theme from '@src/theme/theme';
+import { DeviceHelper } from '@src/utils';
 
 interface CustomButtonProps extends TouchableOpacityProps {
   title: string;
@@ -22,7 +23,7 @@ const CustomButton = ({
   return (
     <TouchableOpacity activeOpacity={0.8} {...props}>
       <Box
-        height={50}
+        height={DeviceHelper.calHeight(50)}
         borderRadius="m"
         backgroundColor="primary"
         justifyContent="center"

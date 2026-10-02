@@ -58,7 +58,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
       }
 
 
-      const storedCart = await getCart(user.id);
+      const storedCart = await getCart(user.uid);
 
       setCart(storedCart);
 
@@ -83,7 +83,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
 
 
       await saveCart(
-        user.id,
+        user.uid,
         cart,
       );
 
@@ -207,7 +207,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
 
 
     if (user) {
-      await clearCartStorage(user.id);
+      await clearCartStorage(user.uid);
     }
 
   };

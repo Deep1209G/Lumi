@@ -4,6 +4,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import { Box, Text } from '@src';
 import theme from '@src/theme/theme';
+import { DeviceHelper } from '@src/utils';
 
 type ThemeCardProps = {
   title: string;
@@ -35,7 +36,7 @@ const ThemeCard = ({
         <Box flexDirection="row" alignItems="center">
           <Ionicons
             name={icon}
-            size={22}
+            size={DeviceHelper.calWidth(22)}
             color={theme.colors.textPrimary}
           />
 
@@ -48,7 +49,7 @@ const ThemeCard = ({
         {selected && (
           <Ionicons
             name="checkmark-outline"
-            size={24}
+            size={DeviceHelper.calWidth(24)}
             color={theme.colors.primary}
           />
         )}

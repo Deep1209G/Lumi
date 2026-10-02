@@ -2,6 +2,7 @@
 import React from 'react';
 import { ImageBackground } from 'react-native';
 import { Box, Text } from '@src';
+import { DeviceHelper } from '@src/utils';
 
 type Props = {
   image: any;
@@ -16,11 +17,11 @@ const BannerCard = ({ image, title, subtitle, width }: Props) => {
       source={image}
       style={{
         width,
-        height: 150,
+        height: DeviceHelper.calHeight(150),
         justifyContent: 'center',
       }}
       imageStyle={{
-        borderRadius: 12,
+        borderRadius: DeviceHelper.calWidth(12),
       }}
     >
       <Box paddingLeft="s">

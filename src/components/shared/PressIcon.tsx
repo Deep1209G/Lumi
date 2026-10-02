@@ -3,6 +3,7 @@ import { Pressable } from 'react-native';
 import { Box } from '@src';
 import theme from '@src/theme/theme';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { DeviceHelper } from '@src/utils';
 
 type PressIconProps = {
   icon: keyof typeof Ionicons.glyphMap;
@@ -21,8 +22,8 @@ const PressIcon = ({
     <Pressable onPress={onPressIcon}>
       <Box
         backgroundColor="white"
-        height={40}
-        width={40}
+        height={DeviceHelper.calHeight(40)}
+        width={DeviceHelper.calWidth(40)}
         borderRadius="m"
         alignItems="center"
         justifyContent="center"

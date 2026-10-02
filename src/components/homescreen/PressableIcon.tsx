@@ -3,6 +3,7 @@ import { Pressable } from 'react-native';
 import { Box } from '@src';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import theme, { Theme } from '../../theme/theme';
+import { DeviceHelper } from '@src/utils';
 
 type PressableIconProps = {
   liked?: boolean;
@@ -16,9 +17,9 @@ type PressableIconProps = {
 const PressableIcon = ({
   liked,
   onPress,
-  height = 30,
-  width = 30,
-  iconSize = 18,
+  height = DeviceHelper.calHeight(30),
+  width = DeviceHelper.calWidth(30),
+  iconSize = DeviceHelper.calWidth(18),
   borderColor = 'tabgray',
 }: PressableIconProps) => {
   return (

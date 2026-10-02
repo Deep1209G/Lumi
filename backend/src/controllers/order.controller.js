@@ -2,7 +2,10 @@ const Order = require("../models/Order");
 
 const createOrder = async (req, res) => {
   try {
-    const order = await Order.create(req.body);
+    const order = await Order.create({
+      ...req.body,
+      userId: req.body.userId,
+    });
 
     res.status(201).json({
       success: true,

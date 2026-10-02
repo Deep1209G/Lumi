@@ -2,6 +2,7 @@
 import React from 'react';
 import { Box } from '@src';
 import { Image, Pressable, ImageSourcePropType } from 'react-native';
+import { DeviceHelper } from '@src/utils';
 
 type Props = {
   source: ImageSourcePropType;
@@ -15,8 +16,8 @@ const SocialButton = ({ source, onPress }: Props) => {
       style={({ pressed }) => [{ opacity: pressed ? 0.6 : 1 }]}
     >
       <Box
-        height={50}
-        width={100}
+        height={DeviceHelper.calHeight(50)}
+        width={DeviceHelper.calWidth(100)}
         borderWidth={1.5}
         borderColor="tabgray"
         backgroundColor="tabgray"
@@ -24,7 +25,7 @@ const SocialButton = ({ source, onPress }: Props) => {
         justifyContent="center"
         alignItems="center"
       >
-        <Image source={source} style={{ width: 24, height: 24 }} />
+        <Image source={source} style={{ width: DeviceHelper.calWidth(24), height: DeviceHelper.calWidth(24) }} />
       </Box>
     </Pressable>
   );

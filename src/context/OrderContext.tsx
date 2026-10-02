@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useCallback, useEffect, useState } from 'react';
 import { CartItem } from './CardContext';
 import { getOrders } from '@src/services/order.service';
 
@@ -42,11 +42,7 @@ type Props = {
 export const OrderProvider = ({ children }: Props) => {
   const [orders, setOrders] = useState<Order[]>([]);
 
-  useEffect(() => {
-    loadOrders();
-  }, []);
-
-  const loadOrders = async () => {
+  const loadOrders = useCallback(async () => {
     try {
       const data = await getOrders();
 
@@ -56,7 +52,11 @@ export const OrderProvider = ({ children }: Props) => {
     } catch (error) {
       console.log('Load Orders Error:', error);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    loadOrders();
+  }, [loadOrders]);
 
   const addOrder = async (cart: CartItem[], payment?: Order['payment']) => {
     // Orders are now created in backend after Razorpay verification.

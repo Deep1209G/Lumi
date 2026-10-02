@@ -4,6 +4,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import theme from '../../theme/theme';
 import { Pressable } from 'react-native';
 import { Theme } from '@src/theme/theme';
+import { DeviceHelper } from '@src/utils';
 
 
 
@@ -19,7 +20,7 @@ const EmptyStateCard = ({ leftIcon, color=theme.colors.black, title,onPress,  ba
   return (
     <Pressable onPress={onPress}>
     <Box
-      height={75}
+      height={DeviceHelper.calHeight(75)}
       backgroundColor="mainBackground"
       borderRadius="m"
       borderWidth={1.5}
@@ -28,20 +29,20 @@ const EmptyStateCard = ({ leftIcon, color=theme.colors.black, title,onPress,  ba
       flexDirection="row"
     >
       <Box
-        height={40}
-        width={40}
+        height={DeviceHelper.calHeight(40)}
+        width={DeviceHelper.calWidth(40)}
         backgroundColor={backgroundColor}
         justifyContent="center"
         alignItems="center"
         borderRadius="s"
       >
-        <Ionicons name={leftIcon} size={20} color={color} />
+        <Ionicons name={leftIcon} size={DeviceHelper.calWidth(20)} color={color} />
       </Box>
       <Box flex={1} justifyContent="center" marginLeft="m">
         <Text variant='button'>{title}</Text>
       </Box>
       <Box justifyContent='center'>
-      <Ionicons name='chevron-forward-outline' size={15} color={theme.colors.black} />
+      <Ionicons name='chevron-forward-outline' size={DeviceHelper.calWidth(15)} color={theme.colors.black} />
       </Box>
     </Box>
     </Pressable>

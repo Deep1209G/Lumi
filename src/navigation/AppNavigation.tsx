@@ -19,7 +19,9 @@ import {
   PrivacySecurityScreen,
   AboutScreen,
   DarkModeScreen,
+  TextSizeScreen,
   HelpCenterScreen,
+  ContactUsScreen,
   LanguageScreen,
   CheckoutScreen,
   PaymentScreen,
@@ -58,7 +60,9 @@ export type RootStackParamList = {
   Setting: undefined;
   About: undefined;
   Mode: undefined;
+  TextSize: undefined;
   Help: undefined;
+  Contact: undefined;
   Language: undefined;
   Notification: undefined;
   PrivacySecurity: undefined;
@@ -98,7 +102,9 @@ const AppNavigation = () => {
       <Stack.Screen name="Setting" component={SettingsScreen} />
       <Stack.Screen name="About" component={AboutScreen} />
       <Stack.Screen name="Mode" component={DarkModeScreen} />
+      <Stack.Screen name="TextSize" component={TextSizeScreen} />
       <Stack.Screen name="Help" component={HelpCenterScreen} />
+      <Stack.Screen name="Contact" component={ContactUsScreen} />
       <Stack.Screen name="Language" component={LanguageScreen} />
       <Stack.Screen name="Notification" component={NotificationScreen} />
       <Stack.Screen name="PrivacySecurity" component={PrivacySecurityScreen} />

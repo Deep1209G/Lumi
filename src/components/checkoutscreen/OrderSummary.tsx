@@ -4,6 +4,7 @@ import { Image } from 'react-native';
 
 import { Box, Text } from '@src';
 import theme from '@src/theme/theme';
+import { DeviceHelper } from '@src/utils';
 
 type OrderSummaryProps = {
   product: any;
@@ -29,13 +30,13 @@ const OrderSummary = ({
       shadowOpacity={0.06}
       shadowRadius={8}
       elevation={3}
-      minHeight={92}
+      minHeight={DeviceHelper.calHeight(92)}
     >
       <Image
         source={product.image}
         style={{
-          width: 68,
-          height: 68,
+          width: DeviceHelper.calWidth(68),
+          height: DeviceHelper.calHeight(68),
           borderRadius: theme.borderRadii.m,
         }}
         resizeMode="cover"

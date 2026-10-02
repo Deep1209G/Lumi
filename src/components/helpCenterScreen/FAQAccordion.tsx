@@ -4,6 +4,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import { Box, Text } from '@src';
 import theme from '@src/theme/theme';
+import { DeviceHelper } from '@src/utils';
 
 type FAQAccordionProps = {
   question: string;
@@ -28,7 +29,7 @@ const FAQAccordion = ({
     >
       <Pressable onPress={onPress}>
         <Box
-          height={60}
+          height={DeviceHelper.calHeight(60)}
           flexDirection="row"
           justifyContent="space-between"
           alignItems="center"
@@ -44,7 +45,7 @@ const FAQAccordion = ({
                 ? 'chevron-up-outline'
                 : 'chevron-down-outline'
             }
-            size={22}
+            size={DeviceHelper.calWidth(22)}
             color={theme.colors.black}
           />
         </Box>

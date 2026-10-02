@@ -4,6 +4,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/AppNavigation';
+import { DeviceHelper } from '@src/utils';
 
 const AddToCartSuccess = () => {
   const navigation =
@@ -18,14 +19,14 @@ const AddToCartSuccess = () => {
     >
       {/* Success Icon */}
       <Box
-        height={80}
-        width={80}
+        height={DeviceHelper.calHeight(80)}
+        width={DeviceHelper.calWidth(80)}
         backgroundColor="sucess"
         borderRadius="round"
         justifyContent="center"
         alignItems="center"
       >
-        <Ionicons name="checkmark-outline" size={40} color="green" />
+        <Ionicons name="checkmark-outline" size={DeviceHelper.calWidth(40)} color="green" />
       </Box>
 
       {/* Add to Cart Message */}

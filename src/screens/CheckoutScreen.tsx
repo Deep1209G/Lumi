@@ -20,6 +20,7 @@ import {
   CustomButton,
 } from '@src';
 import theme from '@src/theme/theme';
+import { DeviceHelper } from '@src/utils';
 
 const CheckoutScreen = () => {
   type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
@@ -51,7 +52,7 @@ const CheckoutScreen = () => {
 
           <Text variant="heading">Checkout</Text>
 
-          <Box width={24} />
+          <Box width={DeviceHelper.calWidth(24)} />
         </Box>
 
         {/* Progress Stepper */}
@@ -68,7 +69,7 @@ const CheckoutScreen = () => {
           keyExtractor={item => item.product.id.toString()}
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{
-            paddingBottom: 20,
+            paddingBottom: DeviceHelper.calHeight(20),
           }}
           renderItem={({ item }) => (
             <OrderSummary product={item.product} quantity={item.quantity} />

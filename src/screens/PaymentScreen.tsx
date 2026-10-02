@@ -1,6 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 
 import React, { useState, useContext } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Alert, FlatList } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
@@ -107,7 +108,13 @@ const PaymentScreen = () => {
 
       console.log('Verification Response:', verification);
       if (verification.success) {
+        const currentUser = await AsyncStorage.getItem('currentUser');
+        const user = currentUser ? JSON.parse(currentUser) : null;
+        console.log("CURRENT USER:", user);
+
         const orderData = {
+
+          userId: user?.id,
           items: cart.map(item => ({
             productId: item.product.id.toString(),
             name: item.product.name,

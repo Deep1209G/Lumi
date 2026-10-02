@@ -4,6 +4,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import { Box, Text } from '@src';
 import theme from '@src/theme/theme';
+import { DeviceHelper } from '@src/utils';
 
 type Props = {
   title: string;
@@ -40,7 +41,7 @@ const LanguageCard = ({
         {selected && (
           <Ionicons
             name="checkmark-outline"
-            size={20}
+            size={DeviceHelper.calWidth(20)}
             color={theme.colors.primary}
           />
         )}

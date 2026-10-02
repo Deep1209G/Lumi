@@ -4,6 +4,7 @@ import { Pressable } from 'react-native';
 import { Box, Text } from '@src';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import theme from '@src/theme/theme';
+import { DeviceHelper } from '@src/utils';
 
 type AddressSelectorProps = {
   fullName: string;
@@ -21,7 +22,7 @@ const AddressSelector = ({
   return (
     <Box
       backgroundColor="white"
-      minHeight={130}
+      minHeight={DeviceHelper.calHeight(130)}
       borderRadius="l"
       borderWidth={1}
       borderColor="tabgray"
@@ -43,15 +44,15 @@ const AddressSelector = ({
       >
         <Box
           backgroundColor="tabgray"
-          height={48}
-          width={48}
+          height={DeviceHelper.calHeight(48)}
+          width={DeviceHelper.calWidth(48)}
           borderRadius="m"
           justifyContent="center"
           alignItems="center"
         >
           <Ionicons
             name="location-outline"
-            size={24}
+            size={DeviceHelper.calWidth(24)}
             color={theme.colors.primary}
           />
         </Box>

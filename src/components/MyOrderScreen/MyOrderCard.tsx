@@ -4,6 +4,7 @@ import { Box, Text } from '@src';
 import { Image, ImageSourcePropType } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import theme from '../../theme/theme';
+import { DeviceHelper } from '@src/utils';
 
 type Props = {
   orderId: string;
@@ -59,9 +60,9 @@ const MyOrderCard = ({
           <Image
             source={image}
             style={{
-              width: 80,
-              height: 80,
-              borderRadius: 10,
+              width: DeviceHelper.calWidth(80),
+              height: DeviceHelper.calHeight(80),
+              borderRadius: DeviceHelper.calWidth(10),
             }}
             resizeMode="cover"
           />
@@ -84,7 +85,7 @@ const MyOrderCard = ({
         marginTop="m"
       >
         <Box flexDirection="row" alignItems="center">
-          <Ionicons name="time-outline" size={15} color={theme.colors.icon} />
+          <Ionicons name="time-outline" size={DeviceHelper.calWidth(15)} color={theme.colors.icon} />
 
           <Text variant="small" marginLeft="xs">
             {date}

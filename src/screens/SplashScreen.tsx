@@ -6,6 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { Images, Text } from '@src';
 import { getAuth } from '@react-native-firebase/auth';
+import { DeviceHelper } from '@src/utils';
 
 const SplashScreen = ({ navigation }: any) => {
   const navigated = useRef(false);
@@ -54,8 +55,8 @@ const SplashScreen = ({ navigation }: any) => {
       <Image
         source={Images.logo1}
         style={{
-          width: 100,
-          height: 100,
+          width: DeviceHelper.calWidth(100),
+          height: DeviceHelper.calHeight(100),
         }}
       />
 

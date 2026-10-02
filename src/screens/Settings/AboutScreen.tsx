@@ -7,6 +7,7 @@ import { aboutMenu } from '@src/data/aboutMenu';
 import SettingCard from '@src/components/settingScreen/SettingCard';
 import useAbout from '../../hooks/useAbout';
 import theme from '@src/theme/theme';
+import { DeviceHelper } from '@src/utils';
 
 const AboutScreen = () => {
   const { handleMenuPress } = useAbout();
@@ -24,15 +25,15 @@ const AboutScreen = () => {
           backgroundColor="white"
           marginTop="m"
           borderRadius="m"
-          height={250}
+          height={DeviceHelper.calHeight(250)}
           borderWidth={1.5}
           borderColor='tabgray'
         >
           <Box
             marginTop="xxl"
             backgroundColor="black"
-            width={80}
-            height={80}
+            width={DeviceHelper.calWidth(80)}
+            height={DeviceHelper.calHeight(80)}
             alignItems="center"
             justifyContent="center"
             borderRadius="m"
@@ -40,8 +41,8 @@ const AboutScreen = () => {
             <Image
               source={Images.logo1}
               style={{
-                width: 55,
-                height: 55,
+                width: DeviceHelper.calWidth(55),
+                height: DeviceHelper.calHeight(55),
               }}
             />
           </Box>

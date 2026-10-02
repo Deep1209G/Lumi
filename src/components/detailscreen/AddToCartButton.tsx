@@ -2,6 +2,7 @@ import {Box, Text} from '@src'
 import React from 'react'
 import { Pressable } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
+import { DeviceHelper } from '@src/utils'
 
 type AddToCartButtonProps = {
   price?: number;
@@ -21,7 +22,7 @@ const AddToCartButton = ({price, onPress}: AddToCartButtonProps & { onPress: () 
   >
     <Ionicons
       name="bag-outline"
-      size={20}
+      size={DeviceHelper.calWidth(20)}
       color="white"
     />
 

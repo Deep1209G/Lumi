@@ -14,6 +14,7 @@ import {
   CustomTextInput,
 } from '@src';
 import theme from '@src/theme/theme';
+import { DeviceHelper } from '@src/utils';
 
 const PaymentMethodScreen = () => {
   const [expandedId, setExpandedId] = useState<string | null>(null);
@@ -38,7 +39,7 @@ const PaymentMethodScreen = () => {
             data={paymentMethods}
             keyExtractor={item => item.id}
             showsVerticalScrollIndicator={false}
-            contentContainerStyle={{ paddingBottom: 20 }}
+            contentContainerStyle={{ paddingBottom: DeviceHelper.calHeight(20) }}
             renderItem={({ item }) => (
               <PaymentAccordion
                 title={item.title}

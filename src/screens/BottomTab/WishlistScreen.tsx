@@ -6,6 +6,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Box, Text, Card } from '@src';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import theme from '../../theme/theme';
+import { DeviceHelper } from '@src/utils';
 import { products } from '@src/data/produts';
 import { FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -30,8 +31,8 @@ const WishlistScreen = () => {
         {wishlistProducts.length === 0 ? (
           <Box marginTop="xxxl" alignItems="center">
             <Box
-              height={60}
-              width={60}
+              height={DeviceHelper.calHeight(60)}
+              width={DeviceHelper.calWidth(60)}
               backgroundColor="white"
               borderColor="tabgray"
               borderWidth={2}
@@ -41,7 +42,7 @@ const WishlistScreen = () => {
             >
               <Ionicons
                 name="heart-outline"
-                size={30}
+                size={DeviceHelper.calWidth(30)}
                 color={theme.colors.primary}
               />
             </Box>
@@ -61,7 +62,7 @@ const WishlistScreen = () => {
               keyExtractor={item => item.id}
               columnWrapperStyle={{
                 justifyContent: 'space-between',
-                marginBottom: 16,
+                marginBottom: DeviceHelper.calHeight(16),
               }}
               renderItem={({ item }) => (
                 <Card

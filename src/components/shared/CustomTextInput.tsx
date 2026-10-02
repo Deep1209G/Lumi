@@ -5,6 +5,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useTheme } from '@shopify/restyle';
 import { Box } from '@src';
 import { Theme } from '../../theme/theme';
+import { DeviceHelper } from '@src/utils';
 
 type Props = TextInputProps & {
   leftIcon?: string;
@@ -27,7 +28,7 @@ const CustomTextInput = ({
 
   return (
     <Box
-      height={50}
+      height={DeviceHelper.calHeight(50)}
       flexDirection="row"
       alignItems="center"
       borderWidth={1}

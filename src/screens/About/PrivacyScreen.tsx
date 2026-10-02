@@ -5,6 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { privacyData } from '@src/data/privacyData';
 import {ScrollView} from 'react-native'
 import theme from '@src/theme/theme';
+import { DeviceHelper } from '@src/utils';
 
 const PrivacyScreen = () => {
   return (
@@ -17,7 +18,7 @@ const PrivacyScreen = () => {
         <Box
           backgroundColor="sucess"
           marginTop="m"
-          height={60}
+          height={DeviceHelper.calHeight(60)}
           justifyContent="center"
           alignItems="center"
           paddingHorizontal="m"

@@ -8,6 +8,7 @@ import { Box, Text, Images } from '@src';
 import theme from '@src/theme/theme';
 
 import { useAuth } from '@src/context/AuthContext';
+import { DeviceHelper } from '@src/utils';
 
 
 const Header = () => {
@@ -59,8 +60,8 @@ const Header = () => {
           alignItems="center"
           borderWidth={1.5}
           borderColor="tabgray"
-          height={50}
-          width={50}
+          height={DeviceHelper.calHeight(50)}
+          width={DeviceHelper.calWidth(50)}
           borderRadius="m"
         >
           <Animated.Image
@@ -72,8 +73,8 @@ const Header = () => {
             }
 
             style={{
-              width: 40,
-              height: 40,
+              width: DeviceHelper.calWidth(40),
+              height: DeviceHelper.calHeight(40),
               borderRadius: theme.borderRadii.s,
               transform: [
                 { perspective: 1000 },

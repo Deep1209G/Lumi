@@ -1,4 +1,5 @@
 import { createTheme } from '@shopify/restyle';
+import { DeviceHelper } from '@src/utils';
 
 const palette = {
   coral: '#FF6B4A',
@@ -75,56 +76,56 @@ const theme = createTheme({
   textVariants: {
     defaults: {
       color: 'textPrimary',
-      fontSize: 16,
+      fontSize: DeviceHelper.calWidth(16),
     },
 
     title: {
-      fontSize: 30,
+      fontSize: DeviceHelper.calWidth(30),
       fontWeight: '500',
       color: 'textPrimary',
     },
 
     subtitle: {
-      fontSize: 18,
+      fontSize: DeviceHelper.calWidth(18),
       color: 'textPrimary',
       fontWeight: '600',
     },
     heading: {
-      fontSize: 22,
+      fontSize: DeviceHelper.calWidth(22),
       color: 'textPrimary',
       fontWeight: '600',
     },
 
     description: {
-      fontSize: 16,
+      fontSize: DeviceHelper.calWidth(16),
       fontWeight: '400',
       color: 'textSecondary',
     },
 
     body: {
-      fontSize: 16,
+      fontSize: DeviceHelper.calWidth(16),
       color: 'textPrimary',
       fontWeight: '600',
     },
     medium: {
-      fontSize: 14,
+      fontSize: DeviceHelper.calWidth(14),
       color: 'textSecondary',
       fontWeight: '500',
     },
 
     button: {
-      fontSize: 16,
+      fontSize: DeviceHelper.calWidth(16),
       fontWeight: '600',
       color: 'textPrimary',
     },
 
     rupees: {
-      fontSize: 14,
+      fontSize: DeviceHelper.calWidth(14),
       fontWeight: '700',
       color: 'textPrimary',
     },
     small: {
-      fontSize: 12,
+      fontSize: DeviceHelper.calWidth(12),
       fontWeight: '350',
       color: 'textPrimary',
     },

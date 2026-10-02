@@ -5,6 +5,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import { Box, Text, PressableIcon } from '@src';
 import theme from '@src/theme/theme';
+import { DeviceHelper } from '@src/utils';
 
 type Props = {
   image?: ImageSourcePropType;
@@ -28,7 +29,7 @@ const Card = ({
   return (
     <Pressable onPress={onCardPress}>
       <Box
-        width={165}
+        width={DeviceHelper.calWidth(165)}
         backgroundColor="white"
         borderWidth={1.5}
         borderColor="tabgray"
@@ -42,19 +43,19 @@ const Card = ({
       >
         {/* Product Image */}
         <Box alignItems="center">
-          <Box height={165} width={130} borderRadius="m" marginTop="s">
+          <Box height={DeviceHelper.calHeight(165)} width={DeviceHelper.calWidth(130)} borderRadius="m" marginTop="s">
             <Image
               source={image}
               style={{
-                width: 130,
-                height: 165,
-                borderRadius: 16,
+                width: DeviceHelper.calWidth(130),
+                height: DeviceHelper.calHeight(165),
+                borderRadius: DeviceHelper.calWidth(16),
               }}
               resizeMode="cover"
             />
 
             {/* Heart Icon */}
-            <Box position="absolute" top={8} right={8}>
+            <Box position="absolute" top={DeviceHelper.calHeight(8)} right={DeviceHelper.calWidth(8)}>
               <PressableIcon liked={liked} onPress={onWishlistPress} />
             </Box>
           </Box>
@@ -84,7 +85,7 @@ const Card = ({
             justifyContent="flex-end"
             alignItems="center"
           >
-            <Ionicons name="star" size={14} color={theme.colors.yellow} />
+            <Ionicons name="star" size={DeviceHelper.calWidth(14)} color={theme.colors.yellow} />
 
             <Text variant="rupees" marginLeft="xs">
               {rating}

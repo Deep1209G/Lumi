@@ -22,8 +22,16 @@ const gu = {
   settings: 'સેટિંગ્સ',
   logout: 'લૉગ આઉટ',
   darkMode: 'ડાર્ક મોડ',
+  textSize: 'ટેક્સ્ટ કદ',
+  small: 'નાનું',
+  medium: 'મધ્યમ',
+  large: 'મોટું',
   privacySecurity: 'ગોપનીયતા અને સુરક્ષા',
   helpCenter: 'મદદ કેન્દ્ર',
+  contactUs: 'અમારો સંપર્ક કરો',
+  emailUs: 'ઈમેલ કરો',
+  callUs: 'કૉલ કરો',
+  visitWebsite: 'વેબસાઇટની મુલાકાત લો',
   aboutLumi: 'લૂમી વિશે',
 };
 

@@ -19,12 +19,20 @@ const useSetting = () => {
         navigation.navigate('Mode');
         break;
 
+      case 'textSize':
+        navigation.navigate('TextSize');
+        break;
+
       case 'privacy':
         navigation.navigate('PrivacySecurity');
         break;
 
       case 'help':
         navigation.navigate('Help');
+        break;
+
+      case 'contact':
+        navigation.navigate('Contact');
         break;
 
       case 'about':

@@ -3,6 +3,7 @@ import React from 'react';
 import { Image } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import theme from '@src/theme/theme.ts';
+import { DeviceHelper } from '@src/utils';
 import {
   AddToCartButton,
   Box,
@@ -33,30 +34,30 @@ const DetailScreen = () => {
     >
       <Box flex={1}>
         {/* Image Container */}
-        <Box height={450} alignItems="center" backgroundColor="white">
-          <Box position="absolute" top={30} left={20} zIndex={1}>
+        <Box height={DeviceHelper.calHeight(450)} alignItems="center" backgroundColor="white">
+          <Box position="absolute" top={DeviceHelper.calHeight(30)} left={DeviceHelper.calWidth(20)} zIndex={1}>
             <PressIcon icon="chevron-back-outline" onPressIcon={handleGoBack} />
           </Box>
 
-          <Box position="absolute" top={30} right={20} zIndex={1}>
+          <Box position="absolute" top={DeviceHelper.calHeight(30)} right={DeviceHelper.calWidth(20)} zIndex={1}>
             <PressableIcon
               liked={isWishlisted}
               onPress={handleWishlist}
-              height={42}
-              width={42}
-              iconSize={22}
+              height={DeviceHelper.calHeight(42)}
+              width={DeviceHelper.calWidth(42)}
+              iconSize={DeviceHelper.calWidth(22)}
             />
           </Box>
 
           <Box
             marginTop="xxl"
-            height={350}
-            width={350}
+            height={DeviceHelper.calHeight(350)}
+            width={DeviceHelper.calWidth(350)}
             alignItems="center"
           >
             <Image
               source={product.image}
-              style={{ width: 270, height: 350, borderRadius: 20 }}
+              style={{ width: DeviceHelper.calWidth(270), height: DeviceHelper.calHeight(350), borderRadius: DeviceHelper.calWidth(20) }}
               resizeMode="cover"
             />
           </Box>
@@ -80,7 +81,7 @@ const DetailScreen = () => {
               justifyContent="flex-end"
               alignItems="center"
             >
-              <Ionicons name="star" size={14} color={theme.colors.yellow} />
+              <Ionicons name="star" size={DeviceHelper.calWidth(14)} color={theme.colors.yellow} />
 
               <Text variant="rupees" marginLeft="xs">
                 {product.rating}

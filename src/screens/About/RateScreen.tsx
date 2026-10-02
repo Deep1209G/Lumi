@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Image, Pressable, ScrollView } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import theme from '../../theme/theme';
+import { DeviceHelper } from '@src/utils';
 import {
   Box,
   HeaderBack,
@@ -40,15 +41,15 @@ const RateScreen = () => {
             backgroundColor="white"
             marginTop="m"
             borderRadius="m"
-            height={300}
+            height={DeviceHelper.calHeight(300)}
             borderWidth={1.5}
             borderColor="tabgray"
           >
             <Box
               marginTop="xl"
               backgroundColor="black"
-              width={80}
-              height={80}
+              width={DeviceHelper.calWidth(80)}
+              height={DeviceHelper.calHeight(80)}
               alignItems="center"
               justifyContent="center"
               borderRadius="m"
@@ -56,8 +57,8 @@ const RateScreen = () => {
               <Image
                 source={Images.logo1}
                 style={{
-                  width: 55,
-                  height: 55,
+                  width: DeviceHelper.calWidth(55),
+                  height: DeviceHelper.calHeight(55),
                 }}
               />
             </Box>
@@ -78,7 +79,7 @@ const RateScreen = () => {
                 <Pressable key={item} onPress={() => setRating(item)}>
                   <Ionicons
                     name={item <= rating ? 'star' : 'star-outline'}
-                    size={40}
+                    size={DeviceHelper.calWidth(40)}
                     color={
                       item <= rating ? theme.colors.yellow : theme.colors.gray
                     }

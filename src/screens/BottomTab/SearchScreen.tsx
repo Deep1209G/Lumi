@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { FlatList, ScrollView, Pressable } from 'react-native';
 import { Box, SearchBar, Text, Card, useSearch } from '@src';
 import { WishlistContext } from '@src/context/WishlistContext';
+import { DeviceHelper } from '@src/utils';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../navigation/AppNavigation';
@@ -75,7 +76,7 @@ const SearchScreen = () => {
               keyExtractor={item => item.id}
               columnWrapperStyle={{
                 justifyContent: 'space-between',
-                marginBottom: 16,
+                marginBottom: DeviceHelper.calHeight(16),
               }}
               renderItem={({ item }) => (
                 <Card

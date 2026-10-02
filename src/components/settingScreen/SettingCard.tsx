@@ -3,6 +3,7 @@ import { Box, Text } from '@src';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import theme from '../../theme/theme';
 import { Pressable } from 'react-native';
+import { DeviceHelper } from '@src/utils';
 
 
 
@@ -14,7 +15,7 @@ const SettingCard = ({  title, onPress, }: Props) => {
   return (
     <Pressable onPress={onPress}>
     <Box
-      height={60}
+      height={DeviceHelper.calHeight(60)}
       backgroundColor="mainBackground"
       borderRadius="m"
       borderWidth={1.5}
@@ -27,7 +28,7 @@ const SettingCard = ({  title, onPress, }: Props) => {
         <Text variant='button'>{title}</Text>
       </Box>
       <Box justifyContent='center'>
-      <Ionicons name='chevron-forward-outline' size={15} color={theme.colors.black} />
+      <Ionicons name='chevron-forward-outline' size={DeviceHelper.calWidth(15)} color={theme.colors.black} />
       </Box>
     </Box>
     </Pressable>
