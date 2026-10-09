@@ -1,12 +1,12 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { FlatList, useWindowDimensions } from 'react-native';
+import { FlatList } from 'react-native';
 import { banners } from '@src/data/banners';
 import { Box, BannerCard } from '@src';
 import { DeviceHelper } from '@src/utils';
+import theme from '@src/theme/theme';
 
 const BannerSlider = () => {
-  const { width } = useWindowDimensions();
-  const bannerWidth = width - DeviceHelper.calWidth(48);
+  const bannerWidth = DeviceHelper.width() - (theme.spacing.l * 2);
 
   const flatListRef = useRef<FlatList>(null);
 
@@ -44,8 +44,9 @@ const BannerSlider = () => {
         ref={flatListRef}
         data={banners}
         horizontal
-        pagingEnabled
         showsHorizontalScrollIndicator={false}
+        snapToInterval={bannerWidth}
+        decelerationRate="fast"
         onMomentumScrollEnd={handleScroll}
         keyExtractor={item => item.id}
         renderItem={({ item }) => (

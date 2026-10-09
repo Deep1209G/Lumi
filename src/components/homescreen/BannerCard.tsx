@@ -22,6 +22,7 @@ const BannerCard = ({ image, title, subtitle, width }: Props) => {
       }}
       imageStyle={{
         borderRadius: DeviceHelper.calWidth(12),
+        aspectRatio: 1.5,
       }}
     >
       <Box paddingLeft="s">
