@@ -102,7 +102,7 @@ const SearchBar = ({
     ? { backgroundColor: 'rgba(255,255,255,0.1)', borderWidth: 1, borderColor: 'rgba(255,255,255,0.18)' }
     : { backgroundColor: theme.colors.white, borderWidth: 1, borderColor: theme.colors.border };
 
-  const iconColor = isDark ? 'rgba(255,255,255,0.5)' : theme.colors.icon;
+  const iconColor = isDark ? theme.colors.textOnDarkMuted : theme.colors.icon;
   const textColor = isDark ? theme.colors.white : theme.colors.textPrimary;
   const placeholderColor = isDark ? 'rgba(255,255,255,0.4)' : theme.colors.textSecondary;
 

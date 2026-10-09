@@ -1,5 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
-
 import { useTranslation } from 'react-i18next';
 import React, { useRef } from 'react';
 import { Animated, Pressable } from 'react-native';
@@ -34,17 +32,11 @@ const Header = () => {
   return (
     <Box flexDirection="row" justifyContent="space-between" alignItems="center">
       <Box>
-        <Text
-          variant="small"
-          style={{ color: 'rgba(255,255,255,0.5)', letterSpacing: 0.3 }}
-        >
+        <Text variant="small" color="textOnDarkMuted" letterSpacing={0.3}>
           {t('helloWelcome')}
         </Text>
-        <Text
-          variant="subtitle"
-          style={{ color: theme.colors.white }}
-        >
-          {user?.name} 👋
+        <Text variant="subtitle" color="white">
+          {user?.name} 
         </Text>
       </Box>
 
@@ -55,11 +47,9 @@ const Header = () => {
           height={DeviceHelper.calHeight(50)}
           width={DeviceHelper.calWidth(50)}
           borderRadius="m"
-          style={{
-            borderWidth: 2,
-            borderColor: theme.colors.primary,
-            backgroundColor: 'rgba(34,197,94,0.15)',
-          }}
+          borderWidth={2}
+          borderColor="primary"
+          backgroundColor="primaryTint"
         >
           <Animated.Image
             source={user?.photo ? { uri: user.photo } : Images.avatar1}

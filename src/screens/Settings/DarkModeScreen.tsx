@@ -33,11 +33,11 @@ const DarkModeScreen = () => {
             >
               <Box flexDirection="row" alignItems="center" justifyContent="space-between" marginBottom="s">
                 <Box>
-                  <Text variant="small" style={{ color: 'rgba(255,255,255,0.5)', fontSize: DeviceHelper.calWidth(10) }}>
+                  <Text variant="small" style={{ color: theme.colors.textOnDarkMuted, fontSize: DeviceHelper.calWidth(10) }}>
                     Hello, welcome
                   </Text>
                   <Text variant="medium" style={{ color: theme.colors.white, fontWeight: '700', fontSize: DeviceHelper.calWidth(13) }}>
-                    Deep 👋
+                    John 👋
                   </Text>
                 </Box>
                 <Box
@@ -46,7 +46,7 @@ const DarkModeScreen = () => {
                   borderRadius="s"
                   justifyContent="center"
                   alignItems="center"
-                  style={{ borderWidth: 1.5, borderColor: theme.colors.primary, backgroundColor: 'rgba(34,197,94,0.15)' }}
+                  style={{ borderWidth: 1.5, borderColor: theme.colors.primary, backgroundColor: theme.colors.primaryTint }}
                 >
                   <Text variant="small" style={{ color: theme.colors.primary, fontWeight: '700' }}>D</Text>
                 </Box>
@@ -61,7 +61,7 @@ const DarkModeScreen = () => {
                 paddingHorizontal="s"
                 style={{ backgroundColor: 'rgba(255,255,255,0.1)', borderWidth: 1, borderColor: 'rgba(255,255,255,0.15)' }}
               >
-                <Ionicons name="search-outline" size={DeviceHelper.calWidth(12)} color="rgba(255,255,255,0.5)" />
+                <Ionicons name="search-outline" size={DeviceHelper.calWidth(12)} color={theme.colors.textOnDarkMuted} />
                 <View style={{ flex: 1, height: 6, borderRadius: 3, backgroundColor: 'rgba(255,255,255,0.15)', marginLeft: 6 }} />
                 <Box
                   height={DeviceHelper.calHeight(20)}

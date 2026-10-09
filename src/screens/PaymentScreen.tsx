@@ -105,7 +105,7 @@ const PaymentScreen = () => {
           contact: '9999999999',
         },
         theme: {
-          color: '#6C63FF',
+          color: theme.colors.primary,
         },
       };
       console.log('Razorpay options:', options);

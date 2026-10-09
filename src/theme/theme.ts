@@ -23,6 +23,10 @@ const palette = {
   yellowAmber:     '#FFA726',
   greenLight:      '#dcfce7',
 
+  // Translucent
+  whiteMuted:      'rgba(255,255,255,0.5)',
+  greenTint:       'rgba(34,197,94,0.15)',
+
   // Misc
   gray:            '#E8E8E8',
   divider:         '#e5e7eb',
@@ -34,10 +38,12 @@ const theme = createTheme({
     textPrimary:     palette.textDark,
     textSecondary:   palette.textMuted,
     textTernary:     palette.white,
+    textOnDarkMuted: palette.whiteMuted,
 
     // Brand
     primary:         palette.greenAccent,
     primaryDark:     palette.greenDark,
+    primaryTint:     palette.greenTint,
 
     // Surfaces
     mainBackground:  palette.pageBackground,
