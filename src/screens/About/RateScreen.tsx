@@ -1,9 +1,10 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
+import { useTheme } from '@shopify/restyle';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Image, Pressable, ScrollView } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import theme from '../../theme/theme';
+import { Theme } from '@src/theme/theme';
 import { DeviceHelper } from '@src/utils';
 import {
   Box,
@@ -17,6 +18,7 @@ import {
 } from '@src';
 
 const RateScreen = () => {
+  const theme = useTheme<Theme>();
   const {
     rating,
     setRating,

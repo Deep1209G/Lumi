@@ -6,6 +6,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { paymentMethods } from '@src/data/paymentMethods';
 import { wallets } from '@src/data/wallets';
 
+import { useTheme } from '@shopify/restyle';
 import {
   Box,
   HeaderBack,
@@ -13,10 +14,11 @@ import {
   PaymentOption,
   CustomTextInput,
 } from '@src';
-import theme from '@src/theme/theme';
+import { Theme } from '@src/theme/theme';
 import { DeviceHelper } from '@src/utils';
 
 const PaymentMethodScreen = () => {
+  const theme = useTheme<Theme>();
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [selectedPayment, setSelectedPayment] = useState('');
 

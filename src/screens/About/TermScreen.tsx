@@ -1,11 +1,13 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
+import { useTheme } from '@shopify/restyle';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import {termsData} from '../../data/termsData'
 import { Box, HeaderBack, TermCard, Text} from '@src';
 import { ScrollView } from 'react-native';
-import theme from '@src/theme/theme';
+import { Theme } from '@src/theme/theme';
 const TermScreen = () => {
+  const theme = useTheme<Theme>();
   return (
     <SafeAreaView  style={{ flex: 1, backgroundColor: theme.colors.mainBackground }}>
       <ScrollView showsVerticalScrollIndicator={false}>

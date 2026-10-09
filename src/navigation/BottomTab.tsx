@@ -15,64 +15,61 @@ import {
   Box,
 } from '@src';
 
-import theme from '@src/theme/theme';
+import { useTheme } from '@shopify/restyle';
+import { Theme } from '@src/theme/theme';
 import { DeviceHelper } from '@src/utils';
 
 const Tab = createBottomTabNavigator();
 
-const getTabIcon = (routeName: string, focused: boolean) => {
-  let iconName: keyof typeof Ionicons.glyphMap;
-
-  switch (routeName) {
-    case 'Home':
-      iconName = focused ? 'home' : 'home-outline';
-      break;
-
-    case 'Search':
-      iconName = focused ? 'search' : 'search-outline';
-      break;
-
-    case 'Wishlist':
-      iconName = focused ? 'heart' : 'heart-outline';
-      break;
-
-    case 'Cart':
-      iconName = focused ? 'cart' : 'cart-outline';
-      break;
-
-    case 'Profile':
-      iconName = focused ? 'person' : 'person-outline';
-      break;
-
-    default:
-      iconName = 'ellipse-outline';
-  }
-
-  return (
-    <Box height={DeviceHelper.calHeight(45)} width={DeviceHelper.calWidth(45)} justifyContent="center" alignItems="center">
-      <Ionicons
-        name={iconName}
-        size={DeviceHelper.calWidth(24)}
-        color={focused ? theme.colors.primary : theme.colors.icon}
-      />
-
-      {focused && (
-        <Box
-          style={{
-            position: 'absolute',
-            bottom: -1,
-            width: DeviceHelper.calWidth(28),
-            height: 3,
-            borderRadius: DeviceHelper.calWidth(20),
-            backgroundColor: theme.colors.primary,
-          }}
-        />
-      )}
-    </Box>
-  );
-};
-
 export default function BottomTab() {
+  const theme = useTheme<Theme>();
+
+  const getTabIcon = (routeName: string, focused: boolean) => {
+    let iconName: keyof typeof Ionicons.glyphMap;
+
+    switch (routeName) {
+      case 'Home':
+        iconName = focused ? 'home' : 'home-outline';
+        break;
+      case 'Search':
+        iconName = focused ? 'search' : 'search-outline';
+        break;
+      case 'Wishlist':
+        iconName = focused ? 'heart' : 'heart-outline';
+        break;
+      case 'Cart':
+        iconName = focused ? 'cart' : 'cart-outline';
+        break;
+      case 'Profile':
+        iconName = focused ? 'person' : 'person-outline';
+        break;
+      default:
+        iconName = 'ellipse-outline';
+    }
+
+    return (
+      <Box height={DeviceHelper.calHeight(45)} width={DeviceHelper.calWidth(45)} justifyContent="center" alignItems="center">
+        <Ionicons
+          name={iconName}
+          size={DeviceHelper.calWidth(24)}
+          color={focused ? theme.colors.primary : theme.colors.icon}
+        />
+        {focused && (
+          <Box
+            style={{
+              position: 'absolute',
+              bottom: -1,
+              width: DeviceHelper.calWidth(28),
+              height: 3,
+              borderRadius: DeviceHelper.calWidth(20),
+              backgroundColor: theme.colors.primary,
+            }}
+          />
+        )}
+      </Box>
+    );
+  };
+
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({

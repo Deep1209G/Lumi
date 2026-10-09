@@ -1,8 +1,8 @@
 import React from 'react';
+import { useTheme } from '@shopify/restyle';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import { Box, Text } from '@src';
-import theme from '@src/theme/theme';
 import { Theme } from '@src/theme/theme';
 type QuantitySelectorProps = {
   quantity: number;
@@ -17,6 +17,7 @@ const QuantitySelector = ({
   onDecrease,
   backgroundColor="white",
 }: QuantitySelectorProps) => {
+  const theme = useTheme<Theme>();
   return (
     <Box
       flexDirection="row"

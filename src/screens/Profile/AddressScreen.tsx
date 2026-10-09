@@ -1,6 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import { Box, Text, CustomTextInput, CustomButton, HeaderBack } from '@src';
 import React, { useState, useEffect, useContext } from 'react';
+import { useTheme } from '@shopify/restyle';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -8,10 +9,11 @@ import { RootStackParamList } from '../../navigation/AppNavigation';
 import { saveAddress, saveSelectedAddress } from '@src/utils/addressStorage';
 import { AuthContext } from '@src/context/AuthContext';
 import { ScrollView, Pressable } from 'react-native';
-import theme from '@src/theme/theme';
+import { Theme } from '@src/theme/theme';
 
 const addressTypes = ['Home', 'Work', 'Other'] as const;
 const AddressScreen = () => {
+  const theme = useTheme<Theme>();
   type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
   type AddressRouteProp = RouteProp<RootStackParamList, 'Address'>;
   const navigation = useNavigation<NavigationProp>();

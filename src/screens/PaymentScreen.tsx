@@ -23,13 +23,15 @@ import { paymentMethods } from '@src/data/paymentMethods';
 import { wallets } from '@src/data/wallets';
 import { CartContext } from '@src/context/CardContext';
 import useCartSummary from '@src/hooks/useCartSummary';
-import theme from '@src/theme/theme';
+import { useTheme } from '@shopify/restyle';
+import { Theme } from '@src/theme/theme';
 import RazorpayCheckout from 'react-native-razorpay';
 import {
   createPaymentOrder,
   verifyPayment,
 } from '@src/services/payment.service';
 const PaymentScreen = () => {
+  const theme = useTheme<Theme>();
   type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
   const navigation = useNavigation<NavigationProp>();

@@ -2,15 +2,17 @@
 import React, { useContext } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { FlatList, ScrollView, Pressable } from 'react-native';
+import { useTheme } from '@shopify/restyle';
 import { Box, SearchBar, Text, Card, useSearch } from '@src';
 import { WishlistContext } from '@src/context/WishlistContext';
 import { DeviceHelper } from '@src/utils';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../navigation/AppNavigation';
-import theme from '@src/theme/theme';
+import { Theme } from '@src/theme/theme';
 
 const SearchScreen = () => {
+  const theme = useTheme<Theme>();
   const { wishlist, toggleWishlist } = useContext(WishlistContext);
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
@@ -25,7 +27,7 @@ const SearchScreen = () => {
 
   return (
     <SafeAreaView style={{ flex: 1 , backgroundColor: theme.colors.mainBackground }}>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView showsVerticalScrollIndicator={false} style={{ backgroundColor: theme.colors.mainBackground }}>
         <Box paddingLeft="l" paddingRight="l">
           {/* Heading */}
           <Text variant="heading">Search</Text>

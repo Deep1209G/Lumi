@@ -10,6 +10,7 @@ import { RootStackParamList } from '../navigation/AppNavigation';
 import useCartSummary from '../hooks/useCartSummary';
 import useAddress from '@src/hooks/useAddress';
 
+import { useTheme } from '@shopify/restyle';
 import {
   Box,
   Text,
@@ -19,10 +20,11 @@ import {
   AddressSelector,
   CustomButton,
 } from '@src';
-import theme from '@src/theme/theme';
+import { Theme } from '@src/theme/theme';
 import { DeviceHelper } from '@src/utils';
 
 const CheckoutScreen = () => {
+  const theme = useTheme<Theme>();
   type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
   const navigation = useNavigation<NavigationProp>();

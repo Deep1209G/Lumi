@@ -1,12 +1,15 @@
 /* eslint-disable react-native/no-inline-styles */
 import { useTranslation } from 'react-i18next';
+import React from 'react';
+import { useTheme } from '@shopify/restyle';
 import { Box, EmptyStateCard, ProfileHeader, Text } from '@src';
 import useProfile from '../../hooks/useProfile';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { profileMenu } from '@src/data/profileMenu';
-import theme from '@src/theme/theme';
+import { Theme } from '@src/theme/theme';
 
 const ProfileScreen = () => {
+  const theme = useTheme<Theme>();
   const { handleMenuPress } = useProfile();
   const { t } = useTranslation();
 

@@ -1,9 +1,10 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
+import { useTheme } from '@shopify/restyle';
 import { Pressable } from 'react-native';
 import { Box, Text } from '@src';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import theme from '@src/theme/theme';
+import { Theme } from '@src/theme/theme';
 import { DeviceHelper } from '@src/utils';
 
 type AddressSelectorProps = {
@@ -19,6 +20,7 @@ const AddressSelector = ({
   address,
   type,
 }: AddressSelectorProps) => {
+  const theme = useTheme<Theme>();
   return (
     <Box
       backgroundColor="white"

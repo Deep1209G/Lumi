@@ -3,8 +3,9 @@ import React from 'react';
 import { Image, ImageSourcePropType, Pressable } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
+import { useTheme } from '@shopify/restyle';
 import { Box, Text, PressableIcon } from '@src';
-import theme from '@src/theme/theme';
+import { Theme } from '@src/theme/theme';
 import { DeviceHelper } from '@src/utils';
 
 type Props = {
@@ -26,6 +27,7 @@ const Card = ({
   onWishlistPress,
   onCardPress,
 }: Props) => {
+  const theme = useTheme<Theme>();
   return (
     <Pressable onPress={onCardPress}>
       <Box

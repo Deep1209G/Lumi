@@ -1,9 +1,10 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
+import { useTheme } from '@shopify/restyle';
 import { Image } from 'react-native';
 
 import { Box, Text } from '@src';
-import theme from '@src/theme/theme';
+import { Theme } from '@src/theme/theme';
 import { DeviceHelper } from '@src/utils';
 
 type OrderSummaryProps = {
@@ -15,6 +16,7 @@ const OrderSummary = ({
   product,
   quantity,
 }: OrderSummaryProps) => {
+  const theme = useTheme<Theme>();
   return (
     <Box
       flexDirection="row"

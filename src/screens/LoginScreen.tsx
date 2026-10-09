@@ -9,6 +9,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/AppNavigation';
 import { signInWithGoogle } from '@src/services/authService';
 
+import { useTheme } from '@shopify/restyle';
 import {
   Box,
   Text,
@@ -19,11 +20,12 @@ import {
   PressableText,
   useLogin,
 } from '@src';
-import theme from '@src/theme/theme';
+import { Theme } from '@src/theme/theme';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 const LoginScreen = () => {
+  const theme = useTheme<Theme>();
   const navigation = useNavigation<NavigationProp>();
 
   const [name, setName] = useState('');

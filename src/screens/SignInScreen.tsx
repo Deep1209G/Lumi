@@ -5,15 +5,17 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/AppNavigation';
+import { useTheme } from '@shopify/restyle';
+import { Theme } from '@src/theme/theme';
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 const SignInScreen = () => {
+  const theme = useTheme<Theme>();
   const navigation = useNavigation<NavigationProp>();
-  
 
   return (
-   <SafeAreaView style={{ flex: 1 }}>
+   <SafeAreaView style={{ flex: 1, backgroundColor: theme.colors.mainBackground }}>
   <Box flex={1} paddingLeft="l" paddingRight="l">
 
     {/* Main Content */}

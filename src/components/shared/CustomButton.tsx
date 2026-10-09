@@ -5,9 +5,10 @@ import {
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
+import { useTheme } from '@shopify/restyle';
 import Box from './Box';
 import Text from './Text';
-import theme from '@src/theme/theme';
+import { Theme } from '@src/theme/theme';
 import { DeviceHelper } from '@src/utils';
 
 interface CustomButtonProps extends TouchableOpacityProps {
@@ -20,6 +21,7 @@ const CustomButton = ({
   rightIcon,
   ...props
 }: CustomButtonProps) => {
+  const theme = useTheme<Theme>();
   return (
     <TouchableOpacity activeOpacity={0.8} {...props}>
       <Box

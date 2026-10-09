@@ -5,10 +5,13 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { Images, Text } from '@src';
+import { useTheme } from '@shopify/restyle';
+import { Theme } from '@src/theme/theme';
 import { getAuth } from '@react-native-firebase/auth';
 import { DeviceHelper } from '@src/utils';
 
 const SplashScreen = ({ navigation }: any) => {
+  const theme = useTheme<Theme>();
   const navigated = useRef(false);
 
   useEffect(() => {
@@ -49,6 +52,7 @@ const SplashScreen = ({ navigation }: any) => {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+        backgroundColor: theme.colors.mainBackground,
       }}
     >
 

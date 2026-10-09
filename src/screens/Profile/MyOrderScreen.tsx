@@ -3,12 +3,14 @@ import React, { useContext } from 'react';
 import { FlatList } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useFocusEffect } from '@react-navigation/native';
+import { useTheme } from '@shopify/restyle';
 import { Box, HeaderBack, MyOrderCard, Text } from '@src';
 import { products } from '../../data/produts';
 import { OrderContext } from '@src/context/OrderContext';
-import theme from '@src/theme/theme';
+import { Theme } from '@src/theme/theme';
 
 const MyOrderScreen = () => {
+  const theme = useTheme<Theme>();
   const { orders, loadOrders } = useContext(OrderContext);
   useFocusEffect(
     React.useCallback(() => {

@@ -6,7 +6,8 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import theme from '@src/theme/theme';
+import { useTheme } from '@shopify/restyle';
+import { Theme } from '@src/theme/theme';
 import CartCard from '@src/components/mycartscreen/CartCard';
 import { CartContext } from '@src/context/CardContext';
 import { DeviceHelper } from '@src/utils';
@@ -15,6 +16,7 @@ import { RootStackParamList } from '../../navigation/AppNavigation';
 import { Box, CustomButton, Text } from '@src';
 
 const MyCartScreen = () => {
+  const theme = useTheme<Theme>();
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 

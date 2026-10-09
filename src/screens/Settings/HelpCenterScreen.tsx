@@ -1,15 +1,17 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTheme } from '@shopify/restyle';
 import { Box, FAQAccordion, HeaderBack, Text } from '@src';
 import { Pressable } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { faqs } from '@src/data/faqs';
-import theme from '@src/theme/theme';
+import { Theme } from '@src/theme/theme';
 import { DeviceHelper } from '@src/utils';
 
 
 const HelpCenterScreen = () => {
+  const theme = useTheme<Theme>();
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
   const handleAccordion = (id: string) => {

@@ -1,8 +1,9 @@
 import React from 'react';
+import { useTheme } from '@shopify/restyle';
 import { Pressable } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Box, Text } from '@src';
-import theme from '@src/theme/theme';
+import { Theme } from '@src/theme/theme';
 
 type PaymentOptionProps = {
   title: string;
@@ -15,6 +16,7 @@ const PaymentOption = ({
   selected,
   onPress,
 }: PaymentOptionProps) => {
+  const theme = useTheme<Theme>();
   return (
 
     <Pressable onPress={onPress}>

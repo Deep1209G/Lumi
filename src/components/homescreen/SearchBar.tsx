@@ -4,8 +4,9 @@ import { useTranslation } from 'react-i18next';
 import { Pressable, TextInput } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
+import { useTheme } from '@shopify/restyle';
 import { Box } from '@src';
-import theme from '../../theme/theme';
+import { Theme } from '@src/theme/theme';
 
 type SearchBarProps = {
   placeholder?: string;
@@ -34,6 +35,7 @@ const SearchBar = ({
   editable = true,
   isDark = false,
 }: SearchBarProps) => {
+  const theme = useTheme<Theme>();
   const { t } = useTranslation();
 
   const [animatedPlaceholder, setAnimatedPlaceholder] = useState('');

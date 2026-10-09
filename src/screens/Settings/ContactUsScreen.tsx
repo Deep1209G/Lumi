@@ -1,14 +1,16 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
+import { useTheme } from '@shopify/restyle';
 import { useTranslation } from 'react-i18next';
 import { Linking } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Box, HeaderBack } from '@src';
 import ContactCard from '@src/components/contactScreen/ContactCard';
 import { contactInfo } from '@src/data/contactInfo';
-import theme from '@src/theme/theme';
+import { Theme } from '@src/theme/theme';
 
 const ContactUsScreen = () => {
+  const theme = useTheme<Theme>();
   const { t } = useTranslation();
 
   const handlePress = (url: string) => {

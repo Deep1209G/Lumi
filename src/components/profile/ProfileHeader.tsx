@@ -1,16 +1,17 @@
 /* eslint-disable react-native/no-inline-styles */
 
 import React from 'react';
+import { useTheme } from '@shopify/restyle';
 import { Box, Images, Text } from '@src';
 import { Image } from 'react-native';
 
-import theme from '@src/theme/theme';
+import { Theme } from '@src/theme/theme';
 import { useAuth } from '@src/context/AuthContext';
 import { DeviceHelper } from '@src/utils';
 
 
 const ProfileHeader = () => {
-
+  const theme = useTheme<Theme>();
   const { user } = useAuth();
 
 

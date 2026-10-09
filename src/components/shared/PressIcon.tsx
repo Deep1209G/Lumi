@@ -1,7 +1,8 @@
 import React from 'react';
+import { useTheme } from '@shopify/restyle';
 import { Pressable } from 'react-native';
 import { Box } from '@src';
-import theme from '@src/theme/theme';
+import { Theme } from '@src/theme/theme';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { DeviceHelper } from '@src/utils';
 
@@ -15,9 +16,11 @@ type PressIconProps = {
 const PressIcon = ({
   icon,
   onPressIcon,
-  color = theme.colors.black,
+  color: colorProp,
   size = 20,
 }: PressIconProps) => {
+  const theme = useTheme<Theme>();
+  const color = colorProp ?? theme.colors.black;
   return (
     <Pressable onPress={onPressIcon}>
       <Box

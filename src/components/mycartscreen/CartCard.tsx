@@ -3,8 +3,9 @@ import React from 'react';
 import { Image } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
+import { useTheme } from '@shopify/restyle';
 import { Box, QuantitySelector, Text } from '@src';
-import theme from '@src/theme/theme';
+import { Theme } from '@src/theme/theme';
 import { DeviceHelper } from '@src/utils';
 
 type CartCardProps = {
@@ -22,6 +23,7 @@ const CartCard = ({
   onDecrease,
   onRemove,
 }: CartCardProps) => {
+  const theme = useTheme<Theme>();
   return (
     <Box
       flexDirection="row"

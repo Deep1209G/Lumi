@@ -2,14 +2,16 @@
 import React, { useRef, useState } from 'react';
 import { FlatList, Image, View, Dimensions } from 'react-native';
 
+import { useTheme } from '@shopify/restyle';
 import { Box, Text, CustomButton, onboardingData } from '@src';
-import theme from '@src/theme/theme';
+import { Theme } from '@src/theme/theme';
 import { DeviceHelper } from '@src/utils';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const { width } = Dimensions.get('window');
 
 const OnboardingScreen = ({ navigation }: any) => {
+  const theme = useTheme<Theme>();
   const flatListRef = useRef<FlatList>(null);
 
   const [currentIndex, setCurrentIndex] = useState(0);

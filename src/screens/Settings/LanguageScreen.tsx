@@ -2,13 +2,15 @@
 import { useTranslation } from 'react-i18next';
 import i18n from '@src/localization/i18n';
 import React, { useEffect, useState } from 'react';
+import { useTheme } from '@shopify/restyle';
 import { saveLanguage, getLanguage } from '@src/utils/languageStorage';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Box, HeaderBack, LanguageCard } from '@src';
 import { languages } from '@src/data/languages';
-import theme from '@src/theme/theme';
+import { Theme } from '@src/theme/theme';
 
 const LanguageScreen = () => {
+  const theme = useTheme<Theme>();
   const [selectedLanguage, setSelectedLanguage] = useState('en');
   const { t } = useTranslation();
 

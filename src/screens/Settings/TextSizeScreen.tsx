@@ -1,13 +1,15 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, { useState } from 'react';
+import { useTheme } from '@shopify/restyle';
 import { useTranslation } from 'react-i18next';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Box, HeaderBack, ThemeCard } from '@src';
-import theme from '@src/theme/theme';
+import { Theme } from '@src/theme/theme';
 
 type TextSize = 'small' | 'medium' | 'large';
 
 const TextSizeScreen = () => {
+  const theme = useTheme<Theme>();
   const { t } = useTranslation();
   const [selectedSize, setSelectedSize] = useState<TextSize>('medium');
 

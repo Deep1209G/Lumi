@@ -1,8 +1,9 @@
 import React from 'react';
 import { Pressable } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { useTheme } from '@shopify/restyle';
 import { Box, Text } from '@src';
-import theme from '@src/theme/theme';
+import { Theme } from '@src/theme/theme';
 import { DeviceHelper } from '@src/utils';
 
 type ContactCardProps = {
@@ -13,6 +14,7 @@ type ContactCardProps = {
 };
 
 const ContactCard = ({ icon, label, value, onPress }: ContactCardProps) => {
+  const theme = useTheme<Theme>();
   return (
     <Pressable onPress={onPress}>
       <Box

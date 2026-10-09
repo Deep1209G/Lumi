@@ -1,11 +1,13 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, { useState } from 'react';
+import { useTheme } from '@shopify/restyle';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Box, Toggle, HeaderBack, Text } from '@src';
 import { notificationSettings } from '@src/data/notificationSettings';
-import theme from '@src/theme/theme';
+import { Theme } from '@src/theme/theme';
 
 const NotificationScreen = () => {
+  const theme = useTheme<Theme>();
   const [settings, setSettings] = useState<Record<string, boolean>>({
     '1': false,
     '2': false,

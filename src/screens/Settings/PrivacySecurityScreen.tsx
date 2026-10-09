@@ -1,5 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, { useState } from 'react';
+import { useTheme } from '@shopify/restyle';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import {
@@ -13,9 +14,10 @@ import {
   accountSecurity,
   dataPrivacy,
 } from '@src/data/privacySecurity';
-import theme from '@src/theme/theme';
+import { Theme } from '@src/theme/theme';
 
 const PrivacySecurityScreen = () => {
+  const theme = useTheme<Theme>();
   const [settings, setSettings] = useState({
     twoFactor: false,
     biometric: true,

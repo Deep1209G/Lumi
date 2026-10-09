@@ -5,15 +5,17 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
+import { useTheme } from '@shopify/restyle';
 import { Box, Text, HeaderBack, CustomButton } from '@src';
 import useAddress from '@src/hooks/useAddress';
 import { saveSelectedAddress } from '@src/utils/addressStorage';
 import { AuthContext } from '@src/context/AuthContext';
 import { RootStackParamList } from '../navigation/AppNavigation';
-import theme from '@src/theme/theme';
+import { Theme } from '@src/theme/theme';
 import { DeviceHelper } from '@src/utils';
 
 const AddressListScreen = () => {
+  const theme = useTheme<Theme>();
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { user } = useContext(AuthContext);

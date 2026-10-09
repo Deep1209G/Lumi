@@ -1,9 +1,9 @@
 import React from 'react';
+import { useTheme } from '@shopify/restyle';
 import { Box, Text } from '@src';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import theme from '../../theme/theme';
-import { Pressable } from 'react-native';
 import { Theme } from '@src/theme/theme';
+import { Pressable } from 'react-native';
 import { DeviceHelper } from '@src/utils';
 
 
@@ -16,7 +16,9 @@ type Props = {
   backgroundColor?: keyof Theme['colors'];
 
 };
-const EmptyStateCard = ({ leftIcon, color=theme.colors.black, title,onPress,  backgroundColor = 'gray', }: Props) => {
+const EmptyStateCard = ({ leftIcon, color: colorProp, title, onPress, backgroundColor = 'gray' }: Props) => {
+  const theme = useTheme<Theme>();
+  const color = colorProp ?? theme.colors.black;
   return (
     <Pressable onPress={onPress}>
     <Box

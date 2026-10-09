@@ -46,7 +46,7 @@ const CustomTextInput = ({
           {...rest}
           placeholderTextColor={theme.colors.textSecondary}
           secureTextEntry={isPasswordField ? !isVisible : false}
-          style={{ paddingVertical: 0 }}
+          style={{ paddingVertical: 0, color: theme.colors.textPrimary }}
         />
       </Box>
 

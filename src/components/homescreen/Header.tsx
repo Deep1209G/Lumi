@@ -4,12 +4,14 @@ import { useTranslation } from 'react-i18next';
 import React, { useRef } from 'react';
 import { Animated, Pressable } from 'react-native';
 
+import { useTheme } from '@shopify/restyle';
 import { Box, Text, Images } from '@src';
-import theme from '@src/theme/theme';
+import { Theme } from '@src/theme/theme';
 import { useAuth } from '@src/context/AuthContext';
 import { DeviceHelper } from '@src/utils';
 
 const Header = () => {
+  const theme = useTheme<Theme>();
   const { user } = useAuth();
   const { t } = useTranslation();
 

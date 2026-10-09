@@ -3,9 +3,10 @@
 import React, { useContext } from 'react';
 import { WishlistContext } from '@src/context/WishlistContext';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTheme } from '@shopify/restyle';
 import { Box, Text, Card } from '@src';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import theme from '../../theme/theme';
+import { Theme } from '@src/theme/theme';
 import { DeviceHelper } from '@src/utils';
 import { products } from '@src/data/produts';
 import { FlatList } from 'react-native';
@@ -14,6 +15,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../navigation/AppNavigation';
 
 const WishlistScreen = () => {
+  const theme = useTheme<Theme>();
   const { wishlist, toggleWishlist } = useContext(WishlistContext);
   const wishlistProducts = products.filter(product =>
     wishlist.includes(product.id),

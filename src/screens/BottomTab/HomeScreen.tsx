@@ -5,6 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { FlatList, View } from 'react-native';
 
+import { useTheme } from '@shopify/restyle';
 import {
   Box,
   Header,
@@ -15,10 +16,11 @@ import {
   PressableText,
   Card,
 } from '@src';
-import theme from '@src/theme/theme';
+import { Theme } from '@src/theme/theme';
 import useHome from '../../hooks/useHome';
 
 const HomeScreen = () => {
+  const theme = useTheme<Theme>();
   const { t } = useTranslation();
   const tabBarHeight = useBottomTabBarHeight();
   const {
@@ -54,7 +56,7 @@ const HomeScreen = () => {
               paddingRight="l"
               paddingTop="m"
               paddingBottom="xl"
-              style={{ backgroundColor: theme.colors.darkHeader }}
+              backgroundColor="darkHeader"
             >
               <Header />
               <Box marginTop="m">

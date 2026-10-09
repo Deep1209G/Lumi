@@ -1,13 +1,15 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
+import { useTheme } from '@shopify/restyle';
 import { Box, HeaderBack, Text, TermCard } from '@src';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { privacyData } from '@src/data/privacyData';
 import {ScrollView} from 'react-native'
-import theme from '@src/theme/theme';
+import { Theme } from '@src/theme/theme';
 import { DeviceHelper } from '@src/utils';
 
 const PrivacyScreen = () => {
+  const theme = useTheme<Theme>();
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor:theme.colors.mainBackground }}>
        <ScrollView showsVerticalScrollIndicator={false}>

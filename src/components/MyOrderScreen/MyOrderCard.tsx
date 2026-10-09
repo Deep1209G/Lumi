@@ -1,9 +1,10 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
+import { useTheme } from '@shopify/restyle';
 import { Box, Text } from '@src';
 import { Image, ImageSourcePropType } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import theme from '../../theme/theme';
+import { Theme } from '@src/theme/theme';
 import { DeviceHelper } from '@src/utils';
 
 type Props = {
@@ -25,6 +26,7 @@ const MyOrderCard = ({
   date,
   total,
 }: Props) => {
+  const theme = useTheme<Theme>();
   return (
     <Box
       padding="l"

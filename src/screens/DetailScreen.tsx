@@ -1,8 +1,9 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
+import { useTheme } from '@shopify/restyle';
 import { Image } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import theme from '@src/theme/theme.ts';
+import { Theme } from '@src/theme/theme';
 import { DeviceHelper } from '@src/utils';
 import {
   AddToCartButton,
@@ -16,6 +17,7 @@ import useDetail from '../hooks/useDetail.ts';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const DetailScreen = () => {
+  const theme = useTheme<Theme>();
   const {
     product,
     quantity,

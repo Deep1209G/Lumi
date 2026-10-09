@@ -1,7 +1,8 @@
 import React from 'react';
+import { useTheme } from '@shopify/restyle';
 import { Box, Text } from '@src';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import theme from '../../theme/theme';
+import { Theme } from '@src/theme/theme';
 import { Pressable } from 'react-native';
 import { DeviceHelper } from '@src/utils';
 
@@ -12,6 +13,7 @@ type Props = {
   onPress?: () => void;
 };
 const SettingCard = ({  title, onPress, }: Props) => {
+  const theme = useTheme<Theme>();
   return (
     <Pressable onPress={onPress}>
     <Box

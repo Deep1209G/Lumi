@@ -1,14 +1,16 @@
 /* eslint-disable react-native/no-inline-styles */
 import { useTranslation } from 'react-i18next';
 import React from 'react';
+import { useTheme } from '@shopify/restyle';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Box, HeaderBack } from '@src';
 import { settingMenu } from '@src/data/settingMenu';
 import useSetting from '../../hooks/useSetting';
 import SettingCard from '../../components/settingScreen/SettingCard';
-import theme from '@src/theme/theme';
+import { Theme } from '@src/theme/theme';
 
 const SettingsScreen = () => {
+  const theme = useTheme<Theme>();
   const { t } = useTranslation();
   const { handleMenuPress } = useSetting();
 

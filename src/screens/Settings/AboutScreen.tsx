@@ -1,15 +1,17 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTheme } from '@shopify/restyle';
 import { Box, HeaderBack, Images, Text } from '@src';
 import { Image } from 'react-native';
 import { aboutMenu } from '@src/data/aboutMenu';
 import SettingCard from '@src/components/settingScreen/SettingCard';
 import useAbout from '../../hooks/useAbout';
-import theme from '@src/theme/theme';
+import { Theme } from '@src/theme/theme';
 import { DeviceHelper } from '@src/utils';
 
 const AboutScreen = () => {
+  const theme = useTheme<Theme>();
   const { handleMenuPress } = useAbout();
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor:theme.colors.mainBackground }}>
