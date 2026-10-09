@@ -30,18 +30,41 @@ const LoginScreen = () => {
 
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
+  const [nameError, setNameError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
 
   const { login: loginUserHook, loading } = useLogin();
 
   const handleLogin = async () => {
-    const result = await loginUserHook(name, password);
+    const trimmedName = name.trim();
+    const trimmedPassword = password.trim();
+
+    let hasError = false;
+
+    if (!trimmedName) {
+      setNameError('Username is required');
+      hasError = true;
+    } else {
+      setNameError('');
+    }
+
+    if (!trimmedPassword) {
+      setPasswordError('Password is required');
+      hasError = true;
+    } else {
+      setPasswordError('');
+    }
+
+    if (hasError) return;
+
+    const result = await loginUserHook(trimmedName, trimmedPassword);
 
     if (result.success) {
       navigation.replace('MainTab', {
         screen: 'Home',
       });
     } else {
-      console.log(result.message);
+      setPasswordError(result.message || 'Invalid credentials');
     }
   };
 
@@ -88,8 +111,13 @@ const LoginScreen = () => {
               placeholder="Username"
               leftIcon="mail-outline"
               value={name}
-              onChangeText={setName}
+              onChangeText={text => { setName(text); setNameError(''); }}
             />
+            {!!nameError && (
+              <Text variant="small" color="warning" marginTop="xs">
+                {nameError}
+              </Text>
+            )}
           </Box>
 
           <Box marginTop="m">
@@ -102,8 +130,13 @@ const LoginScreen = () => {
               leftIcon="lock-closed-outline"
               secureTextEntry
               value={password}
-              onChangeText={setPassword}
+              onChangeText={text => { setPassword(text); setPasswordError(''); }}
             />
+            {!!passwordError && (
+              <Text variant="small" color="warning" marginTop="xs">
+                {passwordError}
+              </Text>
+            )}
           </Box>
 
           <Box marginTop="m">
