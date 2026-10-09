@@ -22,9 +22,10 @@ const createOrder = async (req, res) => {
   } catch (error) {
   console.log("Razorpay Error:", error);
 
-  res.status(500).json({
+  // Razorpay SDK errors carry the reason in error.error.description, not error.message
+  res.status(error.statusCode || 500).json({
     success: false,
-    message: error.message
+    message: error?.error?.description || error.message || "Failed to create order"
   });
 }
 };

@@ -1,12 +1,12 @@
 /* eslint-disable react-native/no-inline-styles */
 
 import React, { useState, useContext } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Alert, FlatList } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { OrderContext } from '@src/context/OrderContext';
+import { useAuth } from '@src/context/AuthContext';
 import {
   Box,
   Text,
@@ -36,6 +36,7 @@ const PaymentScreen = () => {
 
   const { cart, clearCart } = useContext(CartContext);
   const { addOrder } = useContext(OrderContext);
+  const { user: authUser } = useAuth();
   const { total } = useCartSummary(cart);
 
   const [expandedId, setExpandedId] = useState<string | null>(null);
@@ -76,20 +77,31 @@ const PaymentScreen = () => {
     try {
       const response = await createPaymentOrder(Math.round(total));
 
-      const options = {
+      if (!response?.success || !response?.order) {
+        Alert.alert('Payment Failed', response?.message || 'Could not connect to payment server. Make sure the backend is running.');
+        return;
+      }
+
+      const getPaymentMethod = () => {
+        if (['Google Pay', 'PhonePe', 'Paytm'].includes(selectedPayment)) return 'upi';
+        if (selectedPayment === 'card') return 'card';
+        if (['Paytm Wallet', 'Amazon Pay', 'Mobikwik'].includes(selectedPayment)) return 'wallet';
+        return undefined;
+      };
+
+      const options: any = {
         description: 'Lumi Order Payment',
         currency: response.order.currency,
-        key: 'rzp_test_TIV1WTanlr02VW', // Your Razorpay Test Key ID
+        key: 'rzp_test_TlgHmjJwjSCV2x',
         amount: response.order.amount,
         name: 'Lumi',
         order_id: response.order.id,
-
+        method: getPaymentMethod(),
         prefill: {
-          name: 'Customer',
-          email: 'customer@example.com',
+          name: authUser?.name || 'Customer',
+          email: authUser?.email || 'customer@example.com',
           contact: '9999999999',
         },
-
         theme: {
           color: '#6C63FF',
         },
@@ -108,13 +120,11 @@ const PaymentScreen = () => {
 
       console.log('Verification Response:', verification);
       if (verification.success) {
-        const currentUser = await AsyncStorage.getItem('currentUser');
-        const user = currentUser ? JSON.parse(currentUser) : null;
-        console.log("CURRENT USER:", user);
+        console.log("CURRENT USER:", authUser);
 
         const orderData = {
 
-          userId: user?.id,
+          userId: authUser?.uid,
           items: cart.map(item => ({
             productId: item.product.id.toString(),
             name: item.product.name,
@@ -142,7 +152,8 @@ const PaymentScreen = () => {
 
           navigation.navigate('OrderSuccess');
         } else {
-          Alert.alert('Order creation failed');
+          Alert.alert('Order creation failed', orderResponse.message);
+          console.log('Order creation error details:', orderResponse.message);
         }
       } else {
         Alert.alert(

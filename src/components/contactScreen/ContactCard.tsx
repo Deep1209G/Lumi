@@ -1,7 +1,6 @@
 import React from 'react';
 import { Pressable } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
 import { Box, Text } from '@src';
 import theme from '@src/theme/theme';
 import { DeviceHelper } from '@src/utils';

@@ -2,6 +2,7 @@
 import { useTranslation } from 'react-i18next';
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { FlatList } from 'react-native';
 import useHome from '../../hooks/useHome';
 
@@ -18,7 +19,7 @@ import {
 import theme from '@src/theme/theme';
 
 const HomeScreen = () => {
- 
+  const tabBarHeight = useBottomTabBarHeight();
   const { t } = useTranslation();
   const {
     navigation,
@@ -32,6 +33,8 @@ const HomeScreen = () => {
   } = useHome();
 
 
+  const dataVar = selectedCategory;
+  
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: theme.colors.mainBackground }}>
       <FlatList
@@ -41,6 +44,7 @@ const HomeScreen = () => {
         numColumns={2}
         showsVerticalScrollIndicator={false}
         keyExtractor={item => item.id}
+        contentContainerStyle={{ paddingBottom: tabBarHeight }}
         columnWrapperStyle={{
           justifyContent: 'space-evenly',
           marginBottom: 20,

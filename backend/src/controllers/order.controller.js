@@ -17,7 +17,7 @@ const createOrder = async (req, res) => {
 
     res.status(500).json({
       success: false,
-      message: "Order creation failed",
+      message: error.message || "Order creation failed",
     });
   }
 };
