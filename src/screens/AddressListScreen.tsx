@@ -34,7 +34,7 @@ const AddressListScreen = () => {
     <SafeAreaView
       style={{ flex: 1, backgroundColor: theme.colors.mainBackground }}
     >
-      <Box flex={1} paddingLeft="l" paddingRight="l">
+      <Box flex={1} paddingLeft="l" paddingRight="l" paddingBottom="m">
         <HeaderBack title="My Addresses" />
 
         <FlatList
@@ -91,12 +91,13 @@ const AddressListScreen = () => {
               
             </Box>
           )}
-        />
-
+        /> 
+        
         <CustomButton
           title="Add New Address"
           onPress={() => navigation.navigate('Address')}
         />
+        
       </Box>
     </SafeAreaView>
   );

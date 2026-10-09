@@ -10,6 +10,7 @@ import { saveAddress, saveSelectedAddress } from '@src/utils/addressStorage';
 import { AuthContext } from '@src/context/AuthContext';
 import { ScrollView, Pressable } from 'react-native';
 import { Theme } from '@src/theme/theme';
+import { DeviceHelper } from '@src/utils';
 
 const addressTypes = ['Home', 'Work', 'Other'] as const;
 const AddressScreen = () => {
@@ -20,7 +21,7 @@ const AddressScreen = () => {
   const route = useRoute<AddressRouteProp>();
   const editingAddress = route.params?.address;
   const { user } = useContext(AuthContext);
-  console.log('Address Screen User:', user);
+  // console.log('Address Screen User:', user);
   const [fullName, setFullName] = useState('');
   const [phone, setPhone] = useState('');
   const [pincode, setPincode] = useState('');
@@ -69,7 +70,11 @@ const AddressScreen = () => {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor:theme.colors.mainBackground }}>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        keyboardShouldPersistTaps="handled"
+        contentContainerStyle={{ paddingBottom: DeviceHelper.calHeight(120) }}
+      >
         <Box paddingLeft="l" paddingRight="l">
           <Box>
             <HeaderBack title="Shipping Address" />
@@ -189,7 +194,7 @@ const AddressScreen = () => {
             </Box>
           </Box>
 
-          <Box marginTop="l">
+          <Box marginTop="l" marginBottom="l">
             <CustomButton title="Save Address" onPress={handleSave} />
           </Box>
         </Box>

@@ -5,9 +5,6 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Theme } from '@src/theme/theme';
 import { Pressable } from 'react-native';
 import { DeviceHelper } from '@src/utils';
-
-
-
 type Props = {
   leftIcon?:  keyof typeof Ionicons.glyphMap;
   color?: string;
