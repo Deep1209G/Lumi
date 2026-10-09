@@ -46,7 +46,7 @@ const WishlistScreen = () => {
                 color={theme.colors.primary}
               />
             </Box>
-            <Text marginTop="m" variant="button">
+            <Text marginTop="m" variant="button" color="textPrimary">
               No Saved Items
             </Text>
             <Text marginTop="s" variant="medium">

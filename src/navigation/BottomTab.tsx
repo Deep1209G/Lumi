@@ -102,23 +102,14 @@ export default function BottomTab() {
           height: DeviceHelper.calHeight(65),
           borderRadius: theme.borderRadii.l,
           backgroundColor: theme.colors.white,
-          // Border
-          borderWidth: 1.5,
-          borderColor:theme.colors.tabgray,
-          // Android shadow
-          elevation: 5,
-          // iOS shadow
-          shadowColor: theme.colors.primary,
-          shadowOffset: {
-            width: 0,
-            height: 8,
-          },
-          shadowOpacity: 0.15,
+          borderWidth: 1,
+          borderColor: theme.colors.tabgray,
+          elevation: 8,
+          shadowColor: '#000',
+          shadowOffset: { width: 0, height: 4 },
+          shadowOpacity: 0.1,
           shadowRadius: 12,
-
-          // Keep rounded corners
           overflow: 'hidden',
-
           paddingTop: DeviceHelper.calHeight(10),
           paddingBottom: DeviceHelper.calHeight(10),
         },

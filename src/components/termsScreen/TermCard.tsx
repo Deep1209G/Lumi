@@ -19,7 +19,7 @@ const TermCard = ({ title, description, number }: TermCardProps) => {
       borderColor='tabgray'
     >
       <Box flexDirection="row">
-        <Text variant="button">{number}.</Text>
+        <Text variant="button" color="textPrimary">{number}.</Text>
         <Text variant="button" color='textPrimary' paddingLeft='s'>{title}</Text>
       </Box>
       <Text marginTop='s' variant='description' color='textSecondary'  textAlign="justify">{description}</Text>

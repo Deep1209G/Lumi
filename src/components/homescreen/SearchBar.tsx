@@ -18,6 +18,7 @@ type SearchBarProps = {
   value?: string;
   onChangeText?: (text: string) => void;
   editable?: boolean;
+  isDark?: boolean;
 };
 
 const SearchBar = ({
@@ -31,6 +32,7 @@ const SearchBar = ({
   value,
   onChangeText,
   editable = true,
+  isDark = false,
 }: SearchBarProps) => {
   const { t } = useTranslation();
 
@@ -94,16 +96,22 @@ const SearchBar = ({
     };
   }, [placeholders, typingSpeed, pauseDuration]);
 
+  const containerStyle = isDark
+    ? { backgroundColor: 'rgba(255,255,255,0.1)', borderWidth: 1, borderColor: 'rgba(255,255,255,0.18)' }
+    : { backgroundColor: theme.colors.white, borderWidth: 1, borderColor: theme.colors.border };
+
+  const iconColor = isDark ? 'rgba(255,255,255,0.5)' : theme.colors.icon;
+  const textColor = isDark ? theme.colors.white : theme.colors.textPrimary;
+  const placeholderColor = isDark ? 'rgba(255,255,255,0.4)' : theme.colors.textSecondary;
+
   return (
     <Box
       height={50}
-      backgroundColor="mainBackground"
-      borderWidth={1}
-      borderColor="border"
       borderRadius="m"
       flexDirection="row"
       alignItems="center"
       paddingHorizontal="m"
+      style={containerStyle}
     >
       <Pressable
         onPress={onSearchPress}
@@ -116,16 +124,17 @@ const SearchBar = ({
         <Ionicons
           name="search-outline"
           size={20}
-          color={theme.colors.icon}
+          color={iconColor}
         />
 
         <TextInput
           style={{
             flex: 1,
             paddingLeft: theme.spacing.m,
+            color: textColor,
           }}
           placeholder={animatedPlaceholder}
-          placeholderTextColor={theme.colors.textSecondary}
+          placeholderTextColor={placeholderColor}
           value={value}
           onChangeText={onChangeText}
           editable={editable}
@@ -145,7 +154,7 @@ const SearchBar = ({
             <Ionicons
               name={rightIcon}
               size={18}
-              color={theme.colors.mainBackground}
+              color={theme.colors.white}
             />
           </Box>
         </Pressable>

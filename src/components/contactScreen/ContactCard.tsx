@@ -37,7 +37,7 @@ const ContactCard = ({ icon, label, value, onPress }: ContactCardProps) => {
 
         <Box flex={1} justifyContent="center" marginLeft="m">
           <Text variant="medium">{label}</Text>
-          <Text variant="button">{value}</Text>
+          <Text variant="button" color="textPrimary">{value}</Text>
         </Box>
 
         <Ionicons

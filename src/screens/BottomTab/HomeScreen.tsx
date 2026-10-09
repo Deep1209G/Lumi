@@ -3,8 +3,7 @@ import { useTranslation } from 'react-i18next';
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
-import { FlatList } from 'react-native';
-import useHome from '../../hooks/useHome';
+import { FlatList, View } from 'react-native';
 
 import {
   Box,
@@ -17,10 +16,11 @@ import {
   Card,
 } from '@src';
 import theme from '@src/theme/theme';
+import useHome from '../../hooks/useHome';
 
 const HomeScreen = () => {
-  const tabBarHeight = useBottomTabBarHeight();
   const { t } = useTranslation();
+  const tabBarHeight = useBottomTabBarHeight();
   const {
     navigation,
     flatListRef,
@@ -32,11 +32,8 @@ const HomeScreen = () => {
     handleLoadMore,
   } = useHome();
 
-
-  const dataVar = selectedCategory;
-  
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: theme.colors.mainBackground }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: theme.colors.darkHeader }}>
       <FlatList
         key={selectedCategory}
         ref={flatListRef}
@@ -51,22 +48,39 @@ const HomeScreen = () => {
         }}
         ListHeaderComponent={
           <>
-            {/* Header */}
-            <Box paddingLeft="l" paddingRight="l">
+            {/* Dark header section */}
+            <Box
+              paddingLeft="l"
+              paddingRight="l"
+              paddingTop="m"
+              paddingBottom="xl"
+              style={{ backgroundColor: theme.colors.darkHeader }}
+            >
               <Header />
-
-              {/* Search Bar */}
               <Box marginTop="m">
                 <SearchBar
                   editable={false}
+                  isDark
                   onSearchPress={() => navigation.navigate('Search')}
                   rightIcon="options-outline"
-                  onPress={() => console.log('option button click')}
+                  onPress={() => {}}
                 />
               </Box>
+            </Box>
 
+            {/* Curved light body */}
+            <View
+              style={{
+                backgroundColor: theme.colors.mainBackground,
+                borderTopLeftRadius: 28,
+                borderTopRightRadius: 28,
+                marginTop: -20,
+                paddingTop: 20,
+                paddingHorizontal: theme.spacing.l,
+              }}
+            >
               {/* Category Tab */}
-              <Box marginTop="m">
+              <Box marginBottom="m">
                 <CategoryTab
                   selectedCategory={selectedCategory}
                   onSelectCategory={handleCategoryChange}
@@ -74,26 +88,30 @@ const HomeScreen = () => {
               </Box>
 
               {/* Offer Banner */}
-              <Box marginTop="m">
+              <Box marginBottom="m">
                 <BannerSlider />
               </Box>
 
-              {/* Popular Text */}
-              <Box marginTop="m" flexDirection="row" alignItems="center" marginBottom='m'>
+              {/* Popular heading */}
+              <Box
+                flexDirection="row"
+                alignItems="center"
+                marginBottom="m"
+              >
                 <Box flex={1}>
-                  <Text variant="subtitle"> {t('popularNow')}</Text>
+                  <Text variant="subtitle">{t('popularNow')}</Text>
                 </Box>
-
                 <PressableText
                   text={t('seeAll')}
-                  onPress={() => console.log('see all item')}
+                  onPress={() => {}}
                 />
               </Box>
-            </Box>
+            </View>
           </>
         }
         onEndReached={handleLoadMore}
         onEndReachedThreshold={0.5}
+        style={{ backgroundColor: theme.colors.mainBackground }}
         renderItem={({ item }) => (
           <Card
             image={item.image}
@@ -103,9 +121,7 @@ const HomeScreen = () => {
             liked={wishlist.includes(item.id)}
             onWishlistPress={() => toggleWishlist(item.id)}
             onCardPress={() =>
-              navigation.navigate('Detail', {
-                product: item,
-              })
+              navigation.navigate('Detail', { product: item })
             }
           />
         )}

@@ -31,7 +31,7 @@ const CustomButton = ({
         flexDirection="row"
       >
         <Text
-          color="mainBackground"
+          color="white"
           variant="button"
         >
           {title}
@@ -42,7 +42,7 @@ const CustomButton = ({
             <Ionicons
               name={rightIcon}
               size={18}
-              color={theme.colors.mainBackground}
+              color={theme.colors.white}
             />
           </Box>
         )}

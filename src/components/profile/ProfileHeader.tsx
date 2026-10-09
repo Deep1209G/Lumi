@@ -49,7 +49,7 @@ const ProfileHeader = () => {
         marginLeft="m"
       >
 
-        <Text variant="button">
+        <Text variant="button" color="textPrimary">
           {user?.name}
         </Text>
 

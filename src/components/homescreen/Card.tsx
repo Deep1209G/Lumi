@@ -31,15 +31,15 @@ const Card = ({
       <Box
         width={DeviceHelper.calWidth(165)}
         backgroundColor="white"
-        borderWidth={1.5}
+        borderWidth={1}
         borderColor="tabgray"
         padding="s"
         borderRadius="m"
-        shadowColor="primary"
-        shadowOffset={{ width: 0, height: 4 }}
-        shadowOpacity={0.15}
-        shadowRadius={20}
-        elevation={5}
+        shadowColor="black"
+        shadowOffset={{ width: 0, height: 2 }}
+        shadowOpacity={0.06}
+        shadowRadius={8}
+        elevation={3}
       >
         {/* Product Image */}
         <Box alignItems="center">

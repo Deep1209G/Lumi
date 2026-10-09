@@ -166,7 +166,7 @@ const MyCartScreen = () => {
               />
             </Box>
 
-            <Text marginTop="m" variant="button">
+            <Text marginTop="m" variant="button" color="textPrimary">
               Your Cart is Empty
             </Text>
 
