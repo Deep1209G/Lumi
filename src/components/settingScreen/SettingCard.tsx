@@ -25,7 +25,7 @@ const SettingCard = ({  title, onPress, }: Props) => {
     >
       
       <Box flex={1} justifyContent="center" marginLeft="s">
-        <Text variant='button'>{title}</Text>
+        <Text variant='button' color='textPrimary'>{title}</Text>
       </Box>
       <Box justifyContent='center'>
       <Ionicons name='chevron-forward-outline' size={DeviceHelper.calWidth(15)} color={theme.colors.black} />
