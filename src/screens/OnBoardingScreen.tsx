@@ -90,7 +90,7 @@ const OnboardingScreen = ({ navigation }: any) => {
         )}
       />
 
-      <Box position="absolute" bottom={1} left={DeviceHelper.calWidth(20)} right={DeviceHelper.calWidth(20)}>
+      <Box paddingHorizontal="l" paddingBottom="l" paddingTop="s">
         <CustomButton
           title={
             currentIndex === onboardingData.length - 1

@@ -10,6 +10,8 @@ const darkPalette = {
   textWhite:   '#f1f5f9',
   textGray:    '#94a3b8',
   textLight:   '#64748b',
+  whiteMuted:  'rgba(255,255,255,0.5)',
+  greenTint:   'rgba(34,197,94,0.15)',
   white:       '#FFFFFF',
   black:       '#0f172a',
   red:         '#ef4444',
@@ -25,9 +27,11 @@ const darkTheme = createTheme({
     textPrimary:     darkPalette.textWhite,
     textSecondary:   darkPalette.textGray,
     textTernary:     darkPalette.white,
+    textOnDarkMuted: darkPalette.whiteMuted,
 
     primary:         darkPalette.greenAccent,
     primaryDark:     darkPalette.greenDark,
+    primaryTint:     darkPalette.greenTint,
 
     mainBackground:  darkPalette.navyDeep,
     darkHeader:      darkPalette.navyDeep,
