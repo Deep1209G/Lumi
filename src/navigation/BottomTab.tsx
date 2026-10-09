@@ -94,8 +94,8 @@ export default function BottomTab() {
 
         tabBarStyle: {
           position: 'absolute',
-          marginHorizontal: DeviceHelper.calWidth(20),
-          marginBottom: DeviceHelper.calHeight(25),
+          marginHorizontal: theme.spacing.l,
+          marginBottom: DeviceHelper.calHeight(8),
           height: DeviceHelper.calHeight(65),
           borderRadius: theme.borderRadii.l,
           backgroundColor: theme.colors.white,

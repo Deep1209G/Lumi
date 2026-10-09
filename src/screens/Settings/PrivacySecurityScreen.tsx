@@ -27,7 +27,7 @@ const PrivacySecurityScreen = () => {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor:theme.colors.mainBackground }}>
-      <Box flex={1} paddingHorizontal="m">
+      <Box flex={1} paddingHorizontal="l">
 
         <HeaderBack title="Privacy & Security" />
 

@@ -13,7 +13,7 @@ const PrivacyScreen = () => {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor:theme.colors.mainBackground }}>
        <ScrollView showsVerticalScrollIndicator={false}>
-      <Box paddingLeft="m" paddingRight="m">
+      <Box paddingLeft="l" paddingRight="l">
         {/* Header */}
         <HeaderBack title="Privacy Policy" />
 
