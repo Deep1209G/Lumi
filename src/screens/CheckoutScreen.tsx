@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { FlatList } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
@@ -31,10 +31,19 @@ const CheckoutScreen = () => {
 
   const { cart } = useContext(CartContext);
 
-  // Updated
   const { selectedAddress } = useAddress();
+  const [addressError, setAddressError] = useState('');
 
   const { totalItems, subtotal, gst, shipping, total } = useCartSummary(cart);
+
+  const handleContinue = () => {
+    if (!selectedAddress) {
+      setAddressError('Please select the address');
+      return;
+    }
+    setAddressError('');
+    navigation.navigate('Payment');
+  };
 
   return (
     <SafeAreaView
@@ -97,8 +106,16 @@ const CheckoutScreen = () => {
                       : 'Please add your shipping address'
                   }
                   type={selectedAddress?.type}
-                  onPress={() => navigation.navigate('AddressList')}
+                  onPress={() => {
+                    setAddressError('');
+                    navigation.navigate('AddressList');
+                  }}
                 />
+                {!!addressError && (
+                  <Text variant="small" color="warning" marginTop="xs">
+                    {addressError}
+                  </Text>
+                )}
               </Box>
 
               {/* Bill */}
@@ -184,7 +201,7 @@ const CheckoutScreen = () => {
         <CustomButton
           title={`Continue to Payment ₹${total.toFixed(2)}`}
           rightIcon="arrow-forward-outline"
-          onPress={() => navigation.navigate('Payment')}
+          onPress={handleContinue}
         />
       </Box>
     </SafeAreaView>
