@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { Linking } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Box, HeaderBack } from '@src';
-import ContactCard from '@src/components/contactScreen/ContactCard';
+import { ContactCard } from '@src/components/contactScreen';
 import { contactInfo } from '@src/data/contactInfo';
 import { Theme } from '@src/theme/theme';
 

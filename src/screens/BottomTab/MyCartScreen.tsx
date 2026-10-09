@@ -8,7 +8,7 @@ import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useTheme } from '@shopify/restyle';
 import { Theme } from '@src/theme/theme';
-import CartCard from '@src/components/mycartscreen/CartCard';
+import { CartCard } from '@src/components/mycartscreen';
 import { CartContext } from '@src/context/CardContext';
 import { DeviceHelper } from '@src/utils';
 import useCartSummary from '../../hooks/useCartSummary';

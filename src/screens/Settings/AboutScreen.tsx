@@ -5,7 +5,7 @@ import { useTheme } from '@shopify/restyle';
 import { Box, HeaderBack, Images, Text } from '@src';
 import { Image } from 'react-native';
 import { aboutMenu } from '@src/data/aboutMenu';
-import SettingCard from '@src/components/settingScreen/SettingCard';
+import { SettingCard } from '@src/components/settingScreen';
 import useAbout from '../../hooks/useAbout';
 import { Theme } from '@src/theme/theme';
 import { DeviceHelper } from '@src/utils';

@@ -35,7 +35,7 @@ const HomeScreen = () => {
   } = useHome();
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: theme.colors.darkHeader }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: theme.colors.mainBackground }}>
       <FlatList
         key={selectedCategory}
         ref={flatListRef}
