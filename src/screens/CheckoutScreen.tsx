@@ -28,12 +28,9 @@ const CheckoutScreen = () => {
   type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
   const navigation = useNavigation<NavigationProp>();
-
   const { cart } = useContext(CartContext);
-
   const { selectedAddress } = useAddress();
   const [addressError, setAddressError] = useState('');
-
   const { totalItems, subtotal, gst, shipping, total } = useCartSummary(cart);
 
   const handleContinue = () => {
@@ -60,9 +57,7 @@ const CheckoutScreen = () => {
             icon="chevron-back-outline"
             onPressIcon={() => navigation.goBack()}
           />
-
           <Text variant="heading">Checkout</Text>
-
           <Box width={DeviceHelper.calWidth(24)} />
         </Box>
 

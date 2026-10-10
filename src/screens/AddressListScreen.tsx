@@ -63,11 +63,8 @@ const AddressListScreen = () => {
                 <Text variant="medium" color="primary">
                   {item.type}
                 </Text>
-
                 <Text marginTop="s">{item.fullName}</Text>
-
                 <Text color="textSecondary">{item.phone}</Text>
-
                 <Text color="textSecondary" marginTop="xs">
                   {item.house}, {item.area}, {item.city}, {item.state} -{' '}
                   {item.pincode}
